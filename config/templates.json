@@ -1,0 +1,10 @@
+{
+    "templates": [
+        {
+            "value": "home",
+            "label": "Front Page",
+            "template": "app/template/home",
+            "controller": "app/template/home"
+        }
+    ]
+}

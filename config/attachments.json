@@ -1,0 +1,48 @@
+{
+    "attachments": {
+        "attachables": {
+            "app/attachment/text": {
+                "label": "Text"
+            },
+            "app/attachment/image": {
+                "label": "Image"
+            },
+            "app/attachment/gallery": {
+                "label": "Image gallery"
+            },
+            "app/attachment/file": {
+                "label": "File"
+            },
+            "app/attachment/video": {
+                "label": "Video"
+            }
+        },
+        "groups": {
+            "content-blocks": [
+                "app/attachment/text",
+                "app/attachment/image",
+                "app/attachment/gallery",
+                "app/attachment/video"
+            ]
+        },
+        "widgets": {
+            "content-blocks": {
+                "title": {
+                    "en": "Content block",
+                    "fr": "Blocs de contenu"
+                },
+                "show_title": true,
+                "show_header": false,
+                "template": "charcoal/admin/widget/form-group/attachment",
+                "group": "content-blocks",
+                "attachment_heading": "{{ ident }}",
+                "attachable_objects": "content-blocks",
+                "attachment_options": {
+                    "show_header": false,
+                    "show_preview": true,
+                    "show_heading": true
+                }
+            }
+        }
+    }
+}

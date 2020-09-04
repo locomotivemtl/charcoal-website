@@ -1,0 +1,22 @@
+{
+    "routes": {
+        "templates": {
+            "home": {
+                "route": "[/]",
+                "template": "app/template/home",
+                "controller": "app/template/home"
+            }
+        },
+        "actions": {},
+        "scripts": {}
+    },
+    "routables": {
+        "charcoal/cms/route/generic": {}
+    },
+    "handlers": {
+        "defaults": {
+            "template": "app/template/error",
+            "controller": "app/template/error"
+        }
+    }
+}

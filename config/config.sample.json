@@ -1,0 +1,14 @@
+{
+    "databases": {
+        "default": {
+            "database": "charcoal",
+            "username": "root",
+            "password": ""
+        }
+    },
+    "default_database": "default",
+    "dev_mode": true,
+    "logger": {
+        "level": "debug"
+    }
+}

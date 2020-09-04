@@ -1,0 +1,77 @@
+{
+    "project_name": "Charcoal website",
+    "timezone": "America/Montreal",
+    "admin_config": "config/admin.php",
+    "apis": {
+        "google": {
+            "analytics": {
+                "tracking_id": ""
+            }
+        },
+        "typekit": {
+            "kit_id": ""
+        }
+    },
+    "cache": {
+        "active": true,
+        "types": [ "apc", "memcache", "redis" ],
+        "prefix": "app"
+    },
+    "email": {
+        "default_from": {
+            "email": null,
+            "name": null
+        }
+    },
+    "locales": {
+        "languages": {
+            "fr": {
+                "locale": "fr-FR"
+            },
+            "en": {
+                "locale": "en-US"
+            }
+        },
+        "default_language": "fr"
+    },
+    "logger": {
+        "active": true,
+        "level": "warning"
+    },
+    "metadata": {
+        "paths": [
+            "metadata/",
+            "vendor/locomotivemtl/charcoal-admin/metadata/",
+            "vendor/locomotivemtl/charcoal-app/metadata/",
+            "vendor/locomotivemtl/charcoal-attachment/metadata/",
+            "vendor/locomotivemtl/charcoal-cms/metadata/",
+            "vendor/locomotivemtl/charcoal-email/metadata/",
+            "vendor/locomotivemtl/charcoal-object/metadata/",
+            "vendor/locomotivemtl/charcoal-property/metadata/",
+            "vendor/locomotivemtl/charcoal-user/metadata/"
+        ]
+    },
+    "modules": {
+        "charcoal/admin/admin": {}
+    },
+    "service_providers": {
+        "app/service-provider/app": {}
+    },
+    "translator": {
+        "paths": [
+            "translations/app/",
+            "vendor/locomotivemtl/charcoal-admin/translations/",
+            "vendor/locomotivemtl/charcoal-app/translations/",
+            "vendor/locomotivemtl/charcoal-attachment/translations/"
+        ]
+    },
+    "view": {
+        "paths": [
+            "views/",
+            "vendor/locomotivemtl/charcoal-admin/templates/",
+            "vendor/locomotivemtl/charcoal-app/templates/",
+            "vendor/locomotivemtl/charcoal-attachment/templates/",
+            "vendor/locomotivemtl/charcoal-cms/views/"
+        ]
+    }
+}
