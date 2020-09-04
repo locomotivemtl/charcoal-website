@@ -56,15 +56,6 @@
     </header>
 
     <section data-scroll-section>
-        <!-- <div
-            class="c-mask-shape"
-            data-module-lottie
-            data-lottie-file-path="{{# withBaseUrl }}assets/lottie{{/ withBaseUrl }}"
-            data-lottie-file-name="charcoal-intro"
-        >
-        </div> -->
-        <!-- <div style="height: 100vh; background-color: rgba(0,0,0,0.1);"></div> -->
-
         <div
             class="c-hero"
             data-scroll
@@ -73,7 +64,21 @@
             data-module-hero
             id="hero"
         >
-            <div class="c-hero_container || o-container u-text-center" data-scroll data-scroll-sticky data-scroll-target="#hero">
+            <div
+                class="c-hero_container || o-container u-text-center"
+                data-scroll
+                data-scroll-sticky
+                data-scroll-target="#hero"
+            >
+
+                <div
+                    class="c-mask-shape"
+                    data-module-lottie
+                    data-lottie-file-path="{{# withBaseUrl }}assets/lottie{{/ withBaseUrl }}"
+                    data-lottie-file-name="charcoal-intro"
+                >
+                </div>
+
                 <div class="c-hero_progress">
                     <div class="c-hero_progress_bar" data-hero="progress"></div>
                 </div>
