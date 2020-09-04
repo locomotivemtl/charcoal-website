@@ -9,7 +9,7 @@
             <div class="o-layout -middle">
                 <div class="o-layout_item u-1/2">
                     <div class="c-header_logo">
-                        <svg role="img"><use href="assets/images/sprite.svg#logo"></use></svg>
+                        <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
                     </div>
                     <ul class="c-header_menu">
                         <li class="c-header_menu_item -products">
@@ -56,9 +56,23 @@
     </header>
 
     <section data-scroll-section>
-        <div class="o-container u-text-center">
+        <div
+            class="c-mask-shape"
+            data-module-lottie
+            data-lottie-file-path="{{# withBaseUrl }}assets/lottie{{/ withBaseUrl }}"
+            data-lottie-file-name="charcoal-intro"
+        >
+        </div>
+
+        <div class="c-hero || o-container u-text-center">
+            <div class="c-hero_logo">
+                <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
+            </div>
+        </div>
+
+        <!-- <div class="o-container u-text-center">
             <div class="c-device" data-module-smartphone data-texture="assets/3d/textures/smartphone.jpg" ></div>
-        </div>  
+        </div> -->
     </section>
 
 {{> app/template/partial/site-footer }}
