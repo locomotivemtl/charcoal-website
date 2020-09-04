@@ -21,6 +21,11 @@ export default class extends module {
             // console.log(args.scroll);
 
             this.call('checkScroll','Object3D');
+
+            if(typeof args.currentElements['hero'] === 'object') {
+                let progress = args.currentElements['hero'];
+                this.call('update', [progress, args], 'Hero');
+            }
         })
     }
 

@@ -4,3 +4,4 @@ export {default as Smartphone}          from './modules/Smartphone';
 export {default as Laptop}              from './modules/Laptop';
 export {default as ProductsButton}      from './modules/ProductsButton';
 export {default as Lottie}              from './modules/Lottie';
+export {default as Hero}                from './modules/Hero';

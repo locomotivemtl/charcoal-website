@@ -3,7 +3,7 @@
 
 
 <div class="o-scroll" data-module-scroll="main">
-    
+
     <header class="c-header" data-scroll-section>
         <div class="o-container">
             <div class="o-layout -middle">
@@ -56,23 +56,40 @@
     </header>
 
     <section data-scroll-section>
-        <div
+        <!-- <div
             class="c-mask-shape"
             data-module-lottie
             data-lottie-file-path="{{# withBaseUrl }}assets/lottie{{/ withBaseUrl }}"
             data-lottie-file-name="charcoal-intro"
         >
-        </div>
+        </div> -->
+        <!-- <div style="height: 100vh; background-color: rgba(0,0,0,0.1);"></div> -->
 
-        <div class="c-hero || o-container u-text-center">
-            <div class="c-hero_logo">
-                <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
+        <div
+            class="c-hero"
+            data-scroll
+            data-scroll-position="top"
+            data-scroll-id="hero"
+            data-module-hero
+            id="hero"
+        >
+            <div class="c-hero_container || o-container u-text-center" data-scroll data-scroll-sticky data-scroll-target="#hero">
+                <div class="c-hero_progress">
+                    <div class="c-hero_progress_bar" data-hero="progress"></div>
+                </div>
+                <div class="c-hero_logo">
+                    <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
+                </div>
             </div>
         </div>
+    </section>
 
+    <section data-scroll-section>
         <!-- <div class="o-container u-text-center">
             <div class="c-device" data-module-smartphone data-texture="assets/3d/textures/smartphone.jpg" ></div>
         </div> -->
+        <div style="height: 100vh; background-color: rgba(0,0,0,0.1);"></div>
+        <div style="height: 100vh; background-color: rgba(0,0,0,0.4);"></div>
     </section>
 
 {{> app/template/partial/site-footer }}
