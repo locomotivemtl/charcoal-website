@@ -1007,20 +1007,20 @@ svg {
 
 .c-hero {
   position: relative;
-  height: 300vh;
-  background-color: rgba(0, 0, 0, 0.5); }
+  height: 300vh; }
 
 .c-hero_container {
   height: 100vh;
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  overflow: hidden; }
 
 .c-hero_logo {
   color: #FFFFFF;
-  width: 18.75rem;
-  height: 18.75rem; }
+  width: 15.625rem;
+  height: 15.625rem; }
   .c-hero_logo svg {
     display: block;
     width: 100%;
@@ -1031,7 +1031,7 @@ svg {
   height: 40px;
   background-color: #191A22;
   position: absolute;
-  top: 50%;
+  bottom: 20%;
   left: 50%;
   transform: translate(-50%, -50%); }
 

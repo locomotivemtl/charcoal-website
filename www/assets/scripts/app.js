@@ -14955,17 +14955,25 @@
 
     _createClass$1(_default, [{
       key: "init",
-      value: function init() {}
+      value: function init() {
+        this.maskTL = gsap.fromTo(this.$('mask')[0], {
+          scale: 1
+        }, {
+          scale: 3.5
+        });
+        this.maskTL.pause();
+      }
     }, {
       key: "update",
       value: function update(param) {
         var limit = param[0].section.limit.y - window.innerHeight * 1.5;
         var scroll = param[1].scroll.y;
-        var progress = scroll / limit;
+        var progress = Math.min((scroll / limit).toFixed(3), 1);
         if (progress >= 1) progress = 1;else if (progress <= 0) progress = 0;
         gsap.set(this.$('progress')[0], {
           scaleX: progress
         });
+        this.maskTL.progress(progress);
       }
     }, {
       key: "setBounds",

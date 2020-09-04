@@ -1,7 +1,6 @@
 .c-hero {
     position: relative;
     height: 300vh;
-    background-color: rgba(0,0,0,0.5);
 }
 
 .c-hero_container {
@@ -10,12 +9,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .c-hero_logo {
     color: $white;
-    width: rem(300px);
-    height: rem(300px);
+    width: rem(250px);
+    height: rem(250px);
 
     svg {
         display: block;
@@ -29,7 +29,7 @@
     height: 40px;
     background-color: $gray;
     position: absolute;
-    top: 50%;
+    bottom: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
