@@ -1,0 +1,33 @@
+{
+    "type": "project",
+    "name": "locomotivemtl/charcoal-website",
+    "description": "The marketing page for Charcoal, a PHP framework for the web; built by Locomotive.",
+    "homepage": "https://charcoal.locomotive.ca/",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Locomotive",
+            "homepage": "https://locomotive.ca"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/locomotivemtl/charcoal-website/src",
+        "issues": "https://github.com/locomotivemtl/charcoal-website/issues",
+        "forum": "https://locomotivemtl.slack.com/messages/charcoal",
+        "wiki": "https://locomotivemtl.teamwork.com/projects/265466"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.6"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}
