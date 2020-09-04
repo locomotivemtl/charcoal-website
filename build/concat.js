@@ -5,7 +5,8 @@ import paths from '../mconfig.json';
 function concat() {
     return gulp
         .src([
-            `${paths.scripts.vendors.src}*.js`
+            `${paths.scripts.vendors.src}*.js`,
+            'node_modules/gsap/dist/gsap.min.js'
         ])
         .pipe(gulpConcat(`${paths.scripts.vendors.main}.js`))
         .pipe(gulp.dest(paths.scripts.dest));

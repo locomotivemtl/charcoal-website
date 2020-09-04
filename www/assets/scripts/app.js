@@ -636,6 +636,36 @@
     };
   }
 
+  function _superPropBase(object, property) {
+    while (!Object.prototype.hasOwnProperty.call(object, property)) {
+      object = _getPrototypeOf(object);
+      if (object === null) break;
+    }
+
+    return object;
+  }
+
+  function _get(target, property, receiver) {
+    if (typeof Reflect !== "undefined" && Reflect.get) {
+      _get = Reflect.get;
+    } else {
+      _get = function _get(target, property, receiver) {
+        var base = _superPropBase(target, property);
+
+        if (!base) return;
+        var desc = Object.getOwnPropertyDescriptor(base, property);
+
+        if (desc.get) {
+          return desc.get.call(receiver);
+        }
+
+        return desc.value;
+      };
+    }
+
+    return _get(target, property, receiver || target);
+  }
+
   function _classCallCheck$2(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
@@ -1286,7 +1316,7 @@
     return _assertThisInitialized$1(self);
   }
 
-  function _superPropBase(object, property) {
+  function _superPropBase$1(object, property) {
     while (!Object.prototype.hasOwnProperty.call(object, property)) {
       object = _getPrototypeOf$1(object);
       if (object === null) break;
@@ -1295,12 +1325,12 @@
     return object;
   }
 
-  function _get(target, property, receiver) {
+  function _get$1(target, property, receiver) {
     if (typeof Reflect !== "undefined" && Reflect.get) {
-      _get = Reflect.get;
+      _get$1 = Reflect.get;
     } else {
-      _get = function _get(target, property, receiver) {
-        var base = _superPropBase(target, property);
+      _get$1 = function _get(target, property, receiver) {
+        var base = _superPropBase$1(target, property);
 
         if (!base) return;
         var desc = Object.getOwnPropertyDescriptor(base, property);
@@ -1313,7 +1343,7 @@
       };
     }
 
-    return _get(target, property, receiver || target);
+    return _get$1(target, property, receiver || target);
   }
 
   function _slicedToArray$2(arr, i) {
@@ -2221,14 +2251,14 @@
         this.addElements();
         this.detectElements();
 
-        _get(_getPrototypeOf$1(_default.prototype), "init", this).call(this);
+        _get$1(_getPrototypeOf$1(_default.prototype), "init", this).call(this);
       }
     }, {
       key: "checkScroll",
       value: function checkScroll() {
         var _this2 = this;
 
-        _get(_getPrototypeOf$1(_default.prototype), "checkScroll", this).call(this);
+        _get$1(_getPrototypeOf$1(_default.prototype), "checkScroll", this).call(this);
 
         if (this.getDirection) {
           this.addDirection();
@@ -2441,7 +2471,7 @@
     }, {
       key: "destroy",
       value: function destroy() {
-        _get(_getPrototypeOf$1(_default.prototype), "destroy", this).call(this);
+        _get$1(_getPrototypeOf$1(_default.prototype), "destroy", this).call(this);
 
         window.removeEventListener('scroll', this.checkScroll, false);
       }
@@ -3205,7 +3235,7 @@
         this.checkScroll(true);
         this.transformElements(true, true);
 
-        _get(_getPrototypeOf$1(_default.prototype), "init", this).call(this);
+        _get$1(_getPrototypeOf$1(_default.prototype), "init", this).call(this);
       }
     }, {
       key: "setScrollLimit",
@@ -3402,7 +3432,7 @@
             }
           }
 
-          _get(_getPrototypeOf$1(_default.prototype), "checkScroll", this).call(this);
+          _get$1(_getPrototypeOf$1(_default.prototype), "checkScroll", this).call(this);
 
           this.hasScrollTicking = false;
         }
@@ -4097,7 +4127,7 @@
     }, {
       key: "destroy",
       value: function destroy() {
-        _get(_getPrototypeOf$1(_default.prototype), "destroy", this).call(this);
+        _get$1(_getPrototypeOf$1(_default.prototype), "destroy", this).call(this);
 
         this.stopScrolling();
         this.html.classList.remove(this.smoothClass);
@@ -4223,7 +4253,9 @@
             obj: obj
           }, func[1], func[2]);
         });
-        this.scroll.on('scroll', function (args) {// console.log(args.scroll);
+        this.scroll.on('scroll', function (args) {
+          // console.log(args.scroll);
+          _this.call('checkScroll', 'Object3D');
         });
       }
     }, {
@@ -4251,10 +4283,604 @@
     return _default;
   }(_default);
 
+  var APP_STATE = {
+    models3d: {} // this is needed empty, do not remove
+
+  };
+  window.locomotive = APP_STATE;
+
+  function lerp$1(start, end, amt) {
+    return (1 - amt) * start + amt * end;
+  }
+
+  var FILETYPES = {
+    FBX: 'fbx',
+    OBJ: 'obj',
+    GLB: 'glb',
+    GLTF: 'gltf'
+  };
+
+  var _default$6 = /*#__PURE__*/function (_module) {
+    _inherits(_default, _module);
+
+    var _super = _createSuper(_default);
+
+    function _default(m) {
+      var _this;
+
+      _classCallCheck$1(this, _default);
+
+      _this = _super.call(this, m);
+      _this.showGui = _this.el.getAttribute('data-gui');
+      _this.rotationAmplitudes = {
+        x: 35,
+        y: 2
+      };
+      _this.settings = {
+        camera: {
+          fov: 25,
+          position: [0, 0, 10]
+        }
+      };
+      _this.device = _this.el.getAttribute('data-device');
+      _this.textureSrc = _this.el.getAttribute('data-texture');
+      _this.deviceColor = _this.el.getAttribute('data-color') && _this.el.getAttribute('data-color').length ? _this.el.getAttribute('data-color') : 'ffffff';
+      return _this;
+    }
+
+    _createClass$1(_default, [{
+      key: "init",
+      value: function init() {
+        var _this2 = this;
+
+        // Set events and such
+        this.initScene();
+        this.initLights();
+        var initPromise = this.initObject();
+        this.initScrollTl();
+
+        if (this.showGui) {
+          initPromise.then(function () {
+            _this2.initGui();
+          });
+        }
+
+        Promise.all([initPromise]).then(function () {
+          _this2.slideUp();
+        });
+        this.checkResizeBind = this.checkResize.bind(this);
+        window.addEventListener('resize', this.checkResizeBind);
+        this.checkResize();
+        this.animate();
+        this.manageInteractions();
+      }
+    }, {
+      key: "checkResize",
+      value: function checkResize() {
+        var _this3 = this;
+
+        if (window.isMobile) {
+          this.resize();
+        } else {
+          if (!this.resizeTick) {
+            requestAnimationFrame(function () {
+              _this3.resize();
+            });
+            this.resizeTick = true;
+          }
+        }
+      }
+    }, {
+      key: "initScene",
+      value: function initScene() {
+        this.scene, this.camera, this.renderer, this.element;
+        this.scene = new THREE.Scene(); // CAMERA
+        // ==========================================================================
+
+        this.camera = new THREE.PerspectiveCamera(this.settings.camera.fov, window.innerWidth / window.innerHeight, 1, 20000); // this.camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000000 );
+
+        this.camera.position.set(this.settings.camera.position[0], this.settings.camera.position[1], this.settings.camera.position[2]);
+        this.camera.lookAt(0, 0, 0);
+        this.scene.add(this.camera); // MOUSE
+        // ==========================================================================
+
+        this.mouse = new THREE.Vector2();
+        this.mouse.x = -window.innerWidth / 2;
+        this.mouse.y = -window.innerHeight / 2; // RENDERER
+        // ==========================================================================
+
+        this.renderer = new THREE.WebGLRenderer({
+          antialias: window.devicePixelRatio >= 2 ? false : true,
+          alpha: true
+        });
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // this.renderer.shadowMap.enabled = true;
+        // this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        // this.renderer.shadowMap.needsUpdate = true
+
+        this.element = this.renderer.domElement;
+        this.container = this.el;
+        this.container.width = this.el.getBoundingClientRect().width;
+        this.container.height = this.el.getBoundingClientRect().height;
+        this.element.width = this.container.width;
+        this.element.height = this.container.height;
+        this.renderer.setSize(this.container.width, this.container.height); // this.renderer.shadowMap.enabled = true;
+
+        this.renderer.gammaInput = true;
+        this.renderer.gammaOutput = true; // this.renderer.setPixelRatio(1);
+
+        this.container.appendChild(this.element);
+      }
+    }, {
+      key: "initLights",
+      value: function initLights() {
+        // SPOTLIGHT
+        // ==========================================================================
+        this.spotLight = new THREE.DirectionalLight(0xcccccc, .5);
+        this.spotLight.position.set(-500, 500, 200);
+        this.spotLight.castShadow = true;
+        this.camera.add(this.spotLight); // AMBIANT LIGHT
+        // ==========================================================================
+
+        this.ambientLight = new THREE.AmbientLight(0xffffff, .75); // soft white light
+
+        this.scene.add(this.ambientLight); // this.scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
+      }
+    }, {
+      key: "initObject",
+      value: function initObject() {
+        var _this4 = this;
+        this.scrollWrapper = new THREE.Object3D();
+        this.slideUpWrapper = new THREE.Object3D();
+        this.wrapper = new THREE.Object3D();
+        this.wrapper.rotationTarget = {
+          x: 0,
+          y: 0,
+          z: 0
+        };
+        this.texture = new THREE.TextureLoader().load(this.textureSrc);
+        return this.loadModel(this.file).then(function (object) {
+          _this4.object = object;
+
+          _this4.setupObject();
+
+          _this4.scrollWrapper.add(_this4.slideUpWrapper);
+
+          _this4.slideUpWrapper.add(_this4.wrapper);
+
+          _this4.wrapper.add(_this4.object);
+
+          _this4.scene.add(_this4.scrollWrapper);
+        });
+      }
+    }, {
+      key: "setupObject",
+      value: function setupObject() {}
+    }, {
+      key: "initScrollTl",
+      value: function initScrollTl() {
+        this.scrollTl = new TimelineMax({}); // Object Rotation
+
+        this.scrollTl.fromTo(this.scrollWrapper.rotation, 1, {
+          y: 5 * Math.PI / 180
+        }, {
+          y: -15 * Math.PI / 180,
+          ease: "none"
+        }, 0);
+        this.scrollTl.pause();
+      } // Animations
+      // ==========================================================================
+
+    }, {
+      key: "slideUp",
+      value: function slideUp() {
+        var DURATION = 2;
+        this.slideUpTl = new TimelineMax({});
+        this.slideUpTl.addLabel('start', 0);
+        this.slideUpTl.fromTo(this.slideUpWrapper.position, DURATION, {
+          y: -200
+        }, {
+          y: 0,
+          ease: Power3.easeOut
+        }, 'start');
+        this.slideUpTl.fromTo(this.slideUpWrapper.rotation, DURATION, {
+          y: 90 * Math.PI / 180
+        }, {
+          y: 0,
+          ease: Power3.easeOut
+        }, 'start');
+      } // ==========================================================================
+      // GUI
+      // ==========================================================================
+
+    }, {
+      key: "initGui",
+      value: function initGui() {
+        this.gui = new dat.GUI(); // CAMERA
+
+        var camera = this.gui.addFolder('Camera');
+        camera.add(this.camera, 'fov', 10, 500);
+        camera.add(this.camera.position, 'x', 0, 20);
+        camera.add(this.camera.position, 'y', 0, 20);
+        camera.add(this.camera.position, 'z', 0, 20);
+        camera.open(); // AMBIENT LIGHT
+
+        var ambientLight = this.gui.addFolder('Ambient Light');
+        ambientLight.add(this.ambientLight, 'intensity', 0.0, 1.0);
+        ambientLight.open(); // SPOT LIGHT
+
+        var spotLight = this.gui.addFolder('SpotLight');
+        spotLight.add(this.spotLight, 'intensity', 0.0, 1.0);
+        spotLight.open();
+      } // ==========================================================================
+      // UTILS
+      // ==========================================================================
+
+    }, {
+      key: "loadModel",
+      value: function loadModel(filename) {
+        var _this5 = this;
+
+        var PATH = '/assets/3d/models/';
+        var FILETYPE = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
+
+        if (APP_STATE.models3d[PATH + filename]) {
+          if (FILETYPE == FILETYPES.GLB || FILETYPE == FILETYPES.GLTF) this.texture.flipY = false;
+          return new Promise(function (resolve) {
+            resolve();
+          }).then(function () {
+            return APP_STATE.models3d[PATH + filename].clone();
+          });
+        }
+
+        var promise;
+
+        switch (FILETYPE) {
+          case FILETYPES.FBX:
+            if (!this.fbxLoader) this.fbxLoader = new THREE.FBXLoader();
+            promise = new Promise(function (resolve) {
+              _this5.fbxLoader.load(PATH + filename, resolve);
+            });
+            break;
+
+          case FILETYPES.OBJ:
+            if (!this.objLoader) this.objLoader = new THREE.OBJLoader();
+            promise = new Promise(function (resolve) {
+              _this5.objLoader.load(PATH + filename, resolve);
+            });
+            break;
+
+          case FILETYPES.GLB:
+          case FILETYPES.GLTF:
+            if (!this.gltfLoader) this.gltfLoader = new THREE.GLTFLoader();
+            this.texture.flipY = false;
+            promise = new Promise(function (resolve) {
+              _this5.gltfLoader.load(PATH + filename, resolve);
+            }).then(function (object) {
+              return object.scene;
+            });
+            break;
+
+          default:
+            return false;
+        }
+
+        return promise.then(function (object) {
+          APP_STATE.models3d[PATH + filename] = object;
+          return object.clone();
+        });
+      } // ==========================================================================
+      // INTERACTIONS
+      // ==========================================================================
+
+    }, {
+      key: "manageInteractions",
+      value: function manageInteractions() {
+        var _this6 = this;
+
+        this.mouse = new THREE.Vector2();
+
+        this.mouseMoveBind = function (e) {
+          // console.log(e.clientX, e.clientY);
+          _this6.mouse.x = (e.clientX - window.innerWidth / 2) / window.innerWidth * _this6.rotationAmplitudes.x;
+          _this6.mouse.y = (e.clientY - window.innerHeight / 2) / window.innerHeight * _this6.rotationAmplitudes.y; // console.log(this.mouse);
+
+          _this6.wrapper.rotationTarget.x = -_this6.mouse.y * Math.PI / 180 * 2;
+          _this6.wrapper.rotationTarget.y = -_this6.mouse.x * Math.PI / 180;
+        };
+
+        window.addEventListener('mousemove', this.mouseMoveBind); // DEVICE ORIENTATION
+        // this.orientation       = {};
+        // this.orientation.alpha = 0;
+        // this.orientation.gamma = 0;
+        // this.orientation.beta  = 0;
+        // this.relativeOrientation       = {};
+        // this.relativeOrientation.alpha = 0;
+        // this.relativeOrientation.gamma = 0;
+        // this.relativeOrientation.beta  = 0;
+        // $window.on(EVENT.ORIENTATION, (e) => {
+        //     e = e.originalEvent;
+        //     // console.log(e);
+        //     let diff   = {};
+        //     diff.alpha = e.alpha - this.orientation.alpha;
+        //     diff.gamma = e.gamma - this.orientation.gamma;
+        //     diff.beta  = e.beta - this.orientation.beta;
+        //     this.relativeOrientation.alpha = Math.max(-180, Math.min(180, this.relativeOrientation.alpha + diff.alpha));
+        //     this.relativeOrientation.gamma = Math.max(-90, Math.min(90, this.relativeOrientation.gamma + diff.gamma));
+        //     this.relativeOrientation.beta  = Math.max(-90, Math.min(90, this.relativeOrientation.beta + diff.beta));
+        //     // console.log(this.relativeOrientation);
+        //     this.wrapper.rotationTarget.x = this.relativeOrientation.beta * Math.PI / 180
+        //     this.wrapper.rotationTarget.y = this.relativeOrientation.gamma * Math.PI / 180
+        //     this.orientation.alpha = e.alpha;
+        //     this.orientation.gamma = e.gamma;
+        //     this.orientation.beta  = e.beta;
+        // })
+
+        this.onHeaderProgressBind = function (e) {
+          _this6.scrollTl.progress(e.options.progress);
+        };
+      } // ==========================================================================
+      // LOOP
+      // ==========================================================================
+
+    }, {
+      key: "animate",
+      value: function animate() {
+        var _this7 = this;
+
+        this.raf = requestAnimationFrame(function () {
+          return _this7.animate();
+        });
+        this.render();
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        this.wrapper.rotation.x = lerp$1(this.wrapper.rotation.x, this.wrapper.rotationTarget.x, 0.1);
+        this.wrapper.rotation.y = lerp$1(this.wrapper.rotation.y, this.wrapper.rotationTarget.y, 0.1);
+        this.wrapper.rotation.z = lerp$1(this.wrapper.rotation.z, this.wrapper.rotationTarget.z, 0.1);
+        this.camera.updateProjectionMatrix(); // this.controls.update();
+
+        this.renderer.render(this.scene, this.camera);
+      }
+    }, {
+      key: "resize",
+      value: function resize() {
+        this.container.width = this.el.getBoundingClientRect().width;
+        this.container.height = this.el.getBoundingClientRect().height;
+        this.element.width = this.container.width;
+        this.element.height = this.container.height;
+        this.camera.aspect = this.container.width / this.container.height;
+        this.renderer.setSize(this.container.width, this.container.height);
+        this.resizeTick = false;
+      }
+    }, {
+      key: "destroy",
+      value: function destroy() {
+        _get(_getPrototypeOf(_default.prototype), "destroy", this).call(this);
+
+        cancelAnimationFrame(this.raf);
+        window.removeEventListener('resize', this.mouseMoveBind);
+        window.removeEventListener('mousemove', this.mouseMoveBind);
+      }
+    }]);
+
+    return _default;
+  }(_default);
+
+  var _default$7 = /*#__PURE__*/function (_Device) {
+    _inherits(_default, _Device);
+
+    var _super = _createSuper(_default);
+
+    function _default(options) {
+      var _this;
+
+      _classCallCheck$1(this, _default);
+
+      _this = _super.call(this, options);
+      _this.file = 'smartphone.glb';
+      return _this;
+    }
+
+    _createClass$1(_default, [{
+      key: "initGui",
+      value: function initGui() {
+        var _this2 = this;
+
+        _get(_getPrototypeOf(_default.prototype), "initGui", this).call(this);
+
+        var guiController = function guiController() {
+          this.rotation = {
+            x: -12,
+            y: -35,
+            z: -8
+          };
+        };
+
+        var guiInstance = new guiController(); // PHONE
+
+        var phone = this.gui.addFolder('Phone');
+        var phoneRotation = phone.addFolder('Rotation');
+        var rotationXController = phoneRotation.add(guiInstance.rotation, 'x', -180, 180);
+        var rotationYController = phoneRotation.add(guiInstance.rotation, 'y', -180, 180);
+        var rotationZController = phoneRotation.add(guiInstance.rotation, 'z', -180, 180);
+        rotationXController.onChange(function (value) {
+          _this2.object.rotation.x = value * Math.PI / 180;
+        });
+        rotationYController.onChange(function (value) {
+          _this2.object.rotation.y = value * Math.PI / 180;
+        });
+        rotationZController.onChange(function (value) {
+          _this2.object.rotation.z = value * Math.PI / 180;
+        });
+        phone.open();
+      }
+    }, {
+      key: "setupObject",
+      value: function setupObject() {
+        this.deviceMaterial = new THREE.MeshLambertMaterial({
+          color: new THREE.Color(0xffffff),
+          map: this.texture
+        });
+        this.reposition();
+        this.object.rotation.x = -12 * Math.PI / 180;
+        this.object.rotation.y = -35 * Math.PI / 180;
+        this.object.rotation.z = -8 * Math.PI / 180;
+        this.object.children[0].material = this.deviceMaterial;
+      }
+    }, {
+      key: "reposition",
+      value: function reposition() {
+        if (this.object && this.object.position) {
+          if (window.innerWidth > 700) {
+            this.camera.position.z = 14.5;
+          } else {
+            this.camera.position.z = 10.5;
+          }
+        }
+      }
+    }, {
+      key: "resize",
+      value: function resize() {
+        _get(_getPrototypeOf(_default.prototype), "resize", this).call(this);
+
+        this.reposition();
+      }
+    }, {
+      key: "destroy",
+      value: function destroy() {
+        _get(_getPrototypeOf(_default.prototype), "destroy", this).call(this);
+
+        this.$el.off(".".concat(EVENT_NAMESPACE));
+      }
+    }]);
+
+    return _default;
+  }(_default$6);
+
+  var _default$8 = /*#__PURE__*/function (_Device) {
+    _inherits(_default, _Device);
+
+    var _super = _createSuper(_default);
+
+    function _default(m) {
+      var _this;
+
+      _classCallCheck$1(this, _default);
+
+      _this = _super.call(this, m);
+      _this.settings = {
+        camera: {
+          fov: 25,
+          position: [0, 0, 10]
+        }
+      };
+      _this.file = 'laptop_v2.glb';
+      return _this;
+    }
+
+    _createClass$1(_default, [{
+      key: "initGui",
+      value: function initGui() {
+        var _this2 = this;
+
+        _get(_getPrototypeOf(_default.prototype), "initGui", this).call(this);
+
+        var guiController = function guiController() {
+          this.rotation = {
+            x: 0,
+            y: 0,
+            z: 0
+          };
+          this.color = '#ffffff';
+        };
+
+        var guiInstance = new guiController(); // Device
+
+        var device = this.gui.addFolder('device'); // device.add(this.deviceMaterial, 'roughness', 0 , 1)
+        // device.add(this.deviceMaterial, 'clearCoat', 0 , 1)
+        // device.add(this.deviceMaterial, 'clearCoatRoughness', 0 , 1)
+
+        var deviceRotation = device.addFolder('Rotation');
+        var rotationXController = deviceRotation.add(guiInstance.rotation, 'x', -180, 180);
+        var rotationYController = deviceRotation.add(guiInstance.rotation, 'y', -180, 180);
+        var rotationZController = deviceRotation.add(guiInstance.rotation, 'z', -180, 180);
+        rotationXController.onChange(function (value) {
+          _this2.object.rotation.x = value * Math.PI / 180;
+        });
+        rotationYController.onChange(function (value) {
+          _this2.object.rotation.y = value * Math.PI / 180;
+        });
+        rotationZController.onChange(function (value) {
+          _this2.object.rotation.z = value * Math.PI / 180;
+        });
+        var devicePosition = device.addFolder('Position');
+        devicePosition.add(this.object.position, 'x', -10, 10);
+        devicePosition.add(this.object.position, 'y', -10, 10);
+        devicePosition.add(this.object.position, 'z', -10, 10);
+        device.open(); // LIGHT
+        // ==========================================================================
+
+        var lightPosition = device.addFolder('Light position');
+        lightPosition.add(this.spotLight.position, 'x', -10, 10);
+        lightPosition.add(this.spotLight.position, 'y', -10, 10);
+        lightPosition.add(this.spotLight.position, 'z', -10, 10);
+      }
+    }, {
+      key: "setupObject",
+      value: function setupObject() {
+        this.deviceMaterial = new THREE.MeshLambertMaterial({
+          color: new THREE.Color(0xffffff),
+          map: this.texture
+        });
+        this.reposition();
+        this.object.rotation.x = 38 * Math.PI / 180;
+        this.object.rotation.y = -26 * Math.PI / 180;
+        this.object.rotation.z = 6 * Math.PI / 180;
+        this.object.children[0].material = this.deviceMaterial;
+      }
+    }, {
+      key: "reposition",
+      value: function reposition() {
+        if (this.object && this.object.position) {
+          if (window.innerWidth > 700) {
+            this.object.position.x = 0.15;
+            this.object.position.y = 0.1;
+            this.object.position.z = 0;
+            this.camera.position.z = 12.5;
+          } else {
+            this.object.position.x = -0.1;
+            this.object.position.y = 0.1;
+            this.object.position.z = 0;
+            this.camera.position.z = 10;
+          }
+        }
+      }
+    }, {
+      key: "resize",
+      value: function resize() {
+        _get(_getPrototypeOf(_default.prototype), "resize", this).call(this);
+
+        this.reposition();
+      }
+    }, {
+      key: "destroy",
+      value: function destroy() {
+        _get(_getPrototypeOf(_default.prototype), "destroy", this).call(this);
+
+        this.$el.off(".".concat(EVENT_NAMESPACE));
+      }
+    }]);
+
+    return _default;
+  }(_default$6);
+
   var modules = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Load: _default$3,
-    Scroll: _default$5
+    Scroll: _default$5,
+    Smartphone: _default$7,
+    Laptop: _default$8
   });
 
   var commonjsGlobal$1 = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};

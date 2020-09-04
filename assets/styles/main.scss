@@ -49,6 +49,7 @@
 @import "components/heading";
 @import "components/button";
 @import "components/form";
+@import "components/device";
 
 // Templates
 // ==========================================================================
@@ -58,7 +59,7 @@
 // ==========================================================================
 @import "utilities/ratio";
 @import "utilities/widths";
-// @import "utilities/align";
+@import "utilities/align";
 // @import "utilities/helpers";
 // @import "utilities/states";
 // @import "utilities/spacing";

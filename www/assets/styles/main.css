@@ -508,7 +508,8 @@ html {
 
 body {
   background-color: #4D5DF1;
-  color: #F1F2FE; }
+  color: #F1F2FE;
+  overflow-x: hidden; }
   .has-scroll-smooth body {
     overflow: hidden; }
 
@@ -764,6 +765,10 @@ a {
 .c-form_textarea {
   min-height: 12.5rem; }
 
+.c-device {
+  width: 100vw;
+  height: 100vh; }
+
 /* stylelint-disable */
 .u-2\:1::before {
   padding-bottom: 50%; }
@@ -823,3 +828,42 @@ a {
 @media (min-width: 700px) {
   .u-1\/2\@from-small {
     width: 50%; } }
+
+.u-float-left {
+  float: left !important; }
+
+.u-float-right {
+  float: right !important; }
+
+.u-text-center {
+  text-align: center !important; }
+
+.u-text-left {
+  text-align: left !important; }
+
+.u-text-right {
+  text-align: right !important; }
+
+.u-align-baseline {
+  vertical-align: baseline !important; }
+
+.u-align-bottom {
+  vertical-align: bottom !important; }
+
+.u-align-middle {
+  vertical-align: middle !important; }
+
+.u-align-top {
+  vertical-align: top !important; }
+
+.u-vertical-center {
+  font-size: 0; }
+  .u-vertical-center::before {
+    display: inline-block;
+    height: 100%;
+    content: "";
+    vertical-align: middle; }
+  .u-vertical-center > * {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem; }

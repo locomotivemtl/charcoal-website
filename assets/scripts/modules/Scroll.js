@@ -19,6 +19,8 @@ export default class extends module {
 
         this.scroll.on('scroll', (args) => {
             // console.log(args.scroll);
+
+            this.call('checkScroll','Object3D');
         })
     }
 
