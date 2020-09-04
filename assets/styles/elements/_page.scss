@@ -66,6 +66,10 @@ body {
     .has-scroll-smooth & {
         overflow: hidden;
     }
+
+    .is-first-load & {
+        opacity: 1 !important;
+    }
 }
 
 ::selection {
@@ -80,4 +84,8 @@ a {
     @include u-hocus {
         color: currentColor;
     }
+}
+
+svg {
+    display: block;
 }

@@ -5,14 +5,30 @@ export default class extends Device {
         super(options);
 
         this.file = 'smartphone.glb'
+
+        this.settings = {
+            camera: {
+                fov: 25,
+                position: [0,0,10]
+            },
+            object: {
+                rotation: [-12,-10,-18]
+            }
+        }
+
     }
 
     initGui() {
         super.initGui()
 
         let guiController = function() {
-            this.rotation = { x: -12, y: -35, z: -8 }
+            this.rotation = { 
+                x: -12, 
+                y: -14, 
+                z: -18
+            }
         };
+        
 
         let guiInstance = new guiController();
 
@@ -45,9 +61,9 @@ export default class extends Device {
 
         this.reposition()
 
-        this.object.rotation.x = -12 * Math.PI / 180;
-        this.object.rotation.y = -35 * Math.PI / 180;
-        this.object.rotation.z = -8 * Math.PI / 180;
+        this.object.rotation.x = this.settings.object.rotation[0] * Math.PI / 180;
+        this.object.rotation.y = this.settings.object.rotation[1] * Math.PI / 180;
+        this.object.rotation.z = this.settings.object.rotation[2] * Math.PI / 180;
 
         this.object.children[0].material = this.deviceMaterial
     }

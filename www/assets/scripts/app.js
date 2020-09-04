@@ -4679,6 +4679,15 @@
 
       _this = _super.call(this, options);
       _this.file = 'smartphone.glb';
+      _this.settings = {
+        camera: {
+          fov: 25,
+          position: [0, 0, 10]
+        },
+        object: {
+          rotation: [-12, -10, -18]
+        }
+      };
       return _this;
     }
 
@@ -4692,8 +4701,8 @@
         var guiController = function guiController() {
           this.rotation = {
             x: -12,
-            y: -35,
-            z: -8
+            y: -14,
+            z: -18
           };
         };
 
@@ -4723,9 +4732,9 @@
           map: this.texture
         });
         this.reposition();
-        this.object.rotation.x = -12 * Math.PI / 180;
-        this.object.rotation.y = -35 * Math.PI / 180;
-        this.object.rotation.z = -8 * Math.PI / 180;
+        this.object.rotation.x = this.settings.object.rotation[0] * Math.PI / 180;
+        this.object.rotation.y = this.settings.object.rotation[1] * Math.PI / 180;
+        this.object.rotation.z = this.settings.object.rotation[2] * Math.PI / 180;
         this.object.children[0].material = this.deviceMaterial;
       }
     }, {
@@ -4772,7 +4781,7 @@
       _this.settings = {
         camera: {
           fov: 25,
-          position: [0, 0, 10]
+          position: [0, 0, 0]
         }
       };
       _this.file = 'laptop_v2.glb';
@@ -5021,8 +5030,12 @@
   function init() {
     app.init(app);
     globals();
-    html.classList.add('is-loaded', 'is-ready');
-    html.classList.remove('is-loading');
+    setTimeout(function () {
+      html.classList.add('is-first-load');
+      html.classList.add('is-loaded');
+      html.classList.add('is-ready');
+      html.classList.remove('is-loading');
+    }, 600);
   }
 
 }());

@@ -1,0 +1,58 @@
+.c-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: rem($unit-small) 0;
+    z-index: 100;
+
+    &.-fixed {
+        position: fixed;
+    }
+}
+
+.c-header_logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: rem($unit-small * 2);
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity $speed-slow $easing, transform $speed-slow $easing;
+
+    .is-loaded & {
+        opacity: 1;
+        transform: none;
+    }
+
+    svg {
+        width: rem(92px);
+        height: rem(17px);
+    }
+}
+
+.c-header_menu {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.c-header_menu_item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: rem($unit/2);
+
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity $speed-slow $easing, transform $speed-slow $easing;
+
+
+    .is-loaded & {
+        opacity: 1;
+        transform: none;
+
+        @for $i from 1 through 3 {
+            &:nth-child(#{$i}){
+                transition-delay: 0.1 + $i * 0.06s;
+            }
+        }
+    }
+}

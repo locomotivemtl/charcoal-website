@@ -1,9 +1,58 @@
 {{> app/template/partial/site-header }}
 
-<div class="o-container u-text-center">
-    <h1>Charcoal</h1>
+<div class="o-scroll" data-module-scroll="main">
+    <header class="c-header" data-scroll-section>
+        <div class="o-container">
+            <div class="o-layout -middle">
+                <div class="o-layout_item u-1/2">
+                    <div class="c-header_logo">
+                        <svg role="img"><use href="assets/images/sprite.svg#logo"></use></svg>
+                    </div>
+                    <ul class="c-header_menu">
+                        <li class="c-header_menu_item">
+                            <a href="">
+                                Products
+                            </a>
+                        </li>
+                        <li class="c-header_menu_item">
+                            <a href="">
+                                Technology
+                            </a>
+                        </li>
+                        <li class="c-header_menu_item">
+                            <a href="">
+                                Support
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="o-layout_item u-1/2 u-text-right">
+                    <ul class="c-header_menu">
+                        <li class="c-header_menu_item">
+                            <a href="">
+                                Fr
+                            </a>
+                        </li>
+                        <li class="c-header_menu_item">
+                            <a href="">
+                                View demo
+                            </a>
+                        </li>
+                        <li class="c-header_menu_item">
+                            <a href="" class="c-button">
+                                Get in touch
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <div class="c-device" data-module-laptop data-texture="assets/3d/textures/laptop.jpg" ></div>
+    <section data-scroll-section>
+        <div class="o-container u-text-center">
+            <div class="c-device" data-module-smartphone data-texture="assets/3d/textures/smartphone.jpg" ></div>
+        </div>  
+    </section>
 
-</div>
 {{> app/template/partial/site-footer }}

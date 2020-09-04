@@ -1,6 +1,7 @@
 .c-button {
-    padding: rem(15px) rem(20px);
-    background-color: lightgray;
+    padding: rem(15px) rem($unit/2);
+    border: 2px solid currentColor;
+    border-radius: 999px;
 
     @include u-hocus {
         background-color: darkgray;

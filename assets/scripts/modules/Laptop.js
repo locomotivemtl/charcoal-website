@@ -7,7 +7,7 @@ export default class extends Device {
         this.settings = {
             camera: {
                 fov: 25,
-                position: [0,0,10]
+                position: [0,0,0]
             }
         }
 

@@ -23,7 +23,11 @@ function init() {
     app.init(app);
     globals();
 
-    html.classList.add('is-loaded', 'is-ready');
-    html.classList.remove('is-loading');
+    setTimeout(() => {
+        html.classList.add('is-first-load');
+        html.classList.add('is-loaded');
+        html.classList.add('is-ready');
+        html.classList.remove('is-loading');
+    }, 600);
 }
 
