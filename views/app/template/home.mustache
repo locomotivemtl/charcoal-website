@@ -1,6 +1,9 @@
 {{> app/template/partial/site-header }}
 
+
+
 <div class="o-scroll" data-module-scroll="main">
+    
     <header class="c-header" data-scroll-section>
         <div class="o-container">
             <div class="o-layout -middle">
@@ -9,10 +12,13 @@
                         <svg role="img"><use href="assets/images/sprite.svg#logo"></use></svg>
                     </div>
                     <ul class="c-header_menu">
-                        <li class="c-header_menu_item">
-                            <a href="">
+                        <li class="c-header_menu_item -products">
+                            <button class="c-header_menu_button" data-module-products-button type="button">
                                 Products
-                            </a>
+                                <span class="c-header_menu_button_arrow">
+                                    <svg role="img"><use href="assets/images/sprite.svg#arrow-down"></use></svg>
+                                </span>
+                            </button>
                         </li>
                         <li class="c-header_menu_item">
                             <a href="">

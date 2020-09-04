@@ -5,19 +5,26 @@
     right: 0;
     padding: rem($unit-small) 0;
     z-index: 100;
+    transition: color $speed $easing 0.3s;
+    font-weight: $medium;
 
     &.-fixed {
         position: fixed;
+    }
+
+    .has-products-open & {
+        color: $blackOff;
+        transition-delay: 0.3s;
     }
 }
 
 .c-header_logo {
     display: inline-block;
     vertical-align: middle;
-    margin-right: rem($unit-small * 2);
     opacity: 0;
     transform: translateY(-30px);
     transition: opacity $speed-slow $easing, transform $speed-slow $easing;
+    width: rem(200px);
 
     .is-loaded & {
         opacity: 1;
@@ -39,20 +46,52 @@
     display: inline-block;
     vertical-align: middle;
     margin-right: rem($unit/2);
-
     opacity: 0;
     transform: translateY(-30px);
     transition: opacity $speed-slow $easing, transform $speed-slow $easing;
 
+    a, button {
+        line-height: 1;
+        display: inline-block;
+        // transition: opacity $speed $easing;
+    }
+
+    .has-products-open &:not(.-products) {
+        opacity: 0;
+        transform: translateY(-30px);
+        pointer-events: none;
+        transition-delay: 0s;
+    }
 
     .is-loaded & {
         opacity: 1;
         transform: none;
+    }
 
+    .is-loaded:not(.has-products-open) & {
         @for $i from 1 through 3 {
             &:nth-child(#{$i}){
-                transition-delay: 0.1 + $i * 0.06s;
+                transition-delay: 0.3 + $i * 0.06s;
             }
         }
+    }
+}
+
+.c-header_menu_button_arrow {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+
+    .c-header_menu_item.-products & {
+        transition: transform $speed $easing;
+    }
+
+    .has-products-open .c-header_menu_item.-products & {
+        transform: rotate(-180deg);
+    }
+
+    svg {
+        width: 12px;
+        height: 6px;
     }
 }

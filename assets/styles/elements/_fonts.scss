@@ -4,9 +4,17 @@
 
 @include font-face(
     $font-suisse,
-    "fonts/SuisseBPIntl-Medium"
+    "fonts/SuisseBPIntl-Regular"
 ) {
     font-style:  normal;
     font-weight: 400;
+}
+
+@include font-face(
+    $font-suisse,
+    "fonts/SuisseBPIntl-Medium"
+) {
+    font-style:  normal;
+    font-weight: 500;
 }
 

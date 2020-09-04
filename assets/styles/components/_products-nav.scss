@@ -1,0 +1,175 @@
+.c-products-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    color: $blackOff;
+    pointer-events: none;
+    height: 0;
+    transition: height 0s $speed-slow;
+
+    .has-products-open & {
+        pointer-events: auto;
+        height: 100vh;
+        transition-delay: 0s;
+    }
+}
+
+.c-products-nav_container {
+    position: relative;
+    padding: rem($unit * 3) 0 rem($unit * 2) 0;
+    background-color: $white;
+    transform-origin: center top;
+    transform: scaleY(0);
+    transition: transform $speed-slow $easing 0.4s;
+
+    .has-products-open & {
+        transform: scaleY(1);
+        transition-delay: 0s;
+    }
+}
+
+.c-products-nav_list {
+    margin-left: rem(200px);
+}
+
+.c-products-nav_list_item {
+    position: relative;
+    font-size: rem(26px);
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity $speed $easeIn, transform $speed $easeIn;
+
+    @for $i from 1 through 4 {
+        &:nth-child(#{$i}){
+            transition-delay: $i * 0.06s;
+        }
+    }
+    
+    .has-products-open & {
+        opacity: 1;
+        transform: translateY(0);
+        transition-timing-function: $easing;
+        transition-duration: $speed-slow;
+
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}){
+                transition-delay: 0.2 + (4-$i) * 0.08s;
+            }
+        }
+    }
+    
+    a {
+        transition: color $speed $easing;
+
+        &:hover {
+            color: $blue;
+        }
+    }
+}
+
+.c-products-nav_list_item_icon {
+    position: absolute;
+    left: - rem($unit-small * 2);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: rem(13px);
+
+    &::before{
+        content:"";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        transform: scale(0);
+        border-radius: 50%;
+        border: 1px solid rgba($gray, 0.2);   
+        transition: transform $speed $easing; 
+    }
+    
+    .c-products-nav_list_item:hover & {
+        &::before{
+            transform: scale(1);
+        }
+
+        svg {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    svg {
+        width: rem(8px);
+        height: rem(8px);
+        opacity: 0;
+        transform: translateX(-50%);
+        transition: opacity $speed $easing, transform $speed $easing; 
+
+    }
+}
+
+.c-products-nav_background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    background-color: rgba($blue, 0.7);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $speed $easing;
+
+    .has-products-open & {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.c-products-nav_image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: span(2/5);
+    overflow: hidden;
+
+    &::before{
+        content:"";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: $white;
+        z-index: 1;
+        transition: transform $speed-slow $easing;
+        transform-origin: center bottom;   
+    }
+
+    .has-products-open & {
+        &::before{
+            transform: scaleY(0);
+            transition-delay: 0.3s;
+        }
+    }
+}
+
+.c-products-nav_image_inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center center;
+    transform: translateY(-15%);
+    transition: transform $speed-slow $easing;
+
+    .has-products-open & {
+        transform: none;
+        transition-delay: 0.3s;
+    }
+}

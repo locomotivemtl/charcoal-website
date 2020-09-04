@@ -4884,12 +4884,46 @@
     return _default;
   }(_default$6);
 
+  var html = document.documentElement;
+  var isDebug = !!html.getAttribute('data-debug');
+
+  var _default$9 = /*#__PURE__*/function (_module) {
+    _inherits(_default, _module);
+
+    var _super = _createSuper(_default);
+
+    function _default(m) {
+      var _this;
+
+      _classCallCheck$1(this, _default);
+
+      _this = _super.call(this, m);
+      _this.events = {
+        click: 'toggle'
+      };
+      return _this;
+    }
+
+    _createClass$1(_default, [{
+      key: "init",
+      value: function init() {}
+    }, {
+      key: "toggle",
+      value: function toggle() {
+        html.classList.toggle('has-products-open');
+      }
+    }]);
+
+    return _default;
+  }(_default);
+
   var modules = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Load: _default$3,
     Scroll: _default$5,
     Smartphone: _default$7,
-    Laptop: _default$8
+    Laptop: _default$8,
+    ProductsButton: _default$9
   });
 
   var commonjsGlobal$1 = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -5007,9 +5041,6 @@
   function globals () {
     svg4everybody();
   }
-
-  var html = document.documentElement;
-  var isDebug = !!html.getAttribute('data-debug');
 
   var app = new _default$1({
     modules: modules
