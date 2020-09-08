@@ -22,13 +22,13 @@ export default class extends Device {
         super.initGui()
 
         let guiController = function() {
-            this.rotation = { 
-                x: -12, 
-                y: -14, 
+            this.rotation = {
+                x: -12,
+                y: -14,
                 z: -18
             }
         };
-        
+
 
         let guiInstance = new guiController();
 

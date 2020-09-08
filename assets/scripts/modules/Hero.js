@@ -13,8 +13,10 @@ export default class extends module {
     constructor(m) {
         super(m);
 
-        this.currentFrame = 0
-        this.hasScrolled = false
+        this.currentFrame       = 0
+        this.hasScrolled        = false
+        this.showPhone          = false
+        this.isScrollCompleted  = false
     }
 
     init() {
@@ -23,7 +25,11 @@ export default class extends module {
                 ease: "none"
             },
             onComplete: () => {
-                console.log('Timeline completed')
+                let slideUpCallback = () => {
+                    this.showPhone = true
+                }
+
+                if(!this.showPhone) this.call('slideUp', { callback: slideUpCallback }, 'Smartphone', 'hero')
             }
         })
         this.maskTL.addLabel('start')
@@ -62,8 +68,21 @@ export default class extends module {
             this.hasScrolled = false
         }
 
+        if(progress >= 1) {
+            this.isScrollCompleted = true
+        } else {
+            if(this.showPhone && this.isScrollCompleted) {
+                let slideOutCallback = () => {
+                    this.showPhone = false
+                }
+
+                this.call('slideOut', { callback: slideOutCallback }, 'Smartphone', 'hero')
+
+                this.isScrollCompleted = false
+            }
+        }
+
         //update progress of UI
-        gsap.set(this.$('progress')[0], { scaleX: (progress) })
         this.maskTL.progress(progress)
     }
 

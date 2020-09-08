@@ -4347,6 +4347,7 @@
       _this.device = _this.el.getAttribute('data-device');
       _this.textureSrc = _this.el.getAttribute('data-texture');
       _this.deviceColor = _this.el.getAttribute('data-color') && _this.el.getAttribute('data-color').length ? _this.el.getAttribute('data-color') : 'ffffff';
+      _this.autoshow = _this.el.getAttribute('data-autoshow') && _this.el.getAttribute('data-autoshow').length ? _this.el.getAttribute('data-autoshow') : true;
       return _this;
     }
 
@@ -4368,7 +4369,9 @@
         }
 
         Promise.all([initPromise]).then(function () {
-          _this2.slideUp();
+          if (!_this2.autoshow) {
+            _this2.slideUp();
+          }
         });
         this.checkResizeBind = this.checkResize.bind(this);
         window.addEventListener('resize', this.checkResizeBind);
@@ -4472,6 +4475,8 @@
           _this4.wrapper.add(_this4.object);
 
           _this4.scene.add(_this4.scrollWrapper);
+
+          if (_this4.autoshow) _this4.slideUpWrapper.position.y = -200;
         });
       }
     }, {
@@ -4494,12 +4499,16 @@
 
     }, {
       key: "slideUp",
-      value: function slideUp() {
-        var DURATION = 2;
-        this.slideUpTl = new TimelineMax({});
+      value: function slideUp(param) {
+        var DURATION = 1;
+        this.slideUpTl = new TimelineMax({
+          onComplete: function onComplete() {
+            param.callback();
+          }
+        });
         this.slideUpTl.addLabel('start', 0);
         this.slideUpTl.fromTo(this.slideUpWrapper.position, DURATION, {
-          y: -200
+          y: -10
         }, {
           y: 0,
           ease: Power3.easeOut
@@ -4509,6 +4518,27 @@
         }, {
           y: 0,
           ease: Power3.easeOut
+        }, 'start');
+      }
+    }, {
+      key: "slideOut",
+      value: function slideOut(param) {
+        var DURATION = 1;
+        this.slideOutTl = new TimelineMax({
+          onComplete: function onComplete() {
+            param.callback();
+          }
+        });
+        this.slideOutTl.addLabel('start', 0);
+        this.slideOutTl.fromTo(this.slideUpWrapper.position, DURATION, {
+          y: 0
+        }, {
+          y: 10,
+          ease: Power2.easeIn
+        }, 'start');
+        this.slideOutTl.to(this.slideUpWrapper.rotation, DURATION, {
+          y: 90 * Math.PI / 180,
+          ease: Power2.easeIn
         }, 'start');
       } // ==========================================================================
       // GUI
@@ -15045,18 +15075,28 @@
       _this = _super.call(this, m);
       _this.currentFrame = 0;
       _this.hasScrolled = false;
+      _this.showPhone = false;
+      _this.isScrollCompleted = false;
       return _this;
     }
 
     _createClass$1(_default, [{
       key: "init",
       value: function init() {
+        var _this2 = this;
+
         this.maskTL = gsap.timeline({
           defaults: {
             ease: "none"
           },
           onComplete: function onComplete() {
-            console.log('Timeline completed');
+            var slideUpCallback = function slideUpCallback() {
+              _this2.showPhone = true;
+            };
+
+            if (!_this2.showPhone) _this2.call('slideUp', {
+              callback: slideUpCallback
+            }, 'Smartphone', 'hero');
           }
         });
         this.maskTL.addLabel('start');
@@ -15081,6 +15121,8 @@
     }, {
       key: "onScroll",
       value: function onScroll(param) {
+        var _this3 = this;
+
         var limit = param[0].section.limit.y - window.innerHeight * 1.5;
         var scroll = param[1].scroll.y;
         var progress = Math.min((scroll / limit).toFixed(3), 1);
@@ -15100,12 +15142,24 @@
           this.call('play', null, 'Lottie'); //set hasScrolled
 
           this.hasScrolled = false;
+        }
+
+        if (progress >= 1) {
+          this.isScrollCompleted = true;
+        } else {
+          if (this.showPhone && this.isScrollCompleted) {
+            var slideOutCallback = function slideOutCallback() {
+              _this3.showPhone = false;
+            };
+
+            this.call('slideOut', {
+              callback: slideOutCallback
+            }, 'Smartphone', 'hero');
+            this.isScrollCompleted = false;
+          }
         } //update progress of UI
 
 
-        gsap.set(this.$('progress')[0], {
-          scaleX: progress
-        });
         this.maskTL.progress(progress);
       }
       /**
@@ -15117,10 +15171,10 @@
     }, {
       key: "checkSegment",
       value: function checkSegment() {
-        var _this2 = this;
+        var _this4 = this;
 
         this.rafSegment = requestAnimationFrame(function () {
-          return _this2.checkSegment();
+          return _this4.checkSegment();
         });
         this.call('getCurrentFrame', {
           name: 'Hero',
@@ -15128,7 +15182,7 @@
         }, 'Lottie'); // 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠
 
         var currentSegment = SEGMENT_FRAMES.find(function (segment) {
-          return _this2.currentFrame > segment[0] && _this2.currentFrame < segment[1];
+          return _this4.currentFrame > segment[0] && _this4.currentFrame < segment[1];
         });
 
         if (currentSegment) {

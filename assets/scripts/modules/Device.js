@@ -30,6 +30,8 @@ export default class extends module {
         this.device = this.el.getAttribute('data-device');
         this.textureSrc = this.el.getAttribute('data-texture');
         this.deviceColor = this.el.getAttribute('data-color') && this.el.getAttribute('data-color').length ? this.el.getAttribute('data-color') : 'ffffff'
+
+        this.autoshow = this.el.getAttribute('data-autoshow') && this.el.getAttribute('data-autoshow').length ? this.el.getAttribute('data-autoshow') : true
     }
 
     init() {
@@ -47,7 +49,9 @@ export default class extends module {
         }
 
         Promise.all([initPromise]).then(() => {
-            this.slideUp()
+            if(!this.autoshow) {
+                this.slideUp()
+            }
         });
 
         this.checkResizeBind = this.checkResize.bind(this)
@@ -161,6 +165,8 @@ export default class extends module {
             this.slideUpWrapper.add(this.wrapper)
             this.wrapper.add(this.object)
             this.scene.add(this.scrollWrapper)
+
+            if(this.autoshow) this.slideUpWrapper.position.y = -200
         });
     }
 
@@ -178,13 +184,30 @@ export default class extends module {
     // Animations
     // ==========================================================================
 
-    slideUp() {
-        const DURATION = 2
+    slideUp(param) {
+        const DURATION = 1
 
-        this.slideUpTl = new TimelineMax({})
+        this.slideUpTl = new TimelineMax({
+            onComplete: () => {
+                param.callback()
+            }
+        })
         this.slideUpTl.addLabel('start', 0)
-        this.slideUpTl.fromTo(this.slideUpWrapper.position, DURATION, { y: -200 }, { y: 0, ease: Power3.easeOut }, 'start')
+        this.slideUpTl.fromTo(this.slideUpWrapper.position, DURATION, { y: -10 }, { y: 0, ease: Power3.easeOut }, 'start')
         this.slideUpTl.fromTo(this.slideUpWrapper.rotation, DURATION, { y: 90 * Math.PI / 180 }, { y: 0, ease: Power3.easeOut }, 'start')
+    }
+
+    slideOut(param) {
+        const DURATION = 1
+
+        this.slideOutTl = new TimelineMax({
+            onComplete: () => {
+                param.callback()
+            }
+        })
+        this.slideOutTl.addLabel('start', 0)
+        this.slideOutTl.fromTo(this.slideUpWrapper.position, DURATION, { y: 0 }, { y: 10, ease: Power2.easeIn }, 'start')
+        this.slideOutTl.to(this.slideUpWrapper.rotation, DURATION, { y: 90 * Math.PI / 180, ease: Power2.easeIn }, 'start')
     }
 
     // ==========================================================================
@@ -358,7 +381,7 @@ export default class extends module {
     destroy() {
         super.destroy();
         cancelAnimationFrame(this.raf);
-        
+
         window.removeEventListener('resize', this.mouseMoveBind);
         window.removeEventListener('mousemove', this.mouseMoveBind);
     }
