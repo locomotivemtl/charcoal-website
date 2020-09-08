@@ -4276,7 +4276,7 @@
           if (_typeof$1(args.currentElements['hero']) === 'object') {
             var progress = args.currentElements['hero'];
 
-            _this.call('update', [progress, args], 'Hero');
+            _this.call('onScroll', [progress, args], 'Hero');
           }
         });
       }
@@ -14892,9 +14892,15 @@
     var _super = _createSuper(_default);
 
     function _default(m) {
+      var _this;
+
       _classCallCheck$1(this, _default);
 
-      return _super.call(this, m);
+      _this = _super.call(this, m);
+      _this.events = {
+        click: 'getCurrentFrame'
+      };
+      return _this;
     }
 
     _createClass$1(_default, [{
@@ -14913,6 +14919,7 @@
     }, {
       key: "initLottie",
       value: function initLottie() {
+        lottie_light.setQuality('low');
         this.animation = lottie_light.loadAnimation({
           container: this.el,
           renderer: 'svg',
@@ -14922,6 +14929,82 @@
           rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice'
           }
+        }); // setTimeout(() => {
+        //     this.animation.pause()
+        //     this.initGui()
+        // }, 500);
+      }
+      /**
+       * Pause
+       *
+       * @param
+       */
+
+    }, {
+      key: "pause",
+      value: function pause() {
+        if (this.animation && this.animation.pause) this.animation.pause();
+      }
+      /**
+       * Play
+       *
+       * @param
+       */
+
+    }, {
+      key: "play",
+      value: function play() {
+        if (this.animation && this.animation.play) this.animation.play();
+      }
+      /**
+       * Get the current frame
+       * @TODO better condition
+       * @param
+       */
+
+    }, {
+      key: "getCurrentFrame",
+      value: function getCurrentFrame(module) {
+        if (this.animation) {
+          var moduleName = module.name;
+          var moduleId = module.id;
+
+          if (this.modules && this.modules[moduleName]) {
+            this.modules.Hero[moduleId].currentFrame = this.animation.currentFrame;
+          }
+
+          return this.animation.currentFrame;
+        } else {
+          return 0;
+        }
+      }
+      /**
+       * Go to and stop
+       *
+       * @param
+       */
+
+    }, {
+      key: "goToAndStop",
+      value: function goToAndStop(frame) {
+        if (this.animation && this.animation.goToAndStop) this.animation.goToAndStop(frame, true);
+      }
+      /**
+       * Init GUI if needed
+       *
+       * @param
+       */
+
+    }, {
+      key: "initGui",
+      value: function initGui() {
+        var _this2 = this;
+
+        this.gui = new dat.GUI();
+        var frames = this.gui.addFolder('Frames');
+        var currentFrame = frames.add(this, 'currentFrame', 0, this.animation.totalFrames);
+        currentFrame.onChange(function (value) {
+          _this2.goToAndStop(value);
         });
       }
       /**
@@ -14942,47 +15025,129 @@
     return _default;
   }(_default);
 
+  var SEGMENT_FRAMES = [[0, 60], // Shape : Diamond
+  [144, 240], // Shape : Rectangle rotated
+  [320, 415], // Shape : Triangle rotated
+  [495, 598], // Shape : Parallelogram
+  [677, 719] // Shape : Diamond
+  ];
+
   var _default$b = /*#__PURE__*/function (_module) {
     _inherits(_default, _module);
 
     var _super = _createSuper(_default);
 
     function _default(m) {
+      var _this;
+
       _classCallCheck$1(this, _default);
 
-      return _super.call(this, m);
+      _this = _super.call(this, m);
+      _this.currentFrame = 0;
+      _this.hasScrolled = false;
+      return _this;
     }
 
     _createClass$1(_default, [{
       key: "init",
       value: function init() {
-        this.maskTL = gsap.fromTo(this.$('mask')[0], {
+        this.maskTL = gsap.timeline({
+          defaults: {
+            ease: "none"
+          },
+          onComplete: function onComplete() {
+            console.log('Timeline completed');
+          }
+        });
+        this.maskTL.addLabel('start');
+        this.maskTL.fromTo(this.$('mask')[0], {
           scale: 1
         }, {
-          scale: 3.5
-        });
+          scale: 5.5
+        }, 'start');
+        this.maskTL.fromTo(this.$('logo')[0], {
+          scale: 0.2
+        }, {
+          scale: 1
+        }, 'start');
         this.maskTL.pause();
       }
+      /**
+       * Manage the progress and other anim variables when user scrolls
+       *
+       * @param {scroll obj} (see Scroll.js)
+       */
+
     }, {
-      key: "update",
-      value: function update(param) {
+      key: "onScroll",
+      value: function onScroll(param) {
         var limit = param[0].section.limit.y - window.innerHeight * 1.5;
         var scroll = param[1].scroll.y;
         var progress = Math.min((scroll / limit).toFixed(3), 1);
         if (progress >= 1) progress = 1;else if (progress <= 0) progress = 0;
+
+        if (!this.hasScrolled && scroll > 0) {
+          //check if the user has scrolled and if the scroll
+          //launch segment detection
+          this.checkSegment(); //set hasScrolled
+
+          this.hasScrolled = true;
+        } else if (this.hasScrolled && scroll == 0) {
+          //check if we are BACK to the top of the page
+          //clear segment detection
+          if (this.rafSegment) cancelAnimationFrame(this.rafSegment); //play the animation
+
+          this.call('play', null, 'Lottie'); //set hasScrolled
+
+          this.hasScrolled = false;
+        } //update progress of UI
+
+
         gsap.set(this.$('progress')[0], {
           scaleX: progress
         });
         this.maskTL.progress(progress);
       }
+      /**
+       * Function that check current Lottie frame and sees if it matches the segment in a raf
+       *
+       * @param {void}
+       */
+
     }, {
-      key: "setBounds",
-      value: function setBounds() {// this.
+      key: "checkSegment",
+      value: function checkSegment() {
+        var _this2 = this;
+
+        this.rafSegment = requestAnimationFrame(function () {
+          return _this2.checkSegment();
+        });
+        this.call('getCurrentFrame', {
+          name: 'Hero',
+          id: 'main'
+        }, 'Lottie'); // 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠
+
+        var currentSegment = SEGMENT_FRAMES.find(function (segment) {
+          return _this2.currentFrame > segment[0] && _this2.currentFrame < segment[1];
+        });
+
+        if (currentSegment) {
+          this.call('pause', null, 'Lottie');
+          if (this.rafSegment) cancelAnimationFrame(this.rafSegment);
+        }
       }
+      /**
+       * you know the drill
+       *
+       * @param
+       */
+
     }, {
-      key: "getBounds",
-      value: function getBounds() {
-        return this.el.getBoundingClientRect();
+      key: "destroy",
+      value: function destroy() {
+        _get(_getPrototypeOf(_default.prototype), "destroy", this).call(this);
+
+        if (this.rafSegment) cancelAnimationFrame(this.rafSegment);
       }
     }]);
 

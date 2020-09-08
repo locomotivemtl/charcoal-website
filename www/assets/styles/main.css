@@ -1019,8 +1019,8 @@ svg {
 
 .c-hero_logo {
   color: #FFFFFF;
-  width: 15.625rem;
-  height: 15.625rem; }
+  width: 100%;
+  height: 100%; }
   .c-hero_logo svg {
     display: block;
     width: 100%;

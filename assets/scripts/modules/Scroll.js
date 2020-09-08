@@ -24,7 +24,7 @@ export default class extends module {
 
             if(typeof args.currentElements['hero'] === 'object') {
                 let progress = args.currentElements['hero'];
-                this.call('update', [progress, args], 'Hero');
+                this.call('onScroll', [progress, args], 'Hero');
             }
         })
     }
