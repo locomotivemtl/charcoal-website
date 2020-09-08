@@ -22,17 +22,21 @@ export default class extends module {
     init() {
         this.maskTL = gsap.timeline({
             defaults: {
-                ease: "none"
+                ease: "none",
+                duration: 1
             },
             onComplete: () => {
-                let slideUpCallback = () => {
-                    this.showPhone = true
-                }
 
-                if(!this.showPhone) this.call('slideUp', { callback: slideUpCallback }, 'Smartphone', 'hero')
             }
         })
         this.maskTL.addLabel('start')
+        this.maskTL.add(() => {
+            let slideUpCallback = () => {
+                this.showPhone = true
+            }
+
+            if(!this.showPhone) this.call('slideUp', { callback: slideUpCallback }, 'Smartphone', 'hero')
+        }, 0.5)
         this.maskTL.fromTo(this.$('mask')[0], { scale: 1 }, { scale: 5.5 }, 'start')
         this.maskTL.fromTo(this.$('logo')[0], { scale: 0.2 }, { scale: 1 }, 'start')
         this.maskTL.pause()

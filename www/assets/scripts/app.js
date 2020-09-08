@@ -15087,19 +15087,21 @@
 
         this.maskTL = gsap.timeline({
           defaults: {
-            ease: "none"
+            ease: "none",
+            duration: 1
           },
-          onComplete: function onComplete() {
-            var slideUpCallback = function slideUpCallback() {
-              _this2.showPhone = true;
-            };
-
-            if (!_this2.showPhone) _this2.call('slideUp', {
-              callback: slideUpCallback
-            }, 'Smartphone', 'hero');
-          }
+          onComplete: function onComplete() {}
         });
         this.maskTL.addLabel('start');
+        this.maskTL.add(function () {
+          var slideUpCallback = function slideUpCallback() {
+            _this2.showPhone = true;
+          };
+
+          if (!_this2.showPhone) _this2.call('slideUp', {
+            callback: slideUpCallback
+          }, 'Smartphone', 'hero');
+        }, 0.5);
         this.maskTL.fromTo(this.$('mask')[0], {
           scale: 1
         }, {
