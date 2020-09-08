@@ -1,4 +1,5 @@
 import { module } from 'modujs';
+import { html } from '../utils/environment'
 
 // Needs to be update manually. Use dat.gui for easier anim manipulation in Lottie.js
 const SEGMENT_FRAMES = [
@@ -13,13 +14,20 @@ export default class extends module {
     constructor(m) {
         super(m);
 
-        this.currentFrame       = 0
-        this.hasScrolled        = false
-        this.showPhone          = false
-        this.isScrollCompleted  = false
+        this.currentFrame               = 0
+        this.hasScrolled                = false
+        this.showPhone                  = false
+        this.isScrollingAnimCompleted   = false
+        this.darkUI                     = true
     }
 
     init() {
+        this.initHero()
+    }
+
+    initHero() {
+        html.classList.add('has-hero-running')
+
         this.maskTL = gsap.timeline({
             defaults: {
                 ease: "none",
@@ -30,13 +38,6 @@ export default class extends module {
             }
         })
         this.maskTL.addLabel('start')
-        this.maskTL.add(() => {
-            let slideUpCallback = () => {
-                this.showPhone = true
-            }
-
-            if(!this.showPhone) this.call('slideUp', { callback: slideUpCallback }, 'Smartphone', 'hero')
-        }, 0.5)
         this.maskTL.fromTo(this.$('mask')[0], { scale: 1 }, { scale: 5.5 }, 'start')
         this.maskTL.fromTo(this.$('logo')[0], { scale: 0.2 }, { scale: 1 }, 'start')
         this.maskTL.pause()
@@ -72,17 +73,33 @@ export default class extends module {
             this.hasScrolled = false
         }
 
-        if(progress >= 1) {
-            this.isScrollCompleted = true
+        // Manage UI light/dark classes
+        if(progress >= 0.3) {
+            if(this.darkUI) {
+                html.classList.remove('has-hero-running')
+                this.darkUI = false
+            }
         } else {
-            if(this.showPhone && this.isScrollCompleted) {
-                let slideOutCallback = () => {
-                    this.showPhone = false
+            if(!this.darkUI) {
+                html.classList.add('has-hero-running')
+                this.darkUI = true
+            }
+        }
+
+        // Manage the phone
+        if(progress >= 0.5) {
+            if(!this.showPhone) {
+                if(!this.isScrollingAnimCompleted) {
+                    this.showDevice()
+                    this.isScrollingAnimCompleted = true
                 }
-
-                this.call('slideOut', { callback: slideOutCallback }, 'Smartphone', 'hero')
-
-                this.isScrollCompleted = false
+            }
+        } else {
+            if(this.showPhone) {
+                if(this.isScrollingAnimCompleted) {
+                    this.hideDevice()
+                    this.isScrollingAnimCompleted = false
+                }
             }
         }
 
@@ -108,6 +125,34 @@ export default class extends module {
             this.call('pause', null, 'Lottie')
             if(this.rafSegment) cancelAnimationFrame(this.rafSegment)
         }
+    }
+
+    /**
+     * Show device
+     *
+     * @param
+     */
+    showDevice() {
+        //Show the device and update variable with callback
+        let slideUpCallback = () => {
+            this.showPhone = true
+        }
+
+        this.call('slideUp', { callback: slideUpCallback }, 'Smartphone', 'hero')
+    }
+
+    /**
+     * Hide device
+     *
+     * @param
+     */
+    hideDevice() {
+        //Hide the device and update variable with callback
+        let slideOutCallback = () => {
+            this.showPhone = false
+        }
+
+        this.call('slideOut', { callback: slideOutCallback }, 'Smartphone', 'hero')
     }
 
     /**

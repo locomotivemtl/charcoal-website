@@ -202,7 +202,7 @@ export default class extends module {
 
         this.slideOutTl = new TimelineMax({
             onComplete: () => {
-                param.callback()
+                if(param && param.callback) param.callback()
             }
         })
         this.slideOutTl.addLabel('start', 0)

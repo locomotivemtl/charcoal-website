@@ -4526,7 +4526,7 @@
         var DURATION = 1;
         this.slideOutTl = new TimelineMax({
           onComplete: function onComplete() {
-            param.callback();
+            if (param && param.callback) param.callback();
           }
         });
         this.slideOutTl.addLabel('start', 0);
@@ -15076,15 +15076,20 @@
       _this.currentFrame = 0;
       _this.hasScrolled = false;
       _this.showPhone = false;
-      _this.isScrollCompleted = false;
+      _this.isScrollingAnimCompleted = false;
+      _this.darkUI = true;
       return _this;
     }
 
     _createClass$1(_default, [{
       key: "init",
       value: function init() {
-        var _this2 = this;
-
+        this.initHero();
+      }
+    }, {
+      key: "initHero",
+      value: function initHero() {
+        html.classList.add('has-hero-running');
         this.maskTL = gsap.timeline({
           defaults: {
             ease: "none",
@@ -15093,15 +15098,6 @@
           onComplete: function onComplete() {}
         });
         this.maskTL.addLabel('start');
-        this.maskTL.add(function () {
-          var slideUpCallback = function slideUpCallback() {
-            _this2.showPhone = true;
-          };
-
-          if (!_this2.showPhone) _this2.call('slideUp', {
-            callback: slideUpCallback
-          }, 'Smartphone', 'hero');
-        }, 0.5);
         this.maskTL.fromTo(this.$('mask')[0], {
           scale: 1
         }, {
@@ -15123,8 +15119,6 @@
     }, {
       key: "onScroll",
       value: function onScroll(param) {
-        var _this3 = this;
-
         var limit = param[0].section.limit.y - window.innerHeight * 1.5;
         var scroll = param[1].scroll.y;
         var progress = Math.min((scroll / limit).toFixed(3), 1);
@@ -15144,20 +15138,35 @@
           this.call('play', null, 'Lottie'); //set hasScrolled
 
           this.hasScrolled = false;
-        }
+        } // Manage UI light/dark classes
 
-        if (progress >= 1) {
-          this.isScrollCompleted = true;
+
+        if (progress >= 0.3) {
+          if (this.darkUI) {
+            html.classList.remove('has-hero-running');
+            this.darkUI = false;
+          }
         } else {
-          if (this.showPhone && this.isScrollCompleted) {
-            var slideOutCallback = function slideOutCallback() {
-              _this3.showPhone = false;
-            };
+          if (!this.darkUI) {
+            html.classList.add('has-hero-running');
+            this.darkUI = true;
+          }
+        } // Manage the phone
 
-            this.call('slideOut', {
-              callback: slideOutCallback
-            }, 'Smartphone', 'hero');
-            this.isScrollCompleted = false;
+
+        if (progress >= 0.5) {
+          if (!this.showPhone) {
+            if (!this.isScrollingAnimCompleted) {
+              this.showDevice();
+              this.isScrollingAnimCompleted = true;
+            }
+          }
+        } else {
+          if (this.showPhone) {
+            if (this.isScrollingAnimCompleted) {
+              this.hideDevice();
+              this.isScrollingAnimCompleted = false;
+            }
           }
         } //update progress of UI
 
@@ -15173,10 +15182,10 @@
     }, {
       key: "checkSegment",
       value: function checkSegment() {
-        var _this4 = this;
+        var _this2 = this;
 
         this.rafSegment = requestAnimationFrame(function () {
-          return _this4.checkSegment();
+          return _this2.checkSegment();
         });
         this.call('getCurrentFrame', {
           name: 'Hero',
@@ -15184,13 +15193,53 @@
         }, 'Lottie'); // 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠
 
         var currentSegment = SEGMENT_FRAMES.find(function (segment) {
-          return _this4.currentFrame > segment[0] && _this4.currentFrame < segment[1];
+          return _this2.currentFrame > segment[0] && _this2.currentFrame < segment[1];
         });
 
         if (currentSegment) {
           this.call('pause', null, 'Lottie');
           if (this.rafSegment) cancelAnimationFrame(this.rafSegment);
         }
+      }
+      /**
+       * Show device
+       *
+       * @param
+       */
+
+    }, {
+      key: "showDevice",
+      value: function showDevice() {
+        var _this3 = this;
+
+        //Show the device and update variable with callback
+        var slideUpCallback = function slideUpCallback() {
+          _this3.showPhone = true;
+        };
+
+        this.call('slideUp', {
+          callback: slideUpCallback
+        }, 'Smartphone', 'hero');
+      }
+      /**
+       * Hide device
+       *
+       * @param
+       */
+
+    }, {
+      key: "hideDevice",
+      value: function hideDevice() {
+        var _this4 = this;
+
+        //Hide the device and update variable with callback
+        var slideOutCallback = function slideOutCallback() {
+          _this4.showPhone = false;
+        };
+
+        this.call('slideOut', {
+          callback: slideOutCallback
+        }, 'Smartphone', 'hero');
       }
       /**
        * you know the drill

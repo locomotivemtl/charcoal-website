@@ -8,13 +8,21 @@
     transition: color $speed $easing 0.3s;
     font-weight: $medium;
 
+    &.-difference {
+        mix-blend-mode: difference;
+    }
+
     &.-fixed {
         position: fixed;
     }
 
     .has-products-open & {
-        color: $blackOff;
+        // color: $blackOff;
         transition-delay: 0.3s;
+    }
+
+    .has-hero-running & {
+        // color: $blackOff;
     }
 }
 

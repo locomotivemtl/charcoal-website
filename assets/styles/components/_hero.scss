@@ -12,10 +12,17 @@
     overflow: hidden;
 }
 
+.c-hero_logo-wrap {
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+
 .c-hero_logo {
     color: $whiteOff;
     width: 100%;
     height: 100%;
+    display: block;
 
     svg {
         display: block;
@@ -24,25 +31,19 @@
     }
 }
 
-.c-hero_progress {
-    width: 750px;
-    height: 40px;
-    background-color: $gray;
-    position: absolute;
-    bottom: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.c-hero_progress_bar {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: red;
-    transform-origin: left center;
-    transform: scaleX(0);
-}
-
 .c-hero_device {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.c-hero_content {
+    position: absolute;
+    left: rem($unit*2);
+    bottom: rem($unit*2);
+    max-width: rem(345px);
+    width: 100%;
+    z-index: 10;
+    mix-blend-mode: difference;
+    font-size: rem(30px);
+    line-height: 1.1;
 }

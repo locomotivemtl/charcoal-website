@@ -3,58 +3,6 @@
 
 
 <div class="o-scroll" data-module-scroll="main">
-
-    <header class="c-header" data-scroll-section>
-        <div class="o-container">
-            <div class="o-layout -middle">
-                <div class="o-layout_item u-1/2">
-                    <div class="c-header_logo">
-                        <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
-                    </div>
-                    <ul class="c-header_menu">
-                        <li class="c-header_menu_item -products">
-                            <button class="c-header_menu_button" data-module-products-button type="button">
-                                Products
-                                <span class="c-header_menu_button_arrow">
-                                    <svg role="img"><use href="assets/images/sprite.svg#arrow-down"></use></svg>
-                                </span>
-                            </button>
-                        </li>
-                        <li class="c-header_menu_item">
-                            <a href="">
-                                Technology
-                            </a>
-                        </li>
-                        <li class="c-header_menu_item">
-                            <a href="">
-                                Support
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="o-layout_item u-1/2 u-text-right">
-                    <ul class="c-header_menu">
-                        <li class="c-header_menu_item">
-                            <a href="">
-                                Fr
-                            </a>
-                        </li>
-                        <li class="c-header_menu_item">
-                            <a href="">
-                                View demo
-                            </a>
-                        </li>
-                        <li class="c-header_menu_item">
-                            <a href="" class="c-button">
-                                Get in touch
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <section data-scroll-section>
         <div
             class="c-hero"
@@ -65,33 +13,85 @@
             id="hero"
         >
             <div
-                class="c-hero_container || o-container u-text-center"
+                class="c-hero_container"
                 data-scroll
                 data-scroll-sticky
                 data-scroll-target="#hero"
             >
+                <header class="c-header -difference">
+                    <div class="o-container">
+                        <div class="o-layout -middle">
+                            <div class="o-layout_item u-1/2">
+                                <div class="c-header_logo">
+                                    <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
+                                </div>
+                                <ul class="c-header_menu">
+                                    <li class="c-header_menu_item -products">
+                                        <button class="c-header_menu_button" data-module-products-button type="button">
+                                            Products
+                                            <span class="c-header_menu_button_arrow">
+                                                <svg role="img"><use href="assets/images/sprite.svg#arrow-down"></use></svg>
+                                            </span>
+                                        </button>
+                                    </li>
+                                    <li class="c-header_menu_item">
+                                        <a href="">
+                                            Technology
+                                        </a>
+                                    </li>
+                                    <li class="c-header_menu_item">
+                                        <a href="">
+                                            Support
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="o-layout_item u-1/2 u-text-right">
+                                <ul class="c-header_menu">
+                                    <li class="c-header_menu_item">
+                                        <a href="">
+                                            Fr
+                                        </a>
+                                    </li>
+                                    <li class="c-header_menu_item">
+                                        <a href="">
+                                            View demo
+                                        </a>
+                                    </li>
+                                    <li class="c-header_menu_item">
+                                        <a href="" class="c-button">
+                                            Get in touch
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="c-hero_content">
+                    <p>A cloud-based tool box that adapts to your all your project needs.</p>
+                </div>
 
                 <div
                     class="c-mask-shape"
                     data-module-lottie
                     data-lottie-file-path="{{# withBaseUrl }}assets/lottie{{/ withBaseUrl }}"
                     data-lottie-file-name="charcoal-intro"
-
                     data-hero="mask"
                 >
                 </div>
 
-                <div
-                    class="c-hero_logo"
-                    data-hero="logo"
-                >
-                    <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
+                <div class="c-hero_logo-wrap || o-container u-text-center">
+                    <div class="c-hero_logo" data-hero="logo">
+                        <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
+                    </div>
                 </div>
 
                 <div
                     class="c-hero_device || c-device"
                     data-module-smartphone="hero"
-                    data-texture="assets/3d/textures/smartphone.jpg"
+                    data-texture="{{# withBaseUrl }}assets/3d/textures/smartphone.jpg{{/ withBaseUrl }}"
                     data-autoshow="false"
                 >
                 </div>
