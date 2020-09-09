@@ -24,13 +24,13 @@ export default class extends module {
     init() {
         this.initHero()
 
-        // setTimeout(() => {
-        //     this.launch()
-        // }, 1500);
+        setTimeout(() => {
+            this.launch()
+        }, 2000);
     }
 
     launch() {
-        gsap.fromTo(this.$('mask')[0], 0.6, { scale: 1.2 }, { scale: 1 })
+        this.call('play', null, 'Lottie', 'charcoal-intro')
     }
 
     initHero() {
@@ -47,7 +47,7 @@ export default class extends module {
         })
         this.maskTL.addLabel('start')
         this.maskTL.fromTo(this.$('mask')[0], { scale: 1 }, { scale: 5.5 }, 'start')
-        this.maskTL.fromTo(this.$('logo')[0], { scale: 0.2 }, { scale: 1 }, 'start')
+        this.maskTL.fromTo(this.$('logo')[0], { scale: 0.15 }, { scale: 1 }, 'start')
         this.maskTL.pause()
     }
 

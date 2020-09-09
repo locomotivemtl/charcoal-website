@@ -15085,18 +15085,17 @@
     _createClass$1(_default, [{
       key: "init",
       value: function init() {
-        this.initHero(); // setTimeout(() => {
-        //     this.launch()
-        // }, 1500);
+        var _this2 = this;
+
+        this.initHero();
+        setTimeout(function () {
+          _this2.launch();
+        }, 2000);
       }
     }, {
       key: "launch",
       value: function launch() {
-        gsap.fromTo(this.$('mask')[0], 0.6, {
-          scale: 1.2
-        }, {
-          scale: 1
-        });
+        this.call('play', null, 'Lottie', 'charcoal-intro');
       }
     }, {
       key: "initHero",
@@ -15116,7 +15115,7 @@
           scale: 5.5
         }, 'start');
         this.maskTL.fromTo(this.$('logo')[0], {
-          scale: 0.2
+          scale: 0.15
         }, {
           scale: 1
         }, 'start');
@@ -15194,10 +15193,10 @@
     }, {
       key: "checkSegment",
       value: function checkSegment() {
-        var _this2 = this;
+        var _this3 = this;
 
         this.rafSegment = requestAnimationFrame(function () {
-          return _this2.checkSegment();
+          return _this3.checkSegment();
         });
         this.call('getCurrentFrame', {
           name: 'Hero',
@@ -15205,7 +15204,7 @@
         }, 'Lottie'); // 🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠
 
         var currentSegment = SEGMENT_FRAMES.find(function (segment) {
-          return _this2.currentFrame > segment[0] && _this2.currentFrame < segment[1];
+          return _this3.currentFrame > segment[0] && _this3.currentFrame < segment[1];
         });
 
         if (currentSegment) {
@@ -15222,11 +15221,11 @@
     }, {
       key: "showDevice",
       value: function showDevice() {
-        var _this3 = this;
+        var _this4 = this;
 
         //Show the device and update variable with callback
         var slideUpCallback = function slideUpCallback() {
-          _this3.showPhone = true;
+          _this4.showPhone = true;
         };
 
         this.call('slideUp', {
@@ -15242,11 +15241,11 @@
     }, {
       key: "hideDevice",
       value: function hideDevice() {
-        var _this4 = this;
+        var _this5 = this;
 
         //Hide the device and update variable with callback
         var slideOutCallback = function slideOutCallback() {
-          _this4.showPhone = false;
+          _this5.showPhone = false;
         };
 
         this.call('slideOut', {
