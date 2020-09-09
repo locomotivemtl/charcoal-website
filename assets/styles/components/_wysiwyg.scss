@@ -1,0 +1,6 @@
+.c-wysiwyg {
+    h2 {
+        @extend.c-heading;
+        @extend.c-heading.-h3;
+    }
+}

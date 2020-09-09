@@ -50,6 +50,10 @@
         margin-left: rem(-$unit/2);
     }
 
+    &.-gutter-huge {
+        margin-left: rem(-150px);
+    }
+
     // Horizontal aligment modifiers
     &.-center {
         text-align: center;
@@ -95,6 +99,10 @@
 
     .o-layout.-gutter-small > & {
         padding-left: rem($unit/2);
+    }
+
+    .o-layout.-gutter-huge > & {
+        padding-left: rem(150px);
     }
 
     // Vertical alignment modifiers
