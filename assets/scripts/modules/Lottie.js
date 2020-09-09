@@ -13,6 +13,7 @@ export default class extends module {
     init() {
         this.fileName = this.getData('file-name')
         this.filePath = this.getData('file-path')
+        this.autoplay = this.getData('autoplay') ? this.getData('autoplay') : false
 
         this.initLottie()
     }
@@ -28,7 +29,7 @@ export default class extends module {
             container: this.el,
             renderer: 'svg',
             loop: true,
-            autoplay: true,
+            autoplay: this.autoplay,
             path: `${this.filePath}/${this.fileName}.json`,
             rendererSettings: {
                 preserveAspectRatio: 'xMidYMid slice'

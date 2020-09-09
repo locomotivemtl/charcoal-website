@@ -56,19 +56,23 @@ html {
     &.has-scroll-dragging {
         user-select: none;
     }
+
+    &:not(.is-loaded) {
+        overflow: hidden;
+    }
 }
 
 body {
     background-color: $blue;
     color: $whiteOff;
     overflow-x: hidden;
-    
+
     .has-scroll-smooth & {
         overflow: hidden;
     }
 
-    .is-first-load & {
-        opacity: 1 !important;
+    &:not(.is-loaded) {
+        overflow: hidden;
     }
 }
 
@@ -80,10 +84,6 @@ body {
 
 a {
     color: currentColor;
-
-    @include u-hocus {
-        color: currentColor;
-    }
 }
 
 svg {

@@ -1,7 +1,5 @@
 {{> app/template/partial/site-header }}
 
-
-
 <div class="o-scroll" data-module-scroll="main">
     <section data-scroll-section>
         <div
@@ -19,58 +17,20 @@
                 data-scroll-target="#hero"
             >
                 <header class="c-header -difference">
-                    <div class="o-container">
-                        <div class="o-layout -middle">
-                            <div class="o-layout_item u-1/2">
-                                <div class="c-header_logo">
-                                    <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
-                                </div>
-                                <ul class="c-header_menu">
-                                    <li class="c-header_menu_item -products">
-                                        <button class="c-header_menu_button" data-module-products-button type="button">
-                                            Products
-                                            <span class="c-header_menu_button_arrow">
-                                                <svg role="img"><use href="assets/images/sprite.svg#arrow-down"></use></svg>
-                                            </span>
-                                        </button>
-                                    </li>
-                                    <li class="c-header_menu_item">
-                                        <a href="">
-                                            Technology
-                                        </a>
-                                    </li>
-                                    <li class="c-header_menu_item">
-                                        <a href="">
-                                            Support
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="o-layout_item u-1/2 u-text-right">
-                                <ul class="c-header_menu">
-                                    <li class="c-header_menu_item">
-                                        <a href="">
-                                            Fr
-                                        </a>
-                                    </li>
-                                    <li class="c-header_menu_item">
-                                        <a href="">
-                                            View demo
-                                        </a>
-                                    </li>
-                                    <li class="c-header_menu_item">
-                                        <a href="" class="c-button">
-                                            Get in touch
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    {{> app/template/partial/header }}
                 </header>
 
                 <div class="c-hero_content">
                     <p>A cloud-based tool box that adapts to your all your project needs.</p>
+                </div>
+
+                <div class="c-hero_scroll-indicator">
+                    <button class="c-scroll-indicator" type="button">
+                        <span class="c-scroll-indicator_label">Scroll</span>
+                        <span class="c-scroll-indicator_icon">
+                            <svg role="img" aria-hidden="true"><use href="assets/images/sprite.svg#arrow-down"></use></svg>
+                        </span>
+                    </button>
                 </div>
 
                 <div

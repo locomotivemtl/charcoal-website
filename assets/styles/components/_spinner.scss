@@ -1,0 +1,107 @@
+// ==========================================================================
+// Loader
+// ==========================================================================
+
+$loader-size: 60px;
+
+// Loader
+// ==========================================================================
+
+.c-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    z-index: 1;
+    transition: visibility $speed $easing, opacity $speed $easing;
+    color: $blue;
+    visibility: visible;
+    opacity: 1;
+
+    .is-loaded & {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+.c-spinner {
+    overflow: visible;
+    padding-top: $loader-size;
+    width: $loader-size;
+    height: 0;
+ }
+
+.c-spinner_inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $loader-size;
+    height: $loader-size;
+    box-sizing: border-box;
+    z-index: 1;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: 50%;
+        animation: loader-figure 1.5s infinite cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-play-state: running;
+        background-color: $blue;
+        z-index: 1;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: 50%;
+        animation: loader-label 1.5s infinite cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-play-state: running;
+        // animation-delay: 0.5s;
+        background-color: $blue;
+        z-index: -1;
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    .is-loaded & {
+        &:before, &:after {
+            animation-play-state: paused;
+        }
+    }
+ }
+
+// Animations
+// ==========================================================================
+@keyframes loader-figure {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.75);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes loader-label {
+    0% {
+        opacity: 1;
+        transform: scale(0);
+    }
+    50% {
+
+
+    }
+    75% {
+        opacity: 0;
+        transform: scale(1.6);
+    }
+    100% {
+
+
+    }
+}

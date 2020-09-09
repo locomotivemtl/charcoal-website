@@ -20,8 +20,9 @@ window.onload = (event) => {
 };
 
 function init() {
-    app.init(app);
     globals();
+
+    app.init(app);
 
     setTimeout(() => {
         html.classList.add('is-first-load');

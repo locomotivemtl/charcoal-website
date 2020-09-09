@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="arrow-down" viewBox="0 0 9.1 5.7">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="arrow-down-tip" viewBox="0 0 9.1 5.7">
 <polygon points="4.6,5.7 0,1.1 1.1,0 4.6,3.4 8,0 9.1,1.1 "/>
+</symbol><symbol id="arrow-down" viewBox="0 0 12 12">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.7555 5.47744C12.085 5.81185 12.081 6.35003 11.7465 6.67949L6.74654 11.6054C6.41565 11.9314 5.88435 11.9314 5.55346 11.6054L0.553461 6.67949C0.219047 6.35003 0.21503 5.81185 0.544491 5.47744C0.87395 5.14302 1.41212 5.13901 1.74654 5.46847L5.3 8.96928L5.3 0.999902C5.3 0.53046 5.68056 0.149902 6.15 0.149902C6.61944 0.149902 7 0.53046 7 0.999902L7 8.96928L10.5535 5.46847C10.8879 5.13901 11.426 5.14302 11.7555 5.47744Z"/>
 </symbol><symbol id="arrow-right" viewBox="0 0 9.4 9.4">
 <style type="text/css">
 	.st0{fill:#191A22;}

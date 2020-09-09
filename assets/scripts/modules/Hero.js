@@ -23,6 +23,14 @@ export default class extends module {
 
     init() {
         this.initHero()
+
+        // setTimeout(() => {
+        //     this.launch()
+        // }, 1500);
+    }
+
+    launch() {
+        gsap.fromTo(this.$('mask')[0], 0.6, { scale: 1.2 }, { scale: 1 })
     }
 
     initHero() {

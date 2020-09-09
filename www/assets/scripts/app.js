@@ -14938,6 +14938,7 @@
       value: function init() {
         this.fileName = this.getData('file-name');
         this.filePath = this.getData('file-path');
+        this.autoplay = this.getData('autoplay') ? this.getData('autoplay') : false;
         this.initLottie();
       }
       /**
@@ -14954,7 +14955,7 @@
           container: this.el,
           renderer: 'svg',
           loop: true,
-          autoplay: true,
+          autoplay: this.autoplay,
           path: "".concat(this.filePath, "/").concat(this.fileName, ".json"),
           rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice'
@@ -15084,7 +15085,18 @@
     _createClass$1(_default, [{
       key: "init",
       value: function init() {
-        this.initHero();
+        this.initHero(); // setTimeout(() => {
+        //     this.launch()
+        // }, 1500);
+      }
+    }, {
+      key: "launch",
+      value: function launch() {
+        gsap.fromTo(this.$('mask')[0], 0.6, {
+          scale: 1.2
+        }, {
+          scale: 1
+        });
       }
     }, {
       key: "initHero",
@@ -15397,8 +15409,8 @@
   };
 
   function init() {
-    app.init(app);
     globals();
+    app.init(app);
     setTimeout(function () {
       html.classList.add('is-first-load');
       html.classList.add('is-loaded');
