@@ -1,0 +1,78 @@
+// ==========================================================================
+// Video Modal
+// ==========================================================================
+
+.c-video-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    transition: visibility $speed-slow $easing;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: $black;
+        transition: transform $speed-slow $easing, background $speed-slow $easing;
+        transform: scale3d(1,0,1);
+        transform-origin: top center;
+        opacity: 0.85;
+    }
+
+    &.is-active {
+        pointer-events: all;
+        visibility: visible;
+
+        &:before {
+            transform: scale3d(1,1,1);
+        }
+    }
+}
+
+.c-video-modal_content {
+    width: 80%;
+
+    @media (max-width: $to-large) {
+        width: 90%;
+    }
+}
+
+.c-video-modal_inner {
+    position: relative;
+    padding-bottom: 56%;
+    background-color: $black;
+    opacity: 0;
+    transition: opacity .25s $easing;
+    transition-delay: 0s;
+
+    .c-video-modal.is-active & {
+        opacity: 1;
+        transition: opacity 1s $easing;
+        transition-delay: $speed-slow;
+    }
+
+    iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+    }
+}
+
+.c-video-modal_close {
+    position: absolute;
+    top: rem($unit/2); right: rem($unit/2);
+    color: $white;
+    transition: transform $speed $easing;
+    transform: translateY(-100%) translateY(rem(-$unit*1.5));
+
+    .c-video-modal.is-active & {
+        transform: translateY(0);
+    }
+}

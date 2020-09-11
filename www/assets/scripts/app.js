@@ -4258,27 +4258,31 @@
       value: function init() {
         var _this = this;
 
-        this.scroll = new Smooth({
-          el: this.el,
-          smooth: true
-        });
-        this.scroll.on('call', function (func, way, obj, id) {
-          // Using modularJS
-          _this.call(func[0], {
-            way: way,
-            obj: obj
-          }, func[1], func[2]);
-        });
-        this.scroll.on('scroll', function (args) {
-          // console.log(args.scroll);
-          _this.call('checkScroll', 'Object3D');
+        setTimeout(function () {
+          _this.scroll = new Smooth({
+            el: _this.el,
+            smooth: true
+          });
 
-          if (_typeof$1(args.currentElements['hero']) === 'object') {
-            var progress = args.currentElements['hero'];
+          _this.scroll.on('call', function (func, way, obj, id) {
+            // Using modularJS
+            _this.call(func[0], {
+              way: way,
+              obj: obj
+            }, func[1], func[2]);
+          });
 
-            _this.call('onScroll', [progress, args], 'Hero');
-          }
-        });
+          _this.scroll.on('scroll', function (args) {
+            // console.log(args.scroll);
+            _this.call('checkScroll', 'Object3D');
+
+            if (_typeof$1(args.currentElements['hero']) === 'object') {
+              var progress = args.currentElements['hero'];
+
+              _this.call('onScroll', [progress, args], 'Hero');
+            }
+          });
+        }, 200);
       }
     }, {
       key: "toggleLazy",
@@ -4376,7 +4380,6 @@
         this.checkResizeBind = this.checkResize.bind(this);
         window.addEventListener('resize', this.checkResizeBind);
         this.checkResize();
-        this.animate();
         this.manageInteractions();
       }
     }, {
@@ -4685,6 +4688,20 @@
         this.render();
       }
     }, {
+      key: "stop",
+      value: function stop() {
+        if (this.raf) cancelAnimationFrame(this.raf);
+      }
+    }, {
+      key: "toggle",
+      value: function toggle(e) {
+        if (e.way === "enter") {
+          this.animate();
+        } else {
+          this.stop();
+        }
+      }
+    }, {
       key: "render",
       value: function render() {
         this.wrapper.rotation.x = lerp$1(this.wrapper.rotation.x, this.wrapper.rotationTarget.x, 0.1);
@@ -4710,7 +4727,7 @@
       value: function destroy() {
         _get(_getPrototypeOf(_default.prototype), "destroy", this).call(this);
 
-        cancelAnimationFrame(this.raf);
+        if (this.raf) cancelAnimationFrame(this.raf);
         window.removeEventListener('resize', this.mouseMoveBind);
         window.removeEventListener('mousemove', this.mouseMoveBind);
       }
@@ -4799,6 +4816,11 @@
             this.camera.position.z = 10.5;
           }
         }
+      }
+    }, {
+      key: "toggle",
+      value: function toggle(e) {
+        _get(_getPrototypeOf(_default.prototype), "toggle", this).call(this, e);
       }
     }, {
       key: "resize",
@@ -4916,6 +4938,11 @@
             this.camera.position.z = 10;
           }
         }
+      }
+    }, {
+      key: "toggle",
+      value: function toggle(e) {
+        _get(_getPrototypeOf(_default.prototype), "toggle", this).call(this, e);
       }
     }, {
       key: "resize",
@@ -15270,6 +15297,163 @@
     return _default;
   }(_default);
 
+  var _default$c = /*#__PURE__*/function (_module) {
+    _inherits(_default, _module);
+
+    var _super = _createSuper(_default);
+
+    function _default(m) {
+      _classCallCheck$1(this, _default);
+
+      return _super.call(this, m);
+    }
+
+    _createClass$1(_default, [{
+      key: "init",
+      value: function init() {}
+    }, {
+      key: "toggle",
+      value: function toggle(e) {
+        if (e.way === "enter") {
+          this.$('video')[0].play();
+        } else {
+          this.$('video')[0].pause();
+        }
+      }
+    }]);
+
+    return _default;
+  }(_default);
+
+  var _default$d = /*#__PURE__*/function (_module) {
+    _inherits(_default, _module);
+
+    var _super = _createSuper(_default);
+
+    function _default(m) {
+      var _this;
+
+      _classCallCheck$1(this, _default);
+
+      _this = _super.call(this, m);
+      _this.events = {
+        click: {
+          close: "close"
+        }
+      };
+      _this.inner = _this.$('inner')[0];
+      return _this;
+    }
+
+    _createClass$1(_default, [{
+      key: "openVideo",
+      value: function openVideo(e) {
+        var _this2 = this;
+
+        if (this.emptyTimeout) clearTimeout(this.emptyTimeout);
+        this.appendDelay = setTimeout(function () {
+          switch (e.host) {
+            case 'youtube':
+              _this2.inner.innerHTML = "<iframe src=\"https://www.youtube.com/embed/".concat(e.id, "?&autoplay=1\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe>");
+              break;
+
+            case 'vimeo':
+              _this2.inner.innerHTML = "<iframe src=\"https://player.vimeo.com/video/".concat(e.id, "?autoplay=1&loop=1&autopause=0\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe>");
+              break;
+
+            default:
+              console.log('default');
+              break;
+          }
+        }, 500);
+        this.el.classList.add('is-active');
+      }
+    }, {
+      key: "close",
+      value: function close() {
+        var _this3 = this;
+
+        clearTimeout(this.appendDelay);
+        this.el.classList.remove('is-active');
+        this.emptyTimeout = setTimeout(function () {
+          _this3.inner.innerHTML = '';
+        }, 250);
+      }
+    }]);
+
+    return _default;
+  }(_default);
+
+  var _default$e = /*#__PURE__*/function (_module) {
+    _inherits(_default, _module);
+
+    var _super = _createSuper(_default);
+
+    function _default(m) {
+      var _this;
+
+      _classCallCheck$1(this, _default);
+
+      _this = _super.call(this, m);
+      _this.events = {
+        click: {
+          toggler: 'videoClick'
+        }
+      };
+      return _this;
+    }
+
+    _createClass$1(_default, [{
+      key: "init",
+      value: function init() {}
+    }, {
+      key: "videoClick",
+      value: function videoClick(e) {
+        e.preventDefault();
+        var el = e.curTarget;
+        var id = this.getData('id', el);
+        var host = this.getData('host', el);
+        this.call('openVideo', {
+          id: id,
+          host: host
+        }, 'VideoModal');
+      }
+    }]);
+
+    return _default;
+  }(_default);
+
+  var _default$f = /*#__PURE__*/function (_module) {
+    _inherits(_default, _module);
+
+    var _super = _createSuper(_default);
+
+    function _default(m) {
+      _classCallCheck$1(this, _default);
+
+      return _super.call(this, m);
+    }
+
+    _createClass$1(_default, [{
+      key: "init",
+      value: function init() {
+        this.carousel = new Swiper(this.el, {
+          loop: false,
+          grabCursor: true,
+          slidesPerView: 1.5,
+          spaceBetween: 20
+        });
+      }
+    }, {
+      key: "destroy",
+      value: function destroy() {
+        this.carousel.destroy(true, true);
+      }
+    }]);
+
+    return _default;
+  }(_default);
+
   var modules = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Load: _default$3,
@@ -15278,7 +15462,11 @@
     Laptop: _default$8,
     ProductsButton: _default$9,
     Lottie: _default$a,
-    Hero: _default$b
+    Hero: _default$b,
+    Video: _default$c,
+    VideoModal: _default$d,
+    VideoModalToggler: _default$e,
+    Carousel: _default$f
   });
 
   var svg4everybody = createCommonjsModule$1(function (module) {

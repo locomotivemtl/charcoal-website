@@ -58,8 +58,6 @@ export default class extends module {
         window.addEventListener('resize', this.checkResizeBind);
         this.checkResize()
 
-        this.animate()
-
         this.manageInteractions()
     }
 
@@ -355,6 +353,18 @@ export default class extends module {
         this.render();
     }
 
+    stop() {
+        if(this.raf) cancelAnimationFrame(this.raf);
+    }
+
+    toggle(e) {
+        if (e.way === "enter") {
+            this.animate()
+        } else {
+            this.stop()
+        }
+    }
+
     render(){
         this.wrapper.rotation.x = lerp(this.wrapper.rotation.x, this.wrapper.rotationTarget.x, 0.1);
         this.wrapper.rotation.y = lerp(this.wrapper.rotation.y, this.wrapper.rotationTarget.y, 0.1);
@@ -380,7 +390,7 @@ export default class extends module {
 
     destroy() {
         super.destroy();
-        cancelAnimationFrame(this.raf);
+        if(this.raf) cancelAnimationFrame(this.raf);
 
         window.removeEventListener('resize', this.mouseMoveBind);
         window.removeEventListener('mousemove', this.mouseMoveBind);

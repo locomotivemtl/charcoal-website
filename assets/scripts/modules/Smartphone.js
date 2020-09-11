@@ -78,6 +78,10 @@ export default class extends Device {
         }
     }
 
+    toggle(e) {
+        super.toggle(e)
+    }
+
     resize() {
         super.resize()
 

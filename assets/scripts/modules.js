@@ -5,3 +5,7 @@ export {default as Laptop}              from './modules/Laptop';
 export {default as ProductsButton}      from './modules/ProductsButton';
 export {default as Lottie}              from './modules/Lottie';
 export {default as Hero}                from './modules/Hero';
+export {default as Video}               from './modules/Video';
+export {default as VideoModal}          from './modules/VideoModal';
+export {default as VideoModalToggler}   from './modules/VideoModalToggler';
+export {default as Carousel}            from './modules/Carousel';

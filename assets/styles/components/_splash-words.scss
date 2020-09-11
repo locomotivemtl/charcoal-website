@@ -1,0 +1,68 @@
+.c-splash-words {
+
+}
+
+.c-splash-words_row {
+    // overflow: hidden;
+    font-size: 0;
+    @media (min-width: $from-medium) {
+        display: block;
+    }
+}
+
+.c-splash-words_row_item {
+    font-size: 12vw;
+    line-height: 0.8;
+    font-weight: normal;
+
+    @media (min-width: $from-medium) {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(100px);
+        transition: transform $speed-slow $easing, opacity $speed-slow $easing;
+
+        &.is-inview {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        &.-offset {
+            margin-left: 30%;
+        }
+
+        &.-offset-small {
+            margin-left: 20%;
+        }
+    }
+}
+
+.c-splash-words_features {
+    @media (min-width: $from-medium) {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+    }
+
+    .c-tile:nth-child(1) {
+        @media (min-width: $from-medium) {
+            position: absolute;
+            left: 65%;
+            top: 10%;
+        }
+    }
+
+    .c-tile:nth-child(2) {
+        @media (min-width: $from-medium) {
+            position: absolute;
+            left: 10%;
+            top: 35%;
+        }
+    }
+
+    .c-tile:nth-child(3) {
+        @media (min-width: $from-medium) {
+            position: absolute;
+            right: 10%;
+            bottom: 10%;
+        }
+    }
+}

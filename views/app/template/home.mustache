@@ -1,98 +1,266 @@
 {{> app/template/partial/site-header }}
 
 <div class="o-scroll" data-module-scroll="main">
-    <div data-scroll-section>
-        <div
-            class="c-hero"
-            data-scroll
-            data-scroll-position="top"
-            data-scroll-id="hero"
-            data-module-hero="main"
-            id="hero"
-        >
+    <div class="u-background-blue">
+        <div data-scroll-section>
             <div
-                class="c-hero_container"
+                class="c-hero"
+                id="hero"
+                data-module-hero="main"
                 data-scroll
-                data-scroll-sticky
-                data-scroll-target="#hero"
+                data-scroll-position="top"
+                data-scroll-id="hero"
+                data-scroll-call="toggle,Smartphone"
+                data-scroll-repeat
             >
-                <header class="c-header -difference">
-                    {{> app/template/partial/header }}
-                </header>
+                <div
+                    class="c-hero_container"
+                    data-scroll
+                    data-scroll-sticky
+                    data-scroll-target="#hero"
+                >
+                    <header class="c-header -difference">
+                        {{> app/template/partial/header }}
+                    </header>
 
-                <div class="c-hero_content">
-                    <p>A cloud-based tool box that adapts to your all your project needs.</p>
-                </div>
+                    <div class="c-hero_content">
+                        <p>A cloud-based tool box that adapts to your all your project needs.</p>
+                    </div>
 
-                <div class="c-hero_scroll-indicator">
-                    <button class="c-scroll-indicator" type="button">
-                        <span class="c-scroll-indicator_label">Scroll</span>
-                        <span class="c-scroll-indicator_icon">
-                            <svg role="img" aria-hidden="true"><use href="assets/images/sprite.svg#arrow-down"></use></svg>
-                        </span>
-                    </button>
-                </div>
+                    <div class="c-hero_scroll-indicator">
+                        <button class="c-scroll-indicator" type="button">
+                            <span class="c-scroll-indicator_label">Scroll</span>
+                            <span class="c-scroll-indicator_icon">
+                                <svg role="img" aria-hidden="true"><use href="assets/images/sprite.svg#arrow-down"></use></svg>
+                            </span>
+                        </button>
+                    </div>
 
-                <div class="c-hero_mask-wrap">
+                    <div class="c-hero_mask-wrap">
+                        <div
+                            class="c-mask-shape"
+                            data-module-lottie="charcoal-intro"
+                            data-lottie-file-path="{{# withBaseUrl }}assets/lottie{{/ withBaseUrl }}"
+                            data-lottie-file-name="charcoal-intro"
+                            data-hero="mask"
+                        >
+                        </div>
+                    </div>
+
+                    <div class="c-hero_logo-wrap || o-container u-text-center">
+                        <div class="c-hero_logo" data-hero="logo">
+                            <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
+                        </div>
+                    </div>
+
                     <div
-                        class="c-mask-shape"
-                        data-module-lottie="charcoal-intro"
-                        data-lottie-file-path="{{# withBaseUrl }}assets/lottie{{/ withBaseUrl }}"
-                        data-lottie-file-name="charcoal-intro"
-                        data-hero="mask"
+                        class="c-hero_device || c-device"
+                        data-module-smartphone="hero"
+                        data-texture="{{# withBaseUrl }}assets/3d/textures/smartphone.jpg{{/ withBaseUrl }}"
+                        data-autoshow="false"
                     >
                     </div>
                 </div>
-
-                <div class="c-hero_logo-wrap || o-container u-text-center">
-                    <div class="c-hero_logo" data-hero="logo">
-                        <svg role="img" aria-label="Charcoal"><use href="assets/images/sprite.svg#logo"></use></svg>
-                    </div>
-                </div>
-
-                <div
-                    class="c-hero_device || c-device"
-                    data-module-smartphone="hero"
-                    data-texture="{{# withBaseUrl }}assets/3d/textures/smartphone.jpg{{/ withBaseUrl }}"
-                    data-autoshow="false"
-                >
-                </div>
             </div>
         </div>
-    </div>
 
-    <div data-scroll-section>
-        <div class="c-section">
-            <div class="o-container">
-                <div class="o-layout -gutter-huge">
-                    <div class="o-layout_item u-1/3@from-medium">
-                        <div class="c-wysiwyg">
-                            <p class="c-heading -h3">So you’re about to make a crucial decision between using Charcoal, WordPress or Drupal for the development of your next digital project?</p>
+        <div data-scroll-section>
+            <div class="c-section">
+                <div class="o-container">
+                    <div class="o-layout -gutter-huge">
+                        <div class="o-layout_item u-1/3@from-medium">
+                            <div class="c-wysiwyg">
+                                <p class="c-heading -h3">So you’re about to make a crucial decision between using Charcoal, WordPress or Drupal for the development of your next digital project?</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="o-layout_item u-1/2@from-small u-1/3@from-large">
-                        <div class="c-wysiwyg">
-                            <p>Let us guide you through the benefits of a modern development framework like Charcoal and let’s compare with the best-in-class such as WordPress or Drupal. Our comprehensive guide will help you understand what makes Charcoal stand out from other trusted content management platforms and when you should consider implementing Charcoal into your digital project.</p>
+                        <div class="o-layout_item u-1/2@from-small u-1/3@from-large">
+                            <div class="c-wysiwyg">
+                                <p>Let us guide you through the benefits of a modern development framework like Charcoal and let’s compare with the best-in-class such as WordPress or Drupal. Our comprehensive guide will help you understand what makes Charcoal stand out from other trusted content management platforms and when you should consider implementing Charcoal into your digital project.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="o-layout_item u-1/2@from-small u-1/3@from-large">
-                        <div class="c-wysiwyg">
-                            <p>Built for those who are aspiring to offer only the best user experiences without compromises or limitations, Charcoal will make (almost) all of your dreams come true with a user-friendly and multi-device interface to manage your Website, power your eCommerce, control your Messaging platform and crunch your Data. It is open-source, performant, W3C compliant and secure.</p>
+                        <div class="o-layout_item u-1/2@from-small u-1/3@from-large">
+                            <div class="c-wysiwyg">
+                                <p>Built for those who are aspiring to offer only the best user experiences without compromises or limitations, Charcoal will make (almost) all of your dreams come true with a user-friendly and multi-device interface to manage your Website, power your eCommerce, control your Messaging platform and crunch your Data. It is open-source, performant, W3C compliant and secure.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div data-scroll-section>
-        <div class="c-section">
-            <div class="o-container">
-                <div class="c-video o-ratio u-16:9">
+        <div data-scroll-section>
+            <div class="c-section">
+                <div class="o-container">
+                    <div
+                        class="c-video || o-ratio || u-16:9 || u-border-radius"
+                        data-module-video
+                        data-scroll
+                        data-scroll-repeat
+                        data-scroll-call="toggle,Video"
 
+                        data-module-video-modal-toggler
+                        data-video-modal-toggler="toggler"
+                        data-video-modal-toggler-host="vimeo"
+                        data-video-modal-toggler-id="386905142"
+                    >
+                        <button class="c-video_button" aria-label="play" type="button">
+                            <span class="c-video_button_icon">
+                                <svg role="img" aria-hidden="true"><use href="assets/images/sprite.svg#play"></use></svg>
+                            </span>
+                        </button>
+
+                        <video
+                            src="{{# withBaseUrl }}assets/video/intro.mp4{{/ withBaseUrl }}"
+                            autoplay="false"
+                            muted="true"
+                            loop="true"
+                            data-video="video"
+                        >
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-scroll-section>
+            <div class="c-section">
+                <div class="o-container">
+                    <div class="u-relative">
+                        <p class="c-splash-words">
+                            <span class="c-splash-words_row">
+                                <span class="c-splash-words_row_item -offset" data-scroll data-scroll-offset="10%">The last</span>
+                            </span>
+
+                            <span class="c-splash-words_row">
+                                <span class="c-splash-words_row_item" data-scroll data-scroll-offset="10%">content</span>
+                            </span>
+
+                            <span class="c-splash-words_row">
+                                <span class="c-splash-words_row_item" data-scroll data-scroll-offset="10%">management</span>
+                            </span>
+
+                            <span class="c-splash-words_row">
+                                <span class="c-splash-words_row_item -offset" data-scroll data-scroll-offset="10%">system you</span>
+                            </span>
+
+                            <span class="c-splash-words_row">
+                                <span class="c-splash-words_row_item -offset" data-scroll data-scroll-offset="10%">will ever</span>
+                            </span>
+
+                            <span class="c-splash-words_row">
+                                <span class="c-splash-words_row_item -offset-small" data-scroll data-scroll-offset="10%">need.</span>
+                            </span>
+                        </p>
+
+                        <div class="c-splash-words_features">
+                            <a href="#" class="c-tile -small u-border-radius" data-scroll data-scroll-speed="2">
+                                <div class="c-tile_inner">
+                                    <div class="c-tile_inner_top">
+                                        <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et habitant.</span>
+                                    </div>
+
+                                    <div class="c-tile_inner_bottom">
+                                        <span class="c-tile_inner_bottom_item">
+                                            <div class="c-tile_inner_bottom_button">
+                                                <svg role="img" aria-hidden="true"><use href="assets/images/sprite.svg#arrow-right"></use></svg>
+                                            </div>
+                                        </span>
+
+                                        <span class="c-tile_inner_bottom_item">
+                                            <span class="c-tile_inner_bottom_title">Features</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="#" class="c-tile -small u-border-radius" data-scroll data-scroll-speed="2">
+                                <div class="c-tile_inner">
+                                    <div class="c-tile_inner_top">
+                                        <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et habitant.</span>
+                                    </div>
+
+                                    <div class="c-tile_inner_bottom">
+                                        <span class="c-tile_inner_bottom_item">
+                                            <div class="c-tile_inner_bottom_button">
+                                                <svg role="img" aria-hidden="true"><use href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-right{{/ withBaseUrl }}"></use></svg>
+                                            </div>
+                                        </span>
+
+                                        <span class="c-tile_inner_bottom_item">
+                                            <span class="c-tile_inner_bottom_title">Technology</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="#" class="c-tile -small u-border-radius" data-scroll data-scroll-speed="2">
+                                <div class="c-tile_inner">
+                                    <div class="c-tile_inner_top">
+                                        <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et habitant.</span>
+                                    </div>
+
+                                    <div class="c-tile_inner_bottom">
+                                        <span class="c-tile_inner_bottom_item">
+                                            <div class="c-tile_inner_bottom_button">
+                                                <svg role="img" aria-hidden="true"><use href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-right{{/ withBaseUrl }}"></use></svg>
+                                            </div>
+                                        </span>
+
+                                        <span class="c-tile_inner_bottom_item">
+                                            <span class="c-tile_inner_bottom_title">Support</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-scroll-section>
+            <div class="c-section u-overflow-hidden">
+                <div class="o-container">
+                    <div class="c-carousel swiper-container" data-module-carousel>
+                        <div class="c-carousel_wrapper swiper-wrapper">
+                            <div class="c-carousel_slide swiper-slide">
+                                <img
+                                    class="c-carousel_slide_image u-border-radius"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E"
+                                    alt="Somerville: City of Diversity"
+                                    data-load-src="https://placehold.it/1000x750"
+                                >
+                                <div class="c-carousel_slide_desc">
+                                    <p>Viverra aliquet in.</p>
+                                </div>
+                            </div>
+
+                            <div class="c-carousel_slide swiper-slide">
+                                <img
+                                    class="c-carousel_slide_image u-border-radius"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E"
+                                    alt="Somerville: City of Diversity"
+                                    data-load-src="https://placehold.it/1000x750"
+                                >
+                            </div>
+
+                            <div class="c-carousel_slide swiper-slide">
+                                <img
+                                    class="c-carousel_slide_image u-border-radius"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3C/svg%3E"
+                                    alt="Somerville: City of Diversity"
+                                    data-load-src="https://placehold.it/1000x750"
+                                >
+                                <div class="c-carousel_slide_desc">
+                                    <p>Viverra aliquet in.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 {{> app/template/partial/site-footer }}

@@ -17,7 +17,7 @@
         }
 
         &:after  {
-            transform: scale3d(1,1,1);
+            transform: none;
             opacity: 1;
         }
     }
@@ -45,6 +45,11 @@
     opacity: 0;
     transition: transform $speed $easing, opacity $speed $easing;
     z-index: -1;
+}
+
+.c-button.-white:after {
+    border:none;
+    background-color: $white;
 }
 
 .c-button_label {

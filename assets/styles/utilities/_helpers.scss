@@ -26,6 +26,24 @@
     clip: auto;
 }
 
+.u-border-radius {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.u-relative {
+    position: relative;
+}
+
+.u-background-blue {
+    background-color: $blue;
+    color: $whiteOff;
+}
+
+.u-overflow-hidden {
+    overflow: hidden;
+}
+
 // .u-block {
 //     display: block;
 // }

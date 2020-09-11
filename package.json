@@ -16,7 +16,8 @@
     "modujs": "*",
     "modularload": "*",
     "normalize.css": "*",
-    "svg4everybody": "*"
+    "svg4everybody": "*",
+    "swiper": "^6.2.0"
   },
   "devDependencies": {
     "@modularbp/gulp": "^1.0.5",

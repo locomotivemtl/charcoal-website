@@ -7,26 +7,29 @@ export default class extends module {
     }
 
     init() {
-        this.scroll = new LocomotiveScroll({
-            el: this.el,
-            smooth: true
-        });
 
-        this.scroll.on('call', (func,way,obj,id) => {
-            // Using modularJS
-            this.call(func[0],{way,obj},func[1],func[2]);
-        });
+        setTimeout(() => {
+            this.scroll = new LocomotiveScroll({
+                el: this.el,
+                smooth: true
+            });
 
-        this.scroll.on('scroll', (args) => {
-            // console.log(args.scroll);
+            this.scroll.on('call', (func,way,obj,id) => {
+                // Using modularJS
+                this.call(func[0],{way,obj},func[1],func[2]);
+            });
 
-            this.call('checkScroll','Object3D');
+            this.scroll.on('scroll', (args) => {
+                // console.log(args.scroll);
 
-            if(typeof args.currentElements['hero'] === 'object') {
-                let progress = args.currentElements['hero'];
-                this.call('onScroll', [progress, args], 'Hero');
-            }
-        })
+                this.call('checkScroll','Object3D');
+
+                if(typeof args.currentElements['hero'] === 'object') {
+                    let progress = args.currentElements['hero'];
+                    this.call('onScroll', [progress, args], 'Hero');
+                }
+            })
+        }, 200);
     }
 
     toggleLazy(args) {
