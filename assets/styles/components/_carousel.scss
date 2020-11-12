@@ -9,3 +9,87 @@
 .c-carousel_slide_desc {
     margin-top: rem(10px);
 }
+
+.c-carousel_controls {
+    display: flex;
+    margin-top: rem(64px);
+}
+
+.c-carousel_controls_buttons_item {
+    width: rem(62px);
+    height: rem(62px);
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &.swiper-button-disabled {
+        pointer-events: none;
+        opacity: 0.35;
+    }
+
+    .c-button-hover:hover &,
+    &:hover {
+        color: $white;
+
+        &.-white {
+            color: $black;
+        }
+
+        &:before  {
+            transform: scale3d(1.2,1.2,1.2);
+            opacity: 0;
+        }
+
+        &:after  {
+            transform: none;
+            opacity: 1;
+        }
+    }
+}
+
+.c-carousel_controls_buttons_item:before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    transition: transform $easing $speed, opacity $easing $speed;
+    z-index: -1;
+    transform: scale3d(1,1,1);
+    border: 2px solid $white;
+    border-radius: 999px;
+    background-color: $white;
+}
+
+.c-carousel_controls_buttons_item:after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 2px solid $blackOff;
+    background-color: $blackOff;
+    border-radius: 999px;
+    transform: scale3d(0.8,0.8,0.8);
+    opacity: 0;
+    transition: transform $speed $easing, opacity $speed $easing;
+    z-index: -1;
+}
+
+.c-carousel_controls_buttons_item_icon {
+    margin: rem(2px) rem(6px);
+    height: rem(15px);
+    width: rem(15px);
+    display: block;
+
+    @media (min-width: $from-small) {
+        margin: rem(2px) rem(6px);
+    }
+
+    @media (max-width: $to-small) {
+        margin: 0;
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+}

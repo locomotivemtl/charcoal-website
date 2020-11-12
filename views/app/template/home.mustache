@@ -262,16 +262,14 @@
         </div>
     </div>
 
-    <div data-scroll-section>
-        <div class="c-section u-background-light">
+    <div data-scroll-section class="u-background-light">
+        <div class="c-section" id="features">
             <div class="o-container">
                 <h2 class="c-heading -h2 u-color-blue">
                     Main products
                 </h2>
 
-                <div class="o-layout -gutter-small u-text-center" id="features">
-                    <div class="o-layout_item u-1/3@from-medium">{{!!EMPTY}}</div>
-
+                <div class="o-layout -gutter-small u-text-center">
                     <div class="o-layout_item u-1/3@from-medium u-1/2@from-small">
                         <a href="#" class="c-tile u-border-radius" data-scroll data-scroll-speed="4" data-scroll-target="#features">
                             <div class="c-tile_inner">
@@ -368,8 +366,10 @@
                         </a>
                     </div>
 
+                    <div class="o-layout_item u-1/3@from-medium">{{!!EMPTY}}</div>
+
                     <div class="o-layout_item u-1/3@from-medium u-1/2@from-small">
-                        <a href="#" class="c-tile u-border-radius" data-scroll data-scroll-speed="4" data-scroll-target="#features">
+                        <a href="#" class="c-tile u-border-radius" data-scroll data-scroll-speed="2" data-scroll-target="#features">
                             <div class="c-tile_inner">
                                 <div class="c-tile_inner_top">
                                     <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et habitant.</span>
@@ -401,6 +401,75 @@
                     </div>
 
                     <div class="o-layout_item u-1/3@from-medium">{{!!EMPTY}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="c-section -no-padding-top u-overflow-hidden">
+            <div class="o-container">
+                <h2 class="c-heading -h2 u-color-blue">
+                    Case <br>Studies
+                </h2>
+
+                <div class="c-carousel-cases" data-modules-carousel-cases>
+                    <div class="c-carousel-cases-visual_container swiper-container" data-carousel-cases="carousel-visual">
+                        <div class="c-carousel-cases-visual_wrapper swiper-wrapper">
+                            {{#forLoop.2}}
+                            <div class="c-carousel-cases-visual_slide swiper-slide">
+                                <img
+                                    class="c-carousel-cases-visual_slide_image"
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1175 768'%3E%3C/svg%3E"
+                                    alt="Carbon Beauty"
+                                    data-load-src="{{# withBaseUrl }}assets/images/placeholders/project-pic-3d.png{{/ withBaseUrl }}"
+                                >
+                            </div>
+                            {{/forLoop.2}}
+                        </div>
+                    </div>
+
+                    <div class="c-carousel-cases-info_container swiper-container" data-carousel-cases="carousel-info">
+                        <div class="c-carousel-cases-info_wrapper swiper-wrapper">
+                            {{#forLoop.2}}
+                            <div class="c-carousel-cases-info_slide swiper-slide" data-project-url="https://google.ca?test={{.}}">
+                                <div class="c-carousel-cases-info_slide_inner">
+                                    <div class="c-carousel-cases-info_slide_left">
+                                        <span class="c-heading -h3">Carbon Beauty</span>
+                                    </div>
+
+                                    <div class="c-carousel-cases-info_slide_right">
+                                        <span class="c-carousel-cases-info_slide_label">Featuring</span>
+
+                                        <ul class="c-carousel-cases-info_features_list">
+                                            <li class="c-carousel-cases-info_features_list_item">Content Management</li>
+                                            <li class="c-carousel-cases-info_features_list_item">Ecommerce</li>
+                                            <li class="c-carousel-cases-info_features_list_item">Messenger</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/forLoop.2}}
+                        </div>
+
+                        <div class="c-carousel_controls">
+                            <div class="c-carousel_controls_buttons">
+                                <button class="c-carousel_controls_buttons_item" type="button" aria-label="Prev" data-carousel-cases="prev">
+                                    <span class="c-carousel_controls_buttons_item_icon">
+                                        <svg role="img" aria-hidden="true"><use href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-tip-left{{/ withBaseUrl }}"></use></svg>
+                                    </span>
+                                </button>
+
+                                <button class="c-carousel_controls_buttons_item" type="button" aria-label="Next" data-carousel-cases="next">
+                                    <span class="c-carousel_controls_buttons_item_icon">
+                                        <svg role="img" aria-hidden="true"><use href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-tip-right{{/ withBaseUrl }}"></use></svg>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <a href="#" target="_blank" rel="noopener" class="c-button -white c-carousel-cases_button" data-carousel-cases="button">
+                                <span class="c-button_label">See live</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

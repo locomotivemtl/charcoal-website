@@ -1,4 +1,9 @@
 .c-section {
     padding-top: rem(130px);
     padding-bottom: rem(130px);
+    position: relative;
+
+    &.-no-padding-top {
+        padding-top: 0;
+    }
 }

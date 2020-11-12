@@ -9,3 +9,4 @@ export {default as Video}               from './modules/Video';
 export {default as VideoModal}          from './modules/VideoModal';
 export {default as VideoModalToggler}   from './modules/VideoModalToggler';
 export {default as Carousel}            from './modules/Carousel';
+export {default as CarouselCases}       from './modules/CarouselCases';

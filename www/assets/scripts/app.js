@@ -15455,6 +15455,64 @@
     return _default;
   }(_default);
 
+  var _default$g = /*#__PURE__*/function (_module) {
+    _inherits(_default, _module);
+
+    var _super = _createSuper(_default);
+
+    function _default(m) {
+      _classCallCheck$1(this, _default);
+
+      return _super.call(this, m);
+    }
+
+    _createClass$1(_default, [{
+      key: "init",
+      value: function init() {
+        var _this = this;
+
+        this.carouselVisual = new Swiper(this.$('carousel-visual')[0], {
+          grabCursor: true,
+          speed: 600
+        });
+        this.carouselInfo = new Swiper(this.$('carousel-info')[0], {
+          grabCursor: true,
+          speed: 600,
+          navigation: {
+            nextEl: this.$('next')[0],
+            prevEl: this.$('prev')[0]
+          }
+        });
+        this.carouselInfo.controller.control = this.carouselVisual;
+        this.carouselVisual.controller.control = this.carouselInfo;
+        this.carouselInfo.on('slideChange', function () {
+          _this.setURL();
+        });
+        this.setURL();
+      }
+    }, {
+      key: "setURL",
+      value: function setURL() {
+        var _url;
+
+        var url = this.carouselInfo.slides[this.carouselInfo.activeIndex].dataset.projectUrl;
+        (_url = url) !== null && _url !== void 0 ? _url : url = false;
+
+        if (url.length > 0) {
+          this.$('button')[0].href = url;
+        }
+      }
+    }, {
+      key: "destroy",
+      value: function destroy() {
+        this.carouselVisual.destroy(true, true);
+        this.carouselInfo.destroy(true, true);
+      }
+    }]);
+
+    return _default;
+  }(_default);
+
   var modules = /*#__PURE__*/Object.freeze({
     __proto__: null,
     Load: _default$3,
@@ -15467,7 +15525,8 @@
     Video: _default$c,
     VideoModal: _default$d,
     VideoModalToggler: _default$e,
-    Carousel: _default$f
+    Carousel: _default$f,
+    CarouselCases: _default$g
   });
 
   var svg4everybody = createCommonjsModule$1(function (module) {

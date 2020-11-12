@@ -3,7 +3,7 @@
     // background: linear-gradient(0deg, rgba(229,230,235,1), rgba(255,255,255,1));
     display: block;
     color: $grayDark;
-    margin-bottom: rem(20px);
+    margin-bottom: rem($unit-small);
     position: relative;
     z-index: 1;
     box-shadow: 3px 3px 25px 6px rgba(0,0,0,0);
