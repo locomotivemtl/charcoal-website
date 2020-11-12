@@ -15441,7 +15441,8 @@
           loop: false,
           grabCursor: true,
           slidesPerView: 1.5,
-          spaceBetween: 20
+          spaceBetween: 20,
+          slideToClickedSlide: true
         });
       }
     }, {

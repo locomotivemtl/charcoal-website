@@ -1,8 +1,33 @@
 .c-tile {
     background-color: $white;
+    // background: linear-gradient(0deg, rgba(229,230,235,1), rgba(255,255,255,1));
     display: block;
     color: $grayDark;
     margin-bottom: rem(20px);
+    position: relative;
+    z-index: 1;
+    box-shadow: 3px 3px 25px 6px rgba(0,0,0,0);
+    transition: box-shadow $speed $easing;
+    text-align: left;
+
+    &:hover {
+        box-shadow: 3px 3px 25px 6px rgba(0,0,0,0.1);
+        &:before {
+            // opacity: 1;
+        }
+    }
+
+    &:before {
+        // content: '';
+        position: absolute;
+        top: 0; left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        transition: opacity $speed-slow $easing;
+        // background: linear-gradient(0deg, rgba(255,255,255,1), rgba(229,230,235,1));
+        opacity: 0;
+    }
 
     &.-small {
         max-width: rem(345px);
@@ -30,6 +55,17 @@
     &:nth-child(2) {
         text-align: right;
     }
+}
+
+.c-tile_inner_middle {
+    display: block;
+    text-align: center;
+    padding: rem(80px) 0;
+}
+
+.c-tile_inner_middle_image {
+    width: 60%;
+    margin: 0 auto;
 }
 
 .c-tile_inner_bottom {
@@ -60,6 +96,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 
     &:before {
         content: '';
@@ -67,6 +104,37 @@
         top: 0; left: 0; bottom: 0; right: 0;
         border-radius: 50%;
         border: solid 1px $grayDark;
+        transition: transform $speed $easing, opacity $speed $easing;
+        z-index: -1;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        border-radius: 50%;
+        border: solid 1px $blackOff;
+        background-color: $blackOff;
+        transform: scale(0.8);
+        opacity: 0;
+        transition: transform $speed $easing, opacity $speed $easing;
+        z-index: -1;
+    }
+
+    .c-tile:hover & {
+        &:after {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        &:before {
+            transform: scale(1.2);
+            opacity: 0;
+        }
+
+        svg {
+            color: $white;
+        }
     }
 
     svg {
@@ -74,5 +142,6 @@
         height: rem(8px);
         display: block;
         color: $blackOff;
+        transition: color $speed $easing;
     }
 }

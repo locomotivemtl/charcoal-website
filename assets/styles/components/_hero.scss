@@ -52,10 +52,14 @@
     width: 100%;
     z-index: 10;
     mix-blend-mode: difference;
-    font-size: rem(30px);
     line-height: 1.1;
     opacity: 0;
     transform: translateY(-50px);
+
+    * {
+        font-size: rem(30px);
+        font-weight: normal;
+    }
 
     html.is-loaded & {
         transition: opacity $speed-slow $easing, transform $speed-slow $easing;
