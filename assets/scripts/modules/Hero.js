@@ -22,6 +22,11 @@ export default class extends module {
     }
 
     init() {
+        if(window.isMobile) {
+            // this.showDevice()
+            return
+        }
+
         this.initHero()
 
         setTimeout(() => {
@@ -57,6 +62,8 @@ export default class extends module {
      * @param {scroll obj} (see Scroll.js)
      */
     onScroll(param) {
+        if(window.isMobile) return
+
         let limit = param[0].section.limit.y - (window.innerHeight * 1.5)
         let scroll = param[1].scroll.y
 

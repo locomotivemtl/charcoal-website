@@ -15,13 +15,22 @@
 .o-container {
     margin-right: auto;
     margin-left: auto;
-    padding-right: rem($unit * 2);
-    padding-left: rem($unit * 2);
-    max-width: rem($container-width + ($padding * 2));
+    width: 100%;
 
     .c-header.-fixed & {
        // padding-right: rem($unit);
        // padding-left: rem($unit);
        // max-width: none;
+    }
+
+    @media (min-width: $from-medium) {
+        padding-right: rem($unit * 2);
+        padding-left: rem($unit * 2);
+        max-width: rem($container-width + ($padding * 2));
+    }
+
+    @media (max-width: $to-medium) {
+        padding-right: 30px;
+        padding-left: 30px;
     }
 }

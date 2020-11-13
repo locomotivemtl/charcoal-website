@@ -11,26 +11,23 @@ $loader-size: 60px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
+    margin-left: -30px;
+    margin-top: -30px;
     z-index: 1;
     transition: visibility $speed $easing, opacity $speed $easing;
     color: $whiteOff;
     visibility: visible;
     opacity: 1;
+    overflow: visible;
+    padding-top: $loader-size;
+    width: $loader-size;
+    height: 0;
 
     .is-loaded & {
         visibility: hidden;
         opacity: 0;
     }
 }
-
-.c-spinner {
-    overflow: visible;
-    padding-top: $loader-size;
-    width: $loader-size;
-    height: 0;
- }
 
 .c-spinner_inner {
     position: absolute;

@@ -16,6 +16,7 @@
     "modujs": "*",
     "modularload": "*",
     "normalize.css": "*",
+    "smoothscroll-polyfill": "^0.4.4",
     "svg4everybody": "*",
     "swiper": "^6.2.0"
   },

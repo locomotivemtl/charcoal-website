@@ -1,6 +1,10 @@
 .c-hero {
     position: relative;
     height: 300vh;
+
+    html.is-mobile & {
+        height: 100vh;
+    }
 }
 
 .c-hero_container {
@@ -56,6 +60,10 @@
     opacity: 0;
     transform: translateY(-50px);
 
+    html.is-mobile & {
+        mix-blend-mode: normal;
+    }
+
     * {
         font-size: rem(30px);
         font-weight: normal;
@@ -81,6 +89,10 @@
     opacity: 0;
     transform: translateY(-50px);
 
+    html.is-mobile & {
+        mix-blend-mode: normal;
+    }
+
     html.is-loaded & {
         transition: opacity $speed-slow $easing, transform $speed-slow $easing;
         transform: none;
@@ -95,6 +107,10 @@
     transform: scale(1.5);
     transition: transform 1s $easing, opacity 1s $easing;
     opacity: 0;
+
+    html.is-mobile & {
+        display: none;
+    }
 
     html.is-loaded & {
         opacity: 1;
