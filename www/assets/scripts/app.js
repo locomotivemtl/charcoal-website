@@ -4242,6 +4242,9 @@
     return Smooth;
   }();
 
+  var html = document.documentElement;
+  var isDebug = !!html.getAttribute('data-debug');
+
   var _default$5 = /*#__PURE__*/function (_module) {
     _inherits(_default, _module);
 
@@ -4261,7 +4264,8 @@
         setTimeout(function () {
           _this.scroll = new Smooth({
             el: _this.el,
-            smooth: true
+            smooth: true,
+            getDirection: true
           });
 
           _this.scroll.on('call', function (func, way, obj, id) {
@@ -4274,6 +4278,18 @@
 
           _this.scroll.on('scroll', function (args) {
             // console.log(args.scroll);
+            if (args.scroll.y > 50) {
+              html.classList.add('has-scrolled');
+            } else {
+              html.classList.remove('has-scrolled');
+            }
+
+            if (args.direction == 'down') {
+              html.classList.add('is-scrolling-down');
+            } else {
+              html.classList.remove('is-scrolling-down');
+            }
+
             _this.call('checkScroll', 'Object3D');
 
             if (_typeof$1(args.currentElements['hero']) === 'object') {
@@ -4695,6 +4711,8 @@
     }, {
       key: "toggle",
       value: function toggle(e) {
+        console.log(e, 'device');
+
         if (e.way === "enter") {
           this.animate();
         } else {
@@ -4962,9 +4980,6 @@
 
     return _default;
   }(_default$6);
-
-  var html = document.documentElement;
-  var isDebug = !!html.getAttribute('data-debug');
 
   var _default$9 = /*#__PURE__*/function (_module) {
     _inherits(_default, _module);
@@ -15278,6 +15293,23 @@
         this.call('slideOut', {
           callback: slideOutCallback
         }, 'Smartphone', 'hero');
+      }
+      /**
+       * Toggle (inview or not)
+       *
+       * @param
+       */
+
+    }, {
+      key: "toggle",
+      value: function toggle(e) {
+        this.call('toggle', e, 'Smartphone');
+
+        if (e.way === "enter") {
+          html.classList.add('has-hero-inview');
+        } else {
+          html.classList.remove('has-hero-inview');
+        }
       }
       /**
        * you know the drill

@@ -11,7 +11,7 @@
     text-align: left;
 
     &:hover {
-        box-shadow: 3px 3px 25px 6px rgba(0,0,0,0.1);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.01), 0px 8px 6px rgba(0, 0, 0, 0.01), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 38px 25px rgba(0, 0, 0, 0.02), 0px 64px 46px rgba(0, 0, 0, 0.02), 0px 100px 80px rgba(0, 0, 0, 0.03);
         &:before {
             // opacity: 1;
         }
@@ -25,8 +25,8 @@
         width: 100%;
         z-index: -1;
         transition: opacity $speed-slow $easing;
-        // background: linear-gradient(0deg, rgba(255,255,255,1), rgba(229,230,235,1));
-        opacity: 0;
+        // background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(229,230,235,1) 75%, rgba(255,255,255,1) 100%);
+        opacity: 1;
     }
 
     &.-small {

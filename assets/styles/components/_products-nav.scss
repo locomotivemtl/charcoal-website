@@ -46,7 +46,7 @@
             transition-delay: $i * 0.06s;
         }
     }
-    
+
     .has-products-open & {
         opacity: 1;
         transform: translateY(0);
@@ -59,7 +59,7 @@
             }
         }
     }
-    
+
     a {
         transition: color $speed $easing;
 
@@ -85,10 +85,10 @@
         left: 0;
         transform: scale(0);
         border-radius: 50%;
-        border: 1px solid rgba($gray, 0.2);   
-        transition: transform $speed $easing; 
+        border: 1px solid rgba($gray, 0.2);
+        transition: transform $speed $easing;
     }
-    
+
     .c-products-nav_list_item:hover & {
         &::before{
             transform: scale(1);
@@ -105,7 +105,7 @@
         height: rem(8px);
         opacity: 0;
         transform: translateX(-50%);
-        transition: opacity $speed $easing, transform $speed $easing; 
+        transition: opacity $speed $easing, transform $speed $easing;
 
     }
 }
@@ -146,7 +146,7 @@
         background-color: $white;
         z-index: 1;
         transition: transform $speed-slow $easing;
-        transform-origin: center bottom;   
+        transform-origin: center bottom;
     }
 
     .has-products-open & {

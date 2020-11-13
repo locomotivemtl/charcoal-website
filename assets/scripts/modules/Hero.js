@@ -164,6 +164,21 @@ export default class extends module {
     }
 
     /**
+     * Toggle (inview or not)
+     *
+     * @param
+     */
+    toggle(e) {
+        this.call('toggle', e, 'Smartphone');
+
+        if (e.way === "enter") {
+            html.classList.add('has-hero-inview')
+        } else {
+            html.classList.remove('has-hero-inview')
+        }
+    }
+
+    /**
      * you know the drill
      *
      * @param

@@ -8,7 +8,7 @@
         color: $white;
 
         &.-white {
-            color: $black;
+            color: $white;
         }
 
         &:before  {
@@ -49,7 +49,7 @@
 
 .c-button.-white:after {
     border:none;
-    background-color: $white;
+    background-color: $blue;
 }
 
 .c-button.-white:before {

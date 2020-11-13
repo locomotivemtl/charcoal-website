@@ -1,5 +1,6 @@
 import { module } from 'modujs';
 import LocomotiveScroll from 'locomotive-scroll';
+import { html } from '../utils/environment';
 
 export default class extends module {
     constructor(m) {
@@ -11,7 +12,8 @@ export default class extends module {
         setTimeout(() => {
             this.scroll = new LocomotiveScroll({
                 el: this.el,
-                smooth: true
+                smooth: true,
+                getDirection: true
             });
 
             this.scroll.on('call', (func,way,obj,id) => {
@@ -21,6 +23,18 @@ export default class extends module {
 
             this.scroll.on('scroll', (args) => {
                 // console.log(args.scroll);
+
+                if(args.scroll.y > 50) {
+                    html.classList.add('has-scrolled');
+                } else {
+                    html.classList.remove('has-scrolled');
+                }
+
+                if(args.direction == 'down') {
+                    html.classList.add('is-scrolling-down')
+                } else {
+                    html.classList.remove('is-scrolling-down')
+                }
 
                 this.call('checkScroll','Object3D');
 

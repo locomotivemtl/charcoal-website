@@ -358,6 +358,7 @@ export default class extends module {
     }
 
     toggle(e) {
+        console.log(e, 'device')
         if (e.way === "enter") {
             this.animate()
         } else {

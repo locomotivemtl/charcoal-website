@@ -18,4 +18,10 @@
     padding-right: rem($unit * 2);
     padding-left: rem($unit * 2);
     max-width: rem($container-width + ($padding * 2));
+
+    .c-header.-fixed & {
+       // padding-right: rem($unit);
+       // padding-left: rem($unit);
+       // max-width: none;
+    }
 }
