@@ -2239,6 +2239,9 @@ button.swiper-pagination-bullet {
   justify-content: center;
   align-items: center; }
 
+.c-nav-mobile {
+  display: none; }
+
 /* stylelint-disable */
 .u-2\:1::before {
   padding-bottom: 50%; }
