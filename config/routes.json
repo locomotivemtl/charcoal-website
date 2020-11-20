@@ -5,6 +5,11 @@
                 "route": "[/]",
                 "template": "app/template/home",
                 "controller": "app/template/home"
+            },
+            "contact": {
+                "route": "/contact[/]",
+                "template": "app/template/contact",
+                "controller": "app/template/contact"
             }
         },
         "actions": {},

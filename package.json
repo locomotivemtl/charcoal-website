@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "gsap": "^3.5.1",
-    "locomotive-scroll": "github:locomotivemtl/locomotive-scroll#v4",
+    "locomotive-scroll": "4.0.4",
     "lottie-web": "^5.7.3",
     "modujs": "*",
     "modularload": "*",

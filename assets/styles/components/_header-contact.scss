@@ -1,0 +1,27 @@
+.c-header-contact {
+    padding: rem($unit) 0;
+}
+
+.c-header-contact_infos {
+    margin-top: rem($unit * 1.5);
+}
+
+.c-header-contact_submit_wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.c-header-contact_submit {
+    transition: opacity $speed $easing;
+
+    .c-header-contact_form.is-loading & {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .c-header-contact_form.is-success & {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+}

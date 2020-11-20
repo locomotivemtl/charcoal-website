@@ -510,7 +510,7 @@ html {
       font-size: 18px; } }
   html.is-loading {
     cursor: wait; }
-  html.has-scroll-smooth {
+  html.has-scroll-smooth, html:not(.has-scroll-module-init) {
     overflow: hidden; }
   html.has-scroll-dragging {
     -webkit-user-select: none;
@@ -538,6 +538,8 @@ html {
 
 a {
   color: currentColor; }
+  a:hover {
+    color: currentColor; }
 
 svg {
   display: block; }
@@ -649,15 +651,15 @@ svg {
     direction: ltr; }
 
 /**
- * Swiper 6.2.0
+ * Swiper 6.3.5
  * Most modern mobile touch slider and framework with hardware accelerated transitions
- * http://swiperjs.com
+ * https://swiperjs.com
  *
  * Copyright 2014-2020 Vladimir Kharlampidi
  *
  * Released under the MIT License
  *
- * Released on: September 4, 2020
+ * Released on: October 30, 2020
  */
 @font-face {
   font-family: 'swiper-icons';
@@ -1218,9 +1220,11 @@ button.swiper-pagination-bullet {
   line-height: 1.5;
   margin-bottom: 1.875rem; }
   .c-heading.-h1, .c-wysiwyg h2.-h1 {
-    font-size: 2.25rem; }
-  .c-heading.-h2, .c-wysiwyg h2.-h2 {
     font-size: 15vw;
+    font-weight: normal;
+    line-height: 0.9; }
+  .c-heading.-h2, .c-wysiwyg h2.-h2 {
+    font-size: 12vw;
     font-weight: normal;
     line-height: 0.9; }
   .c-heading.-h3, .c-wysiwyg h2, .c-tile_inner_bottom_title {
@@ -1228,35 +1232,43 @@ button.swiper-pagination-bullet {
     font-size: 1.6875rem;
     line-height: 2rem; }
   .c-heading.-h4, .c-wysiwyg h2.-h4 {
-    font-size: 1.25rem; }
+    font-size: 1.25rem;
+    font-weight: 500; }
   .c-heading.-h5, .c-wysiwyg h2.-h5 {
     font-size: 1.125rem; }
   .c-heading.-h6, .c-wysiwyg h2.-h6 {
     font-size: 1rem; }
 
 .c-button {
-  padding: 15px 30px;
+  padding: 0.9375rem 1.875rem;
   position: relative;
-  z-index: 1; }
+  z-index: 1;
+  transform: translateZ(0); }
   .c-button-hover:hover .c-button, .c-button:hover {
-    color: #FFFFFF; }
+    color: currentColor; }
     .c-button-hover:hover .c-button.-white, .c-button:hover.-white {
       color: #FFFFFF; }
     .c-button-hover:hover .c-button:before, .c-button:hover:before {
       transform: scale3d(1.2, 1.2, 1.2);
-      opacity: 0; }
+      opacity: 0;
+      transition-delay: 0s; }
     .c-button-hover:hover .c-button:after, .c-button:hover:after {
       transform: none;
-      opacity: 1; }
+      opacity: 1;
+      transition-delay: 0.1s; }
+  .c-button.-blue {
+    color: #FFFFFF; }
+  .c-button.-big {
+    padding: 1.375rem 1.875rem; }
 
 .c-button:before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: transform cubic-bezier(0.4, 0, 0, 1) 0.3s, opacity cubic-bezier(0.4, 0, 0, 1) 0.3s;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  bottom: 1px;
+  transition: transform cubic-bezier(0.4, 0, 0, 1) 0.3s 0.1s, opacity cubic-bezier(0.4, 0, 0, 1) 0.3s 0.1s;
   z-index: -1;
   transform: scale3d(1, 1, 1);
   border: 2px solid currentColor;
@@ -1265,24 +1277,36 @@ button.swiper-pagination-bullet {
 .c-button:after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  bottom: 1px;
   border: 2px solid currentColor;
   border-radius: 999px;
-  transform: scale3d(0.8, 0.8, 0.8);
+  transform: scale3d(0.7, 0.7, 0.7);
   opacity: 0;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0, 1), opacity 0.3s cubic-bezier(0.4, 0, 0, 1);
   z-index: -1; }
 
 .c-button.-white:after {
   border: none;
-  background-color: #4D5DF1; }
+  background-color: #4D5DF1;
+  transition-delay: 0s; }
 
 .c-button.-white:before {
   border: none;
-  background-color: #FFFFFF; }
+  background-color: #FFFFFF;
+  transition-delay: 0s; }
+
+.c-button.-blue:after {
+  border: none;
+  background-color: #191A22;
+  transition-delay: 0s; }
+
+.c-button.-blue:before {
+  border: none;
+  background-color: #4D5DF1;
+  transition-delay: 0s; }
 
 .c-button_label {
   line-height: 1;
@@ -1310,12 +1334,16 @@ button.swiper-pagination-bullet {
 
 .c-form_label, .c-form_checkboxLabel, .c-form_radioLabel {
   display: block;
-  margin-bottom: 0.625rem; }
+  margin-bottom: 0.3125rem;
+  color: #AAABB1;
+  font-size: 0.875rem; }
 
 .c-form_input, .c-form_select_input, .c-form_textarea {
-  padding: 0.625rem;
-  border: 1px solid lightgray;
-  background-color: white; }
+  padding: 0.9375rem;
+  border: 1px solid #AAABB1;
+  background-color: white;
+  border-radius: 5px;
+  transition: border 0.3s cubic-bezier(0.4, 0, 0, 1); }
   .c-form_input:hover, .c-form_select_input:hover, .c-form_textarea:hover {
     border-color: darkgray; }
   .c-form_input:focus, .c-form_select_input:focus, .c-form_textarea:focus {
@@ -1398,7 +1426,8 @@ button.swiper-pagination-bullet {
   cursor: pointer; }
 
 .c-form_textarea {
-  min-height: 12.5rem; }
+  min-height: 12.5rem;
+  resize: none; }
 
 .c-device {
   width: 100vw;
@@ -1647,7 +1676,7 @@ button.swiper-pagination-bullet {
     left: 0;
     transform: scale(0);
     border-radius: 50%;
-    border: 1px solid rgba(25, 26, 34, 0.2);
+    border: 1px solid #AAABB1;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0, 1); }
   .c-products-nav_list_item:hover .c-products-nav_list_item_icon::before {
     transform: scale(1); }
@@ -2239,8 +2268,79 @@ button.swiper-pagination-bullet {
   justify-content: center;
   align-items: center; }
 
+@-webkit-keyframes spin {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg); }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg); }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(360deg); } }
+
+.c-spinner {
+  position: absolute;
+  display: inline-block;
+  font-size: 10px;
+  text-indent: -9999em;
+  z-index: 1010;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0, 1);
+  -webkit-animation: spin 0.8s infinite linear;
+  animation: spin 0.8s infinite linear;
+  top: 50%;
+  left: 50%;
+  color: #4D5DF1; }
+  form.is-loading .c-spinner {
+    opacity: 1; }
+  html.is-ie .c-spinner {
+    display: none; }
+  .c-spinner svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    stroke-width: 1px;
+    fill: none;
+    transition: stroke 0.3s cubic-bezier(0.4, 0, 0, 1); }
+  @media (min-width: 700px) {
+    .c-spinner {
+      bottom: 3.9375rem;
+      right: 3.75rem; } }
+  @media (max-width: 699px) {
+    .c-spinner {
+      bottom: 2.125rem;
+      right: 1.625rem;
+      width: 60px;
+      height: 60px; } }
+
 .c-nav-mobile {
   display: none; }
+
+.c-header-contact {
+  padding: 3.75rem 0; }
+
+.c-header-contact_infos {
+  margin-top: 5.625rem; }
+
+.c-header-contact_submit_wrap {
+  position: relative;
+  display: inline-block; }
+
+.c-header-contact_submit {
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0, 1); }
+  .c-header-contact_form.is-loading .c-header-contact_submit {
+    opacity: 0;
+    pointer-events: none; }
+  .c-header-contact_form.is-success .c-header-contact_submit {
+    opacity: 0;
+    pointer-events: none; }
 
 /* stylelint-disable */
 .u-2\:1::before {
@@ -2309,6 +2409,18 @@ button.swiper-pagination-bullet {
 @media (min-width: 1000px) {
   .u-1\/3\@from-medium {
     width: 33.33333%; } }
+
+@media (min-width: 1000px) {
+  .u-2\/3\@from-medium {
+    width: 66.66667%; } }
+
+@media (min-width: 1000px) {
+  .u-2\/5\@from-medium {
+    width: 40%; } }
+
+@media (min-width: 1000px) {
+  .u-3\/5\@from-medium {
+    width: 60%; } }
 
 @media (min-width: 1200px) {
   .u-1\/3\@from-large {

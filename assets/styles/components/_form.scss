@@ -14,7 +14,9 @@
 // ==========================================================================
 .c-form_label {
     display: block;
-    margin-bottom: rem(10px);
+    margin-bottom: rem(5px);
+    color: $gray;
+    font-size: rem(14px);
 }
 
 // Input
@@ -22,9 +24,11 @@
 $input-icon-color: 424242; // No #
 
 .c-form_input {
-    padding: rem(10px);
-    border: 1px solid lightgray;
+    padding: rem(15px);
+    border: 1px solid $gray;
     background-color: white;
+    border-radius: 5px;
+    transition: border $speed $easing;
 
     &:hover {
         border-color: darkgray;
@@ -167,4 +171,5 @@ $select-icon-color: $input-icon-color;
     @extend .c-form_input;
 
     min-height: rem(200px);
+    resize: none;
 }

@@ -85,7 +85,7 @@
         left: 0;
         transform: scale(0);
         border-radius: 50%;
-        border: 1px solid rgba($gray, 0.2);
+        border: 1px solid $grayDark;
         transition: transform $speed $easing;
     }
 

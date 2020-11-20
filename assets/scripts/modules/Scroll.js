@@ -10,6 +10,9 @@ export default class extends module {
     init() {
 
         setTimeout(() => {
+
+            html.classList.add('has-scroll-module-init');
+
             this.scroll = new LocomotiveScroll({
                 el: this.el,
                 smooth: true,
@@ -42,7 +45,7 @@ export default class extends module {
                     let progress = args.currentElements['hero'];
                     this.call('onScroll', [progress, args], 'Hero');
                 }
-            })
+            });
         }, 200);
     }
 
@@ -60,5 +63,7 @@ export default class extends module {
 
     destroy() {
         this.scroll.destroy();
+        html.classList.remove('has-scroll-module-init');
+
     }
 }

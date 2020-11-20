@@ -31,7 +31,7 @@ html {
       font-size: 18px; } }
   html.is-loading {
     cursor: wait; }
-  html.has-scroll-smooth {
+  html.has-scroll-smooth, html:not(.has-scroll-module-init) {
     overflow: hidden; }
   html.has-scroll-dragging {
     -webkit-user-select: none;
@@ -59,6 +59,8 @@ html {
 
 a {
   color: currentColor; }
+  a:hover {
+    color: currentColor; }
 
 svg {
   display: block; }
@@ -78,7 +80,7 @@ svg {
     visibility: hidden;
     opacity: 0; }
 
-.c-spinner {
+.c-loader {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -91,13 +93,17 @@ svg {
   opacity: 1;
   overflow: visible;
   padding-top: 60px;
-  width: 60px;
-  height: 0; }
-  .is-loaded .c-spinner {
+  width: 60px; }
+  .is-loaded .c-loader {
     visibility: hidden;
     opacity: 0; }
+  form.is-loading .c-loader {
+    opacity: 1;
+    z-index: 10;
+    visibility: visible;
+    color: #4D5DF1; }
 
-.c-spinner_inner {
+.c-loader_inner {
   position: absolute;
   top: 0;
   left: 0;
@@ -105,7 +111,7 @@ svg {
   height: 60px;
   box-sizing: border-box;
   z-index: 1; }
-  .c-spinner_inner:before {
+  .c-loader_inner:before {
     content: '';
     position: absolute;
     top: 0;
@@ -117,9 +123,9 @@ svg {
     animation: loader-figure 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
     -webkit-animation-play-state: running;
     animation-play-state: running;
-    background-color: #F1F2FE;
+    background-color: currentColor;
     z-index: 1; }
-  .c-spinner_inner:after {
+  .c-loader_inner:after {
     content: '';
     position: absolute;
     top: 0;
@@ -131,13 +137,16 @@ svg {
     animation: loader-label 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
     -webkit-animation-play-state: running;
     animation-play-state: running;
-    background-color: #F1F2FE;
+    background-color: currentColor;
     z-index: -1;
     transform: scale(0);
     opacity: 0; }
-  .is-loaded .c-spinner_inner:before, .is-loaded .c-spinner_inner:after {
+  .is-loaded .c-loader_inner:before, .is-loaded .c-loader_inner:after {
     -webkit-animation-play-state: paused;
     animation-play-state: paused; }
+  form.is-loading .c-loader_inner:before, form.is-loading .c-loader_inner:after {
+    -webkit-animation-play-state: running;
+    animation-play-state: running; }
 
 @-webkit-keyframes loader-figure {
   0% {
