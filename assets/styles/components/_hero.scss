@@ -22,11 +22,16 @@
     height: 100%;
     transform: translateY(200px);
     opacity: 0;
-    transition: transform 0.9s $easing, opacity 0.9s $easing;
+    transition: opacity 0.8s $easing 0s, transform 0.8s $easing 0s;
 
     html.is-loaded & {
         transform: none;
         opacity: 1;
+        transition-delay: 0.2s;
+    }
+
+    html.is-loading & {
+        transition-delay: 0s, 0.5s;
     }
 }
 
@@ -62,11 +67,6 @@
 
     html.is-mobile & {
         mix-blend-mode: normal;
-    }
-
-    * {
-        font-size: rem(30px);
-        font-weight: normal;
     }
 
     html.is-loaded & {

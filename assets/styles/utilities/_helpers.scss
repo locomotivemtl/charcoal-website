@@ -2,29 +2,6 @@
 // Utilities / Helpers
 // ==========================================================================
 
-// Layout
-// ==========================================================================
-.u-clearfix {
-    @include u-clearfix;
-}
-
-// Decorative
-// =============================================================================
-.u-truncate {
-    @include u-truncate;
-}
-
-//  Visibility / Display
-// ==========================================================================
-[hidden][aria-hidden="false"] {
-    position: absolute;
-    display: inherit;
-    clip: rect(0, 0, 0, 0);
-}
-
-[hidden][aria-hidden="false"]:focus {
-    clip: auto;
-}
 
 .u-border-radius {
     border-radius: 12px;
@@ -47,6 +24,31 @@
 .u-background-light {
     background-color: $grayLight;
     color: $blackOff;
+}
+
+
+// Layout
+// ==========================================================================
+.u-clearfix {
+    @include u-clearfix;
+}
+
+// Decorative
+// =============================================================================
+.u-truncate {
+    @include u-truncate;
+}
+
+//  Visibility / Display
+// ==========================================================================
+[hidden][aria-hidden="false"] {
+    position: absolute;
+    display: inherit;
+    clip: rect(0, 0, 0, 0);
+}
+
+[hidden][aria-hidden="false"]:focus {
+    clip: auto;
 }
 
 .u-overflow-hidden {

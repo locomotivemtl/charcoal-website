@@ -1,0 +1,40 @@
+.c-rail_wrapper {
+    position: relative;
+    white-space: nowrap;
+    display: inline-flex;
+    transform: translate3d(0,0,0);
+    width: 100%;
+}
+
+.c-rail_group-container {
+    position: relative;
+    white-space: nowrap;
+    display: inline-flex;
+    width: auto;
+    // will-change: transform;
+}
+
+.c-rail_track {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 0;
+}
+
+.c-rail_item {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 1rem;
+    
+}
+
+.c-rail_track-container {
+    display: flex;
+    width: auto;
+    white-space: nowrap;
+
+    a, img {
+        touch-action: pan-y;
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+}

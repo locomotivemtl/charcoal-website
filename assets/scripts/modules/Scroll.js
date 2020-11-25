@@ -64,6 +64,8 @@ export default class extends module {
     destroy() {
         this.scroll.destroy();
         html.classList.remove('has-scroll-module-init');
+        html.classList.remove('is-scrolling-down')
+        html.classList.remove('has-scrolled');
 
     }
 }

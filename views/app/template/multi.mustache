@@ -1,0 +1,58 @@
+{{> app/template/partial/site-header }}
+
+<div class="o-scroll" data-module-scroll="main">
+    <section data-scroll-section>
+        <header class="c-header -white">
+            {{> app/template/partial/header }}
+        </header>
+        <div class="c-section u-background-blue">
+            <div class="o-container">
+                <div class="c-header-multi">
+                    <h1 class="c-header-multi_title c-heading -h2 u-anim-text-line" data-module-split data-scroll data-scroll-speed="2" data-scroll-position="top">
+                        Content 
+                        Managment
+                    </h1>
+                    <p class="c-header-multi_content c-heading -h4 u-anim -delay-3">
+                        Enhance your digital growth with our comprehensive content management system.
+                    </p>
+                    <div class="c-header-multi_scroll-indicator">
+                        <button class="c-scroll-indicator" type="button">
+                            <span class="c-scroll-indicator_label">See features</span>
+                            <span class="c-scroll-indicator_icon">
+                                <svg role="img" aria-hidden="true"><use href="assets/images/sprite.svg#arrow-down"></use></svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section data-scroll-section>
+        <div class="c-content-visual u-background-light">
+            <div class="c-content-visual_inner" data-scroll data-scroll-speed="2">
+                <img
+                    class="c-content-visual_inner_image"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 248 216'%3E%3C/svg%3E"
+                    alt="Messenger"
+                    data-load-src="{{# withBaseUrl }}assets/images/shapes/shape-01.svg{{/ withBaseUrl }}"
+                >
+            </div>
+        </div>
+    </section>
+    
+    <section data-scroll-section>
+        <div class="c-section c-content-tagline u-background-light">
+            <div class="o-container">
+                <div class="c-content-tagline_inner">
+                    Charcoal CMS is a <strong>smart cloud</strong> solution to manage your website. It promotes best practices, from a <strong>streamlined user experience</strong>, to performance and security. Unlock all your brand’s <strong>capabilities</strong> and enhance your digital business intelligence.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{> app/template/partial/footer }}
+
+</div>
+
+{{> app/template/partial/site-footer }}

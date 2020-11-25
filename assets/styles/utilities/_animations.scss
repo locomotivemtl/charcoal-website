@@ -1,0 +1,116 @@
+
+.u-anim {
+    transform: translateY(rem($unit));
+    opacity: 0;
+    transition: transform $speed-slow $easing, opacity $speed-slow $easing;
+
+    html.has-dom-ready &:not([data-scroll]):not(.-parent) {
+        transform: translateY(0);
+        opacity: 1;
+        transition-duration: $speed-slow;
+
+        @for $i from 1 through 12 {
+            &.-delay-#{$i} {
+                transition-delay: (0.1s * $i) + 0.3s;
+            }
+        }
+    }
+
+    html.has-dom-ready &.is-inview[data-scroll] {
+        transform: translateY(0);
+        opacity: 1;
+        transition-duration: $speed-slow;
+
+        @for $i from 1 through 12 {
+            &.-delay-#{$i} {
+                transition-delay: (0.1s * $i);
+            }
+        }
+    }
+
+    html.has-dom-ready .is-inview[data-scroll] &.-parent {
+        transform: translateY(0);
+        opacity: 1;
+        transition-duration: $speed-slow;
+
+        @for $i from 1 through 12 {
+            &.-delay-#{$i} {
+                transition-delay: (0.1s * $i);
+            }
+        }
+    }
+}
+
+.u-anim-text-line {
+    opacity: 0;
+
+    &.is-split {
+        opacity: 1;
+    }
+    
+    > div {
+        overflow: hidden;
+    }
+
+    > div div {
+        transform: translate3d(0,101%,0);
+        transition: opacity 0.3s $easing, transform 0.3s $easing;
+    }
+
+    html.has-dom-ready &:not([data-scroll]):not(.-parent) {
+       > div {
+           div {
+               transform: translate3d(0,0,0);
+               transition-duration: 1s;
+           }
+           @for $i from 1 through 12 {
+                &:nth-child(#{$i}) div {
+                    transition-delay: 0.7 + $i * 0.1s;
+                }
+            }
+       }
+    }
+
+    html.has-dom-ready &.is-inview[data-scroll] {
+        > div {
+            div {
+                transform: translate3d(0,0,0);
+                transition-duration: 1s;
+            }
+            @for $i from 1 through 12 {
+                &:nth-child(#{$i}) div {
+                    transition-delay: $i * 0.1s;
+                }
+            }
+        }
+    }
+
+    html.has-dom-ready .is-inview[data-scroll] &.-parent {
+        > div {
+            div {
+                transform: translate3d(0,0,0);
+                transition-duration: 1s;
+            }
+            @for $i from 1 through 12 {
+                &:nth-child(#{$i}) div {
+                    transition-delay: $i * 0.1s;
+                }
+            }
+        }
+    }
+
+    html:not(.has-dom-ready).is-loading & {
+        > div {
+            div {
+                transform: translate3d(0,-101%,0);
+                transition-duration: 0.6s;
+            }
+            @for $i from 1 through 12 {
+                &:nth-child(#{$i}) div {
+                    transition-delay: $i * 0.1s;
+                }
+            }
+        }
+    }
+
+}

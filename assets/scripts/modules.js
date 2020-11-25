@@ -11,3 +11,6 @@ export {default as VideoModalToggler}   from './modules/VideoModalToggler';
 export {default as Carousel}            from './modules/Carousel';
 export {default as CarouselCases}       from './modules/CarouselCases';
 export {default as Form}                from './modules/Form';
+export {default as Rail}                from './modules/Rail';
+export {default as RailMove}            from './modules/RailMove';
+export {default as Split}               from './modules/Split';

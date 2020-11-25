@@ -1,0 +1,31 @@
+.c-header-multi {
+    padding-top: rem($unit * 2);
+}
+
+.c-header-multi_title {
+    margin-bottom: rem($unit * 2);
+}
+
+.c-header-multi_scroll-indicator {
+    position: absolute;
+    right: rem($unit*2);
+    bottom: rem($unit*2);
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-50px);
+
+    html.is-loaded & {
+        transition: opacity $speed-slow $easing, transform $speed-slow $easing;
+        transform: none;
+        opacity: 1;
+        transition-delay: 0.85s;
+    }
+}
+
+.c-header-multi_content {
+    max-width: rem(440px);
+}
+
+.c-header-multi_content {
+    margin-bottom: 0;
+}

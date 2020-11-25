@@ -1,5 +1,6 @@
 import { module } from 'modujs';
 import modularLoad from 'modularload';
+import { html } from '../utils/environment.js';
 
 export default class extends module {
     constructor(m) {
@@ -8,15 +9,24 @@ export default class extends module {
 
     init() {
         const load = new modularLoad({
-            enterDelay: 600,
+            enterDelay: 900,
             transitions: {
                 customTransition: {}
             }
         });
 
+        load.on('loading', (transiton, oldContainer) => {
+            html.classList.remove('has-products-open');
+            html.classList.remove('has-dom-ready');
+        });
+
         load.on('loaded', (transition, oldContainer, newContainer) => {
             this.call('destroy', oldContainer, 'app');
             this.call('update', newContainer, 'app');
+
+            setTimeout(() => {
+                html.classList.add('has-dom-ready');
+            },800);
         });
     }
 }

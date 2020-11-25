@@ -42,13 +42,10 @@
         .c-button:hover {
             color: $black;
         }
-
-        
     }
 
-    .has-products-open & {
-        // color: $blackOff;
-        // transition-delay: 0.3s;
+    &.-white {
+        color: $white;
     }
 }
 
@@ -66,6 +63,7 @@
     .is-loaded & {
         opacity: 1;
         transform: none;
+        transition-delay: 0.4s;
     }
 
     svg {
@@ -130,7 +128,7 @@
     .is-loaded:not(.has-products-open) & {
         @for $i from 1 through 3 {
             &:nth-child(#{$i}){
-                transition-delay: 0.3 + $i * 0.06s;
+                transition-delay: 0.5 + $i * 0.06s;
             }
         }
     }

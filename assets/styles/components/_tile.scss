@@ -11,6 +11,7 @@
     text-align: left;
 
     &:hover {
+        color: $grayDark;
         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.01), 0px 8px 6px rgba(0, 0, 0, 0.01), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 38px 25px rgba(0, 0, 0, 0.02), 0px 64px 46px rgba(0, 0, 0, 0.02), 0px 100px 80px rgba(0, 0, 0, 0.03);
         &:before {
             // opacity: 1;
@@ -61,6 +62,10 @@
     display: block;
     text-align: center;
     padding: rem(80px) 0;
+
+    .c-tile.-quarter & {
+        padding: rem(40px) 0;
+    }
 }
 
 .c-tile_inner_middle_image {
@@ -74,16 +79,20 @@
 }
 
 .c-tile_inner_bottom_item {
-    width: 50%;
+    
+    &:first-child {
+        width: 20%;
+    }
 
     &:nth-child(2) {
         text-align: right;
+        width: 80%;
     }
 }
 
 
 .c-tile_inner_bottom_title {
-    @extend .c-heading.-h3;
+    @extend .c-heading.-h4;
     line-height: 1;
     color: $blackOff;
     text-align: right;

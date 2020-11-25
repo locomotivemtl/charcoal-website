@@ -1,0 +1,11 @@
+.c-clients_rail {
+    width: 100%;
+    margin-top: rem($unit/2);
+}
+
+.c-clients_rail_item {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 0 rem($unit/2);
+}

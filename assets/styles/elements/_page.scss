@@ -71,6 +71,10 @@ body {
     .has-menu-mobile-open & {
         overflow: hidden;
     }
+
+    .is-first-load & {
+        opacity: 1 !important;
+    }
 }
 
 ::selection {
@@ -89,4 +93,13 @@ a {
 
 svg {
     display: block;
+}
+
+[data-scroll-section] {
+    will-change: transform;
+}
+
+[data-load-container] {
+    position: relative;
+    z-index: 10;
 }

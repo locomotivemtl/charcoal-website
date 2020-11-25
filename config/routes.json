@@ -10,6 +10,11 @@
                 "route": "/contact[/]",
                 "template": "app/template/contact",
                 "controller": "app/template/contact"
+            },
+            "multi": {
+                "route": "/multi[/]",
+                "template": "app/template/multi",
+                "controller": "app/template/multi"
             }
         },
         "actions": {},
@@ -19,7 +24,7 @@
         "charcoal/cms/route/generic": {}
     },
     "handlers": {
-        "defaults": {
+        "_defaults": {
             "template": "app/template/error",
             "controller": "app/template/error"
         }

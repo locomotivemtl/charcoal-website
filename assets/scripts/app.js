@@ -21,14 +21,20 @@ window.onload = (event) => {
 
 function init() {
     globals();
-
     app.init(app);
 
     setTimeout(() => {
         html.classList.add('is-first-load');
+    }, 200)
+
+    setTimeout(() => {
         html.classList.add('is-loaded');
         html.classList.add('is-ready');
         html.classList.remove('is-loading');
-    }, 600);
+
+        setTimeout(() => {
+            html.classList.add('has-dom-ready');
+        }, 600);
+    }, 1000);
 }
 

@@ -111,6 +111,5 @@ export default class extends Device {
 
     destroy() {
         super.destroy();
-        this.$el.off(`.${EVENT_NAMESPACE}`);
     }
 }

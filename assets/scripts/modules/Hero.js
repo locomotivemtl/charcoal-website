@@ -16,7 +16,7 @@ export default class extends module {
 
         this.currentFrame               = 0
         this.hasScrolled                = false
-        this.showPhone                  = false
+        this.hasDeviceVisible           = false
         this.isScrollingAnimCompleted   = false
         this.darkUI                     = true
     }
@@ -103,14 +103,14 @@ export default class extends module {
 
         // Manage the phone
         if(progress >= 0.5) {
-            if(!this.showPhone) {
+            if(!this.hasDeviceVisible) {
                 if(!this.isScrollingAnimCompleted) {
                     this.showDevice()
                     this.isScrollingAnimCompleted = true
                 }
             }
         } else {
-            if(this.showPhone) {
+            if(this.hasDeviceVisible) {
                 if(this.isScrollingAnimCompleted) {
                     this.hideDevice()
                     this.isScrollingAnimCompleted = false
@@ -150,10 +150,10 @@ export default class extends module {
     showDevice() {
         //Show the device and update variable with callback
         let slideUpCallback = () => {
-            this.showPhone = true
+            this.hasDeviceVisible = true
         }
 
-        this.call('slideUp', { callback: slideUpCallback }, 'Smartphone', 'hero')
+        this.call('slideUp', { callback: slideUpCallback }, 'Laptop', 'hero')
     }
 
     /**
@@ -164,10 +164,10 @@ export default class extends module {
     hideDevice() {
         //Hide the device and update variable with callback
         let slideOutCallback = () => {
-            this.showPhone = false
+            this.hasDeviceVisible = false
         }
 
-        this.call('slideOut', { callback: slideOutCallback }, 'Smartphone', 'hero')
+        this.call('slideOut', { callback: slideOutCallback }, 'Laptop', 'hero')
     }
 
     /**
@@ -176,7 +176,7 @@ export default class extends module {
      * @param
      */
     toggle(e) {
-        this.call('toggle', e, 'Smartphone');
+        this.call('toggle', e, 'Laptop');
 
         if (e.way === "enter") {
             html.classList.add('has-hero-inview')

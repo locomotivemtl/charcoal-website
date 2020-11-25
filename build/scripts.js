@@ -1,29 +1,16 @@
-import { rollup } from 'rollup';
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import common from 'rollup-plugin-commonjs';
+import esbuild from 'esbuild';
 import paths from '../mconfig.json';
+import message from './utils/message.js';
 
-function scripts() {
-    return rollup({
-            input: paths.scripts.src + paths.scripts.main + '.js',
-            plugins: [
-                resolve(),
-                babel({
-                    exclude: 'node_modules/**'
-                }),
-                common({
-                    include: 'node_modules/**'
-                }),
-            ]
-        }).then(bundle => {
-            return bundle.write({
-                file: paths.scripts.dest + paths.scripts.main + '.js',
-                name: paths.scripts.main,
-                format: 'iife',
-                sourcemap: true
-            });
-        });
+export function buildScripts() {
+    message('Compiling JS...', 'success');
+
+    esbuild.buildSync({
+      entryPoints: [paths.scripts.src + paths.scripts.main + '.js'],
+      bundle: true,
+      minify: true,
+      sourcemap: true,
+      target: ['es2015'],
+      outfile: paths.scripts.dest + paths.scripts.main + '.js',
+    });
 }
-
-export default scripts;
