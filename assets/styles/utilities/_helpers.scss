@@ -2,6 +2,12 @@
 // Utilities / Helpers
 // ==========================================================================
 
+.u-none\@from-medium {
+    
+    @media (min-width: $from-medium) {
+        display: none;
+    }    
+}
 
 .u-border-radius {
     border-radius: 12px;

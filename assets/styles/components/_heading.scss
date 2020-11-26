@@ -39,4 +39,9 @@
     &.-h6 {
         font-size: rem($font-size-h6);
     }
+
+    strong {
+        color: $blue;
+        font-weight: $normal;
+    }
 }

@@ -1,0 +1,33 @@
+.c-content-table_value {
+
+    svg {
+        display: inline-block;
+        width: rem(15px);
+        height: rem(15px);
+        vertical-align: middle;
+        margin-right: rem(5px);
+    }
+    
+    &.-enabled {
+        color: $blue;
+    }
+    &.-disabled {
+        color: $gray;
+    }
+}
+
+.c-content-table_line {
+    border-top: 1px solid $grayLine;
+    padding: rem($unit-small) 0;
+    min-height: rem(130px);
+    display: flex;
+    align-items: center;
+}
+
+.c-content-table_provider {
+    padding-bottom: rem($unit);
+
+    &.-main {
+        border-right: 1px solid $grayLine;
+    }
+}

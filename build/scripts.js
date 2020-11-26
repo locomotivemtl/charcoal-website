@@ -10,7 +10,7 @@ export function buildScripts() {
       bundle: true,
       minify: true,
       sourcemap: true,
-      target: ['es2015'],
+      target: ['es6'],
       outfile: paths.scripts.dest + paths.scripts.main + '.js',
     });
 }
