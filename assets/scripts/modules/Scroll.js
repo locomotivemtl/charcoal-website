@@ -16,7 +16,8 @@ export default class extends module {
             this.scroll = new LocomotiveScroll({
                 el: this.el,
                 smooth: true,
-                getDirection: true
+                getDirection: true,
+                offset: ['15%']
             });
 
             this.scroll.on('call', (func,way,obj,id) => {
