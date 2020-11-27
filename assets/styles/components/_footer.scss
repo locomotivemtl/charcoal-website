@@ -1,7 +1,78 @@
 .c-footer {
+    position: relative;
+    z-index: 1;
     background-color: $blue;
     padding: 40vw 0 0 0;
     color: $white;
+}
+
+.c-footer_background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.c-footer_background_shape {
+    position: absolute;
+
+    &.-one {
+        width: 50vw;
+        height: 50vw;
+        top: -30%;
+        left: -15%;
+    }
+    &.-two {
+        width: 50vw;
+        height: 50vw;
+        right: 6%;
+        top: 10%;
+    }
+    &.-three {
+        width: 50vw;
+        height: 50vw;
+        left: -10%;
+        top: 50%;
+    }
+    svg {
+        fill: $blueDark;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.c-footer_background_shape_inner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity 1.2s $easing, transform 0.9s $easeIn;
+
+    html.is-loading & {
+        opacity: 0;
+        transform: translate3d(0, -70vw, 0) scale3d(0,0,0) rotate(-90deg);
+        
+    }
+    
+    html.is-loading .c-footer_background_shape.-two & {
+        transform: translate3d(0, -55vw, 0) scale3d(0,0,0) rotate(60deg);
+    }
+
+    html.is-loading .c-footer_background_shape.-three & {
+        transform: translate3d(0, -50vw, 0) scale3d(0,0,0) rotate(-30deg);
+    }
+
+
+    @for $i from 1 through 3 {
+        html.is-loading .c-footer_background_shape:nth-child(#{$i}){
+            transition-delay: $i * 0.05s;
+        }
+    }
 }
 
 .c-footer_nav {
@@ -21,7 +92,7 @@
 }
 
 .c-footer_nav_list_item {
-    font-size: rem($font-size-h4);
+    font-size: rem($font-size-h3);
 
     a {
         display: block;
