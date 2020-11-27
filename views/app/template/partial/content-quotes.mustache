@@ -1,0 +1,38 @@
+<section data-scroll-section>
+    <div class="c-section u-background-light">
+        <div class="o-container">
+            <div class="c-content-quotes swiper-container u-anim" data-scroll data-module-carousel-quotes>
+                <div class="c-content-quotes_wrapper swiper-wrapper">
+                    {{# forLoop.4}}
+                    <div class="c-content-quotes_item swiper-slide">
+                        <div class="c-content-quotes_item_inner">
+                            <blockquote class="c-content-quotes_item_blockquote">
+                                “Since we started using Charcoal, our sales have been <strong>multiplied by 100</strong>. And that’s amazing, who wouldn’t want that?”
+                            </blockquote>
+                            <p class="c-content-quotes_author">
+                                Elon Musk <br>
+                                CEO at Tesla
+                            </p>
+                        </div>
+                    </div>
+                    {{/ forLoop.4}}
+                </div>
+                <div class="c-content-quotes_controls">
+                    <div class="c-content-quotes_controls_buttons">
+                        <button class="c-content-quotes_controls_buttons_item" type="button" aria-label="Prev" data-carousel-quotes="prev">
+                            <span class="c-content-quotes_controls_buttons_item_icon">
+                                <svg role="img" aria-hidden="true"><use href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-tip-left{{/ withBaseUrl }}"></use></svg>
+                            </span>
+                        </button>
+
+                        <button class="c-content-quotes_controls_buttons_item" type="button" aria-label="Next" data-carousel-quotes="next">
+                            <span class="c-content-quotes_controls_buttons_item_icon">
+                                <svg role="img" aria-hidden="true"><use href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-tip-right{{/ withBaseUrl }}"></use></svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

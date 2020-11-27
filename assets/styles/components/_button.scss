@@ -3,9 +3,11 @@
     position: relative;
     z-index: 1;
     transform: translateZ(0);
+    transition: color $speed $easing;
 
     .c-button-hover:hover &,
     &:hover {
+        
         color: currentColor;
 
         &.-white {

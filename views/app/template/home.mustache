@@ -12,11 +12,13 @@
                 data-scroll-id="hero"
                 data-scroll-call="toggle,Hero"
                 data-scroll-repeat
+                data-scroll-offset="0"
             >
                 <div
                     class="c-hero_container"
                     data-scroll
                     data-scroll-sticky
+                    data-scroll-offset="0"
                     data-scroll-target="#hero"
                 >
                     <header class="c-header -difference">
@@ -161,7 +163,7 @@
                         </p>
 
                         <div class="c-splash-words_features">
-                            <a href="#" class="c-tile -small u-border-radius" data-scroll data-scroll-speed="2">
+                            <a href="#" class="c-tile -small u-border-radius" data-scroll data-scroll-offset="0" data-scroll-speed="2">
                                 <div class="c-tile_inner">
                                     <div class="c-tile_inner_top">
                                         <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et habitant.</span>
@@ -181,7 +183,7 @@
                                 </div>
                             </a>
 
-                            <a href="#" class="c-tile -small u-border-radius" data-scroll data-scroll-speed="2">
+                            <a href="#" class="c-tile -small u-border-radius" data-scroll data-scroll-offset="0" data-scroll-speed="2">
                                 <div class="c-tile_inner">
                                     <div class="c-tile_inner_top">
                                         <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et habitant.</span>
@@ -201,7 +203,7 @@
                                 </div>
                             </a>
 
-                            <a href="#" class="c-tile -small u-border-radius" data-scroll data-scroll-speed="2">
+                            <a href="#" class="c-tile -small u-border-radius" data-scroll data-scroll-offset="0" data-scroll-speed="2">
                                 <div class="c-tile_inner">
                                     <div class="c-tile_inner_top">
                                         <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et habitant.</span>
@@ -273,7 +275,7 @@
     {{> app/template/partial/main-products}}
 
     <section data-scroll-section>
-        <div class="c-section -no-padding-top u-overflow-hidden">
+        <div class="c-section u-background-light -no-padding-top u-overflow-hidden">
             <div class="o-container">
                 <h2 class="c-heading -h1 u-color-blue u-anim-text-line" data-module-split data-scroll>
                     Case <br>Studies
@@ -282,7 +284,7 @@
                 <div class="c-carousel-cases" data-modules-carousel-cases>
                     <div class="c-carousel-cases-visual_container swiper-container" data-carousel-cases="carousel-visual">
                         <div class="c-carousel-cases-visual_wrapper swiper-wrapper">
-                            {{#forLoop.2}}
+                            {{#forLoop.3}}
                             <div class="c-carousel-cases-visual_slide swiper-slide">
                                 <img
                                     class="c-carousel-cases-visual_slide_image"
@@ -291,13 +293,13 @@
                                     data-load-src="{{# withBaseUrl }}assets/images/placeholders/project-pic-3d.png{{/ withBaseUrl }}"
                                 >
                             </div>
-                            {{/forLoop.2}}
+                            {{/forLoop.3}}
                         </div>
                     </div>
 
                     <div class="c-carousel-cases-info_container swiper-container" data-carousel-cases="carousel-info">
                         <div class="c-carousel-cases-info_wrapper swiper-wrapper">
-                            {{#forLoop.2}}
+                            {{#forLoop.3}}
                             <div class="c-carousel-cases-info_slide swiper-slide" data-project-url="https://google.ca?test={{.}}">
                                 <div class="c-carousel-cases-info_slide_inner">
                                     <div class="c-carousel-cases-info_slide_left">
@@ -315,7 +317,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{/forLoop.2}}
+                            {{/forLoop.3}}
                         </div>
 
                         <div class="c-carousel_controls">
@@ -346,7 +348,7 @@
                 <div class="o-container">
                     <p>Trusted by</p>
                 </div>
-                <div class="c-clients_rail" data-scroll data-module-rail="clients-rail" data-rail-speed="1" data-scroll data-scroll-call="trigger,Rail,clients-rail">
+                <div class="c-clients_rail" data-module-rail="clients-rail" data-rail-speed="1" data-scroll data-scroll-call="trigger,Rail,clients-rail">
                     <span>
                         <span class="c-clients_rail_item">
                             <svg role="img"><use href="assets/images/sprite.svg#client-1"></use></svg>

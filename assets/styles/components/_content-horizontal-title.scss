@@ -1,0 +1,35 @@
+.c-content-horizontal-title {
+    position: relative;
+}
+
+.c-content-horizontal-title_infos {
+    max-width: rem(250px);
+    position: relative;
+
+    &::before{
+        content:"";
+        position: absolute;
+        top: -150%;
+        left: - rem($unit/2);
+        bottom: 0.2em;
+        width: 1px;
+        background-color: $blackOff;
+        transform: scale3d(1,0,1);
+        transform-origin: center top;
+        transition: transform $speed $easing;
+    }
+    
+    &.is-inview {
+        &::before{
+            transform: scale3d(1,1,1);
+        }
+        
+    }
+    
+    
+    @media (min-width: $from-medium) {
+        position: absolute;
+        top: calc(100% + #{rem($unit/2)});
+        left: 60%;
+    }
+}

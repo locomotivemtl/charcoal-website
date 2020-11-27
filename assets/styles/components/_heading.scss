@@ -3,7 +3,7 @@
     margin-bottom: rem(30px);
 
     &.-h1 {
-        font-size: 15vw;
+        font-size: 18vw;
         font-weight: normal;
         line-height: 0.9;
     }
@@ -12,11 +12,6 @@
         font-size: 12vw;
         font-weight: normal;
         line-height: 0.9;
-
-        > div > div {
-            margin-top: -0.1em;
-            margin-bottom: 0.1em;
-        }
     }
 
     &.-h3 {
