@@ -85,10 +85,10 @@ export default class extends Device {
         if(this.object && this.object.position) {
             if(window.innerWidth > 700) {
                 this.object.position.x = 0.15
-                this.object.position.y = 0.1
+                this.object.position.y = -0.1
                 this.object.position.z = 0
 
-                this.camera.position.z = 12.5
+                this.camera.position.z = 12
             } else {
                 this.object.position.x = -0.1
                 this.object.position.y = 0.1

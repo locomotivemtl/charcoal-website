@@ -8,8 +8,6 @@
 
 .c-header-multi_scroll-indicator {
     position: absolute;
-    right: rem($unit*2);
-    bottom: rem($unit*2);
     z-index: 10;
     opacity: 0;
     transform: translateY(-50px);
@@ -19,6 +17,22 @@
         transform: none;
         opacity: 1;
         transition-delay: 0.85s;
+    }
+
+        
+    @media (min-width: $from-large) {
+        right: rem($unit*2);
+        bottom: rem($unit*2);
+    }
+    
+    @media (max-width: $to-large) and (min-width: $from-medium) {
+        right: rem($unit);
+        bottom: rem($unit);
+    }
+    
+    @media (max-width: $to-medium) {
+        right: 30px;
+        bottom: 30px;
     }
 }
 

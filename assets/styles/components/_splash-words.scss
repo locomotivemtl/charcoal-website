@@ -37,32 +37,53 @@
 }
 
 .c-splash-words_features {
-    @media (min-width: $from-medium) {
+    @media (min-width: $from-large) {
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
     }
+    
+    @media (max-width: $to-large) {
+        margin-top: rem($unit/2);
+    }
+
+    
+    @media (max-width: $to-large) and (min-width: $from-medium) {
+        font-size: 0;
+
+        .c-tile {
+            font-size: 1rem;
+            display: inline-block;
+            width: calc(33% - #{rem($unit/4)});
+            
+            &:nth-child(2) {
+                margin-left: rem($unit/2.2);
+                margin-right: rem($unit/2.2);
+                
+            }
+        }
+    }
 
     .c-tile:nth-child(1) {
-        @media (min-width: $from-medium) {
+        @media (min-width: $from-large) {
             position: absolute;
             left: 65%;
-            top: 10%;
+            top: 20%;
         }
     }
 
     .c-tile:nth-child(2) {
-        @media (min-width: $from-medium) {
+        @media (min-width: $from-large) {
             position: absolute;
             left: 10%;
-            top: 35%;
+            top: 50%;
         }
     }
 
     .c-tile:nth-child(3) {
-        @media (min-width: $from-medium) {
+        @media (min-width: $from-large) {
             position: absolute;
             right: 10%;
-            bottom: 10%;
+            bottom: 0%;
         }
     }
 }

@@ -66,6 +66,10 @@
     .c-tile.-quarter & {
         padding: rem(40px) 0;
     }
+
+    @media (max-width: $to-large) {
+        padding: rem(40px) 0;
+    }
 }
 
 .c-tile_inner_middle_image {

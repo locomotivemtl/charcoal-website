@@ -52,6 +52,10 @@
 
     &.-gutter-huge {
         margin-left: rem(-150px);
+
+        @media (max-width: $to-large) {
+            margin-left: rem(-$unit);
+        }
     }
 
     // Horizontal aligment modifiers
@@ -103,6 +107,10 @@
 
     .o-layout.-gutter-huge > & {
         padding-left: rem(150px);
+
+        @media (max-width: $to-large) {
+            padding-left: rem($unit);
+        }
     }
 
     // Vertical alignment modifiers

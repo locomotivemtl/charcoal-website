@@ -1,6 +1,27 @@
 .c-video {
     position: relative;
     cursor: pointer;
+
+    &::after{
+        content:"";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        opacity: 0;
+        background-color: rgba($blackOff, 0.6);
+        transition: opacity $speed-slow $easing;
+    }
+
+    &:hover {
+        &::after{
+            opacity: 1;
+        }
+        
+    }
+    
 }
 
 .c-video_button {

@@ -1,9 +1,15 @@
 .c-section {
-    padding-top: rem(130px);
-    padding-bottom: rem(130px);
+    padding-top: rem($unit * 2);
+    padding-bottom: rem($unit * 2);
     position: relative;
 
     &.-no-padding-top {
         padding-top: 0;
+    }
+
+    
+    @media (max-width: $to-large) {
+        padding-top: rem($unit);
+        padding-bottom: rem($unit);
     }
 }

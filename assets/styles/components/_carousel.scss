@@ -28,8 +28,8 @@
         opacity: 0.35;
     }
 
-    .c-button-hover:hover &,
-    &:hover {
+    html:not(.is-mobile) .c-button-hover:hover &,
+    html:not(.is-mobile) &:hover {
         color: $white;
 
         &.-white {

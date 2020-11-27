@@ -49,8 +49,10 @@ export default class extends module {
         }
 
         Promise.all([initPromise]).then(() => {
-            if(!this.autoshow) {
-                this.slideUp()
+            if(!this.autoshow || window.isMobile) {
+                setTimeout(() => {
+                    this.slideUp();
+                }, 1600);
             }
         });
 
@@ -187,7 +189,9 @@ export default class extends module {
 
         this.slideUpTl = new TimelineMax({
             onComplete: () => {
-                param.callback()
+                if(param !== undefined) {
+                    param.callback()
+                }
             }
         })
         this.slideUpTl.addLabel('start', 0)
@@ -367,10 +371,11 @@ export default class extends module {
     }
 
     render(){
-        this.wrapper.rotation.x = lerp(this.wrapper.rotation.x, this.wrapper.rotationTarget.x, 0.1);
-        this.wrapper.rotation.y = lerp(this.wrapper.rotation.y, this.wrapper.rotationTarget.y, 0.1);
-        this.wrapper.rotation.z = lerp(this.wrapper.rotation.z, this.wrapper.rotationTarget.z, 0.1);
-
+        if(this.wrapper !== undefined) {
+            this.wrapper.rotation.x = lerp(this.wrapper.rotation.x, this.wrapper.rotationTarget.x, 0.1);
+            this.wrapper.rotation.y = lerp(this.wrapper.rotation.y, this.wrapper.rotationTarget.y, 0.1);
+            this.wrapper.rotation.z = lerp(this.wrapper.rotation.z, this.wrapper.rotationTarget.z, 0.1);
+        }
         this.camera.updateProjectionMatrix();
         // this.controls.update();
 

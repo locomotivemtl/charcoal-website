@@ -40,7 +40,7 @@ export default class extends module {
                     html.classList.remove('is-scrolling-down')
                 }
 
-                this.call('checkScroll','Object3D');
+                // this.call('checkScroll','Object3D');
 
                 if(typeof args.currentElements['hero'] === 'object') {
                     let progress = args.currentElements['hero'];

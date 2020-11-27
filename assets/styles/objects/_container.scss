@@ -23,10 +23,16 @@
        // max-width: none;
     }
 
-    @media (min-width: $from-medium) {
+    @media (min-width: $from-large) {
         padding-right: rem($unit * 2);
         padding-left: rem($unit * 2);
         max-width: rem($container-width + ($padding * 2));
+    }
+
+    
+    @media (max-width: $to-large) and (min-width: $from-medium) {
+        padding-right: rem($unit);
+        padding-left: rem($unit);
     }
 
     @media (max-width: $to-medium) {
