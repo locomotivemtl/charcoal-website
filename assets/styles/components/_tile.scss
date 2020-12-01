@@ -31,7 +31,10 @@
     }
 
     &.-small {
-        max-width: rem(345px);
+
+        @media (min-width: $from-small) {
+            max-width: rem(345px);
+        }
     }
 }
 
@@ -83,7 +86,7 @@
 }
 
 .c-tile_inner_bottom_item {
-    
+
     &:first-child {
         width: 20%;
     }

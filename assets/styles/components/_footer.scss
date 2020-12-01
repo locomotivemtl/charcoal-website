@@ -56,9 +56,9 @@
     html.is-loading & {
         opacity: 0;
         transform: translate3d(0, -70vw, 0) scale3d(0,0,0) rotate(-90deg);
-        
+
     }
-    
+
     html.is-loading .c-footer_background_shape.-two & {
         transform: translate3d(0, -55vw, 0) scale3d(0,0,0) rotate(60deg);
     }
@@ -77,6 +77,11 @@
 
 .c-footer_nav {
     margin-bottom: rem($unit);
+
+
+    @media (max-width: $to-small) {
+        text-align: center;
+    }
 }
 
 .c-footer_logo {
@@ -88,6 +93,18 @@
         width: 100%;
         height: 100%;
         display: block;
+    }
+
+
+    @media (max-width: $to-small) {
+        margin: auto;
+    }
+}
+
+.c-footer_nav_list {
+
+    @media (max-width: $to-medium) {
+        margin: rem($unit/2) 0;
     }
 }
 

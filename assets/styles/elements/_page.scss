@@ -45,6 +45,8 @@ html {
         font-size: $font-size + 2px;
     }
 
+    overflow-x: hidden;
+
     &.is-loading {
         cursor: wait;
     }
@@ -64,6 +66,8 @@ html {
 }
 
 body {
+    overflow-x: hidden;
+
     .has-scroll-smooth & {
         overflow: hidden;
     }

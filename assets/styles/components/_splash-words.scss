@@ -41,12 +41,11 @@
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
     }
-    
+
     @media (max-width: $to-large) {
         margin-top: rem($unit/2);
     }
 
-    
     @media (max-width: $to-large) and (min-width: $from-medium) {
         font-size: 0;
 
@@ -54,12 +53,31 @@
             font-size: 1rem;
             display: inline-block;
             width: calc(33% - #{rem($unit/4)});
-            
+
             &:nth-child(2) {
                 margin-left: rem($unit/2.2);
                 margin-right: rem($unit/2.2);
-                
             }
+        }
+    }
+
+
+    @media (max-width: $to-medium) {
+        text-align: center;
+
+        .c-tile {
+            display: inline-block;
+            margin-left: rem($unit/2);
+            margin-right: rem($unit/2);
+        }
+    }
+
+
+    @media (max-width: $to-small) {
+        .c-tile {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
         }
     }
 

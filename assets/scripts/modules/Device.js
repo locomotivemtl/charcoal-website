@@ -9,9 +9,10 @@ const FILETYPES = {
     GLTF: 'gltf'
 }
 
-export default class extends module {
-    constructor(m) {
-        super(m);
+export default class {
+    constructor(el) {
+
+        this.el = el;
 
         this.showGui = this.el.getAttribute('data-gui');
 
@@ -28,13 +29,13 @@ export default class extends module {
         }
 
         this.device = this.el.getAttribute('data-device');
-        this.textureSrc = this.el.getAttribute('data-texture');
         this.deviceColor = this.el.getAttribute('data-color') && this.el.getAttribute('data-color').length ? this.el.getAttribute('data-color') : 'ffffff'
 
         this.autoshow = this.el.getAttribute('data-autoshow') && this.el.getAttribute('data-autoshow').length ? this.el.getAttribute('data-autoshow') : true
     }
 
     init() {
+
 
         // Set events and such
         this.initScene();
@@ -362,7 +363,6 @@ export default class extends module {
     }
 
     toggle(e) {
-        console.log(e, 'device')
         if (e.way === "enter") {
             this.animate()
         } else {
@@ -371,15 +371,19 @@ export default class extends module {
     }
 
     render(){
+
         if(this.wrapper !== undefined) {
             this.wrapper.rotation.x = lerp(this.wrapper.rotation.x, this.wrapper.rotationTarget.x, 0.1);
             this.wrapper.rotation.y = lerp(this.wrapper.rotation.y, this.wrapper.rotationTarget.y, 0.1);
             this.wrapper.rotation.z = lerp(this.wrapper.rotation.z, this.wrapper.rotationTarget.z, 0.1);
         }
-        this.camera.updateProjectionMatrix();
-        // this.controls.update();
+        if(this.camera !== undefined) {
+            this.camera.updateProjectionMatrix();
+        }
 
-        this.renderer.render(this.scene, this.camera);
+        if(this.renderer !== undefined) {
+            this.renderer.render(this.scene, this.camera);
+        }
     }
 
     resize() {

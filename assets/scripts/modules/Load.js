@@ -18,6 +18,8 @@ export default class extends module {
         load.on('loading', (transiton, oldContainer) => {
             html.classList.remove('has-products-open');
             html.classList.remove('has-dom-ready');
+            html.classList.remove('has-mobile-menu-open');
+
         });
 
         load.on('loaded', (transition, oldContainer, newContainer) => {

@@ -2,8 +2,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    padding: rem($unit) 0;
+    width: 100vw;
     z-index: 100;
     transition: color $speed $easing 0.3s;
     font-weight: $medium;
@@ -17,11 +16,9 @@
     }
 
     &.-fixed {
-        padding: rem(10px) 0;
         position: fixed;
         background-color: $white;
         transform: translateY(-100%);
-        border-bottom: 2px solid $grayLight;
 
         html.is-first-load & {
             transition: transform $speed $easing, border-bottom $speed $easing;
@@ -31,7 +28,8 @@
             transform: translateY(0);
         }
 
-        html.has-products-open & {
+        html.has-products-open &,
+        html.has-mobile-menu-open & {
             transform: translateY(0);
         }
 
@@ -42,10 +40,30 @@
         .c-button:hover {
             color: $black;
         }
+
+        @media (min-width: $from-medium) {
+            padding: rem(10px) 0;
+        }
+        @media (min-width: $from-small) {
+            border-bottom: 2px solid $grayLight;
+        }
+
+
+        @media (max-width: $to-medium) {
+            padding: rem(20px) 0;
+        }
     }
 
     &.-white {
         color: $white;
+    }
+
+    @media (min-width: $from-medium) {
+        padding: rem($unit) 0;
+    }
+
+    @media (max-width: $to-medium) {
+        padding: rem(20px) 0;
     }
 }
 
@@ -87,9 +105,6 @@
     display: inline-flex;
     align-items: baseline;
 
-    @media (max-width: $to-medium) {
-        display: none;
-    }
 }
 
 .c-header_menu_item {
@@ -131,6 +146,11 @@
                 transition-delay: 0.5 + $i * 0.06s;
             }
         }
+    }
+
+
+    @media (max-width: $to-small) {
+        margin-right: rem($unit / 2);
     }
 }
 
@@ -206,18 +226,18 @@
 
 .c-header_burger_close {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0; left: 20%; right: 0; bottom: 0;
     transform: scale(0);
     transition: transform $speed $easing;
 
-    html.has-mobile-menu-open & {
+    html.has-mobile-menu-open .c-header.-fixed & {
         transform: scale(1);
     }
 }
 
 .c-header_burger_close_item {
     background-color: currentColor;
-    height: 1px;
+    height: 2px;
     width: 100%;
     display: block;
     position: absolute;

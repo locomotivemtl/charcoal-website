@@ -153,7 +153,7 @@ export default class extends module {
             this.hasDeviceVisible = true
         }
 
-        this.call('slideUp', { callback: slideUpCallback }, 'Laptop', 'hero')
+        this.call('slideUp', { callback: slideUpCallback }, 'DeviceManager', 'hero')
     }
 
     /**
@@ -167,16 +167,16 @@ export default class extends module {
             this.hasDeviceVisible = false
         }
 
-        this.call('slideOut', { callback: slideOutCallback }, 'Laptop', 'hero')
+        this.call('slideOut', { callback: slideOutCallback }, 'DeviceManager', 'hero')
     }
 
-    /**
+/**
      * Toggle (inview or not)
      *
      * @param
      */
     toggle(e) {
-        this.call('toggle', e, 'Laptop');
+        this.call('toggle', e, 'DeviceManager');
 
         if (e.way === "enter") {
             html.classList.add('has-hero-inview')

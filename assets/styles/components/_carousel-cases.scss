@@ -1,12 +1,19 @@
 .c-carousel-cases {
-    display: flex;
     position: relative;
+
+    @media (min-width: $from-medium) {
+        display: flex;
+    }
 }
 
 .c-carousel-cases-visual_container {
     width: 75%;
     margin: 0;
     overflow: visible;
+
+    @media (max-width: $to-medium) {
+        width: 100%;
+    }
 }
 
 .c-carousel-cases-visual_slide_image {
@@ -22,27 +29,45 @@
 }
 
 .c-carousel-cases-info_container {
-    position: absolute;
-    right: 0; top: 50%;
-    width: rem(400px);
-    transform: translateY(-50%);
 
     .c-carousel_controls_buttons {
         width: 50%;
     }
+
+    @media (min-width: $from-medium) {
+        position: absolute;
+        right: 0; top: 50%;
+        width: rem(400px);
+        transform: translateY(-50%);
+
+    }
+
+    @media (max-width: $to-medium) {
+        width: 100%;
+        margin-bottom: rem($unit);
+    }
 }
 
 .c-carousel-cases-info_slide_inner {
-    display: flex;
-    justify-content: space-between;
+
+    @media (min-width: $from-small) {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .c-carousel-cases-info_slide_left {
-    width: 30%;
+
+    @media (min-width: $from-small) {
+        width: 30%;
+    }
 }
 
 .c-carousel-cases-info_slide_right {
-    width: 50%;
+
+    @media (min-width: $from-small) {
+        width: 50%;
+    }
 }
 
 .c-carousel-cases-info_slide_label {

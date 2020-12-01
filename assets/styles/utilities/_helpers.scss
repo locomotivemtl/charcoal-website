@@ -3,10 +3,22 @@
 // ==========================================================================
 
 .u-none\@from-medium {
-    
+
     @media (min-width: $from-medium) {
         display: none;
-    }    
+    }
+}
+
+.u-none\@to-medium {
+    @media (max-width: $to-medium) {
+        display: none;
+    }
+}
+
+.u-text-right\@from-medium {
+    @media (min-width: $from-medium) {
+        text-align: right;
+    }
 }
 
 .u-border-radius {

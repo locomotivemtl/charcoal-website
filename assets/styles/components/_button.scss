@@ -36,7 +36,7 @@
         border: 2px solid currentColor;
         border-radius: 999px;
     }
-    
+
     &::after{
         content: '';
         position: absolute;
@@ -49,7 +49,7 @@
         transition: transform $speed $easing, opacity $speed $easing;
         z-index: -1;
     }
-    
+
 
     &.-blue {
         color: $white;
@@ -59,13 +59,27 @@
             background-color: $blue;
             transition-delay: 0s;
         }
-        
+
         &::after{
             border:none;
             background-color: $blackOff;
             transition-delay: 0s;
         }
-        
+    }
+    &.-black {
+        color: $white;
+
+        &::before{
+            border:none;
+            background-color: $blackOff;
+            transition-delay: 0s;
+        }
+
+        &::after{
+            border:none;
+            background-color: $blackOff;
+            transition-delay: 0s;
+        }
     }
     &.-white {
         color: $blackOff;
@@ -81,7 +95,7 @@
             background-color: $blue;
             transition-delay: 0s;
         }
-        
+
     }
 
     &.-big {
@@ -99,7 +113,7 @@
             background-color: $blackOff;
         }
     }
-    
+
 }
 
 .c-button_label {

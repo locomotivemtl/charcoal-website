@@ -11,8 +11,10 @@ export default class extends Device {
             }
         }
 
-        this.file = 'laptop_v2.glb'
+        this.file = 'laptop_v2.glb';
+        this.textureSrc = this.el.getAttribute('data-texture-laptop');
 
+        super.init();
     }
 
     initGui() {
@@ -83,7 +85,7 @@ export default class extends Device {
 
     reposition() {
         if(this.object && this.object.position) {
-            if(window.innerWidth > 700) {
+            if(window.innerWidth > 800) {
                 this.object.position.x = 0.15
                 this.object.position.y = -0.1
                 this.object.position.z = 0
@@ -91,10 +93,10 @@ export default class extends Device {
                 this.camera.position.z = 12
             } else {
                 this.object.position.x = -0.1
-                this.object.position.y = 0.1
+                this.object.position.y = -1.5
                 this.object.position.z = 0
 
-                this.camera.position.z = 10
+                this.camera.position.z = 20
             }
         }
     }

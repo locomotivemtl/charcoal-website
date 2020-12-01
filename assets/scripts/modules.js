@@ -1,5 +1,6 @@
 export {default as Load}                from './modules/Load';
 export {default as Scroll}              from './modules/Scroll';
+export {default as DeviceManager}       from './modules/DeviceManager';
 export {default as Smartphone}          from './modules/Smartphone';
 export {default as Laptop}              from './modules/Laptop';
 export {default as ProductsButton}      from './modules/ProductsButton';
@@ -15,3 +16,4 @@ export {default as Rail}                from './modules/Rail';
 export {default as RailMove}            from './modules/RailMove';
 export {default as Split}               from './modules/Split';
 export {default as CarouselQuotes}      from './modules/CarouselQuotes';
+export {default as NavMobileButton}     from './modules/NavMobileButton';

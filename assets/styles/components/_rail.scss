@@ -4,6 +4,8 @@
     display: inline-flex;
     transform: translate3d(0,0,0);
     width: 100%;
+    overflow: hidden;
+    max-width: 100vw;
 }
 
 .c-rail_group-container {
@@ -24,7 +26,7 @@
     display: inline-block;
     box-sizing: border-box;
     font-size: 1rem;
-    
+
 }
 
 .c-rail_track-container {

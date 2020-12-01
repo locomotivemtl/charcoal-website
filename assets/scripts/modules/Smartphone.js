@@ -15,6 +15,9 @@ export default class extends Device {
                 rotation: [-12,-10,-18]
             }
         }
+        this.textureSrc = this.el.getAttribute('data-texture-smartphone');
+
+        super.init();
 
     }
 
@@ -70,10 +73,11 @@ export default class extends Device {
 
     reposition() {
         if(this.object && this.object.position) {
-            if(window.innerWidth > 700) {
-                this.camera.position.z = 14.5
+            if(window.innerWidth > 800) {
+                this.camera.position.z = 14.5;
             } else {
-                this.camera.position.z = 10.5
+                this.camera.position.y = 1;
+                this.camera.position.z = 24;
             }
         }
     }
