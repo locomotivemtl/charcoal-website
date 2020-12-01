@@ -1,7 +1,7 @@
 .c-content-visual {
     text-align: right;
 
-    
+
     @media (min-width: $from-medium) {
         &::before{
             content:"";
@@ -12,7 +12,7 @@
             height: 33%;
             background-color: $blue;
         }
-        
+
     }
 }
 
@@ -26,10 +26,14 @@
         display: block;
         padding-bottom: 100%;
     }
-    
+
 
     @media (min-width: $from-medium) {
         width: span(3/5);
+    }
+
+    @media (max-width: $to-medium) {
+        width: 100%;
     }
 }
 

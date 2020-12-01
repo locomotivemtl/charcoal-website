@@ -1,13 +1,12 @@
 .c-content-tagline_inner {
     max-width: rem(1000px);
-    font-size: rem(68px);
     line-height: 1;
     opacity: 0;
 
     &.is-split {
         opacity: 1;
     }
-    
+
     > div {
         overflow: hidden;
     }
@@ -48,5 +47,17 @@
     strong {
         color: $blue;
         font-weight: $normal;
+    }
+
+    @media (min-width: $from-medium) {
+        font-size: rem(68px);
+    }
+
+    @media (max-width: $to-medium) {
+        font-size: rem(50px);
+    }
+
+    @media (max-width: $to-small) {
+        font-size: rem(35px)
     }
 }

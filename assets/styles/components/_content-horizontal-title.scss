@@ -1,5 +1,9 @@
 .c-content-horizontal-title {
     position: relative;
+
+    @media (max-width: $to-large) and (min-width: $from-medium) {
+        margin-bottom: rem($unit);
+    }
 }
 
 .c-content-horizontal-title_infos {
@@ -17,19 +21,31 @@
         transform: scale3d(1,0,1);
         transform-origin: center top;
         transition: transform $speed $easing;
+
+
+        @media (max-width: $to-small) {
+            display: none;
+        }
     }
-    
+
     &.is-inview {
         &::before{
             transform: scale3d(1,1,1);
         }
-        
     }
-    
-    
+
+
     @media (min-width: $from-medium) {
         position: absolute;
         top: calc(100% + #{rem($unit/2)});
         left: 60%;
+    }
+
+    @media (max-width: $to-medium) {
+        margin-left: rem($unit);
+    }
+
+    @media (max-width: $to-small) {
+        margin-left: rem($unit / 2);
     }
 }

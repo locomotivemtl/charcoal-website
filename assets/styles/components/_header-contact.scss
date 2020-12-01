@@ -3,7 +3,14 @@
 }
 
 .c-header-contact_infos {
-    margin-top: rem($unit * 1.5);
+
+    @media (min-width: $from-medium) {
+        margin-top: rem($unit * 1.5);
+    }
+
+    @media (max-width: $to-medium) {
+        margin-bottom: rem($unit);
+    }
 }
 
 .c-header-contact_submit_wrap {

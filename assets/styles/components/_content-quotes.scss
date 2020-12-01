@@ -7,11 +7,13 @@
 }
 
 .c-content-quotes_item_inner {
-    padding: 0 rem($unit * 4);
+
+    @media (min-width: $from-medium) {
+        padding: 0 rem($unit * 4);
+    }
 }
 
 .c-content-quotes_item_blockquote {
-    font-size: rem(44px);
     margin: 0;
     line-height: 1.2;
     margin-bottom: rem($unit/2);
@@ -26,6 +28,16 @@
     strong {
         color: $blue;
         font-weight: $normal;
+    }
+
+
+    @media (min-width: $from-medium) {
+        font-size: rem(44px);
+    }
+
+    @media (max-width: $to-medium) {
+        font-size: rem(34px);
+
     }
 }
 
@@ -42,10 +54,24 @@
 }
 
 .c-content-quotes_controls {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
+
+    @media (min-width: $from-medium) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    @media (max-width: $to-medium) {
+        margin-top: rem($unit/2);
+    }
+}
+
+.c-content-quotes_controls_buttons {
+
+    @media (max-width: $to-medium) {
+        display: flex;
+    }
 }
 
 .c-content-quotes_controls_buttons_item {
@@ -62,8 +88,8 @@
         opacity: 0.35;
     }
 
-    .c-button-hover:hover &,
-    &:hover {
+    html:not(.is-mobile) .c-button-hover:hover &,
+    html:not(.is-mobile) &:hover {
         color: $white;
 
         &.-white {
@@ -79,6 +105,11 @@
             transform: none;
             opacity: 1;
         }
+    }
+
+
+    @media (max-width: $to-medium) {
+        margin-right: rem(10px);
     }
 }
 

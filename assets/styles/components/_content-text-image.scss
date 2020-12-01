@@ -1,3 +1,10 @@
 .c-content-text-image_title {
     margin: rem($unit/2) 0;
 }
+
+.c-content-text-image_content {
+
+    @media (max-width: $to-medium) {
+        margin-top: rem($unit/2);
+    }
+}

@@ -7,7 +7,7 @@
         vertical-align: middle;
         margin-right: rem(5px);
     }
-    
+
     &.-enabled {
         color: $blue;
     }
@@ -28,6 +28,16 @@
     padding-bottom: rem($unit);
 
     &.-main {
-        border-right: 1px solid $grayLine;
+
+        @media (min-width: $from-medium) {
+            border-right: 1px solid $grayLine;
+        }
+    }
+}
+
+.c-content-table_wrap {
+
+    @media (max-width: $to-medium) {
+        margin-top: rem($unit/2);
     }
 }

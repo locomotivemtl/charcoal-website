@@ -9,19 +9,19 @@
             <div class="o-container">
                 <div class="c-header-multi">
                     <h1 class="c-header-multi_title c-heading -h2 u-anim-text-line" data-module-split data-scroll data-scroll-speed="2" data-scroll-position="top">
-                        Content 
+                        Content
                         Managment
                     </h1>
                     <p class="c-header-multi_content c-heading -h4 u-anim -delay-3">
                         Enhance your digital growth with our comprehensive content management system.
                     </p>
                     <div class="c-header-multi_scroll-indicator">
-                        <button class="c-scroll-indicator" type="button">
+                        <a href="#learn-more" class="c-scroll-indicator" data-scroll-to>
                             <span class="c-scroll-indicator_label">See features</span>
                             <span class="c-scroll-indicator_icon">
                                 <svg role="img" aria-hidden="true"><use href="assets/images/sprite.svg#arrow-down"></use></svg>
                             </span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
     </section>
 
     <section data-scroll-section>
-        <div class="c-content-visual u-background-light">
+        <div class="c-content-visual u-background-light" id="learn-more">
             <div class="c-content-visual_inner" data-scroll data-scroll-speed="2" data-scroll-offset="0">
                 <img
                     class="c-content-visual_inner_image"
@@ -40,7 +40,7 @@
             </div>
         </div>
     </section>
-    
+
     {{> app/template/partial/content-tagline}}
 
     {{> app/template/partial/content-table}}

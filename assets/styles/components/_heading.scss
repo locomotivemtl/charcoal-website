@@ -9,9 +9,16 @@
     }
 
     &.-h2 {
-        font-size: 12vw;
         font-weight: normal;
         line-height: 0.9;
+
+        @media (min-width: $from-small) {
+            font-size: 12vw;
+        }
+
+        @media (max-width: $to-small) {
+            font-size: 16vw;
+        }
     }
 
     &.-h3 {
@@ -22,8 +29,16 @@
 
     &.-h4 {
         font-weight: normal;
-        font-size: rem(27px);
-        line-height: rem(32px);
+        line-height: 1.2;
+
+
+        @media (min-width: $from-small) {
+            font-size: rem(27px);
+        }
+
+        @media (max-width: $to-small) {
+            font-size: rem(22px);
+        }
     }
 
     &.-h5 {
