@@ -112,13 +112,9 @@
     font-size: rem($font-size-h3);
 
     a {
-        display: block;
+        display: inline-block;
         padding: rem(5px) 0;
         transition: color $speed $easing;
-
-        &:hover {
-            color: darken($white, 15%);
-        }
 
         &:last-child {
             padding-bottom: 0;

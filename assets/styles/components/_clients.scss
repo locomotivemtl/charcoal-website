@@ -8,4 +8,9 @@
     height: 100px;
     display: inline-block;
     margin: 0 rem($unit/2);
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
 }

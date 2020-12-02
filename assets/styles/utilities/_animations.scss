@@ -47,7 +47,7 @@
     &.is-split {
         opacity: 1;
     }
-    
+
     > div {
         overflow: hidden;
     }
@@ -55,7 +55,7 @@
     > div div {
         margin-top: -0.1em;
         margin-bottom: 0.1em;
-        
+
         transform: translate3d(0,101%,0);
         transition: opacity 0.3s $easing, transform 0.3s $easing;
     }
@@ -66,7 +66,7 @@
                transform: translate3d(0,0,0);
                transition-duration: 1s;
            }
-           @for $i from 1 through 12 {
+           @for $i from 1 through 15 {
                 &:nth-child(#{$i}) div {
                     transition-delay: 0.7 + $i * 0.1s;
                 }
@@ -80,7 +80,7 @@
                 transform: translate3d(0,0,0);
                 transition-duration: 1s;
             }
-            @for $i from 1 through 12 {
+            @for $i from 1 through 15 {
                 &:nth-child(#{$i}) div {
                     transition-delay: $i * 0.1s;
                 }
@@ -94,7 +94,7 @@
                 transform: translate3d(0,0,0);
                 transition-duration: 1s;
             }
-            @for $i from 1 through 12 {
+            @for $i from 1 through 15 {
                 &:nth-child(#{$i}) div {
                     transition-delay: $i * 0.1s;
                 }
@@ -108,7 +108,7 @@
                 transform: translate3d(0,-101%,0);
                 transition-duration: 0.6s;
             }
-            @for $i from 1 through 12 {
+            @for $i from 1 through 15 {
                 &:nth-child(#{$i}) div {
                     transition-delay: $i * 0.1s;
                 }

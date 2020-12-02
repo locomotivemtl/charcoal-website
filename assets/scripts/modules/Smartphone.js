@@ -76,7 +76,7 @@ export default class extends Device {
             if(window.innerWidth > 800) {
                 this.camera.position.z = 14.5;
             } else {
-                this.camera.position.y = 1;
+                this.camera.position.y = 0;
                 this.camera.position.z = 24;
             }
         }

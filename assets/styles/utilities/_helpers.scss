@@ -40,8 +40,21 @@
 }
 
 .u-background-light {
-    background-color: $grayLight;
     color: $blackOff;
+    position: relative;
+    z-index: 1;
+
+    &::before{
+        content:"";
+        position: absolute;
+        top: -1px;
+        bottom: -1px;
+        right: 0;
+        left: 0;
+        z-index: -1;
+        background-color: $grayLight;
+    }
+
 }
 
 

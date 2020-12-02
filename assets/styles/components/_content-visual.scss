@@ -20,6 +20,13 @@
     position: relative;
     display: inline-block;
     background-color: $white;
+    opacity: 0;
+    transition: opacity $speed-slow $easing 0.8s;
+
+    html.is-loaded &.is-inview {
+        opacity: 1;
+        transition-delay: 0.3s;
+    }
 
     &::before{
         content:"";

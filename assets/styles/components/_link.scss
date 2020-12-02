@@ -1,0 +1,41 @@
+.c-link {
+    position: relative;
+
+    &::after{
+        content:"";
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        bottom: 5px;
+        right: 0;
+        left: 0;
+        border-bottom: 2px solid currentColor;
+        transform-origin: center right;
+        transform: scale3d(0,1,1);
+        transition: transform $speed $easing;
+    }
+
+    div {
+        transition: transform $speed $easing;
+        transform: translate3d(0,0,0);
+
+        @for $i from 0 through 15 {
+            &:nth-child(#{$i}){
+                transition-delay: $i * 0.02s;
+            }
+        }
+    }
+
+    html:not(.is-mobile) &:hover {
+        div {
+            transform: translate3d(0,-7px,0);
+
+        }
+        &::after{
+            transform-origin: center left;
+            transform: scale3d(1,1,1);
+        }
+
+    }
+
+}

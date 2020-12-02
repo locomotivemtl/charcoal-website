@@ -148,6 +148,9 @@
         }
     }
 
+    .c-link {
+        padding: rem(5px) 0;
+    }
 
     @media (max-width: $to-small) {
         margin-right: rem($unit / 2);

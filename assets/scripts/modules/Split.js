@@ -19,12 +19,13 @@ export default class extends module {
                 for (let i = 0; i < lines.length; i++) {
                     const line = lines[i];
                     const lineInner = line.innerHTML;
-        
+
                     line.innerHTML = '<div></div>'
-        
+
                     line.querySelector('div').innerHTML = lineInner;
                 }
             }
+
         }, 600);
 
     }
