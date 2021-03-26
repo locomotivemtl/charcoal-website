@@ -19,14 +19,14 @@
         &::after{
             opacity: 1;
         }
-
     }
 
 }
 
 .c-video_button {
     position: absolute;
-    top: 50%; left: 50%;
+    bottom: rem($unit * 2);
+    left: rem($unit * 2);
     z-index: 2;
     display: flex;
     justify-content: center;
@@ -52,15 +52,11 @@
     @media (min-width: $from-small) {
         width: rem(150px);
         height: rem(150px);
-        margin-left: rem(-75px);
-        margin-top: rem(-75px);
     }
 
     @media (max-width: $to-small) {
         width: rem(94px);
         height: rem(94px);
-        margin-left: rem(-47px);
-        margin-top: rem(-47px);
     }
 }
 

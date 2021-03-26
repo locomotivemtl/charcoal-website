@@ -1,18 +1,34 @@
 .c-content-table_value {
+    // line-height: 0.8;
 
     svg {
-        display: inline-block;
         width: rem(15px);
         height: rem(15px);
-        vertical-align: middle;
-        margin-right: rem(5px);
     }
 
     &.-enabled {
-        color: $blue;
+        color: $blackOff;
     }
     &.-disabled {
         color: $gray;
+    }
+}
+
+.c-content-table_value_icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: rem(5px);
+    border-radius: 9999px;
+    margin-top: -0.1em;
+
+    .c-content-table_value.-enabled & {
+        background-color: $green;
+        padding: rem(10px) rem(10px) rem(10px) rem(35px);
+        color: $white;
+    }
+    .c-content-table_value.-disabled & {
+        background-color: $white;
+        padding: rem(10px) rem(35px) rem(10px) rem(10px);
     }
 }
 
@@ -26,13 +42,6 @@
 
 .c-content-table_provider {
     padding-bottom: rem($unit);
-
-    &.-main {
-
-        @media (min-width: $from-medium) {
-            border-right: 1px solid $grayLine;
-        }
-    }
 }
 
 .c-content-table_wrap {

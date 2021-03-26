@@ -17,6 +17,10 @@
             color: $white;
         }
 
+        &.-hover-gray {
+            color: $blue;
+        }
+
         &:before  {
             transform: scale3d(1.2,1.2,1.2);
             opacity: 0;
@@ -109,6 +113,14 @@
     &.-hover-blue-dark {
         &::after{
             background-color: $blueDark;
+        }
+    }
+
+    &.-hover-gray {
+        color: $blue;
+
+        &::after{
+            background-color: $grayLight;
         }
     }
 

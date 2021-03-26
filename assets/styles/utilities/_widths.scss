@@ -37,6 +37,19 @@ $widths-fractions: 1 2 3 4 5 !default;
     }
 }
 
+.u-2\/3\@from-small {
+    @media (min-width: $from-small) {
+        width: span(2/3);
+    }
+}
+
+
+.u-4\/5\@from-small {
+    @media (min-width: $from-small) {
+        width: span(4/5);
+    }
+}
+
 .u-2\/5\@from-medium {
     @media (min-width: $from-medium) {
         width: span(2/5);

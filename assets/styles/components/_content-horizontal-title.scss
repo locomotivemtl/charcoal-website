@@ -6,6 +6,14 @@
     }
 }
 
+.c-content-horizontal-title_inner {
+    padding-bottom: 2em;
+
+    .c-rail_item {
+        padding-right: rem($unit);
+    }
+}
+
 .c-content-horizontal-title_infos {
     max-width: rem(250px);
     position: relative;

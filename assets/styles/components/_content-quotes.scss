@@ -15,7 +15,6 @@
 
 .c-content-quotes_item_blockquote {
     margin: 0;
-    line-height: 1.2;
     margin-bottom: rem($unit/2);
 
     opacity: 0;
@@ -30,15 +29,6 @@
         font-weight: $normal;
     }
 
-
-    @media (min-width: $from-medium) {
-        font-size: rem(44px);
-    }
-
-    @media (max-width: $to-medium) {
-        font-size: rem(34px);
-
-    }
 }
 
 .c-content-quotes_author {
@@ -57,7 +47,7 @@
 
     @media (min-width: $from-medium) {
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;
         z-index: 10;
     }
@@ -68,9 +58,10 @@
 }
 
 .c-content-quotes_controls_buttons {
+    display: flex;
+    flex-direction: row;
 
     @media (max-width: $to-medium) {
-        display: flex;
     }
 }
 
@@ -81,7 +72,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: rem(15px);
+    margin-right: rem(10px);
 
     &.swiper-button-disabled {
         pointer-events: none;
@@ -108,9 +99,7 @@
     }
 
 
-    @media (max-width: $to-medium) {
-        margin-right: rem(10px);
-    }
+
 }
 
 .c-content-quotes_controls_buttons_item:before {

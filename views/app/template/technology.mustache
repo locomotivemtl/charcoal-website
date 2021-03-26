@@ -10,11 +10,10 @@
                 <div class="c-header-multi">
                     <h1 class="c-header-multi_title c-heading -h2 u-anim-text-line" data-module-split data-scroll
                         data-scroll-speed="2" data-scroll-position="top">
-                        Content
-                        Managment
+                        Technology
                     </h1>
                     <p class="c-header-multi_content c-heading -h4 u-anim -delay-3">
-                        Enhance your digital growth with our comprehensive content management system.
+                        A comprehensive open-source PHP framework by Locomotive.
                     </p>
                     <a href="#learn-more" class="c-button -white -hover-gray u-anim -delay-4" data-scroll-to>
                         <span class="c-button_label">
@@ -26,18 +25,28 @@
         </div>
     </section>
 
-    <section data-scroll-section>
-        <div class="u-background-light">
-            <div class="c-content-visual" id="learn-more">
-                <div class="c-content-visual_inner" data-scroll data-scroll-speed="2" data-scroll-offset="0">
-                    <img class="c-content-visual_inner_image"
-                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 248 216'%3E%3C/svg%3E"
-                        alt="Messenger"
-                        data-load-src="{{# withBaseUrl }}assets/images/shapes/shape-01.svg{{/ withBaseUrl }}">
+    <div data-scroll-section>
+        <div class="c-section u-background-blue">
+            <div class="o-container">
+                <div class="c-video || o-ratio || u-16:9 || u-border-radius" data-module-video data-scroll
+                    data-scroll-repeat data-scroll-call="toggle,Video" data-module-video-modal-toggler
+                    data-video-modal-toggler="toggler" data-video-modal-toggler-host="vimeo"
+                    data-video-modal-toggler-id="386905142">
+                    <button class="c-video_button" aria-label="play" type="button">
+                        <span class="c-video_button_icon">
+                            <svg role="img" aria-hidden="true">
+                                <use href="assets/images/sprite.svg#play"></use>
+                            </svg>
+                        </span>
+                    </button>
+
+                    <video src="{{# withBaseUrl }}assets/video/intro.mp4{{/ withBaseUrl }}" autoplay="false"
+                        muted="true" loop="true" data-video="video">
+                    </video>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     {{> app/template/partial/content-tagline}}
 

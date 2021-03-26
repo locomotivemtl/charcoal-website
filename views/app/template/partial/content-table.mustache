@@ -8,15 +8,17 @@
                             Eget nisi, consectetur a diam. <strong>Adipiscing.</strong>
                         </h2>
                         <p class="u-anim" data-scroll>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dolorem amet libero sunt eligendi aspernatur quaerat molestiae expedita, sint dicta possimus dignissimos rerum quod voluptate, adipisci eaque omnis dolor blanditiis.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis dolorem amet libero sunt
+                            eligendi aspernatur quaerat molestiae expedita, sint dicta possimus dignissimos rerum quod
+                            voluptate, adipisci eaque omnis dolor blanditiis.
                         </p>
                     </div>
                 </div>
                 <div class="o-layout_item u-3/5@from-medium">
-                    <div class="c-content-table_wrap o-layout -gutter-small">
+                    <div class="c-content-table_wrap o-layout">
                         <!-- Charcoal features -->
                         <div class="o-layout_item u-2/3@from-medium c-content-table_provider -main">
-                            <div class="o-layout -gutter-small u-text-right@from-medium">
+                            <div class="o-layout u-text-right@from-medium">
                                 <div class="o-layout_item u-1/2 u-text-left">
                                     <h3 class="c-heading -h4 u-color-blue">
                                         Charcoal CMS
@@ -25,19 +27,23 @@
                             </div>
                             <div class="c-content-table_features">
                                 {{# forLoop.6}}
-                                    <div class="c-content-table_line">
-                                        <div class="o-layout -middle -gutter-small">
-                                            <div class="o-layout_item u-1/2">
-                                                Volutpat elit morbi pulvinar ac magna.
-                                            </div>
-                                            <div class="o-layout_item u-1/2">
-                                                <p class="c-content-table_value -enabled">
-                                                    <svg role="img"><use href="assets/images/sprite.svg#check"></use></svg>
-                                                    Enabled
-                                                </p>
-                                            </div>
+                                <div class="c-content-table_line">
+                                    <div class="o-layout -middle -gutter-small">
+                                        <div class="o-layout_item u-1/2">
+                                            Volutpat elit morbi pulvinar ac magna.
+                                        </div>
+                                        <div class="o-layout_item u-1/2">
+                                            <p class="c-content-table_value -enabled">
+                                                <span class="c-content-table_value_icon">
+                                                    <svg role="img">
+                                                        <use href="assets/images/sprite.svg#check"></use>
+                                                    </svg>
+                                                </span>
+                                                Enabled
+                                            </p>
                                         </div>
                                     </div>
+                                </div>
                                 {{/ forLoop.6}}
                             </div>
                         </div>
@@ -45,25 +51,29 @@
                             <div class="o-layout -gutter-small u-text-right@from-medium">
                                 <div class="o-layout_item u-1/2@to-small u-text-left">
                                     <h3 class="c-heading -h4">
-                                        Wordpress
+                                        Other CMS
                                     </h3>
                                 </div>
                             </div>
                             <div class="c-content-table_features">
                                 {{# forLoop.6}}
-                                    <div class="c-content-table_line">
-                                        <div class="o-layout -middle -gutter-small">
-                                            <div class="o-layout_item u-1/2 u-none@from-medium">
-                                                Volutpat elit morbi pulvinar ac magna.
-                                            </div>
-                                            <div class="o-layout_item u-1/2@to-medium">
-                                                <p class="c-content-table_value -disabled">
-                                                    <svg role="img"><use href="assets/images/sprite.svg#cross"></use></svg>
-                                                    Disabled
-                                                </p>
-                                            </div>
+                                <div class="c-content-table_line">
+                                    <div class="o-layout -middle -gutter-small">
+                                        <div class="o-layout_item u-1/2 u-none@from-medium">
+                                            Volutpat elit morbi pulvinar ac magna.
+                                        </div>
+                                        <div class="o-layout_item u-1/2@to-medium">
+                                            <p class="c-content-table_value -disabled">
+                                                <span class="c-content-table_value_icon">
+                                                    <svg role="img">
+                                                        <use href="assets/images/sprite.svg#cross"></use>
+                                                    </svg>
+                                                </span>
+                                                No
+                                            </p>
                                         </div>
                                     </div>
+                                </div>
                                 {{/ forLoop.6}}
                             </div>
                         </div>

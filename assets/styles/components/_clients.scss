@@ -1,13 +1,14 @@
 .c-clients_rail {
     width: 100%;
     margin-top: rem($unit/2);
+    color: $gray;
 }
 
 .c-clients_rail_item {
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     display: inline-block;
-    margin: 0 rem($unit/2);
+    margin: 0 rem($unit);
 
     svg {
         width: 100%;

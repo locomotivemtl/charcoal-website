@@ -11,9 +11,11 @@
 }
 
 .c-splash-words_row_item {
-    font-size: 12vw;
+    font-size: 20vw;
     line-height: 0.8;
+    letter-spacing: -0.05em;
     font-weight: normal;
+    white-space: nowrap;
 
     @media (min-width: $from-medium) {
         display: inline-block;
@@ -31,7 +33,10 @@
         }
 
         &.-offset-small {
-            margin-left: 20%;
+            margin-left: 15%;
+        }
+        &.-offset-negative {
+            margin-left: -0.2em;
         }
     }
 }
@@ -93,7 +98,7 @@
         @media (min-width: $from-large) {
             position: absolute;
             left: 10%;
-            top: 50%;
+            top: 30%;
         }
     }
 
@@ -101,7 +106,7 @@
         @media (min-width: $from-large) {
             position: absolute;
             right: 10%;
-            bottom: 0%;
+            bottom: 20%;
         }
     }
 }
