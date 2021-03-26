@@ -14,7 +14,11 @@
     left: 0;
     z-index: -1;
     overflow: hidden;
-}
+
+    [data-template="technology"] & {
+        overflow: visible;
+    }
+ }
 
 .c-footer_background_shape {
     position: absolute;

@@ -1,0 +1,22 @@
+.c-team_member {
+    margin-bottom: rem($unit * 2);
+    text-align: center;
+}
+
+.c-team_member_image {
+    display: block;
+    margin-top: - rem($unit/2);
+    margin-bottom: - rem($unit/2);
+}
+
+.c-team_member_role {
+    font-size: rem(14px);
+}
+
+.c-team_member_name {
+    margin-bottom: 0;
+}
+
+.c-team_cta {
+    margin-top: - rem($unit * 4);
+}

@@ -8,6 +8,10 @@
         line-height: 0.7;
         letter-spacing: -0.05em;
 
+        @media (min-width: $from-medium) {
+            margin-bottom: rem(60px);
+        }
+
         > div:nth-child(2) {
             text-indent: 0.5em;
         }
@@ -17,6 +21,10 @@
         font-weight: normal;
         line-height: 0.7;
         letter-spacing: -0.05em;
+
+        @media (min-width: $from-medium) {
+            margin-bottom: rem(60px);
+        }
 
         @media (min-width: $from-small) {
             font-size: 12vw;
@@ -32,6 +40,10 @@
         font-size: rem(65px);
         line-height: 0.88;
         letter-spacing: -0.05em;
+
+        @media (min-width: $from-medium) {
+            margin-bottom: rem(60px);
+        }
     }
 
     &.-h4 {

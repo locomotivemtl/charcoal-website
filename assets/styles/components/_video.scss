@@ -25,8 +25,8 @@
 
 .c-video_button {
     position: absolute;
-    bottom: rem($unit * 2);
-    left: rem($unit * 2);
+    bottom: rem($unit);
+    left: rem($unit);
     z-index: 2;
     display: flex;
     justify-content: center;

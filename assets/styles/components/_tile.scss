@@ -73,6 +73,12 @@
     &:nth-child(2) {
         text-align: right;
     }
+
+    .c-tile.-wide & {
+        max-width: rem(150px);
+        margin-bottom: rem($unit);
+
+    }
 }
 
 .c-tile_inner_middle {
@@ -117,6 +123,10 @@
     line-height: 1;
     color: $blackOff;
     text-align: right;
+
+    .c-tile.-wide & {
+        font-size: rem(42px);
+    }
 }
 
 .c-tile_inner_bottom_button {
