@@ -1,8 +1,11 @@
 // wrapper
 .c-tiles {
 
-    @media (min-width: $from-medium) {
+    @media (min-width: $from-large) {
         margin-top: - rem($unit * 4);
+    }
+    @media (max-width: $to-large) {
+        margin-top: - rem($unit);
     }
 }
 

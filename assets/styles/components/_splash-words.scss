@@ -6,6 +6,22 @@
         right: 0;
         z-index: -1;
         color: $blueDark;
+
+        @media (max-width: $to-medium) {
+            top: rem($unit * 3);
+
+            .c-splash-words_row_item {
+                font-size: 20vw;
+            }
+        }
+
+        @media (max-width: $to-small) {
+            margin: 0;
+        }
+    }
+
+    @media (max-width: $to-small) {
+        margin: 0 rem($unit/2);
     }
 }
 
@@ -46,6 +62,11 @@
             margin-left: -0.2em;
         }
     }
+
+
+    @media (max-width: $to-medium) {
+        font-size: 16vw;
+    }
 }
 
 .c-splash-words_features {
@@ -56,6 +77,8 @@
 
     @media (max-width: $to-large) {
         margin-top: rem($unit/2);
+        margin-left: rem($unit/2);
+        margin-right: rem($unit/2);
     }
 
     @media (max-width: $to-large) and (min-width: $from-medium) {

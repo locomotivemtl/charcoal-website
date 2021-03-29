@@ -12,7 +12,14 @@
 
 .c-carousel_slide_inner {
     max-width: rem(320px);
-    padding: 0 rem($unit-small);
+
+    @media (min-width: $from-medium) {
+        padding: 0 rem($unit-small);
+    }
+
+    @media (max-width: $to-medium) {
+        padding: rem($unit-small);
+    }
 
 }
 
@@ -33,9 +40,19 @@
     padding: rem($unit/2) 0;
     color: $black;
     z-index: 2;
-    margin-top: rem($unit);
     margin-left: rem($unit-small);
     transition: color $speed $easing;
+
+    @media (min-width: $from-medium) {
+        margin-top: rem($unit);
+    }
+
+    &.-absolute {
+        margin-left: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
 }
 
 .c-carousel_controls_buttons_item {

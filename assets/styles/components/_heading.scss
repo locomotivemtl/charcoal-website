@@ -31,7 +31,7 @@
         }
 
         @media (max-width: $to-small) {
-            font-size: 16vw;
+            font-size: 18vw;
         }
     }
 
@@ -43,6 +43,10 @@
 
         @media (min-width: $from-medium) {
             margin-bottom: rem(40px);
+        }
+
+        @media (max-width: $to-small) {
+            font-size: rem(45px);
         }
     }
 

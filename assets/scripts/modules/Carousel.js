@@ -11,11 +11,7 @@ export default class extends module {
             shortSwipes: false,
             longSwipesRatio: 0.1,
             longSwipesMs: 50,
-            parallax: true,
-            navigation: {
-                nextEl: this.$('next')[0],
-                prevEl: this.$('prev')[0],
-            }
+            parallax: true
         })
 
         this.carouselContent = new Swiper(this.$('content')[0], {
@@ -27,11 +23,15 @@ export default class extends module {
             shortSwipes: false,
             longSwipesRatio: 0.1,
             longSwipesMs: 50,
-            parallax: true
+            parallax: true,
+            navigation: {
+                nextEl: this.$('next')[0],
+                prevEl: this.$('prev')[0],
+            }
         });
 
-        this.carouselMain.on('slideChange', () => {
-            this.carouselContent.slideTo(this.carouselMain.realIndex);
+        this.carouselVisual.on('slideChange', () => {
+            this.carouselContent.slideTo(this.carouselVisual.realIndex);
         });
 
         this.carouselMain.controller.control = this.carouselVisual;
@@ -39,6 +39,8 @@ export default class extends module {
     }
 
     destroy() {
-        this.carousel.destroy(true, true)
+        this.carouselMain.destroy(true, true);
+        this.carouselVisual.destroy(true, true);
+        this.carouselContent.destroy(true, true);
     }
 }

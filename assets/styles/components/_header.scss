@@ -13,6 +13,13 @@
         html.is-mobile & {
             mix-blend-mode: normal;
         }
+
+        @media (max-width: $to-large) {
+            html:not([data-template="home"]) & {
+                position: relative;
+                padding-bottom: 0;
+            }
+        }
     }
 
     &.-fixed {

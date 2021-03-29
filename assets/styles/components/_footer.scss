@@ -16,7 +16,9 @@
     overflow: hidden;
 
     [data-template="technology"] & {
-        overflow: visible;
+        html:not(.is-mobile) & {
+            overflow: visible;
+        }
     }
  }
 

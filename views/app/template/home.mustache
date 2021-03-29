@@ -118,7 +118,7 @@
         </div>
 
         <div data-scroll-section>
-            <div class="c-section">
+            <div class="c-section -padding-bottom-big">
                 <div class="u-relative">
                     <p class="c-splash-words">
                         <span class="c-splash-words_row">
@@ -241,7 +241,7 @@
         <div class="c-section u-overflow-hidden -no-padding-bottom -no-padding-top -margin-top u-background-light"
             data-module-carousel>
             <div class="o-layout">
-                <div class="o-layout_item u-5/8@from-medium u-1/2@to-medium u-overflow-hidden">
+                <div class="o-layout_item u-5/8@from-medium u-none@to-medium u-overflow-hidden">
                     <div class="c-carousel swiper-container" data-carousel="main">
                         <div class="c-carousel_wrapper swiper-wrapper">
                             <div class="c-carousel_slide swiper-slide">
@@ -262,7 +262,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="o-layout_item u-3/8@from-medium u-1/2@to-medium u-overflow-hidden u-background-blue">
+                <div class="o-layout_item u-3/8@from-medium u-overflow-hidden u-background-blue">
                     <div class="c-carousel -content swiper-container" data-carousel="content">
                         <div class="c-carousel_wrapper swiper-wrapper">
                             <div class="c-carousel_slide swiper-slide">
@@ -350,22 +350,22 @@
     {{> app/template/partial/main-products}}
 
     <section data-scroll-section>
-        <div class="c-section u-background-light -no-padding-top u-overflow-hidden">
+        <div class="c-section u-background-light -no-padding-top u-overflow-hidden" data-modules-carousel-cases>
             <div class="o-container">
                 <h2 class="c-heading -h1 u-color-blue u-anim-text-line" data-module-split data-scroll>
                     Case <br>Studies
                 </h2>
 
-                <div class="c-carousel-cases" data-modules-carousel-cases>
-                    <div class="c-carousel-cases-visual_container swiper-container"
-                        data-carousel-cases="carousel-visual">
+                <div class="c-carousel-cases">
+                    <div class="c-carousel-cases-visual_container swiper-container" data-scroll data-scroll-speed="1.5"
+                        data-scroll-offset="0" data-carousel-cases="carousel-visual">
                         <div class="c-carousel-cases-visual_wrapper swiper-wrapper">
                             {{#forLoop.3}}
                             <div class="c-carousel-cases-visual_slide swiper-slide">
                                 <img class="c-carousel-cases-visual_slide_image"
                                     src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1175 768'%3E%3C/svg%3E"
                                     alt="Carbon Beauty"
-                                    data-load-src="{{# withBaseUrl }}assets/images/placeholders/project-pic-3d.png{{/ withBaseUrl }}">
+                                    data-load-src="{{# withBaseUrl }}assets/images/placeholders/carousel-2-1.png{{/ withBaseUrl }}">
                             </div>
                             {{/forLoop.3}}
                         </div>
@@ -388,41 +388,45 @@
                                             <li class="c-carousel-cases-info_features_list_item">Content Management</li>
                                             <li class="c-carousel-cases-info_features_list_item">Ecommerce</li>
                                             <li class="c-carousel-cases-info_features_list_item">Messenger</li>
+                                            <li class="c-carousel-cases-info_features_list_item">
+                                                <a href="" target="_blank" rel="noopener noreferer">View website <svg
+                                                        role="img">
+                                                        <use href="assets/images/sprite.svg#arrow-tip-right"></use>
+                                                    </svg></a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             {{/forLoop.3}}
                         </div>
+                    </div>
+                    <div class="c-carousel_controls -absolute">
+                        <div class="c-carousel_controls_buttons">
+                            <button class="c-carousel_controls_buttons_item" type="button" aria-label="Prev"
+                                data-carousel-cases="prev">
+                                <span class="c-carousel_controls_buttons_item_icon">
+                                    <svg role="img" aria-hidden="true">
+                                        <use
+                                            href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-tip-left{{/ withBaseUrl }}">
+                                        </use>
+                                    </svg>
+                                </span>
+                            </button>
 
-                        <div class="c-carousel_controls">
-                            <div class="c-carousel_controls_buttons">
-                                <button class="c-carousel_controls_buttons_item" type="button" aria-label="Prev"
-                                    data-carousel-cases="prev">
-                                    <span class="c-carousel_controls_buttons_item_icon">
-                                        <svg role="img" aria-hidden="true">
-                                            <use
-                                                href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-tip-left{{/ withBaseUrl }}">
-                                            </use>
-                                        </svg>
-                                    </span>
-                                </button>
-
-                                <button class="c-carousel_controls_buttons_item" type="button" aria-label="Next"
-                                    data-carousel-cases="next">
-                                    <span class="c-carousel_controls_buttons_item_icon">
-                                        <svg role="img" aria-hidden="true">
-                                            <use
-                                                href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-tip-right{{/ withBaseUrl }}">
-                                            </use>
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
+                            <button class="c-carousel_controls_buttons_item" type="button" aria-label="Next"
+                                data-carousel-cases="next">
+                                <span class="c-carousel_controls_buttons_item_icon">
+                                    <svg role="img" aria-hidden="true">
+                                        <use
+                                            href="{{# withBaseUrl }}assets/images/sprite.svg#arrow-tip-right{{/ withBaseUrl }}">
+                                        </use>
+                                    </svg>
+                                </span>
+                            </button>
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="c-clients">

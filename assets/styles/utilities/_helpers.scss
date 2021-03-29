@@ -21,6 +21,12 @@
     }
 }
 
+.u-text-right\@to-medium {
+    @media (max-width: $to-medium) {
+        text-align: right;
+    }
+}
+
 .u-border-radius {
     border-radius: 12px;
     overflow: hidden;

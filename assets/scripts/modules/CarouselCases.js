@@ -7,16 +7,12 @@ export default class extends module {
 
     init() {
         this.carouselVisual = new Swiper(this.$('carousel-visual')[0], {
-            grabCursor: true,
             speed: 600,
+            grabCursor: true
         })
 
         this.carouselInfo = new Swiper(this.$('carousel-info')[0], {
-            grabCursor: true,
             speed: 600,
-            shortSwipes: false,
-            longSwipesRatio: 0.1,
-            longSwipesMs: 50,
             allowTouchMove: false,
             navigation: {
                 nextEl: this.$('next')[0],

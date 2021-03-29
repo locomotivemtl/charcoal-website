@@ -1,10 +1,17 @@
 .c-team_member {
     margin-bottom: rem($unit * 2);
     text-align: center;
+
+
+    @media (max-width: $to-medium) {
+        margin-bottom: rem($unit);
+    }
 }
 
 .c-team_member_image {
     display: block;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: - rem($unit/2);
     margin-bottom: - rem($unit/2);
 }
@@ -18,5 +25,8 @@
 }
 
 .c-team_cta {
-    margin-top: - rem($unit * 4);
+
+    @media (min-width: $from-medium) {
+        margin-top: - rem($unit * 4);
+    }
 }
