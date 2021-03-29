@@ -2,6 +2,24 @@
     overflow: visible;
 }
 
+.c-carousel_slide {
+    overflow: hidden;
+
+    .c-carousel.-content & {
+
+    }
+}
+
+.c-carousel_slide_inner {
+    max-width: rem(320px);
+    padding: 0 rem($unit-small);
+
+}
+
+.c-carousel_slide_title {
+
+}
+
 .c-carousel_slide_image {
     width: 100%;
 }
@@ -12,7 +30,12 @@
 
 .c-carousel_controls {
     display: flex;
-    margin-top: rem(64px);
+    padding: rem($unit/2) 0;
+    color: $black;
+    z-index: 2;
+    margin-top: rem($unit);
+    margin-left: rem($unit-small);
+    transition: color $speed $easing;
 }
 
 .c-carousel_controls_buttons_item {
@@ -64,8 +87,8 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    border: 2px solid $blue;
-    background-color: $blue;
+    border: 2px solid $black;
+    background-color: $black;
     border-radius: 999px;
     transform: scale3d(0.8,0.8,0.8);
     opacity: 0;

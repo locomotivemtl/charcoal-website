@@ -56,6 +56,19 @@ $widths-fractions: 1 2 3 4 5 !default;
     }
 }
 
+.u-5\/8\@from-medium {
+    @media (min-width: $from-medium) {
+        width: span(5/8);
+    }
+}
+
+.u-3\/8\@from-medium {
+    @media (min-width: $from-medium) {
+        width: span(3/8);
+    }
+}
+
+
 .u-1\/2\@to-medium {
     @media (max-width: $to-medium) {
         width: span(1/2);

@@ -1,4 +1,4 @@
-import { module } from 'modujs';
+import { module } from 'modujs';
 
 export default class extends module {
     constructor(m) {
@@ -27,24 +27,24 @@ export default class extends module {
         this.carouselInfo.controller.control = this.carouselVisual;
         this.carouselVisual.controller.control = this.carouselInfo;
 
-        this.carouselInfo.on('slideChange', () => {
-            this.setURL();
-        });
+        // this.carouselInfo.on('slideChange', () => {
+        //     this.setURL();
+        // });
 
-        this.setURL();
+        // this.setURL();
     }
 
     setURL() {
         let url = this.carouselInfo.slides[this.carouselInfo.activeIndex].dataset.projectUrl
         url ??= false;
 
-        if(url.length > 0) {
+        if (url.length > 0) {
             this.$('button')[0].href = url
         }
     }
 
     destroy() {
-        this.carouselVisual.destroy(true,true)
-        this.carouselInfo.destroy(true,true)
+        this.carouselVisual.destroy(true, true)
+        this.carouselInfo.destroy(true, true)
     }
 }
