@@ -16,16 +16,17 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 /* Import the application's settings */
 $appConfig = new AppConfig();
-$appConfig->addFile(dirname(__DIR__) . '/config/config.php');
+$appConfig->addFile(dirname(__DIR__).'/config/config.php');
 
 /* Build the DI container */
 $container = new AppContainer([
-    'config' => $appConfig,
+    'config'   => $appConfig,
     'settings' => [
-        'displayErrorDetails' => $appConfig['dev_mode'],
+        'displayErrorDetails' => ($appConfig['debug'] || $appConfig['dev_mode']),
     ],
 ]);
 
 /* Instantiate a Charcoal~Slim application and run */
 $app = App::instance($container);
+
 $app->run();

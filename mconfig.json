@@ -1,34 +1,34 @@
 {
-  "url": "charcoal-website.test",
-  "src": "./assets/",
-  "dest": "./www/",
-  "build": "./build/",
-  "styles": {
-    "src": "./assets/styles/",
-    "dest": "./www/assets/styles/",
-    "main": "main",
-    "critical": "critical"
-  },
-  "scripts": {
-    "src": "./assets/scripts/",
-    "dest": "./www/assets/scripts/",
-    "main": "app",
-    "vendors": {
-      "src": "./assets/scripts/vendors/",
-      "main": "vendors"
+    "url": "charcoal-website.test",
+    "src": "./assets/",
+    "dest": "./www/",
+    "build": "./build/",
+    "styles": {
+        "src": "./assets/styles/",
+        "dest": "./www/assets/styles/",
+        "main": "main",
+        "critical": "critical"
+    },
+    "scripts": {
+        "src": "./assets/scripts/",
+        "dest": "./www/assets/scripts/",
+        "main": "app",
+        "vendors": {
+            "src": "./assets/scripts/vendors/",
+            "main": "vendors"
+        }
+    },
+    "svgs": {
+        "src": "./assets/images/sprite/",
+        "dest": "./www/assets/images/"
+    },
+    "views": {
+        "src": "./views/app/"
+    },
+    "modules": {
+        "build": "gulp",
+        "style": "sass",
+        "script": "js",
+        "view": false
     }
-  },
-  "svgs": {
-    "src": "./assets/images/sprite/",
-    "dest": "./www/assets/images/"
-  },
-  "views": {
-    "src": "./views/app/template/"
-  },
-  "modules": {
-    "build": "gulp",
-    "style": "sass",
-    "script": "js",
-    "view": false
-  }
 }

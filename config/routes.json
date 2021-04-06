@@ -1,37 +1,37 @@
 {
-  "routes": {
-    "templates": {
-      "home": {
-        "route": "[/]",
-        "template": "app/template/home",
-        "controller": "app/template/home"
-      },
-      "contact": {
-        "route": "/contact[/]",
-        "template": "app/template/contact",
-        "controller": "app/template/contact"
-      },
-      "multi": {
-        "route": "/multi[/]",
-        "template": "app/template/multi",
-        "controller": "app/template/multi"
-      },
-      "technology": {
-        "route": "/technology[/]",
-        "template": "app/template/technology",
-        "controller": "app/template/technology"
-      }
+    "routes": {
+        "templates": {
+            "home": {
+                "route": "[/]",
+                "template": "app/template/home",
+                "controller": "app/template/home"
+            },
+            "contact": {
+                "route": "/contact",
+                "template": "app/template/contact",
+                "controller": "app/template/contact"
+            },
+            "multi": {
+                "route": "/multi",
+                "template": "app/template/multi",
+                "controller": "app/template/multi"
+            },
+            "technology": {
+                "route": "/technology",
+                "template": "app/template/technology",
+                "controller": "app/template/technology"
+            }
+        },
+        "actions": {},
+        "scripts": {}
     },
-    "actions": {},
-    "scripts": {}
-  },
-  "routables": {
-    "charcoal/cms/route/generic": {}
-  },
-  "handlers": {
-    "_defaults": {
-      "template": "app/template/error",
-      "controller": "app/template/error"
+    "routables": {
+        "charcoal/cms/route/generic": {}
+    },
+    "handlers": {
+        "_defaults": {
+            "template": "app/template/error",
+            "controller": "app/template/error"
+        }
     }
-  }
 }

@@ -1,31 +1,34 @@
 {
-  "private": true,
-  "name": "@locomotivemtl/boilerplate",
-  "title": "Locomotive Boilerplate",
-  "version": "1.0.0",
-  "author": "Locomotive <info@locomotive.ca>",
-  "type": "module",
-  "scripts": {
-    "start": "node --experimental-json-modules build/watch.js",
-    "build": "node --experimental-json-modules build/build.js"
-  },
-  "dependencies": {
-    "gsap": "^3.5.1",
-    "locomotive-scroll": "4.0.4",
-    "lottie-web": "^5.7.3",
-    "modujs": "*",
-    "modularload": "*",
-    "normalize.css": "*",
-    "smoothscroll-polyfill": "^0.4.4",
-    "svg4everybody": "*",
-    "swiper": "^6.2.0"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.26.13",
-    "concat": "^1.0.3",
-    "esbuild": "^0.8.12",
-    "fs": "0.0.1-security",
-    "node-sass": "^5.0.0",
-    "svg-mixer": "^2.3.14"
-  }
+    "private": true,
+    "name": "@locomotivemtl/charcoal.locomotive.ca",
+    "title": "charcoal.locomotive.ca",
+    "version": "1.0.0",
+    "author": "Locomotive <info@locomotive.ca>",
+    "type": "module",
+    "engines": {
+        "node": "^14.15"
+    },
+    "scripts": {
+        "start": "node --experimental-json-modules build/watch.js",
+        "build": "node --experimental-json-modules build/build.js"
+    },
+    "dependencies": {
+        "gsap": "^3.5.1",
+        "locomotive-scroll": "4.0.4",
+        "lottie-web": "^5.7.3",
+        "modujs": "*",
+        "modularload": "*",
+        "normalize.css": "*",
+        "smoothscroll-polyfill": "^0.4.4",
+        "svg4everybody": "*",
+        "swiper": "^6.2.0"
+    },
+    "devDependencies": {
+        "browser-sync": "^2.26.13",
+        "concat": "^1.0.3",
+        "esbuild": "^0.8.12",
+        "fs": "0.0.1-security",
+        "node-sass": "^5.0.0",
+        "svg-mixer": "^2.3.14"
+    }
 }

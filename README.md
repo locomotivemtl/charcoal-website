@@ -1,15 +1,6 @@
-# Foobar
+# Charcoal Website
 
-- Production: [charcoal.locomotive.ca](https://charcoal.locomotive.ca)
-- Staging: [charcoal.labloco.com](https://charcoal.labloco.com/)
-- Support
-  - Source: [Github](https://github.com/locomotivemtl/charcoal-website)
-  - Discussion: [Slack](https://locomotivemtl.slack.com/messages/charcoal-microsite)
-
-
-## Client(s)
-
-- **Charcoal**
+This is the repository for the official [Charcoal website](https://charcoal.locomotive.ca), a PHP framework for the web.
 
 ## Team
 
@@ -21,23 +12,29 @@
 
 ## Requirements
 
+### Production
+
+| Name        | Version |
+| ----------- | ------- |
+| [PHP]       | > 7.1   |
+| [Composer]  | > 1.10  |
+| [Charcoal]  | > 2020  |
+
+See [`composer.json`](blob/master/composer.json) for depenencides.
+
+### Development
+
 | Name       | Version |
 | ---------- | ------- |
-| [Composer] | > 1.8   |
-| [PHP]      | > 7.1   |
-| [Node]     | > 10.0  |
-| [gulp]     | > 4.0   |
+| [Node]     | > 14.15 |
 
-[Composer]:     https://getcomposer.org/
-[PHP]:          https://php.net/
-[Node]:         https://nodejs.org/en/
-[gulp]:         https://gulpjs.com/
+See [`package.json`](blob/master/package.json) for depenencides.
 
 ## Installation
 
 ```sh
-git clone https://bitbucket.org/locomotivemtl/vooban
-cd vooban
+git clone https://github.com/locomotivemtl/charcoal-website
+cd charcoal-website
 composer install
 npm install
 ```
@@ -46,14 +43,13 @@ npm install
 
 ```sh
 # watch
-gulp
-
-# compile
-gulp compile
+npm start
 
 # minify
-gulp build
+npm run build
 ```
+
+See [build.js](blob/master/build/build.js) and [watch.js](blob/master/build/build.js) for detaild.
 
 ## Documentation
 
@@ -62,5 +58,15 @@ gulp build
 
 ## Updating
 
+> 🚧 Any special instructions on how to update the project; whether it can be updated or not, packages that should remain intact,…
 
 ## Architecture
+
+> 💡 Any important details or quirks about the project, the structure, the database,…
+
+🚂 <!-- v1.4.0 -->
+
+[Node]:      https://nodejs.org/en/
+[PHP]:       https://php.net/
+[Composer]:  https://getcomposer.org/
+[Charcoal]:  https://charcoal.locomotive.ca

@@ -22,7 +22,7 @@ before_script:
     - composer install -n
 
     ## Create temporary folders
-    - mkdir -p build/logs\
+    - mkdir -p build/logs
 
 script:
     - composer test
