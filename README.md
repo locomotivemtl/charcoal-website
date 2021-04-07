@@ -16,9 +16,9 @@ This is the repository for the official [Charcoal website](https://charcoal.loco
 
 | Name        | Version |
 | ----------- | ------- |
-| [PHP]       | > 7.1   |
+| [PHP]       | > 7.2   |
 | [Composer]  | > 1.10  |
-| [Charcoal]  | > 2020  |
+| [Charcoal]  | > 2021  |
 
 See [`composer.json`](blob/master/composer.json) for depenencides.
 
