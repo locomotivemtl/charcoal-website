@@ -242,7 +242,7 @@ export default class {
     // UTILS
     // ==========================================================================
     loadModel(filename) {
-        const PATH = '/assets/3d/models/'
+        const PATH = '/assets/app/3d/models/'
         const FILETYPE = filename.substr(filename.lastIndexOf('.')+1).toLowerCase()
 
         if(APP_STATE.models3d[PATH+filename]) {

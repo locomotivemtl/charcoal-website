@@ -1,26 +1,26 @@
 {
     "url": "charcoal-website.test",
-    "src": "./assets/",
+    "src": "./assets/app/",
     "dest": "./www/",
     "build": "./build/",
     "styles": {
-        "src": "./assets/styles/",
-        "dest": "./www/assets/styles/",
+        "src": "./assets/app/styles/",
+        "dest": "./www/assets/app/styles/",
         "main": "main",
         "critical": "critical"
     },
     "scripts": {
-        "src": "./assets/scripts/",
-        "dest": "./www/assets/scripts/",
+        "src": "./assets/app/scripts/",
+        "dest": "./www/assets/app/scripts/",
         "main": "app",
         "vendors": {
-            "src": "./assets/scripts/vendors/",
+            "src": "./assets/app/scripts/vendors/",
             "main": "vendors"
         }
     },
     "svgs": {
-        "src": "./assets/images/sprite/",
-        "dest": "./www/assets/images/"
+        "src": "./assets/app/images/sprite/",
+        "dest": "./www/assets/app/images/"
     },
     "views": {
         "src": "./views/app/"
