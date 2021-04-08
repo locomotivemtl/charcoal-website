@@ -1,0 +1,59 @@
+{
+    "routes": {
+        "templates": {
+            "home": {
+                "route": "[/]",
+                "template": "app/template/web/home",
+                "controller": "app/template/web/home"
+            },
+            "contact": {
+                "route": "/contact",
+                "template": "app/template/web/contact",
+                "controller": "app/template/web/contact"
+            },
+            "multi": {
+                "route": "/multi",
+                "template": "app/template/web/multi",
+                "controller": "app/template/web/multi"
+            },
+            "technology": {
+                "route": "/technology",
+                "template": "app/template/web/technology",
+                "controller": "app/template/web/technology"
+            }
+        }
+    },
+
+    "middlewares": {
+        "charcoal/translator/middleware/language": {
+            "active": true
+        },
+        "charcoal/cache/middleware/cache": {
+            "active": true
+        },
+        "charcoal/app/middleware/ip": {
+            "active": false
+        }
+    },
+
+    "handlers": {
+        "defaults": {
+            "controller": "app/template/web/error"
+        },
+        "notFound": {
+            "template": "app/template/web/error"
+        },
+        "notAllowed": {
+            "template": "app/template/web/error"
+        },
+        "phpError": {
+            "template": "app/template/web/error"
+        },
+        "error": {
+            "template": "app/template/web/error"
+        },
+        "maintenance": {
+            "template": "app/template/web/error"
+        }
+    }
+}

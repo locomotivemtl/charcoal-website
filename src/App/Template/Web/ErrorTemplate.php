@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Template;
+namespace App\Template\Web;
 
 // From 'charcoal-app'
 use Charcoal\App\Handler\AbstractError;
 use Charcoal\App\Handler\HandlerAwareTrait;
 
 // From App
-use App\Template\AbstractTemplate;
+use App\Template\Web\AbstractTemplate;
 
 /**
  * Template Controller: Error Handler

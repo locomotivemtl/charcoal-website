@@ -1,0 +1,22 @@
+{
+    "templates": [
+        {
+            "value": "page",
+            "template": "app/template/web/page",
+            "controller": "app/template/web/page",
+            "label":  {
+                "en": "Default Page",
+                "fr": "Page générique"
+            }
+        },
+        {
+            "value": "home",
+            "template": "app/template/web/home",
+            "controller": "app/template/web/home",
+            "label":  {
+                "en": "Front Page",
+                "fr": "Page d'Accueil"
+            }
+        }
+    ]
+}

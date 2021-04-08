@@ -1,0 +1,14 @@
+{
+    "routes": {
+        "templates": {
+            "home": {
+                "route": "[/[home]]",
+                "redirect": "admin/object/collection?obj_type=app/object/section"
+            }
+        },
+        "actions": {
+        },
+        "scripts": {
+        }
+    }
+}

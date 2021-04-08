@@ -1,0 +1,30 @@
+{
+    "dev_notes": {
+        "acl": {
+            "permissions": "This data key should be renamed to 'admin.acl.roles'.",
+            "model": "Controls the visibility of each menu item in 'admin.secondary_menu.*.links' and the access of each object route (`Charcoal\\Admin\\Routing\\TemplateRoute`)."
+        }
+    },
+
+    "acl": {
+        "permissions": {
+            "guest": {
+                "allowed": [
+                    "object/browse",
+                    "object/view"
+                ]
+            },
+            "admin": {
+                "parent": "guest",
+                "allowed": [
+                    "object/create",
+                    "object/update",
+                    "object/delete"
+                ]
+            },
+            "dev": {
+                "superuser": true
+            }
+        }
+    }
+}

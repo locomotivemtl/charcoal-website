@@ -48,23 +48,23 @@
     <link rel="stylesheet" href="{{# withBaseUrl }}assets/app/styles/main.css?v={{ assetsVersion }}{{/ withBaseUrl }}">
     -->
 
-    {{# google.analytics.tracking_id }}
+    {{# api.google.analytics.tracking_id }}
     <script>
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
         ga('create', '{{ . }}', 'auto');
         ga('send', 'pageview');
     </script>
     <script async src="https://www.google-analytics.com/analytics.js"></script>
-    {{/ google.analytics.tracking_id }}
+    {{/ api.google.analytics.tracking_id }}
 </head>
     <body data-module-load style="opacity: 0;">
-        {{> app/template/partial/preloader }}
+        {{> app/template/web/partial/preloader }}
 
         <div data-load-container>
-            {{> app/template/partial/nav }}
+            {{> app/template/web/partial/nav }}
 
-            {{> app/template/partial/nav-mobile }}
+            {{> app/template/web/partial/nav-mobile }}
 
             <header class="c-header -fixed">
-                {{> app/template/partial/header }}
+                {{> app/template/web/partial/header }}
             </header>

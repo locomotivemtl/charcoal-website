@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Template;
+namespace App\Template\Web;
 
 // From 'charcoal-cms'
 use Charcoal\Cms\AbstractWebTemplate;

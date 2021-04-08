@@ -1,0 +1,53 @@
+{
+    "title": "Charcoal",
+
+    "main_menu": {
+        "items": {
+        }
+    },
+    "secondary_menu": {
+    },
+    "system_menu": {
+        "items": {
+            "visit": {
+                "active": true,
+                "label": "Visit Website",
+                "icon_css": "fa fa-home",
+                "id": "btn-visit",
+                "url": "/"
+            },
+            "clear-cache": {
+                "active": true,
+                "label": {
+                    "en": "Clear Cache",
+                    "fr": "Vider la cache"
+                },
+                "icon_css": "fa fa-refresh",
+                "id": "btn-clear-cache"
+            },
+            "cache": {
+                "active": true,
+                "label": {
+                    "en": "Cache Information",
+                    "fr": "Informations sur la cache"
+                },
+                "icon_css": "fa fa-refresh",
+                "url": "system/cache",
+                "required_acl_permissions": [ "system/admin" ]
+            },
+            "help": {
+                "active": true,
+                "label": "Need Help?",
+                "icon_css": "fa fa-question-circle-o",
+                "url": "help"
+            },
+            "logout": {
+                "active": true,
+                "label": "auth.logout.action",
+                "icon_css": "fa fa-sign-out",
+                "url": "logout",
+                "id": "btn-logout"
+            }
+        }
+    }
+}

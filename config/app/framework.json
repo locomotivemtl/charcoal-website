@@ -1,0 +1,90 @@
+{
+    "project_name": "Charcoal",
+    "timezone": "America/Montreal",
+
+    "admin_config": "config/admin.php",
+
+    "cache": {
+        "active": true,
+        "types": [ "apc", "memcache", "redis" ],
+        "prefix": "app"
+    },
+
+    "logger": {
+        "active": true,
+        "level": "warning"
+    },
+
+    "email": {
+        "default_from": {
+            "email": "info@locomotive.ca",
+            "name": "Locomotive"
+        }
+    },
+
+    "locales": {
+        "languages": {
+            "en": {
+                "locale": "en-CA",
+                "locales": [ "en_US.UTF-8", "en_US.utf8", "en_US" ],
+                "name": {
+                    "en": "English",
+                    "fr": "Anglais"
+                }
+            },
+            "fr": {
+                "locale": "fr-CA",
+                "locales": [ "fr_FR.UTF-8", "fr_FR.utf8", "fr_FR" ],
+                "name": {
+                    "en": "French",
+                    "fr": "Français"
+                }
+            }
+        },
+        "fallback_languages": [ "en" ],
+        "default_language": "en"
+    },
+
+    "modules": {
+        "charcoal/admin/admin": {}
+    },
+
+    "service_providers": {
+        "app/service-provider/app": {}
+    },
+
+    "metadata": {
+        "paths": [
+            "metadata/",
+            "vendor/locomotivemtl/charcoal-attachment/metadata/",
+            "vendor/locomotivemtl/charcoal-cms/metadata/",
+            "vendor/locomotivemtl/charcoal-admin/metadata/",
+            "vendor/locomotivemtl/charcoal-app/metadata/",
+            "vendor/locomotivemtl/charcoal-email/metadata/",
+            "vendor/locomotivemtl/charcoal-messaging/metadata/",
+            "vendor/locomotivemtl/charcoal-property/metadata/",
+            "vendor/locomotivemtl/charcoal-object/metadata/",
+            "vendor/locomotivemtl/charcoal-user/metadata/"
+        ]
+    },
+
+    "translator": {
+        "paths": [
+            "translations/app/",
+            "vendor/locomotivemtl/charcoal-attachment/translations/",
+            "vendor/locomotivemtl/charcoal-admin/translations/",
+            "vendor/locomotivemtl/charcoal-app/translations/"
+        ]
+    },
+
+    "view": {
+        "paths": [
+            "views/",
+            "vendor/locomotivemtl/charcoal-attachment/templates/",
+            "vendor/locomotivemtl/charcoal-cms/views/",
+            "vendor/locomotivemtl/charcoal-admin/templates/",
+            "vendor/locomotivemtl/charcoal-app/templates/"
+        ],
+        "default_engine": "mustache"
+    }
+}

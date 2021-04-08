@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Template;
+namespace App\Template\Web;
 
 // From App
-use App\Template\AbstractTemplate;
+use App\Template\Web\AbstractTemplate;
 
 /**
  * Template Controller: Technology

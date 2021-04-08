@@ -2,22 +2,13 @@
 
 namespace App\Action;
 
-// From Pimple
-use Pimple\Container;
-
-// From PSR-7
-use Psr\Http\Message\UriInterface;
-
-// From 'charcoal-core'
-use Charcoal\Model\ModelFactoryTrait;
-
-// From 'charcoal-translator'
-use Charcoal\Translator\TranslatorAwareTrait;
-
-// From 'charcoal-app'
+use Charcoal\App\Action\AbstractAction as CharcoalAction;
 use Charcoal\App\AppConfig;
 use Charcoal\App\DebugAwareTrait;
-use Charcoal\App\Action\AbstractAction as CharcoalAction;
+use Charcoal\Model\ModelFactoryTrait;
+use Charcoal\Translator\TranslatorAwareTrait;
+use Pimple\Container;
+use Psr\Http\Message\UriInterface;
 
 /**
  * Base API Controller
