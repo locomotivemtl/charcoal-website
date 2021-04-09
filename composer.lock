@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6bcebf98430d6152cce39253d3d8f10",
+    "content-hash": "d7f269080aa5192c6b845aeec032ae84",
     "packages": [
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -2106,6 +2106,66 @@
                 "source": "https://github.com/locomotivemtl/charcoal-view/tree/0.4.0"
             },
             "time": "2019-11-04T20:17:57+00:00"
+        },
+        {
+            "name": "mcaskill/charcoal-model-collection",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcaskill/charcoal-model-collection.git",
+                "reference": "da514ae2faba2264a6699d986a04855f7d506e62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcaskill/charcoal-model-collection/zipball/da514ae2faba2264a6699d986a04855f7d506e62",
+                "reference": "da514ae2faba2264a6699d986a04855f7d506e62",
+                "shasum": ""
+            },
+            "require": {
+                "locomotivemtl/charcoal-cache": "~0.2",
+                "locomotivemtl/charcoal-core": "~0.6",
+                "php": ">7.1"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.2",
+                "phpunit/phpunit": "^7.1",
+                "psr/log": "^1.1",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Charcoal\\": "src/Charcoal/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chauncey McAskill",
+                    "email": "chauncey@locomotive.ca"
+                },
+                {
+                    "name": "Locomotive",
+                    "homepage": "https://locomotive.ca"
+                }
+            ],
+            "description": "Model collection and repository classes for Charcoal.",
+            "keywords": [
+                "charcoal"
+            ],
+            "support": {
+                "issues": "https://github.com/mcaskill/charcoal-model-collection/issues",
+                "source": "https://github.com/mcaskill/charcoal-model-collection/tree/1.4.0"
+            },
+            "time": "2020-09-21T13:09:57+00:00"
         },
         {
             "name": "mcaskill/php-html-build-attributes",
