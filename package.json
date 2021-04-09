@@ -14,19 +14,19 @@
     },
     "dependencies": {
         "gsap": "^3.5.1",
-        "locomotive-scroll": "4.0.4",
-        "lottie-web": "^5.7.3",
+        "locomotive-scroll": "4.1.1",
+        "lottie-web": "^5.7.8",
         "modujs": "*",
         "modularload": "*",
         "normalize.css": "*",
         "smoothscroll-polyfill": "^0.4.4",
         "svg4everybody": "*",
-        "swiper": "^6.2.0"
+        "swiper": "^6.5.6"
     },
     "devDependencies": {
         "browser-sync": "^2.26.13",
         "concat": "^1.0.3",
-        "esbuild": "^0.8.12",
+        "esbuild": "^0.8.57",
         "fs": "0.0.1-security",
         "node-sass": "^5.0.0",
         "svg-mixer": "^2.3.14"
