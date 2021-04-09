@@ -21,6 +21,12 @@
                 "template": "app/template/web/technology",
                 "controller": "app/template/web/technology"
             }
+        },
+        "actions": {
+            "form-contact": {
+                "route": "/api/v1/contact",
+                "controller": "app/action/contact"
+            }
         }
     },
 

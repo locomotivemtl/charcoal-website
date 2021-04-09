@@ -6,6 +6,7 @@ namespace App\Template\Mail;
 
 use App\Model\Contact\Entry;
 use App\Model\Contact\Notification;
+use App\Presenter\Mail\ContactPresenter;
 use ArrayObject;
 use DateTimeImmutable;
 use ValueError;
@@ -16,14 +17,14 @@ use ValueError;
 class ContactTemplate extends AbstractMailTemplate
 {
     /**
-     * @var array
+     * @var int
      */
-    public $fields;
+    public $id;
 
     /**
-     * @var array
+     * @var ArrayObject
      */
-    public $admin;
+    public $fields;
 
     /**
      * @var Notification
@@ -39,175 +40,32 @@ class ContactTemplate extends AbstractMailTemplate
     // Templating
     // =========================================================================
 
-    /**
-     * Returns a formatted email subject line using any Entry values.
-     *
-     * @return string
-     */
-    public function getSubject() : string
-    {
-        if (is_null($this->subject)) {
-            $notification = $this->getNotification();
-
-            $this->subject = (string)$notification['subject'];
-            if ($this->subject) {
-                $fields = $this->getFields()->getArrayCopy();
-                $fields = array_column($fields, 'value', 'key');
-
-                $this->subject = $notification->view()->renderTemplate(
-                    $this->subject,
-                    $fields
-                );
-            }
-        }
-
-        return $this->subject;
-    }
-
-    /**
-     * Returns a formatted email message using any Entry fields and values.
-     *
-     * @return string
-     */
-    public function getMessage() : string
-    {
-        if (is_null($this->message)) {
-            $notification = $this->getNotification();
-
-            $this->message = (string)$this->getNotificationMessage();
-            if ($this->message) {
-                $fields = $this->getFields()->getArrayCopy();
-                $fields['admin'] = $this->getAdmin();
-
-                $this->message = $notification->view()->renderTemplate(
-                    $this->message,
-                    $fields
-                );
-            }
-        }
-
-        return $this->message;
-    }
-
-    /**
-     * Returns the formatted fields for the Entry.
-     *
-     * @return ArrayObject
-     */
-    public function getFields() : ArrayObject
-    {
-        if (is_null($this->fields)) {
-            $this->fields = new ArrayObject($this->getEntryFields());
-        }
-
-        return $this->fields;
-    }
-
-    /**
-     * Returns the URL and HTML link to the Admin for the Entry.
-     *
-     * @return array
-     */
-    public function getAdmin() : array
-    {
-        if (is_null($this->admin)) {
-            $entry = $this->getEntry();
-
-            $this->admin = [
-                'url'  => null,
-                'link' => null,
-            ];
-
-            $this->admin['url'] = (string)$this->baseUrl()
-                ->withPath('admin/object/edit')
-                ->withQuery(http_build_query([
-                    'obj_type' => $entry::objType(),
-                    'obj_id'   => $entry['id'],
-                ]));
-
-            $this->admin['link'] = sprintf(
-                '<a href="%s">%s</a>',
-                htmlspecialchars($this->admin['url']),
-                $this->translator()->trans('admin.app.contact.view-item')
-            );
-        }
-
-        return $this->admin;
-    }
-
-
-
     // Dependencies
     // =========================================================================
 
     /**
-     * Returns the form submission fields.
+     * {@inheritdoc}
      *
-     * @return ?array
+     * @param  array $data Key-value array of data to append.
+     * @return self
      */
-    protected function getEntryFields() : ?array
+    public function setData(array $data)
     {
-        $entry = $this->getEntry();
+        parent::setData($data);
 
-        $props = [
-            'id',
-            'ts',
-            'name',
-            'email',
-            'message',
-            'lang',
-            'origin',
-        ];
+        if (isset($data['notification_id'])) {
+            $presenter = new ContactPresenter(
+                $this->getNotification(),
+                $this->getEntry(),
+                $this->baseUrl(),
+                $this->translator()
+            );
 
-        $fields = [];
-        foreach ($props as $prop) {
-            $property = $entry->property($prop);
-
-            $ident = $property['ident'];
-            $value = $entry[$ident];
-            $value = $entry->property($ident)->displayVal($value);
-
-            if (empty($value) && !is_numeric($value)) {
-                continue;
-            }
-
-            $label = (string)$property['label'];
-            $field = [
-                'key'   => $ident,
-                'label' => $label,
-                'value' => $value,
-            ];
-
-            $fields[$ident] = $field;
+            $data = $presenter->getEmailTemplateData();
+            parent::setData($data);
         }
 
-        if (isset($fields['message']['value'])) {
-            $fields['message']['value'] = nl2br($fields['message']['value']);
-        }
-
-        return $fields;
-    }
-
-    /**
-     * Returns the email notification message.
-     *
-     * @return ?string
-     */
-    protected function getNotificationMessage() : ?string
-    {
-        $notification = $this->getNotification();
-
-        $message = trim((string)$notification['msgHtml']);
-        if ($message) {
-            return $message;
-        }
-
-        $message = trim((string)$notification['msgTxt']);
-        if ($message) {
-            return nl2br($message);
-        }
-
-        return null;
+        return $this;
     }
 
     /**

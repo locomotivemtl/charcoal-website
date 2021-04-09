@@ -47,4 +47,66 @@ class Entry extends UserData implements ModelInterface
 
         return $tags;
     }
+
+    /**
+     * Retrieves a map of properties that are user-fillable.
+     *
+     * @return string[]
+     */
+    public function getSubmittablePropertyNames() : array
+    {
+        return [
+            'name',
+            'email',
+            'message',
+        ];
+    }
+
+    /**
+     * @param  array<string, mixed> $data The model data to check.
+     * @return array<string, mixed>
+     */
+    public function sanitizeFormData(array $data) : array
+    {
+        foreach ($data as $key => $value) {
+            switch ($key) {
+                case 'email':
+                    $data[$key] = trim(filter_var($value, FILTER_SANITIZE_EMAIL));
+                    break;
+
+                case 'name':
+                case 'message':
+                    $data[$key] = trim(filter_var($value));
+                    break;
+
+                default:
+                    unset($data[$key]);
+                    break;
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param  array<string, mixed> $data The model data to check.
+     * @return array<string, string>
+     */
+    public function validateFormData(array $data) : array
+    {
+        $errors = [];
+
+        foreach ($data as $key => $value) {
+            if (strlen($value) === 0) {
+                $errors[$key] = $this->translator()->trans('form.field.required');
+                continue;
+            }
+
+            if ($key === 'email' && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                $errors[$key] = $this->translator()->trans('form.field.mismatch.email');
+            }
+        }
+
+        return $errors;
+    }
 }

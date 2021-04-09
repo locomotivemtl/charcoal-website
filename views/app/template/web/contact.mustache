@@ -19,50 +19,37 @@
                             </p>
                         </div>
                         <div class="o-layout_item u-2/5@from-medium">
-                            <h2 class="c-heading -h4 u-anim -delay-4">
-                                Your message
-                            </h2>
-                            <form class="c-header-contact_form u-anim -delay-5" action="" data-module-form
-                                data-form-confirm-message="Thank you! Our team will reach out as soon as possible."
-                                data-form-error-message="Error message">
+                            <h2 class="c-heading -h4 u-anim -delay-4">{{# _t }}contact.form.label{{/ _t }}</h2>
+                            <form {{& formAttrs }}>
                                 <div class="o-layout -gutter">
-                                    <div class="o-layout_item u-1/2@from-small">
-                                        <div class="c-form_item">
-                                            <label class="c-form_label" for="first-name">First name</label>
-                                            <input type="text" class="c-form_input" id="first-name" name="first-name">
-                                        </div>
-                                    </div>
-                                    <div class="o-layout_item u-1/2@from-small">
-                                        <div class="c-form_item">
-                                            <label class="c-form_label" for="last-name">Last name</label>
-                                            <input type="text" class="c-form_input" id="last-name" name="last-name">
+                                    <div class="o-layout_item">
+                                        <div id="name-field" class="c-form_item">
+                                            <label class="c-form_label" for="name">{{# _t }}contact.form.field.name.label{{/ _t }}</label>
+                                            <input class="c-form_control c-form_input" id="name" name="name" type="text" required>
                                         </div>
                                     </div>
                                     <div class="o-layout_item">
-                                        <div class="c-form_item">
-                                            <label class="c-form_label" for="e-mail">E-mail</label>
-                                            <input type="e-mail" class="c-form_input" id="e-mail" name="e-mail">
+                                        <div id="email-field" class="c-form_item">
+                                            <label class="c-form_label" for="email">{{# _t }}contact.form.field.email.label{{/ _t }}</label>
+                                            <input class="c-form_control c-form_input" id="email" name="email" type="email" required>
                                         </div>
                                     </div>
                                     <div class="o-layout_item">
-                                        <div class="c-form_item">
-                                            <label class="c-form_label" for="message">Message</label>
-                                            <textarea name="message" class="c-form_textarea" id="message"></textarea>
+                                        <div id="message-field" class="c-form_item">
+                                            <label class="c-form_label" for="message">{{# _t }}contact.form.field.message.label{{/ _t }}</label>
+                                            <textarea class="c-form_control c-form_textarea" id="message" name="message" required></textarea>
                                         </div>
                                     </div>
-                                    <div class="o-layout_item u-1/2" data-form="feedback">
-
+                                    <div for="c-contact-form-feedback" class="o-layout_item u-1/2" data-form="feedback">
                                     </div>
                                     <div class="o-layout_item u-1/2 u-text-right">
                                         <div class="c-header-contact_submit_wrap">
                                             <div class="c-spinner">
-                                                <svg role="img" aria-hidden="true">
+                                                <svg aria-hidden="true" focusable="false">
                                                     <use href="assets/app/images/sprite.svg#spinner"></use>
                                                 </svg>
                                             </div>
-                                            <button class="c-header-contact_submit c-button -blue -big">
-                                                Send
-                                            </button>
+                                            <button for="c-contact-form-submit" type="submit" class="c-header-contact_submit c-button -blue -big">{{# _t }}form.submit.label{{/ _t }}</button>
                                         </div>
                                     </div>
                                 </div>

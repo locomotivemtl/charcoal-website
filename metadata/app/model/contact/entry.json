@@ -12,44 +12,26 @@
         "name": {
             "type": "string",
             "required": true,
-            "label": {
-                "en": "Full Name",
-                "fr": "Nom complet"
-            }
+            "label": "contact.form.field.name.label"
         },
         "email": {
             "type": "email",
             "required": true,
-            "label": {
-                "en": "Email Address",
-                "fr": "Adresse courriel"
-            }
+            "label": "contact.form.field.email.label"
         },
         "message": {
             "type": "text",
             "required": true,
-            "label": {
-                "en": "Message",
-                "fr": "Message"
-            }
+            "label": "contact.form.field.message.label"
         },
         "lang": {
-            "label": {
-                "en": "Source Language",
-                "fr": "Langue de la source"
-            }
-        },
-        "ts": {
-            "label": {
-                "en": "Creation Date",
-                "fr": "Date de création"
-            }
+            "label": "contact.form.field.lang.label"
         },
         "origin": {
-            "label": {
-                "en": "Source URL",
-                "fr": "URL de la source"
-            }
+            "label": "contact.form.field.origin.label"
+        },
+        "ts": {
+            "label": "contact.form.field.ts.label"
         }
     }
 }

@@ -29,7 +29,7 @@ abstract class AbstractAction extends CharcoalAction
     /**
      * The base URI.
      *
-     * @var UriInterface|null
+     * @var UriInterface
      */
     protected $baseUrl;
 
@@ -89,7 +89,7 @@ abstract class AbstractAction extends CharcoalAction
      * @param  UriInterface $uri A URI.
      * @return void
      */
-    protected function setBaseUrl(UriInterface $uri)
+    protected function setBaseUrl(UriInterface $uri) : void
     {
         $this->baseUrl = $uri;
     }
@@ -97,7 +97,7 @@ abstract class AbstractAction extends CharcoalAction
     /**
      * @return UriInterface
      */
-    public function baseUrl()
+    public function baseUrl() : UriInterface
     {
         return $this->baseUrl;
     }
@@ -115,9 +115,10 @@ abstract class AbstractAction extends CharcoalAction
      */
     protected function setDependencies(Container $container)
     {
-        $this->setTranslator($container['translator']);
         $this->setDebug($container['debug']);
+        $this->setTranslator($container['translator']);
+        $this->setModelFactory($container['model/factory']);
         $this->setBaseUrl($container['base-url']);
-        $this->setAppConfig($container['app/site']);
+        $this->setAppConfig($container['config']);
     }
 }

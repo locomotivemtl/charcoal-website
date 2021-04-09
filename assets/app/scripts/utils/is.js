@@ -35,3 +35,13 @@ export function isFunction( thing ) {
     const getType = {};
     return thing && getType.toString.call(thing) === '[object Function]';
 }
+
+/**
+ * Determines if value is null or undefined.
+ *
+ * @param  {*} value - The value to check.
+ * @return {boolean}
+ */
+export function isNil(value) {
+    return value == null;
+}

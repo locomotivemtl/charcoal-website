@@ -8,6 +8,14 @@
 .c-form_item {
     position: relative;
     margin-bottom: rem(30px);
+
+    &.is-invalid {
+        .c-form_input,
+        .c-form_select_input,
+        .c-form_textarea {
+            border-color: $red;
+        }
+    }
 }
 
 // Label
