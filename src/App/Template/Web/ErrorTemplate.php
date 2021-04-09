@@ -2,17 +2,13 @@
 
 namespace App\Template\Web;
 
-// From 'charcoal-app'
 use Charcoal\App\Handler\AbstractError;
 use Charcoal\App\Handler\HandlerAwareTrait;
-
-// From App
-use App\Template\Web\AbstractTemplate;
 
 /**
  * Template Controller: Error Handler
  */
-class ErrorTemplate extends AbstractTemplate
+class ErrorTemplate extends AbstractWebTemplate
 {
     use HandlerAwareTrait;
 

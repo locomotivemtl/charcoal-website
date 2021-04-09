@@ -8,14 +8,18 @@ const app = new modular({
 });
 
 window.onload = (event) => {
-    const $style = document.getElementById("stylesheet");
+    const $style = document.getElementById('css-app-main');
 
-    if ($style.isLoaded) {
-        init();
-    } else {
-        $style.addEventListener('load', (event) => {
+    if ($style) {
+        if ($style.isLoaded) {
             init();
-        });
+        } else {
+            $style.addEventListener('load', (event) => {
+                init();
+            });
+        }
+    } else {
+        console.warn('The "css-app-main" stylesheet not found');
     }
 };
 
