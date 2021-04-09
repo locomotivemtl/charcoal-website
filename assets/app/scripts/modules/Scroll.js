@@ -8,33 +8,29 @@ export default class extends module {
     }
 
     init() {
-
         setTimeout(() => {
-
             html.classList.add('has-scroll-module-init');
 
             this.scroll = new LocomotiveScroll({
                 el: this.el,
                 smooth: true,
                 getDirection: true,
-                offset: ['15%']
+                offset: [ '15%' ]
             });
 
-            this.scroll.on('call', (func,way,obj,id) => {
+            this.scroll.on('call', (func, way, obj, id) => {
                 // Using modularJS
                 this.call(func[0],{way,obj},func[1],func[2]);
             });
 
             this.scroll.on('scroll', (args) => {
-                // console.log(args.scroll);
-
-                if(args.scroll.y > 50) {
+                if (args.scroll.y > 50) {
                     html.classList.add('has-scrolled');
                 } else {
                     html.classList.remove('has-scrolled');
                 }
 
-                if(args.direction == 'down') {
+                if (args.direction == 'down') {
                     html.classList.add('is-scrolling-down')
                 } else {
                     html.classList.remove('is-scrolling-down')
@@ -42,7 +38,7 @@ export default class extends module {
 
                 // this.call('checkScroll','Object3D');
 
-                if(typeof args.currentElements['hero'] === 'object') {
+                if (typeof args.currentElements['hero'] === 'object') {
                     let progress = args.currentElements['hero'];
                     this.call('onScroll', [progress, args], 'Hero');
                 }
@@ -67,6 +63,5 @@ export default class extends module {
         html.classList.remove('has-scroll-module-init');
         html.classList.remove('is-scrolling-down')
         html.classList.remove('has-scrolled');
-
     }
 }
