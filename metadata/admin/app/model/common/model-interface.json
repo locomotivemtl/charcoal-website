@@ -1,0 +1,89 @@
+{
+    "admin": {
+        "form_sidebars": {
+            "app/model/content": {
+                "properties": [
+                    "active"
+                ],
+                "properties_options": {
+                    "active": {
+                        "output_type": "input"
+                    }
+                }
+            }
+        },
+
+        "form_groups": {
+            "app/model/meta": {
+                "required_acl_permissions": "object/advanced"
+            }
+        },
+
+        "dashboards": {
+            "admin.create": {
+                "show_header": false,
+                "widgets": {
+                    "form": {
+                        "priority": 50,
+                        "type": "charcoal/admin/widget/object-form",
+                        "x0type": "charcoal/admin/widget/app/forms/object-form",
+                        "template": "charcoal/admin/widget/object-form",
+                        "group_display_mode": "tab",
+                        "form_ident": "app/model/create",
+                        "permissions": [
+                            "object/create"
+                        ]
+                    }
+                },
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] }
+                    ]
+                }
+            },
+            "admin.edit": {
+                "show_header": false,
+                "widgets": {
+                    "form": {
+                        "priority": 50,
+                        "type": "charcoal/admin/widget/object-form",
+                        "x0type": "charcoal/admin/widget/app/forms/object-form",
+                        "template": "charcoal/admin/widget/object-form",
+                        "group_display_mode": "tab",
+                        "form_ident": "app/model/edit",
+                        "permissions": [
+                            "object/update"
+                        ]
+                    }
+                },
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] }
+                    ]
+                }
+            },
+            "admin.collection": {
+                "show_header": false,
+                "widgets": {
+                    "table": {
+                        "priority": 50,
+                        "type": "charcoal/admin/widget/table",
+                        "x0type": "charcoal/admin/widget/app/collections/object-table",
+                        "template": "charcoal/admin/widget/table",
+                        "collection_ident": "app/model/list",
+                        "data_sources": [ "request" ],
+                        "sortable": false
+                    }
+                },
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] }
+                    ]
+                }
+            }
+        },
+        "default_create_dashboard": "admin.create",
+        "default_edit_dashboard": "admin.edit",
+        "default_collection_dashboard": "admin.collection"
+    }
+}

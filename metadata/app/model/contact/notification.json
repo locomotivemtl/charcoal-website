@@ -1,0 +1,147 @@
+{
+    "sources": {
+        "default": {
+            "table": "app_contact_notifications"
+        }
+    },
+
+    "properties": {
+        "id": {
+            "type": "id"
+        },
+        "active": {
+            "description": {
+                "en": "An active notification will send an email after a form submission is successfully processed.",
+                "fr": "Une notification active enverra un courriel une fois la soumission d'un formulaire est traitée avec succès."
+            }
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "description": {
+                "en": "Internal name to identify notification.",
+                "fr": "Nom interne pour identifier la notification."
+            }
+        },
+        "to": {
+            "type": "string",
+            "allow_html": true,
+            "multiple": true,
+            "validatable": false,
+            "label": {
+                "en": "Recipient Email Address(es)",
+                "fr": "Adresses courriels des destinataires"
+            },
+            "placeholder": {
+                "en": "Display name <address>",
+                "fr": "Nom d'affichage <adresse>"
+            }
+        },
+        "cc": {
+            "type": "string",
+            "allow_html": true,
+            "multiple": true,
+            "validatable": false,
+            "label": {
+                "en": "CC Email Address(es)",
+                "fr": "Adresses courriels CC"
+            },
+            "placeholder": {
+                "en": "Display name <address>",
+                "fr": "Nom d'affichage <adresse>"
+            }
+        },
+        "bcc": {
+            "type": "string",
+            "allow_html": true,
+            "multiple": true,
+            "validatable": false,
+            "label": {
+                "en": "BCC Email Address(es)",
+                "fr": "Adresses courriels BCC"
+            },
+            "placeholder": {
+                "en": "Display name <address>",
+                "fr": "Nom d'affichage <adresse>"
+            }
+        },
+        "from": {
+            "type": "string",
+            "allow_html": true,
+            "label": {
+                "en": "Sender Email Address",
+                "fr": "Adresse courriel de l'expéditeur"
+            },
+            "placeholder": {
+                "en": "Display name <address>",
+                "fr": "Nom d'affichage <adresse>"
+            }
+        },
+        "replyTo": {
+            "type": "string",
+            "allow_html": true,
+            "label": {
+                "en": "Email address to reply",
+                "fr": "Adresse courriel pour répondre"
+            },
+            "placeholder": {
+                "en": "Display name <address>",
+                "fr": "Nom d'affichage <adresse>"
+            }
+        },
+        "subject": {
+            "type": "string",
+            "l10n": true,
+            "label": {
+                "en": "Email Subject",
+                "fr": "Sujet du courriel"
+            }
+        },
+        "msgHtml": {
+            "type": "html",
+            "l10n": true,
+            "rows": 6,
+            "upload_path": "uploads/",
+            "filesystem": "public",
+            "public_access": true,
+            "label": {
+                "en": "Rich-Text Message",
+                "fr": "Message texte enrichi"
+            }
+        },
+        "msgTxt": {
+            "type": "text",
+            "l10n": true,
+            "rows": 6,
+            "label": {
+                "en": "Plain-Text Message",
+                "fr": "Message en texte brut"
+            }
+        },
+        "templateIdent": {
+            "type": "string",
+            "hidden": true,
+            "label": {
+                "en": "Email Template",
+                "fr": "Gabarit de courriel"
+            },
+            "choices": {
+                "app/mail/contact": {
+                    "label": {
+                        "en": "Contact Email Template",
+                        "fr": "Gabarit de courriel de contact"
+                    }
+                }
+            }
+        },
+        "templateData": {
+            "type": "model-structure",
+            "hidden": true,
+            "rows": 8,
+            "label": {
+                "en": "Template Settings",
+                "fr": "Options du gabarit"
+            }
+        }
+    }
+}

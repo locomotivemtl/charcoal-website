@@ -1,0 +1,280 @@
+{
+    "labels": {
+        "name": {
+            "en": "Messages",
+            "fr": "Messages"
+        },
+        "singular_name": {
+            "en": "Message",
+            "fr": "Message"
+        },
+        "create_item": {
+            "en": "Create Message",
+            "fr": "Créer le message"
+        },
+        "new_item": {
+            "en": "New Message",
+            "fr": "Nouveau message"
+        },
+        "view_item": {
+            "en": "View Message",
+            "fr": "Voir le message"
+        },
+        "edit_item": {
+            "en": "Edit Message",
+            "fr": "Modifier le message"
+        },
+        "all_items": {
+            "en": "All Messages",
+            "fr": "Tous les messages"
+        },
+        "menu_items": {
+            "en": "Messages",
+            "fr": "Messages"
+        }
+    },
+
+    "properties": {
+        "id": {
+            "show_description": false,
+            "description": {
+                "en": "The lead's entry ID.",
+                "fr": "ID de l'entrée du prospect."
+            }
+        },
+        "name": {
+            "input_type": "charcoal/admin/property/input/readonly",
+            "show_description": false,
+            "description": {
+                "en": "The lead's full name.",
+                "fr": "Le nom complet du prospect."
+            }
+        },
+        "email": {
+            "input_type": "charcoal/admin/property/input/readonly",
+            "show_description": false,
+            "description": {
+                "en": "The lead's email address.",
+                "fr": "L'adresse courriel du prospect."
+            }
+        },
+        "message": {
+            "input_type": "charcoal/admin/property/input/readonly",
+            "show_description": false,
+            "description": {
+                "en": "The lead's message.",
+                "fr": "Le message du prospect."
+            }
+        },
+        "lang": {
+            "input_type": "charcoal/admin/property/input/readonly",
+            "show_description": false,
+            "description": {
+                "en": "Language of the page that contained the form when it was submitted.",
+                "fr": "Langue de la page contenant le formulaire lors de sa soumission."
+            }
+        },
+        "ts": {
+            "input_type": "charcoal/admin/property/input/readonly",
+            "show_description": false,
+            "description": {
+                "en": "The date and time that the entry was created.",
+                "fr": "La date et l'heure de création de l'entrée."
+            }
+        },
+        "ip": {
+            "input_type": "charcoal/admin/property/input/readonly",
+            "show_description": false,
+            "description": {
+                "en": "Client IP address of the user who submitted the form.",
+                "fr": "Adresse IP du client de l'utilisateur qui a soumis le formulaire."
+            }
+        },
+        "origin": {
+            "input_type": "charcoal/admin/property/input/readonly",
+            "show_description": false,
+            "description": {
+                "en": "Source URL of the page that contained the form when it was submitted.",
+                "fr": "URL source de la page contenant le formulaire lors de sa soumission."
+            }
+        }
+    },
+
+    "admin": {
+        "lists": {
+            "app/model/list": {
+                "properties": [
+                    "name",
+                    "email",
+                    "ts"
+                ],
+                "orders": [
+                    {
+                        "property": "ts",
+                        "mode": "desc"
+                    }
+                ],
+                "pagination": {
+                    "num_per_page": 100
+                },
+                "list_actions": {
+                    "create": {
+                        "active": false
+                    },
+                    "export": {
+                        "url": "object/export?obj_type={{ objType }}",
+                        "label": {
+                            "en": "Export All",
+                            "fr": "Exporter tout"
+                        }
+                    }
+                }
+            },
+            "app/model/search": {
+                "properties": [
+                    "id",
+                    "name",
+                    "email",
+                    "message"
+                ]
+            }
+        },
+        "default_list": "app/model/list",
+        "default_search_list": "app/model/search",
+
+        "export": {
+            "admin/model/export": {
+                "dev_notes": "TODO: Support locomotivemtl/charcoal-contrib-property-filter",
+                "properties": [
+                    "ts",
+                    "name",
+                    "email",
+                    "message",
+                    "lang",
+                    "ip",
+                    "origin"
+                ],
+                "properties_options": {
+                    "ts": {
+                        "label": "Date"
+                    }
+                },
+                "orders": [
+                    {
+                        "property": "ts",
+                        "mode": "desc"
+                    }
+                ]
+            }
+        },
+        "default_export": "admin/model/export",
+
+        "forms": {
+            "app/model/create": {
+                "groups": {
+                    "app/model/base": {},
+                    "app/model/meta": {}
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            },
+            "app/model/edit": {
+                "groups": {
+                    "app/model/base": {},
+                    "app/model/meta": {}
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            }
+        },
+        "default_form": "app/model/edit",
+
+        "form_groups": {
+            "app/model/base": {
+                "priority": 100,
+                "show_title": true,
+                "show_header": true,
+                "title": {
+                    "en": "Information",
+                    "fr": "Information"
+                },
+                "icon": "circle",
+                "properties": [
+                    "name",
+                    "email",
+                    "lang",
+                    "message"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 5, 5, 2 ] },
+                        { "columns": [ 1 ] }
+                    ]
+                }
+            },
+            "app/model/meta": {
+                "priority": 200,
+                "show_title": true,
+                "show_header": false,
+                "required_acl_permissions": "object/advanced",
+                "title": {
+                    "en": "Meta",
+                    "fr": "Méta"
+                },
+                "icon": "circle-o",
+                "properties": [
+                    "id",
+                    "ts",
+                    "ip",
+                    "origin"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1, 1 ] }
+                    ]
+                }
+            }
+        },
+
+        "dashboards": {
+            "admin.collection": {
+                "widgets": {
+                    "filters": {
+                        "priority": 10,
+                        "type": "charcoal/property-filter/widget/property-filter",
+                        "property_filters": [
+                            "lang",
+                            "origin"
+                        ],
+                        "properties_options": {
+                            "lang": {
+                                "required": false,
+                                "multiple": false,
+                                "input_type": "charcoal/admin/property/input/select"
+                            },
+                            "origin": {
+                                "required": false,
+                                "multiple": false,
+                                "input_type": "charcoal/admin/property/input/select"
+                            }
+                        },
+                        "layout": {
+                            "structure": [
+                                { "columns": [ 1, 1, 1 ] }
+                            ]
+                        }
+                    }
+                },
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1 ] }
+                    ]
+                }
+            }
+        }
+    }
+}

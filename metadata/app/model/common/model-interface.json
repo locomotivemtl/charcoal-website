@@ -1,0 +1,14 @@
+{
+    "sources": {
+        "default": {
+            "table": null
+        }
+    },
+    "default_source": "default",
+
+    "properties": {
+        "id": {
+            "label": "ID"
+        }
+    }
+}

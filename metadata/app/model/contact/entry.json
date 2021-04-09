@@ -1,0 +1,55 @@
+{
+    "sources": {
+        "default": {
+            "table": "app_contact_entries"
+        }
+    },
+
+    "properties": {
+        "id": {
+            "type": "id"
+        },
+        "name": {
+            "type": "string",
+            "required": true,
+            "label": {
+                "en": "Full Name",
+                "fr": "Nom complet"
+            }
+        },
+        "email": {
+            "type": "email",
+            "required": true,
+            "label": {
+                "en": "Email Address",
+                "fr": "Adresse courriel"
+            }
+        },
+        "message": {
+            "type": "text",
+            "required": true,
+            "label": {
+                "en": "Message",
+                "fr": "Message"
+            }
+        },
+        "lang": {
+            "label": {
+                "en": "Source Language",
+                "fr": "Langue de la source"
+            }
+        },
+        "ts": {
+            "label": {
+                "en": "Creation Date",
+                "fr": "Date de création"
+            }
+        },
+        "origin": {
+            "label": {
+                "en": "Source URL",
+                "fr": "URL de la source"
+            }
+        }
+    }
+}

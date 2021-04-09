@@ -13,9 +13,51 @@
 
     "main_menu": {
         "items": {
+            "visitors": {
+                "label": {
+                    "en": "Visitors",
+                    "fr": "Visiteurs"
+                },
+                "icon": "contacts",
+                "url": "object/collection?obj_type=app/model/contact/entry"
+            }
         }
     },
     "secondary_menu": {
+        "visitors": {
+            "show_title": false,
+            "title": {
+                "en": "Visitors",
+                "fr": "Visiteurs"
+            },
+            "groups": {
+                "contact": {
+                    "priority": 50,
+                    "show_title": true,
+                    "display_type": "panel",
+                    "title": {
+                        "en": "Contact",
+                        "fr": "Contact"
+                    },
+                    "links": {
+                        "app/model/contact/notification": {
+                            "name": {
+                                "en": "Notifications",
+                                "fr": "Notifications"
+                            },
+                            "url": "object/collection?obj_type=app/model/contact/notification"
+                        },
+                        "app/model/contact/entry": {
+                            "name": {
+                                "en": "Messages",
+                                "fr": "Messages"
+                            },
+                            "url": "object/collection?obj_type=app/model/contact/entry"
+                        }
+                    }
+                }
+            }
+        }
     },
     "system_menu": {
         "items": {

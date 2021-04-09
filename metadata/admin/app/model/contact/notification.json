@@ -1,0 +1,164 @@
+{
+    "labels": {
+        "name": {
+            "en": "Notifications",
+            "fr": "Notifications"
+        },
+        "singular_name": {
+            "en": "Notification",
+            "fr": "Notification"
+        },
+        "create_item": {
+            "en": "Create Notification",
+            "fr": "Créer la notification"
+        },
+        "new_item": {
+            "en": "New Notification",
+            "fr": "Nouvelle notification"
+        },
+        "view_item": {
+            "en": "View Notification",
+            "fr": "Voir la notification"
+        },
+        "edit_item": {
+            "en": "Notification: \"{{ name }}\"",
+            "fr": "Notification: \"{{ name }}\""
+        },
+        "x0edit_item": {
+            "en": "Edit Notification",
+            "fr": "Modifier la notification"
+        },
+        "all_items": {
+            "en": "All Notifications",
+            "fr": "Toutes les notifications"
+        },
+        "menu_items": {
+            "en": "Notifications",
+            "fr": "Notifications"
+        }
+    },
+
+    "properties": {
+        "msgHtml": {
+            "input_type": "charcoal/admin/property/input/tinymce/basic",
+            "show_notes": "above"
+        },
+        "msgTxt": {
+            "notes": {
+                "en": "<p>Leave blank to use the rich-text message, which will be converted to plain text.</p>{{> charcoal/admin/notes/app/forms/contact/notification }}",
+                "fr": "<p>Laissez vide pour utiliser le message en texte enrichi, qui sera converti en texte brut.</p>{{> charcoal/admin/notes/app/forms/contact/notification }}"
+            }
+        }
+    },
+
+    "admin": {
+        "lists": {
+            "app/model/list": {
+                "properties": [
+                    "id",
+                    "name",
+                    "subject",
+                    "active"
+                ],
+                "list_actions": {
+                    "create": {
+                        "active": false
+                    }
+                }
+            },
+            "app/model/search": {
+                "properties": [
+                    "id",
+                    "name",
+                    "subject",
+                    "msgHtml",
+                    "msgTxt"
+                ]
+            }
+        },
+        "default_list": "app/model/list",
+        "default_search_list": "app/model/search",
+
+        "forms": {
+            "app/model/create": {
+                "groups": {
+                    "app/model/base": {},
+                    "app/model/meta": {}
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            },
+            "app/model/edit": {
+                "groups": {
+                    "app/model/base": {},
+                    "app/model/meta": {}
+                },
+                "sidebars": {
+                    "app/model/content": {}
+                }
+            }
+        },
+        "default_form": "app/model/edit",
+
+        "form_groups": {
+            "app/model/base": {
+                "priority": 100,
+                "show_title": true,
+                "show_header": false,
+                "title": {
+                    "en": "Notification",
+                    "fr": "Notification"
+                },
+                "icon": "envelope-o",
+                "properties": [
+                    "name",
+                    "to",
+                    "cc",
+                    "bcc",
+                    "from",
+                    "replyTo",
+                    "subject",
+                    "msgHtml",
+                    "msgTxt"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1 ] }
+                    ]
+                }
+            },
+            "app/model/meta": {
+                "priority": 200,
+                "show_title": true,
+                "show_header": false,
+                "required_acl_permissions": "object/advanced",
+                "title": {
+                    "en": "Meta",
+                    "fr": "Méta"
+                },
+                "icon": "circle-o",
+                "properties": [
+                    "id",
+                    "lastModified",
+                    "lastModifiedBy",
+                    "created",
+                    "createdBy"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1, 1 ] }
+                    ]
+                }
+            }
+        }
+    }
+}

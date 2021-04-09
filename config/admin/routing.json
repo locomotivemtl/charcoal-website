@@ -3,7 +3,7 @@
         "templates": {
             "home": {
                 "route": "[/[home]]",
-                "redirect": "admin/object/collection?obj_type=app/object/section"
+                "redirect": "admin/object/collection?obj_type=app/model/contact/entry"
             }
         },
         "actions": {
