@@ -1,0 +1,94 @@
+/**
+ * Object Table Widget
+ */
+.c-table-container thead .c-table-container_actions {
+    padding: 0.75rem 1.75rem !important;
+}
+
+.c-table-container tbody .c-table-container_actions {
+    padding: 0 0.75rem !important;
+}
+
+.c-table-container .c-table-container_actions {
+    text-align: right;
+}
+
+
+
+.c-table-container tbody .property-name {
+    font-size: 1em;
+}
+
+.c-table-container .property-id {
+    width: 3rem;
+}
+
+.c-table-container .property-active {
+    width: 4rem;
+}
+
+.c-table-container .property-thumbnail,
+.c-table-container .property-image,
+.c-table-container .property-id {
+    text-align: center;
+}
+
+.c-table-container tbody .property-thumbnail {
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+}
+
+.c-table-container tbody .property-thumbnail img {
+    border: 0;
+}
+
+
+
+/**
+ * Object Form Widget
+ */
+.c-form-widget_group.js-group-tab > div > .c-form-widget.-tabbed {
+    margin-top: 4rem;
+}
+
+.c-form-widget_group.js-group-tab > div > .c-form-widget.-tabbed > div > .c-form-widget_nav.nav.nav-tabs .nav-link.active {
+    border-color: #FFF;
+    background-color: #FFF;
+}
+
+.c-form-widget_group.js-group-tab > div > .c-form-widget.-tabbed > div > .c-form-widget_groups.tab-content > .c-form-widget_group.js-group-tab > .c-form-widget_group_content {
+    margin-top: 0;
+}
+
+
+
+/**
+ * Quick Form Widget
+ */
+.c-form-widget.-quick-form.-tabbed > .c-form-widget_form > .nav-pills {
+    margin-bottom: 1em;
+}
+
+
+/**
+ * Secondary Menu Item
+ */
+.c-nav-secondary_list_item {
+    line-height: 1.5;
+}
+
+
+
+/**
+ * TinyMCE
+ */
+.mce-container .mce-placeholder-area {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.mce-container .mce-placeholder-area * {
+    color: #6C757D;
+}
