@@ -20,6 +20,7 @@
         "locomotivemtl/charcoal-app": "^0.8",
         "locomotivemtl/charcoal-attachment": "^0.10",
         "locomotivemtl/charcoal-cms": "^0.9",
+        "locomotivemtl/charcoal-contrib-property-filter": "^0.1.2",
         "mustache/mustache": "^2.12"
     },
     "require-dev": {

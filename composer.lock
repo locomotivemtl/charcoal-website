@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77bbf7f0ed3131d71981dbc174c48d5d",
+    "content-hash": "e6bcebf98430d6152cce39253d3d8f10",
     "packages": [
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -1308,6 +1308,66 @@
                 "source": "https://github.com/locomotivemtl/charcoal-config/tree/master"
             },
             "time": "2019-11-04T20:30:30+00:00"
+        },
+        {
+            "name": "locomotivemtl/charcoal-contrib-property-filter",
+            "version": "0.1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/locomotivemtl/charcoal-contrib-property-filter.git",
+                "reference": "60684d82d02d4c143074fd82a073c9e08d8b85da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/locomotivemtl/charcoal-contrib-property-filter/zipball/60684d82d02d4c143074fd82a073c9e08d8b85da",
+                "reference": "60684d82d02d4c143074fd82a073c9e08d8b85da",
+                "shasum": ""
+            },
+            "require": {
+                "locomotivemtl/charcoal-admin": ">=0.14.2",
+                "php": ">=5.6.0 || >=7.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^5.7 || ^6.5",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Charcoal\\": "src/Charcoal/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Locomotive",
+                    "homepage": "https://locomotive.ca"
+                },
+                {
+                    "name": "Joel Alphonso",
+                    "homepage": "https://github.com/joelalphonso"
+                }
+            ],
+            "description": "Charcoal service provider for a collection filtering widget that uses model properties as filters.",
+            "homepage": "https://locomotivemtl.github.io/charcoal-contrib-property-filter/",
+            "keywords": [
+                "charcoal",
+                "filter"
+            ],
+            "support": {
+                "issues": "https://github.com/locomotivemtl/charcoal-contrib-property-filter/issues",
+                "source": "https://github.com/locomotivemtl/charcoal-contrib-property-filter/tree/0.1.2.1"
+            },
+            "time": "2020-01-21T20:08:30+00:00"
         },
         {
             "name": "locomotivemtl/charcoal-core",

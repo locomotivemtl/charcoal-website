@@ -46,6 +46,7 @@
     },
 
     "modules": {
+        "charcoal/property-filter/property-filter": {},
         "charcoal/admin/admin": {}
     },
 
@@ -71,6 +72,7 @@
     "translator": {
         "paths": [
             "translations/app/",
+            "vendor/locomotivemtl/charcoal-contrib-property-filter/translations/",
             "vendor/locomotivemtl/charcoal-attachment/translations/",
             "vendor/locomotivemtl/charcoal-admin/translations/",
             "vendor/locomotivemtl/charcoal-app/translations/"
