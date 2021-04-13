@@ -1,0 +1,14 @@
+{{> app/template/mail/partial/header }}
+
+{{& message }}
+{{^ message }}
+    <table>
+        {{# fields }}
+        <tr>
+            <td>{{ label }}</td><td>{{ value }}</td>
+        </tr>
+        {{/ fields }}
+    </table>
+{{/ message }}
+
+{{> app/template/mail/partial/footer }}
