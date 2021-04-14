@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7f269080aa5192c6b845aeec032ae84",
+    "content-hash": "99e4d7a588d26ccc6949faa70d6f591c",
     "packages": [
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -115,6 +115,58 @@
                 "source": "https://github.com/erusev/parsedown/tree/1.7.x"
             },
             "time": "2019-12-30T22:54:17+00:00"
+        },
+        {
+            "name": "google/recaptcha",
+            "version": "1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google/recaptcha.git",
+                "reference": "614f25a9038be4f3f2da7cbfd778dc5b357d2419"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google/recaptcha/zipball/614f25a9038be4f3f2da7cbfd778dc5b357d2419",
+                "reference": "614f25a9038be4f3f2da7cbfd778dc5b357d2419",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.2.20|^2.15",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^4.8.36|^5.7.27|^6.59|^7.5.11"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ReCaptcha\\": "src/ReCaptcha"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Client library for reCAPTCHA, a free service that protects websites from spam and abuse.",
+            "homepage": "https://www.google.com/recaptcha/",
+            "keywords": [
+                "Abuse",
+                "captcha",
+                "recaptcha",
+                "spam"
+            ],
+            "support": {
+                "forum": "https://groups.google.com/forum/#!forum/recaptcha",
+                "issues": "https://github.com/google/recaptcha/issues",
+                "source": "https://github.com/google/recaptcha"
+            },
+            "time": "2020-03-31T17:50:54+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2166,6 +2218,61 @@
                 "source": "https://github.com/mcaskill/charcoal-model-collection/tree/1.4.0"
             },
             "time": "2020-09-21T13:09:57+00:00"
+        },
+        {
+            "name": "mcaskill/charcoal-recaptcha",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcaskill/charcoal-recaptcha.git",
+                "reference": "c6fe0bde5f91c2003ffc0e5f30e1e988bc27c526"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcaskill/charcoal-recaptcha/zipball/c6fe0bde5f91c2003ffc0e5f30e1e988bc27c526",
+                "reference": "c6fe0bde5f91c2003ffc0e5f30e1e988bc27c526",
+                "shasum": ""
+            },
+            "require": {
+                "google/recaptcha": "^1.1",
+                "locomotivemtl/charcoal-config": "~0.8",
+                "php": ">=5.6.0 || >=7.0",
+                "pimple/pimple": "^3.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^5.7 || ^6.5",
+                "slim/slim": "^3.4",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Charcoal\\ReCaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chauncey McAskill",
+                    "email": "chauncey@locomotive.ca"
+                }
+            ],
+            "description": "Google reCAPTCHA for Charcoal.",
+            "support": {
+                "issues": "https://github.com/mcaskill/charcoal-recaptcha/issues",
+                "source": "https://github.com/mcaskill/charcoal-recaptcha"
+            },
+            "time": "2018-05-23T15:13:33+00:00"
         },
         {
             "name": "mcaskill/php-html-build-attributes",

@@ -32,8 +32,9 @@ export default class extends module {
         super(m);
 
         this.events = {
-            input:  'onInput',
-            submit: 'onSubmit',
+            'input':              'onInput',
+            'submit':             'onSubmit',
+            'recaptcha-executed': 'onCaptcha',
         };
     }
 
@@ -64,6 +65,19 @@ export default class extends module {
     }
 
     /**
+     * Fires when a CAPTCHA is executed.
+     * CAPTCHA submit
+     *
+     * @param {Event} event - The recaptcha-executed event.
+     */
+    onCaptcha(event) {
+        isDebug && console.log('[App.Form.handleRecaptcha] Handling "recaptcha-executed" event:', event)
+        if (event.detail) {
+            this.submitForm()
+        }
+    }
+
+    /**
      * Fires when a form is submitted.
      *
      * This method defers the submission of the form.
@@ -87,7 +101,18 @@ export default class extends module {
         event.target.checkValidity();
 
         try {
-            this.submitForm();
+            const recaptcha = this.getRecaptchaField();
+            if (recaptcha && recaptcha.getAttribute('data-size') === 'invisible') {
+                // Check for the verified invisible captcha token first.
+                const recaptchaResponse = this.$form.querySelector('input[name="g-recaptcha-response"]') || recaptcha.querySelector('.g-recaptcha-response');
+                const token = recaptchaResponse.value
+                if (!token) {
+                    // Execute the invisible captcha.
+                    grecaptcha.execute(recaptcha.getAttribute('data-widget-id'));
+                }
+            } else {
+                this.submitForm();
+            }
         } catch (error) {
             console.error('[App.Form.onSubmit]', error);
             this.setErroredState(this.errorMessage);
@@ -167,6 +192,8 @@ export default class extends module {
             return response.json();
         }).then(response => {
             isDebug && console.log('[App.Form.submitForm~then]', { isRedirected, isSuccessful, isClientError, isServerError, response });
+
+            this.resetRecaptcha();
 
             // Check for false-positives
             if (isSuccessful && response.success === false) {
@@ -338,5 +365,52 @@ export default class extends module {
 
             this.call('update', null, 'Scroll');
         });
+    }
+
+    /**
+     * Retrieves the reCAPTCHA element.
+     *
+     * @return {?Element}
+     */
+    getRecaptchaField() {
+        const module = this.getRecaptchaModule();
+        if (module) {
+            return module.getElement();
+        }
+
+        return null;
+    }
+
+    /**
+     * Reset the reCAPTCHA element.
+     */
+    resetRecaptcha() {
+        const module = this.getRecaptchaModule();
+        if (module) {
+            return module.reset();
+        }
+    }
+
+    /**
+     * @return {?Recaptcha}
+     */
+    getRecaptchaModule() {
+        if (typeof this.recaptchaModule === 'undefined') {
+            this.recaptchaModule = null;
+
+            if (this.modules) {
+                const mod = 'Recaptcha';
+
+                if (this.modules[mod]) {
+                    const id = this.el.getAttribute('data-module-recaptcha');
+
+                    if (id && this.modules[mod][id]) {
+                        this.recaptchaModule = this.modules[mod][id];
+                    }
+                }
+            }
+        }
+
+        return this.recaptchaModule;
     }
 }

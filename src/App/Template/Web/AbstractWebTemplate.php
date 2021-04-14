@@ -9,6 +9,18 @@ use App\Template\AbstractTemplate;
  */
 abstract class AbstractWebTemplate extends AbstractTemplate
 {
+    /**
+     * @var bool
+     */
+    private $isCaptchaEnabled;
+
+    /**
+     * @var bool
+     */
+    private $isCaptchaInvisible;
+
+
+
     // Templating
     // =========================================================================
 
@@ -46,6 +58,58 @@ abstract class AbstractWebTemplate extends AbstractTemplate
     public function htmlAttr() : string
     {
         return html_build_attributes($this->getHtmlAttributes());
+    }
+
+    /**
+     * Determines if a CAPTCHA test is available.
+     *
+     * @return bool
+     */
+    public function isCaptchaEnabled() : bool
+    {
+        if ($this->isCaptchaEnabled === null) {
+            $recaptcha = $this->appConfig('apis.google.recaptcha');
+
+            if (empty($recaptcha) || (isset($recaptcha['active']) && $recaptcha['active'] === false)) {
+                return $this->isCaptchaEnabled = false;
+            }
+
+            $this->isCaptchaEnabled = (!empty($recaptcha['public_key']) && !empty($recaptcha['private_key']));
+        }
+
+        return $this->isCaptchaEnabled;
+    }
+
+    /**
+     * Determines if the CAPTCHA test is enabled and invisible.
+     *
+     * @return bool
+     */
+    public function isCaptchaInvisible() : bool
+    {
+        if ($this->isCaptchaInvisible === null) {
+            $this->isCaptchaInvisible = false;
+
+            if ($this->isCaptchaEnabled()) {
+                $recaptcha = $this->appConfig('apis.google.recaptcha');
+
+                $hasInvisible = isset($recaptcha['invisible']);
+                if ($hasInvisible && $recaptcha['invisible'] === true) {
+                    return $this->isCaptchaInvisible = true;
+                }
+
+                $hasSize = isset($recaptcha['size']);
+                if ($hasSize && $recaptcha['size'] === 'invisible') {
+                    return $this->isCaptchaInvisible = true;
+                }
+
+                if (!$hasInvisible && !$hasSize) {
+                    return $this->isCaptchaInvisible = true;
+                }
+            }
+        }
+
+        return $this->isCaptchaInvisible;
     }
 
     // =========================================================================

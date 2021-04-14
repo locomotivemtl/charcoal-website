@@ -8,6 +8,7 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Charcoal\Email\ServiceProvider\EmailServiceProvider;
 use Charcoal\Model\ServiceProvider\ModelServiceProvider;
+use Charcoal\ReCaptcha\CaptchaServiceProvider;
 use Charcoal\Support\Model\Repository\CachedCollectionLoader;
 
 /**
@@ -30,6 +31,7 @@ class AppServiceProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
+        $container->register(new CaptchaServiceProvider());
         $container->register(new EmailServiceProvider());
         $container->register(new ModelServiceProvider());
 

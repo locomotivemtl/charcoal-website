@@ -41,6 +41,11 @@ class ContactAction extends AbstractFormAction
         $this->setRetry(true);
 
         try {
+            if (!$this->validateCaptchaFromRequest($request)) {
+                $this->parseCaptchaValidationResults();
+                return $response->withStatus(403);
+            }
+
             $entry = $this->saveFormEntry($request);
         } catch (ClientException $e) {
             $this->logger->warning(sprintf(

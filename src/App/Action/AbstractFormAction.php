@@ -5,13 +5,17 @@ declare(strict_types=1);
 namespace App\Action;
 
 use App\Action\AbstractAction;
+use Charcoal\ReCaptcha\CaptchaAwareTrait;
 use Pimple\Container;
+use Psr\Http\Message\RequestInterface;
 
 /**
  * Action: Process Form Submissions
  */
 abstract class AbstractFormAction extends AbstractAction
 {
+    use CaptchaAwareTrait;
+
     /**
      * @var \Charcoal\Factory\FactoryInterface
      */
@@ -31,6 +35,11 @@ abstract class AbstractFormAction extends AbstractAction
      * @var array
      */
     private $errors = [];
+
+    /**
+     * @var bool
+     */
+    private $isCaptchaEnabled;
 
 
 
@@ -131,6 +140,55 @@ abstract class AbstractFormAction extends AbstractAction
         return count($this->errors);
     }
 
+    /**
+     * Determines if a CAPTCHA test is available.
+     *
+     * @see \App\Template\AbstractFormTemplate::isCaptchaEnabled()
+     *
+     * @return bool
+     */
+    public function isCaptchaEnabled() : bool
+    {
+        if ($this->isCaptchaEnabled === null) {
+            $recaptcha = $this->appConfig('apis.google.recaptcha');
+
+            if (empty($recaptcha) || (isset($recaptcha['active']) && $recaptcha['active'] === false)) {
+                return $this->isCaptchaEnabled = false;
+            }
+
+            $this->isCaptchaEnabled = (!empty($recaptcha['public_key']) && !empty($recaptcha['private_key']));
+        }
+
+        return $this->isCaptchaEnabled;
+    }
+
+    /**
+     * Verify no-captcha response by HTTP Request.
+     *
+     * @param  RequestInterface $request The HTTP Request.
+     * @return bool
+     */
+    public function validateCaptchaFromRequest(RequestInterface $request) : bool
+    {
+        if ($this->isCaptchaEnabled()) {
+            return $this->captcha()->verifyRequest($request);
+        }
+
+        return true;
+    }
+
+    /**
+     * Adds the CAPTCHA validation results to the controller's errors.
+     *
+     * @return void
+     */
+    public function parseCaptchaValidationResults() : void
+    {
+        foreach ($this->captcha()->getLastErrorMessages() as $message) {
+            $this->addError('captcha', $message);
+        }
+    }
+
 
 
     // Dependencies
@@ -144,6 +202,7 @@ abstract class AbstractFormAction extends AbstractAction
     {
         parent::setDependencies($container);
 
+        $this->setCaptcha($container['charcoal/captcha']);
         $this->emailFactory = $container['email/factory'];
     }
 }

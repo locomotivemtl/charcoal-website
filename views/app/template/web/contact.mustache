@@ -40,6 +40,13 @@
                                             <textarea class="c-form_control c-form_textarea" id="message" name="message" required></textarea>
                                         </div>
                                     </div>
+                                    {{# isCaptchaEnabled }}
+                                        <div class="o-layout_item">
+                                            <div class="c-form_item">
+                                                <div {{& captchaAttrs }}></div>
+                                            </div>
+                                        </div>
+                                    {{/ isCaptchaEnabled }}
                                     <div for="c-contact-form-feedback" class="o-layout_item u-1/2" data-form="feedback">
                                     </div>
                                     <div class="o-layout_item u-1/2 u-text-right">

@@ -72,6 +72,7 @@
     "translator": {
         "paths": [
             "translations/app/",
+            "vendor/mcaskill/charcoal-recaptcha/translations/",
             "vendor/locomotivemtl/charcoal-contrib-property-filter/translations/",
             "vendor/locomotivemtl/charcoal-attachment/translations/",
             "vendor/locomotivemtl/charcoal-admin/translations/",
