@@ -41,6 +41,9 @@
     "properties": {
         "msgHtml": {
             "input_type": "charcoal/admin/property/input/tinymce/basic",
+            "editor_options": {
+                "content_css": "assets/app/styles/editor-mail.css"
+            },
             "show_notes": "above"
         },
         "msgTxt": {

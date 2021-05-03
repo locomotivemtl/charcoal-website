@@ -44,4 +44,24 @@ export function compileStyles() {
             fs.writeFile(paths.styles.dest + paths.styles.critical + '.css', result.css, function(err){});
         }
     });
+
+    // Compile editorMail scss
+    sass.render({
+        file:        paths.styles.src + paths.styles.editorMail + '.scss',
+        outFile:     paths.styles.dest + paths.styles.editorMail + '.css',
+        outputStyle: 'compressed',
+        sourceMap:   true
+    }, function (error, result) {
+        if (error) {
+            message('Error compile editor-mail.scss', 'error');
+            console.log(error);
+        } else {
+            message('editor-mail.scss compiled', 'success');
+        }
+
+        if (!error) {
+            // No errors during the compilation, write this result on the disk
+            fs.writeFile(paths.styles.dest + paths.styles.editorMail + '.css', result.css, function(err){});
+        }
+    });
 }

@@ -140,14 +140,16 @@ class ContactPresenter
             'admin' => $this->getAdmin(),
         ] + $fields;
 
-        $message = (string)$this->notification['msgTxt'];
-        if ($message) {
-            $templateData['message'] = nl2br($view->renderTemplate($message, $context));
+        $template = (string)$this->notification['msgTxt'];
+        if ($template) {
+            $template = str_replace('{{&amp;', '{{&', $template);
+            $templateData['message'] = nl2br($view->renderTemplate($template, $context));
         }
 
-        $message = (string)$this->notification['msgHtml'];
-        if ($message) {
-            $templateData['message'] = $view->renderTemplate($message, $context);
+        $template = (string)$this->notification['msgHtml'];
+        if ($template) {
+            $template = str_replace('{{&amp;', '{{&', $template);
+            $templateData['message'] = $view->renderTemplate($template, $context);
         }
 
         return $templateData;

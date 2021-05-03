@@ -62,6 +62,7 @@ class ContactTemplate extends AbstractMailTemplate
             );
 
             $data = $presenter->getEmailTemplateData();
+
             parent::setData($data);
         }
 
