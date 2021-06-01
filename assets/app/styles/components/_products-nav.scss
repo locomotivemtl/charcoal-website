@@ -22,8 +22,11 @@
     background-color: $white;
     transform-origin: center top;
     transform: scaleY(0);
-    transition: transform $speed-slow $easing 0.4s;
+    transition: transform 0s $easing 0.4s;
 
+    html.is-first-load & {
+        transition-duration: $speed-slow;
+    }
     .has-products-open & {
         transform: scaleY(1);
         transition-delay: 0s;

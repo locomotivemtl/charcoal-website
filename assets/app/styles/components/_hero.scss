@@ -138,11 +138,15 @@
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     transform: scale(1.5);
-    transition: transform 1s $easing, opacity 1s $easing;
+    transition: transform 0s $easing, opacity 0s $easing;
     opacity: 0;
 
     html.is-mobile & {
         display: none;
+    }
+
+    html.is-first-load & {
+        transition-duration: 1s;
     }
 
     html.is-loaded & {

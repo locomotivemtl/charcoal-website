@@ -69,58 +69,59 @@ export default class extends module {
         try {
             let limit  = param[0].section.limit.y - (window.innerHeight * 1.5)
             let scroll = param[1].scroll.y
+
+            let progress = Math.min(Math.max((scroll / limit).toFixed(3), 0), 1);
+
+            if (!this.hasScrolled && scroll > 0) { //check if the user has scrolled and if the scroll
+                //launch segment detection
+                this.checkSegment()
+                //set hasScrolled
+                this.hasScrolled = true
+            } else if (this.hasScrolled && scroll == 0) { //check if we are BACK to the top of the page
+                //clear segment detection
+                if(this.rafSegment) cancelAnimationFrame(this.rafSegment)
+                //play the animation
+                this.call('play', null, 'Lottie')
+                //set hasScrolled
+                this.hasScrolled = false
+            }
+
+            // Manage UI light/dark classes
+            if (progress >= 0.3) {
+                if (this.darkUI) {
+                    html.classList.remove('has-hero-running')
+                    this.darkUI = false
+                }
+            } else {
+                if (!this.darkUI) {
+                    html.classList.add('has-hero-running')
+                    this.darkUI = true
+                }
+            }
+
+            // Manage the phone
+            if (progress >= 0.5) {
+                if (!this.hasDeviceVisible) {
+                    if (!this.isScrollingAnimCompleted) {
+                        this.showDevice()
+                        this.isScrollingAnimCompleted = true
+                    }
+                }
+            } else {
+                if (this.hasDeviceVisible) {
+                    if (this.isScrollingAnimCompleted) {
+                        this.hideDevice()
+                        this.isScrollingAnimCompleted = false
+                    }
+                }
+            }
+
+            //update progress of UI
+            this.maskTL.progress(progress)
+
         } catch (err) {
             return
         }
-
-        let progress = Math.min(Math.max((scroll / limit).toFixed(3), 0), 1);
-
-        if (!this.hasScrolled && scroll > 0) { //check if the user has scrolled and if the scroll
-            //launch segment detection
-            this.checkSegment()
-            //set hasScrolled
-            this.hasScrolled = true
-        } else if (this.hasScrolled && scroll == 0) { //check if we are BACK to the top of the page
-            //clear segment detection
-            if(this.rafSegment) cancelAnimationFrame(this.rafSegment)
-            //play the animation
-            this.call('play', null, 'Lottie')
-            //set hasScrolled
-            this.hasScrolled = false
-        }
-
-        // Manage UI light/dark classes
-        if (progress >= 0.3) {
-            if (this.darkUI) {
-                html.classList.remove('has-hero-running')
-                this.darkUI = false
-            }
-        } else {
-            if (!this.darkUI) {
-                html.classList.add('has-hero-running')
-                this.darkUI = true
-            }
-        }
-
-        // Manage the phone
-        if (progress >= 0.5) {
-            if (!this.hasDeviceVisible) {
-                if (!this.isScrollingAnimCompleted) {
-                    this.showDevice()
-                    this.isScrollingAnimCompleted = true
-                }
-            }
-        } else {
-            if (this.hasDeviceVisible) {
-                if (this.isScrollingAnimCompleted) {
-                    this.hideDevice()
-                    this.isScrollingAnimCompleted = false
-                }
-            }
-        }
-
-        //update progress of UI
-        this.maskTL.progress(progress)
     }
 
     /**
