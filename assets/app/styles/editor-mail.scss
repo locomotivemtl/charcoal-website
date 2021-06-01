@@ -1,0 +1,23 @@
+// ==========================================================================
+// Main
+// ==========================================================================
+
+// Settings
+// ==========================================================================
+@import "settings/config.colors";
+@import "settings/config";
+
+// Generic
+// ==========================================================================
+@import "node_modules/normalize.css/normalize";
+
+// Mail
+// ==========================================================================
+body {
+    margin-top: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: $grayLight;
+}

@@ -1,38 +1,17 @@
 {{> app/template/mail/partial/header }}
 
-    <tr>
-        <td>
-            <h1
-                style=" text-align: center;font-size: 68px; line-height: 0.9; letter-spacing: -0.05em; font-weight: normal; width: 400px; margin: 0 auto 60px auto;">
-                Thank you!
-            </h1>
-            <table style="color: #191A22; margin-bottom: 100px" border="0" cellpadding="0"
-                cellspacing="0">
-                {{# fields }}
+{{& message }}
+{{^ message }}
+    <table style="color: #191A22; max-width: 600px; margin-bottom: 100px" border="0" cellpadding="0" cellspacing="0">
+        <tbody>
+            {{# fields }}
                 <tr>
-                    <td valign="top"
-                        style="padding: 20px 40px 20px 0; border-bottom: 1px solid #AAABB1;">
-                        {{ label }}
-                    </td>
-                    <td valign="top" style="padding: 20px 0; border-bottom: 1px solid #AAABB1">
-                        {{ value }}
-                    </td>
+                    <td valign="top" style="padding: 20px 40px 20px 0; border-bottom: 1px solid #AAABB1;">{{ label }}</td>
+                    <td valign="top" style="padding: 20px 0; border-bottom: 1px solid #AAABB1">{{ value }}</td>
                 </tr>
-                {{/ fields }}
-                <tr>
-                <tr>
-                    <td valign="top" style="padding: 20px 40px 20px 0;">
-                        Message
-                    </td>
-                    <td valign="top" style="padding: 20px 0;">
-                        <p style="margin: 0;">
-                            {{& message }}
-                        </p>
-                    </td>
-                </tr>
-            </table>
-
-        </td>
-    </tr>
+            {{/ fields }}
+        </tbody>
+    </table>
+{{/ message }}
 
 {{> app/template/mail/partial/footer }}
