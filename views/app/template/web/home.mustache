@@ -360,14 +360,14 @@
                     <div class="c-carousel-cases-visual_container swiper-container" data-scroll data-scroll-speed="1.5"
                         data-scroll-offset="0" data-carousel-cases="carousel-visual">
                         <div class="c-carousel-cases-visual_wrapper swiper-wrapper">
-                            {{#forLoop.3}}
+                            {{# caseStudies }}
                             <div class="c-carousel-cases-visual_slide swiper-slide">
                                 <img class="c-carousel-cases-visual_slide_image"
-                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1175 768'%3E%3C/svg%3E"
-                                    alt="Carbon Beauty"
-                                    data-load-src="{{# withBaseUrl }}assets/app/images/placeholders/carousel-2-1.png{{/ withBaseUrl }}">
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 895 679'%3E%3C/svg%3E"
+                                    alt="{{title}}"
+                                    data-load-src="{{thumbnail}}">
                             </div>
-                            {{/forLoop.3}}
+                            {{/ caseStudies }}
                         </div>
                     </div>
                     <div class="c-carousel_controls -absolute">
@@ -397,32 +397,31 @@
                     </div>
                     <div class="c-carousel-cases-info_container swiper-container" data-carousel-cases="carousel-info">
                         <div class="c-carousel-cases-info_wrapper swiper-wrapper">
-                            {{#forLoop.3}}
+                            {{# caseStudies }}
                             <div class="c-carousel-cases-info_slide swiper-slide"
-                                data-project-url="https://google.ca?test={{.}}">
+                                data-project-url="{{url}}">
                                 <div class="c-carousel-cases-info_slide_inner">
                                     <div class="c-carousel-cases-info_slide_left">
-                                        <span class="c-heading -h3">Carbon Beauty</span>
+                                        <span class="c-heading -h3">{{title}}</span>
                                     </div>
 
                                     <div class="c-carousel-cases-info_slide_right">
                                         <span class="c-carousel-cases-info_slide_label">Featuring</span>
 
                                         <ul class="c-carousel-cases-info_features_list">
-                                            <li class="c-carousel-cases-info_features_list_item">Content Management</li>
-                                            <li class="c-carousel-cases-info_features_list_item">Ecommerce</li>
-                                            <li class="c-carousel-cases-info_features_list_item">Messenger</li>
+                                            {{# tags }}
+                                            <li class="c-carousel-cases-info_features_list_item">{{.}}</li>
+                                            {{/ tags }}
+                                            {{# url }}
                                             <li class="c-carousel-cases-info_features_list_item">
-                                                <a href="" target="_blank" rel="noopener noreferer">View website <svg
-                                                        role="img">
-                                                        <use href="assets/app/images/sprite.svg#arrow-tip-right"></use>
-                                                    </svg></a>
+                                                <a href="{{.}}" target="_blank" rel="noopener noreferer">View website <svg role="img"><use href="assets/app/images/sprite.svg#arrow-tip-right"></use></svg></a>
                                             </li>
+                                            {{/ url }}
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            {{/forLoop.3}}
+                            {{/ caseStudies }}
                         </div>
                     </div>
 

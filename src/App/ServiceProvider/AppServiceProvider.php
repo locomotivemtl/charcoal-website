@@ -3,6 +3,8 @@
 namespace App\ServiceProvider;
 
 use App\Model;
+use App\Transformer;
+use App\Service;
 use App\Service\Container as ServiceContainer;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
@@ -10,6 +12,7 @@ use Charcoal\Email\ServiceProvider\EmailServiceProvider;
 use Charcoal\Model\ServiceProvider\ModelServiceProvider;
 use Charcoal\ReCaptcha\CaptchaServiceProvider;
 use Charcoal\Support\Model\Repository\CachedCollectionLoader;
+use Charcoal\Translator\ServiceProvider\TranslatorServiceProvider;
 
 /**
  * App Service Provider
@@ -23,6 +26,7 @@ class AppServiceProvider implements ServiceProviderInterface
      */
     public $modelAliases = [
         'contact/notification' => Model\Contact\Notification::class,
+        'case-study' => Model\CaseStudy::class,
     ];
 
     /**
@@ -34,8 +38,11 @@ class AppServiceProvider implements ServiceProviderInterface
         $container->register(new CaptchaServiceProvider());
         $container->register(new EmailServiceProvider());
         $container->register(new ModelServiceProvider());
+        $container->register(new TranslatorServiceProvider());
 
         $this->registerModels($container);
+        $this->registerTransformers($container);
+        $this->registerServices($container);
     }
 
     /**
@@ -83,6 +90,57 @@ class AppServiceProvider implements ServiceProviderInterface
             }
 
             return $repositories;
+        };
+    }
+
+    /**
+     * @param  Container $container A service locator.
+     * @return void
+     */
+    private function registerServices(Container $container)
+    {
+
+        /**
+         * @param Container $container
+         * @return \App\Service\FilePresenter
+         */
+        $container['app/services/file-presenter'] = function (Container $container) {
+            return new Service\FilePresenter([
+                'baseUrl' => $container['base-url'],
+                'logger'  => $container['logger'],
+            ]);
+        };
+    }
+
+    /**
+     * @param  Container $container A service locator.
+     * @return void
+     */
+    private function registerTransformers(Container $container)
+    {
+        $container['app/transformers'] = function (Container $container) {
+            $transformers = new Container();
+
+            $transformers['case-study'] = function (Container $transformers) use ($container) {
+                return new Transformer\CaseStudy([
+                    'filePresenter' => $container['app/services/file-presenter'],
+                    'translator' => $container['translator']
+                ]);
+            };
+
+            return $transformers;
+        };
+
+        $container['app/transformers/attachments'] = function (Container $container) {
+            $transformers = new Container();
+
+            // $transformers['text'] = function (Container $transformers) use ($container) {
+            //     return new Transformer\Attachment\Text([
+            //         'baseUrl'       => $container['base-url'],
+            //     ]);
+            // };
+
+            return $transformers;
         };
     }
 }

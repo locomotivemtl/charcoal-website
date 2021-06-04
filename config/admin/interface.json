@@ -13,6 +13,10 @@
 
     "main_menu": {
         "items": {
+            "content": {
+                "label": "Content",
+                "icon": "contents"
+            },
             "visitors": {
                 "label": {
                     "en": "Visitors",
@@ -24,6 +28,24 @@
         }
     },
     "secondary_menu": {
+        "content": {
+            "groups": {
+                "content": {
+                    "priority": 10,
+                    "title": "Content",
+                    "links": {
+                        "app/model/page": {
+                            "name": "Pages",
+                            "url": "object/collection?obj_type=app/model/page"
+                        },
+                        "app/model/case-study": {
+                            "name": "Case Studies",
+                            "url": "object/collection?obj_type=app/model/case-study"
+                        }
+                    }
+                }
+            }
+        },
         "visitors": {
             "show_title": false,
             "title": {

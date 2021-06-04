@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Object;
+namespace App\Model;
 
 // From 'pimple/pimple'
 use Pimple\Container;
@@ -18,9 +18,9 @@ use Charcoal\Cms\AbstractSection;
 use App\Support\AdminAwareTrait;
 
 /**
- * Class Section
+ * Class Page
  */
-class Section extends AbstractSection
+class Page extends AbstractSection
 {
     use AdminAwareTrait;
     use AttachmentAwareTrait;

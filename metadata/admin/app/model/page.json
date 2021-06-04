@@ -33,6 +33,19 @@
             "fr": "Pages"
         }
     },
+    "properties": {
+        "templateOptions": {
+            "input_type": "charcoal/admin/property/input/structure-widget",
+            "show_label": false,
+            "widget_data": {
+                "type": "charcoal/admin/widget/form-group/template-options",
+                "display": "seamless",
+                "show_empty": false
+            },
+            "structure_interfaces": [],
+            "structure_metadata": {}
+        }
+    },
     "admin": {
         "lists": {
             "app.default": {
@@ -106,6 +119,9 @@
                     "cms.info": {
                         "priority": 100
                     },
+                    "template-options": {
+
+                    },
                     "content-blocks": {
                         "type": "charcoal/admin/widget/form-group/attachment",
                         "preset": "content-blocks",
@@ -142,6 +158,18 @@
                 ]
             }
         },
+        "form_groups": {
+            "template-options": {
+                "priority": 150,
+                "icon": "cog",
+                "title": "Content",
+                "show_header": false,
+                "show_title": true,
+                "properties": [
+                    "templateOptions"
+                ]
+            }
+        },
         "dashboards": {
             "admin.edit": {
                 "layout": {
@@ -166,7 +194,7 @@
                 "widgets": {
                     "table": {
                         "type": "charcoal/admin/widget/hierarchical-table",
-                        "obj_type": "app/object/section",
+                        "obj_type": "app/model/page",
                         "collection_ident": "app.default",
                         "sortable": true
                     }

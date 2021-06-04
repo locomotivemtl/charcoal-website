@@ -1,0 +1,16 @@
+{
+    "properties": {
+        "master": {
+            "obj_type": "app/model/page"
+        },
+        "templateOptions": {
+            "type": "template-options"
+        }
+    },
+    "sources": {
+        "default": {
+            "table": "app_pages"
+        }
+    },
+    "default_source": "default"
+}

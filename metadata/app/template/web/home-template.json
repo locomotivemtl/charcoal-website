@@ -1,2 +1,16 @@
 {
+    "properties": {
+        "introExcerpt": {
+            "type": "text",
+            "l10n": true
+        },
+        "introText1": {
+            "type": "text",
+            "l10n": true
+        },
+        "introText2": {
+            "type": "text",
+            "l10n": true
+        }
+    }
 }

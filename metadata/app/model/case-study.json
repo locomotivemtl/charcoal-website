@@ -1,0 +1,42 @@
+{
+    "properties": {
+        "id": {
+            "type": "id"
+        },
+        "title": {
+            "type": "string",
+            "l10n": true,
+            "required": true
+        },
+        "thumbnail": {
+            "type": "image",
+            "upload_path": "uploads/caseStudies/",
+            "public_access": true,
+            "overwrite": true,
+            "apply_effects": "save",
+            "effects": [
+
+            ],
+            "sizes": {
+                "default": {
+                    "pattern": "{{filename}}.{{extension}}"
+                }
+            }
+        },
+        "url": {
+            "type": "url",
+            "l10n": true
+        },
+        "tags": {
+            "type": "string",
+            "l10n": true,
+            "multiple": true
+        }
+    },
+    "sources": {
+        "default": {
+            "table": "app_case_studies"
+        }
+    },
+    "default_source": "default"
+}

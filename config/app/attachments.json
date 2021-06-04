@@ -33,7 +33,6 @@
                 },
                 "show_title": true,
                 "show_header": false,
-                "template": "charcoal/admin/widget/form-group/attachment",
                 "group": "content-blocks",
                 "attachment_heading": "{{ ident }}",
                 "attachable_objects": "content-blocks",
