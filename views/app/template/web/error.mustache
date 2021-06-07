@@ -1,15 +1,46 @@
-{{# debug }}
-    Debug
-    <pre>
-    {{& htmlErrorDetails }}
-    </pre>
-{{/ debug }}
+{{> app/template/web/partial/site-header }}
 
-{{^ debug }}
-    {{>boilerplate/template/partial/header}}
+<div class="o-scroll" data-module-scroll="main">
+    <section data-scroll-section>
+        <header class="c-header">
+            {{> app/template/web/partial/header }}
+        </header>
+        <div class="c-section ">
+            <div class="o-container">
+                <div class="c-header-multi">
+                    <h1 class="c-header-multi_title c-heading -h2 u-anim-text-line" data-module-split data-scroll
+                        data-scroll-speed="2" data-scroll-position="top">
+                        {{# _t }}Page Not Found{{/ _t }}
+                    </h1>
+                    <p class="c-header-multi_content c-heading -h4 u-anim -delay-3">
+                        {{# _t }}The page you are looking for could not be found.{{/ _t }}
+                    </p>
+                    <a href="/" class="c-button -hover-gray u-anim -delay-4" data-scroll-to>
+                        <span class="c-button_label">
+                            Back to homepage
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h1>{{# _t }}Page Not Found{{/ _t }}</h1>
-    <p>{{# _t }}The page you are looking for could not be found.{{/ _t }}</p>
+    {{# debug }}
+        {{# htmlErrorDetails}}
+        <section data-scroll-section class="u-background-light">
+            <div class="c-section">
+                <div class="o-container">
+                    <pre style="background: white; color: black; padding: 5px; overflow: auto;">
+                    {{& . }}
+                    </pre>
+                </div>
+            </div>
+        </section>
+        {{/ htmlErrorDetails}}
+    {{/ debug }}
 
-    {{>boilerplate/template/partial/footer}}
-{{/ debug }}
+    {{> app/template/web/partial/footer }}
+
+</div>
+
+{{> app/template/web/partial/site-footer }}

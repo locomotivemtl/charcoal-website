@@ -35,4 +35,37 @@ class Page extends AbstractSection
         parent::setDependencies($container);
         $this->setCollectionLoader($container['model/collection/loader']);
     }
+
+    // Hooks
+    // -------------------------------------------------------------------------
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return boolean
+     */
+    protected function preSave()
+    {
+        $this->saveTemplateOptions();
+
+        return parent::preSave();
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * This method skips slug regeneration in {@see AbstractWebContent::preUpdate()}.
+     *
+     * @param  string[]|null $properties One or many properties to be updated.
+     * @return boolean
+     */
+    protected function preUpdate(array $properties = null)
+    {
+        $props = [ 'template_ident', 'template_options', 'templateIdent', 'templateOptions' ];
+        if (empty($properties) || array_intersect($properties, $props)) {
+            $this->saveTemplateOptions();
+        }
+
+        return parent::preUpdate($properties);
+    }
 }

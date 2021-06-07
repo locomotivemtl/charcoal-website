@@ -4,17 +4,13 @@
             "home": {
                 "route": "[/]",
                 "template": "app/template/web/home",
-                "controller": "app/template/web/home"
+                "controller": "app/template/web/home",
+                "route_controller": "app/routing/home"
             },
             "contact": {
                 "route": "/contact",
                 "template": "app/template/web/contact",
                 "controller": "app/template/web/contact"
-            },
-            "multi": {
-                "route": "/multi",
-                "template": "app/template/web/multi",
-                "controller": "app/template/web/multi"
             },
             "technology": {
                 "route": "/technology",
@@ -29,7 +25,9 @@
             }
         }
     },
-
+    "routables": {
+        "charcoal/cms/route/generic": {}
+    },
     "middlewares": {
         "charcoal/translator/middleware/language": {
             "active": true
@@ -43,7 +41,7 @@
     },
 
     "handlers": {
-        "default": {
+        "defaults": {
             "controller": "app/template/web/error"
         },
         "notFound": {

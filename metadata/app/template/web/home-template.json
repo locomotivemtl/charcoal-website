@@ -2,15 +2,18 @@
     "properties": {
         "introExcerpt": {
             "type": "text",
-            "l10n": true
+            "l10n": true,
+            "l10n_mode": "loop_inputs"
         },
         "introText1": {
             "type": "text",
-            "l10n": true
+            "l10n": true,
+            "l10n_mode": "loop_inputs"
         },
         "introText2": {
             "type": "text",
-            "l10n": true
+            "l10n": true,
+            "l10n_mode": "loop_inputs"
         }
     }
 }
