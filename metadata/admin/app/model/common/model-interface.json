@@ -14,7 +14,27 @@
         },
 
         "form_groups": {
+            "app/model/base": {
+                "priority": 100,
+                "show_title": true,
+                "show_header": false,
+                "icon": "circle"
+            },
+            "app/model/options": {
+                "priority": 180,
+                "show_title": true,
+                "show_header": false,
+                "title": "Options",
+                "icon": "clone",
+                "show_notes": "above",
+                "type": "charcoal/admin/widget/form-group/template-options"
+            },
             "app/model/meta": {
+                "priority": 200,
+                "show_title": true,
+                "show_header": false,
+                "title": "Metadata",
+                "icon": "circle-o",
                 "required_acl_permissions": "object/advanced"
             }
         },

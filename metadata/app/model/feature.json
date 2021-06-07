@@ -1,0 +1,53 @@
+{
+    "routable": {
+        "editable": false
+    },
+    "properties": {
+        "id": {
+            "type": "id"
+        },
+        "title": {
+            "type": "string",
+            "l10n": true
+        },
+        "subtitle": {
+            "type": "string",
+            "l10n": true
+        },
+        "thumbnail": {
+            "type": "image",
+            "upload_path": "uploads/features/",
+            "l10n": true,
+            "public_access": true,
+            "overwrite": true,
+            "apply_effects": "save",
+            "effects": [
+
+            ],
+            "sizes": {
+                "default": {
+                    "pattern": "{{filename}}.{{extension}}"
+                }
+            }
+        },
+        "thumbnailVideo": {
+            "type": "url"
+        },
+        "contentBlocks": {
+            "type": "string",
+            "storable": false
+        },
+        "template_ident": {
+            "type": "template"
+        },
+        "template_options": {
+            "type": "template-options"
+        }
+    },
+    "sources": {
+        "default": {
+            "table": "app_features"
+        }
+    },
+    "default_source": "default"
+}

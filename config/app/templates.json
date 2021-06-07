@@ -17,6 +17,13 @@
                 "en": "Front Page",
                 "fr": "Page d'Accueil"
             }
+        },
+        {
+            "active": false,
+            "value": "feature",
+            "label": "Feature",
+            "template": "app/template/web/multi",
+            "controller": "app/template/web/multi"
         }
     ]
 }

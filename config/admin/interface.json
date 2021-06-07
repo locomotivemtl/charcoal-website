@@ -32,7 +32,10 @@
             "groups": {
                 "content": {
                     "priority": 10,
-                    "title": "Content",
+                    "title": {
+                        "en": "Content",
+                        "fr": "Contenu"
+                    },
                     "links": {
                         "app/model/page": {
                             "name": "Pages",
@@ -41,6 +44,10 @@
                         "app/model/case-study": {
                             "name": "Case Studies",
                             "url": "object/collection?obj_type=app/model/case-study"
+                        },
+                        "app/model/feature": {
+                            "name": "Features",
+                            "url": "object/collection?obj_type=app/model/feature"
                         }
                     }
                 }

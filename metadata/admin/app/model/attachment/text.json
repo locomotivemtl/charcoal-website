@@ -1,0 +1,52 @@
+{
+    "labels": {
+        "edit_item": "Edit Text Block"
+    },
+
+    "default_data": {
+        "preview": "{{> charcoal/attachment/object/text }}",
+        "heading": "Text Block:{{# description }} {{# excerpt }}{{ . }}{{/ excerpt }}{{/ description }}{{^ description }} #{{ id }}{{/ description }}"
+    },
+
+    "properties": {
+        "description": {
+            "label": "Contenu",
+            "input_type": "charcoal/admin/property/input/textarea"
+        }
+    },
+
+    "admin": {
+        "lists": {
+            "app/model/list": {
+                "properties": [
+                    "description",
+                    "active"
+                ],
+                "orders": [
+                    {
+                        "property": "created",
+                        "mode": "desc"
+                    }
+                ],
+                "list_actions": {
+                    "create": {
+                        "active": false
+                    }
+                }
+            }
+        },
+        "form_groups": {
+            "app/model/base": {
+                "title": "Text",
+                "properties": [
+                    "description"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] }
+                    ]
+                }
+            }
+        }
+    }
+}

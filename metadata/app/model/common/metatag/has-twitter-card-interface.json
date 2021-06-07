@@ -1,0 +1,61 @@
+{
+    "web": {
+        "metatag": {
+            "properties": {
+                "twitter:card": [ "twitterCardType" ],
+                "twitter:url": [ "canonicalUrl" ],
+                "twitter:title": [ "metaTitle", "title", "name" ],
+                "twitter:description": [ "metaDescription", "description" ],
+                "twitter:image": [ "twitterCardImage", "metaImage", "thumbnail" ]
+            }
+        }
+    },
+
+    "properties": {
+        "twitterCardType": {
+            "type": "string",
+            "input_type": "charcoal/admin/property/input/select",
+            "storable": false,
+            "label": {
+                "en": "Twitter Card Type",
+                "fr": "Type de carte Twitter"
+            },
+            "description": {
+                "en": "The meta-type can be used to specify the page type in twitters.",
+                "fr": "Le méta-type peut être utilisé pour spécifiéer le type de page dans les tags twitters."
+            },
+            "choices": {
+                "summary": {
+                    "label": {
+                        "en": "Summary",
+                        "fr": "Résumé"
+                    }
+                },
+                "summary_large_image": {
+                    "label": {
+                        "en": "Summary with Large Image",
+                        "fr": "Résumé avec une grande image"
+                    }
+                }
+            }
+        },
+        "twitterCardImage": {
+            "type": "image",
+            "label": {
+                "en": "Twitter Card Image",
+                "fr": "Vignette de carte Twitter"
+            },
+            "upload_path": "/uploads/metadata/twitter/images/",
+            "public_access": true,
+            "description": {
+                "en": "You should not use a generic image such as your website logo, author photo, or other image that spans multiple pages. The image must be less than 1MB in file size.",
+                "fr": "Vous ne devriez pas utiliser une image générique tel que votre site web logo, auteur photo ou toute autre image qui couvre plusieurs pages. L'image doit être inférieure à 1 Mo en taille de fichier."
+            },
+            "show_notes": "above",
+            "notes": {
+                "en": "<p>A unique image representing the content of the object.</p><p>For a thumbnail alongside the tweet, the image must be a minimum size of 120px by 120px. The image will be cropped to a square on all platforms.</p><p>For a full-width prominent image, should be at least 280px in width and at least 150px in height.</p>",
+                "fr": "<p>Une image unique représentant le contenu de l'objet.</p><p>Pour une vignette à côté du tweet, l'image doit être d'une taille minimale de 120×120 pixels. L'image sera rognée à une place sur toutes les plateformes.</p><p>Pour une image pleine largeur, il devrait être au moins 280px de largeur et au moins 150px en hauteur.</p>"
+            }
+        }
+    }
+}

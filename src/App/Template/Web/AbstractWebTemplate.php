@@ -4,6 +4,9 @@ namespace App\Template\Web;
 
 use App\Template\AbstractTemplate;
 
+// From 'pimple/pimple'
+use Pimple\Container;
+
 /**
  * Web Template Controller
  */
@@ -19,10 +22,39 @@ abstract class AbstractWebTemplate extends AbstractTemplate
      */
     private $isCaptchaInvisible;
 
+    /**
+     * @var array
+     */
+    private $features;
 
 
     // Templating
     // =========================================================================
+
+    /**
+     * @var array
+     */
+    public function features() {
+        if ($this->features === null) {
+            $this->features = array_map(function($feature) {
+                return ($this->featuresTransformer)($feature);
+            }, $this->featuresRepository->reset()->load());
+
+        }
+        return $this->features;
+    }
+
+    /**
+     * @param  Container $container
+     * @return void
+     */
+    protected function setDependencies(Container $container)
+    {
+        parent::setDependencies($container);
+
+        $this->featuresRepository  = $container['app/collection-loaders']['feature'];
+        $this->featuresTransformer = $container['app/transformers']['feature'];
+    }
 
     /**
      * @return array

@@ -1,0 +1,17 @@
+{
+    "properties": {
+        "languages": {
+            "type": "lang",
+            "multiple": true
+        },
+        "isEn": {
+            "type": "boolean"
+        },
+        "isFr": {
+            "type": "boolean"
+        },
+        "isAll": {
+            "type": "boolean"
+        }
+    }
+}

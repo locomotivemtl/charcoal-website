@@ -1,0 +1,28 @@
+{
+    "properties": {
+        "languages": {
+            "input_type": "charcoal/admin/property/input/checkbox",
+            "label": {
+                "en": "Active Languages",
+                "fr": "Langues actives"
+            },
+            "show_notes": "above",
+            "notes": {
+                "en": "This value determines if the content is available in all languages. If not the case, availability on the website will be limited to the chosen languages.",
+                "fr": "Cette valeur détermine si l'article est disponible dans toutes les langues. Si ce n'est pas le cas, la disponibilité sur le site est limitée aux langues choisies."
+            }
+        },
+        "isEn": {
+            "label": {
+                "en": "Available in English",
+                "fr": "Disponible en anglais"
+            }
+        },
+        "isFr": {
+            "label": {
+                "en": "Available in French",
+                "fr": "Disponible en français"
+            }
+        }
+    }
+}

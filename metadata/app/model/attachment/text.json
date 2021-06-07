@@ -1,0 +1,11 @@
+{
+    "default_data": {
+        "type": "app/model/attachment/text"
+    },
+
+    "properties": {
+        "description": {
+            "required": true
+        }
+    }
+}

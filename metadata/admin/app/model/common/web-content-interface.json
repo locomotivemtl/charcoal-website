@@ -1,0 +1,75 @@
+{
+    "properties": {
+        "opengraphImage": {
+            "placeholder": "{{ obj.metaImage }}"
+        },
+        "twitterCardImage": {
+            "placeholder": "{{ obj.metaImage }}"
+        }
+    },
+
+    "admin": {
+        "lists": {
+            "app/model/list": {
+                "object_actions": {
+                    "view": {
+                        "priority": 1,
+                        "target": "_blank",
+                        "url": "{{# withBaseUrl }}{{ url }}{{/ withBaseUrl }}",
+                        "actionType": "seamless",
+                        "condition": "isActiveRoute",
+                        "icon": "eye",
+                        "label": {
+                            "en": "View",
+                            "fr": "Voir"
+                        }
+                    },
+                    "edit": {
+                        "priority": 2,
+                        "icon": "pencil"
+                    }
+                }
+            }
+        },
+
+        "form_groups": {
+            "app/model/web": {
+                "title": {
+                    "en": "Web Meta",
+                    "fr": "Méta Web"
+                },
+                "icon": "globe",
+                "properties": [
+                    "metaTitle",
+                    "metaDescription",
+                    "metaImage"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1, 1, 1 ] }
+                    ]
+                }
+            }
+        },
+
+        "form_sidebars": {
+            "default": {
+                "actions": {
+                    "view": {
+                        "priority": 9,
+                        "target": "_blank",
+                        "url": "{{# withBaseUrl }}{{ url }}{{/ withBaseUrl }}",
+                        "condition": "isActiveRoute"
+                    },
+                    "sep-view": {
+                        "priority": 10,
+                        "isSeparator": true,
+                        "condition": "isActiveRoute"
+                    }
+                }
+            }
+        }
+    }
+}

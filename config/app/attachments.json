@@ -3,26 +3,11 @@
         "attachables": {
             "app/attachment/text": {
                 "label": "Text"
-            },
-            "app/attachment/image": {
-                "label": "Image"
-            },
-            "app/attachment/gallery": {
-                "label": "Image gallery"
-            },
-            "app/attachment/file": {
-                "label": "File"
-            },
-            "app/attachment/video": {
-                "label": "Video"
             }
         },
         "groups": {
             "content-blocks": [
-                "app/attachment/text",
-                "app/attachment/image",
-                "app/attachment/gallery",
-                "app/attachment/video"
+                "app/attachment/text"
             ]
         },
         "widgets": {

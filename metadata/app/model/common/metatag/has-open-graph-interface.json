@@ -1,0 +1,47 @@
+{
+    "web": {
+        "metatag": {
+            "properties": {
+                "og:type": [ "opengraphType" ],
+                "og:url": [ "canonicalUrl" ],
+                "og:title": [ "metaTitle", "title", "name" ],
+                "og:description": [ "metaDescription", "description" ],
+                "og:image": [ "opengraphImage", "metaImage", "thumbnail" ]
+            }
+        }
+    },
+
+    "properties": {
+        "opengraphType": {
+            "type": "string",
+            "storable": false,
+            "label": {
+                "en": "OpenGraph Content Type",
+                "fr": "Type de contenu OpenGraph"
+            },
+            "description": {
+                "en": "The meta-type can be used to specify the page type in OpenGraphs.",
+                "fr": "Le méta-type peut être utilisé pour spécifiéer le type de page dans les tags OpenGraphs."
+            },
+            "placeholder": "website"
+        },
+        "opengraphImage": {
+            "type": "image",
+            "label": {
+                "en": "OpenGraph Thumbnail",
+                "fr": "Vignette OpenGraph"
+            },
+            "upload_path": "/uploads/metadata/opengraph/images/",
+            "public_access": true,
+            "description": {
+                "en": "You should not use a generic image such as your website logo, author photo, or other image that spans multiple pages. The image must be less than 1MB in file size.",
+                "fr": "Vous ne devriez pas utiliser une image générique tel que votre site web logo, auteur photo ou toute autre image qui couvre plusieurs pages. L'image doit être inférieure à 1 Mo en taille de fichier."
+            },
+            "show_notes": "above",
+            "notes": {
+                "en": "<p>A unique image representing the content of the object.</p><p>Use images that are at least 1200×630 pixels for the best display on high resolution devices. At the minimum, you should use images that are 600×315 pixels to display with larger images.</p><p>The minimum image size is 200×200 pixels. If you try to use an image smaller than this you will see an error in the <a target=\"_blank\" href=\"https://developers.facebook.com/tools/debug\">URL Debugger</a>.</p>",
+                "fr": "<p>Une image unique représentant le contenu de l'objet.</p><p>Utiliser des images qui sont au moins 1200×630 pixels pour le meilleur affichage sur les dispositifs à haute résolution. Au minimum, vous devriez utiliser des images qui sont de 600×315 pixels pour afficher avec de plus grandes images.</p><p>La taille d'image minimale est de 200×200 pixels. Si vous essayez d'utiliser une image plus petite que cela, vous verrez une erreur dans le <a target=\"_blank\" href=\"https://developers.facebook.com/tools/debug\">Débogueur d'URL</a>.</p>"
+            }
+        }
+    }
+}

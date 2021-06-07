@@ -43,7 +43,7 @@
     },
 
     "handlers": {
-        "defaults": {
+        "default": {
             "controller": "app/template/web/error"
         },
         "notFound": {

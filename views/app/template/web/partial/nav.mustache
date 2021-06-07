@@ -4,38 +4,16 @@
         <div class="o-container">
             <div class="c-products-nav_inner">
                 <ul class="c-products-nav_list">
+                    {{# features }}
                     <li class="c-products-nav_list_item ">
                         <span class="c-products-nav_list_item_icon">
                             <svg role="img"><use href="assets/app/images/sprite.svg#arrow-right"></use></svg>
                         </span>
-                        <a href="/multi">
-                            Messenger
+                        <a href="{{url}}">
+                            {{title}}
                         </a>
                     </li>
-                    <li class="c-products-nav_list_item ">
-                        <span class="c-products-nav_list_item_icon">
-                            <svg role="img"><use href="assets/app/images/sprite.svg#arrow-right"></use></svg>
-                        </span>
-                        <a href="/multi">
-                            Content Management
-                        </a>
-                    </li>
-                    <li class="c-products-nav_list_item ">
-                        <span class="c-products-nav_list_item_icon">
-                            <svg role="img"><use href="assets/app/images/sprite.svg#arrow-right"></use></svg>
-                        </span>
-                        <a href="/multi">
-                            Data Management
-                        </a>
-                    </li>
-                    <li class="c-products-nav_list_item ">
-                        <span class="c-products-nav_list_item_icon">
-                            <svg role="img"><use href="assets/app/images/sprite.svg#arrow-right"></use></svg>
-                        </span>
-                        <a href="/multi">
-                            e-shop Management
-                        </a>
-                    </li>
+                    {{/ features }}
                 <ul>
             </div>
         </div>

@@ -6,8 +6,11 @@ namespace App\Transformer;
 use Charcoal\Api\AbstractTransformer as CharcoalAbstractTransformer;
 
 // From App
-use App\Model\Shared\Contract\ModelInterface;
+// use App\Model\Shared\Contract\ModelInterface;
 // use App\Transformer\Shared\TimestampableTrait;
+
+// From 'charcoal-core'
+use Charcoal\Model\ModelInterface;
 
 // From 'charcoal-translator'
 use Charcoal\Translator\Translation;
@@ -103,5 +106,58 @@ abstract class AbstractTransformer extends CharcoalAbstractTransformer
         } else {
             return $model->property($choice)->choiceLabel($model[$choice]);
         }
+    }
+
+    // URLs
+    // -------------------------------------------------------------------------
+
+    /**
+     * Serialize a URI for the application.
+     *
+     * @param  ModelInterface $model The model to parse.
+     * @return string|null
+     */
+    protected function getUrl(ModelInterface $model)
+    {
+        if ($model instanceof RoutableInterface) {
+            $uri = ltrim($model->url(), '/');
+            if ($uri) {
+                return (string)$this->formatUrl($uri);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Format a URI.
+     *
+     * @param  mixed $path The target path or URI.
+     * @return string|null
+     */
+    final protected function formatUrl($path)
+    {
+        if ($this->baseUrl === null) {
+            return null;
+        }
+
+        if ($path instanceof UriInterface) {
+            $path = (string)$path;
+        }
+
+        $baseUrl = $this->baseUrl;
+
+        $parts = parse_url($path);
+        if (isset($parts['scheme'])) {
+            return $path;
+        }
+
+        $path  = isset($parts['path']) ? $parts['path'] : '';
+        $query = isset($parts['query']) ? $parts['query'] : '';
+        $hash  = isset($parts['fragment']) ? $parts['fragment'] : '';
+
+        return $baseUrl->withPath($path)
+                       ->withQuery($query)
+                       ->withFragment($hash);
     }
 }

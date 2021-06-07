@@ -27,6 +27,7 @@ class AppServiceProvider implements ServiceProviderInterface
     public $modelAliases = [
         'contact/notification' => Model\Contact\Notification::class,
         'case-study' => Model\CaseStudy::class,
+        'feature' => Model\Feature::class,
     ];
 
     /**
@@ -125,6 +126,13 @@ class AppServiceProvider implements ServiceProviderInterface
                 return new Transformer\CaseStudy([
                     'filePresenter' => $container['app/services/file-presenter'],
                     'translator' => $container['translator']
+                ]);
+            };
+
+            $transformers['feature'] = function (Container $transformers) use ($container) {
+                return new Transformer\Feature([
+                    'filePresenter' => $container['app/services/file-presenter'],
+                    'baseUrl' => $container['base-url']
                 ]);
             };
 

@@ -1,0 +1,171 @@
+{
+    "labels": {
+        "name": "Features",
+        "singular_name": "Feature",
+        "create_item": "Create Feature",
+        "new_item": "New Feature",
+        "view_item": "See Feature",
+        "edit_item": "Edit Feature",
+        "all_items": "All Features",
+        "menu_items": "Features"
+    },
+
+    "properties": {
+        "title": {
+            "label": "Title",
+            "required": true
+        },
+        "subtitle": {
+            "label": "Subtitle"
+        },
+        "thumbnail": {
+            "label": "Thumbnail",
+            "show_notes": "above",
+            "notes": "Recommended size: <strong>TBD x TBD</strong>"
+        },
+        "thumbnailVideo": {
+            "label": "Thumbnail video",
+            "show_notes": "above",
+            "notes": "Overrides the image thumbnail if filled. A Vimeo <code>.mp4</code> URL. <a href='https://vimeo.zendesk.com/hc/en-us/articles/224823567-Direct-links-to-video-files' target='_blank'>Direct links to video files</a>"
+        },
+        "contentBlocks": {
+            "label": "Content Blocks",
+            "show_label": false,
+            "input_type": "charcoal/admin/property/input/nested-widget",
+            "widget_data": {
+                "type": "charcoal/admin/widget/attachment",
+                "preset": "content-blocks"
+            }
+        },
+        "template_options": {
+            "input_type": "charcoal/admin/property/input/structure-widget",
+            "show_label": false,
+            "widget_data": {
+                "type": "charcoal/admin/widget/form-group/template-options",
+                "display": "group",
+                "show_empty": false
+            }
+        },
+        "metaTitle": {
+            "placeholder": "{{ obj.title }}",
+            "notes": "Leave blank to use the <strong>Title</strong>."
+        },
+        "metaDescription": {
+            "placeholder": "{{ obj.subtitle }}",
+            "notes": "Leave blank to use the <strong>Subtitle</strong>."
+        },
+        "metaImage": {
+            "placeholder": "{{ obj.thumbnail }}",
+            "notes": "Leave blank to use the <strong>Thumbnail</strong>."
+        }
+    },
+
+    "admin": {
+        "lists": {
+            "app/model/list": {
+                "properties": [
+                    "title",
+                    "active"
+                ],
+                "orders": [
+                    {
+                        "property": "position",
+                        "mode": "asc"
+                    }
+                ],
+                "list_actions": {
+                    "create": {
+                        "url": "object/edit?obj_type={{ objType }}",
+                        "permissions": [ "object/create" ]
+                    }
+                }
+            },
+            "app/model/search": {
+                "properties": [
+                    "title"
+                ]
+            }
+        },
+        "default_list": "app/model/list",
+        "default_search_list": "app/model/search",
+
+        "forms": {
+            "app/model/create": {
+                "groups": {
+                    "app/model/base": {}
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            },
+            "app/model/edit": {
+                "groups": {
+                    "app/model/base": {},
+                    "app/model/content": {},
+                    "app/model/web": {},
+                    "app/model/meta": {}
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            }
+        },
+        "default_form": "app/model/edit",
+
+        "form_groups": {
+            "app/model/base": {
+                "title": "Feature",
+                "properties": [
+                    "title",
+                    "subtitle",
+                    "thumbnail",
+                    "thumbnailVideo"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1, 1 ] }
+                    ]
+                }
+            },
+            "app/model/content": {
+                "priority": 120,
+                "show_title": true,
+                "show_header": false,
+                "title": "Content",
+                "icon": "paragraph",
+                "icon": "align-justify",
+                "properties": [
+                    "contentBlocks"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] }
+                    ]
+                }
+            },
+            "app/model/web": {
+                "priority": 190,
+                "show_title": true,
+                "show_header": false
+            },
+            "app/model/meta": {
+                "properties": [
+                    "slug",
+                    "id",
+                    "lastModified",
+                    "lastModifiedBy",
+                    "created",
+                    "createdBy"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 3, 1 ] },
+                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1, 1 ] }
+                    ]
+                }
+            }
+        }
+    }
+}

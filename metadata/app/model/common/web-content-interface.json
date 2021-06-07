@@ -1,0 +1,9 @@
+{
+    "routable": {
+        "editable": false,
+        "pattern": "{{ createSlug }}",
+        "prefix": "{{# endpointSlug }}{{ . }}/{{/ endpointSlug }}"
+    },
+
+    "properties": {}
+}
