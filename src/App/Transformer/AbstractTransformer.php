@@ -2,6 +2,9 @@
 
 namespace App\Transformer;
 
+// From 'pimple/pimple'
+use Pimple\Container;
+
 // From 'charcoal-contrib-api'
 use Charcoal\Api\AbstractTransformer as CharcoalAbstractTransformer;
 
@@ -12,9 +15,16 @@ use Charcoal\Api\AbstractTransformer as CharcoalAbstractTransformer;
 // From 'charcoal-core'
 use Charcoal\Model\ModelInterface;
 
+// From 'charcoal-attachment'
+use Charcoal\Attachment\Interfaces\AttachmentAwareInterface;
+
 // From 'charcoal-translator'
 use Charcoal\Translator\Translation;
 use Charcoal\Translator\TranslatorAwareTrait;
+
+// From App
+use App\Support\TransformersAwareTrait;
+use function App\Support\fill_missing_translations;
 
 /**
  * Transformer: Base Class
@@ -24,9 +34,9 @@ abstract class AbstractTransformer extends CharcoalAbstractTransformer
     use TranslatorAwareTrait;
 
     /**
-     * @var \App\Service\AttachmentPresenter
+     * @var Container
      */
-    protected $attachmentPresenter;
+    private $attachmentTransformers;
 
     /**
      * @var \App\Services\FilePresenter
@@ -40,124 +50,118 @@ abstract class AbstractTransformer extends CharcoalAbstractTransformer
     {
         parent::__construct($data);
 
+        if (isset($data['logger'])) {
+            $this->setLogger($data['logger']);
+        }
         if (isset($data['translator'])) {
             $this->translator = $data['translator'];
         }
-
-        if (isset($data['attachmentPresenter'])) {
-            $this->attachmentPresenter = $data['attachmentPresenter'];
+        if (isset($data['transformers'])) {
+            $this->setTransformers($data['transformers']);
         }
-
+        if (isset($data['attachmentTransformers'])) {
+            $this->setAttachmentTransformers($data['attachmentTransformers']);
+        }
         if (isset($data['filePresenter'])) {
             $this->filePresenter = $data['filePresenter'];
         }
-
         if (isset($data['baseUrl'])) {
             $this->baseUrl = $data['baseUrl'];
         }
     }
 
-    /**
-     * @param  AbstractModel $model
-     * @param  string $group
-     * @return array
-     */
-    protected function getAttachmentsByGroup($model, string $group)
-    {
-        $attachments = $model->getAttachments([
-            'group' => $group,
-        ]);
-        if (count($attachments) === 0) {
-            return [];
-        }
-        return $this->attachmentPresenter->transform($attachments);
-    }
 
-    /**
-     * @param  array $attachments The Attachments to transform
-     * @return array
-     */
-    protected function prepareAttachmentContainer(array $attachments)
-    {
-        return [
-            'hasContent' => (!count($attachments)) ? false : true,
-            'content'    => $this->attachmentPresenter->transform($attachments),
-        ];
-    }
-
-    /**
-     * @param   ModelInterface $model The ModelInterface implementation of model.
-     * @param   string $choice The property name
-     * @return  array|null
-     */
-    protected function getPropertyLabelFromChoice(ModelInterface $model, $choice)
-    {
-        if (!$model[$choice]) {
-            return null;
-        }
-
-        if (is_array($model[$choice])) {
-            $values = [];
-            foreach($model[$choice] as $choiceValue) {
-                $values[] = $model->property($choice)->choiceLabel($choiceValue);
-            }
-            return $values;
-
-        } else {
-            return $model->property($choice)->choiceLabel($model[$choice]);
-        }
-    }
-
-    // URLs
+    // Content Blocks
     // -------------------------------------------------------------------------
 
     /**
-     * Serialize a URI for the application.
-     *
-     * @param  ModelInterface $model The model to parse.
-     * @return string|null
+     * @param  AttachmentAwareInterface $model
+     * @param  string                   $group
+     * @return array
      */
-    protected function getUrl(ModelInterface $model)
+    protected function getContentBlocks(AttachmentAwareInterface $model, $group = 'content-blocks')
     {
-        if ($model instanceof RoutableInterface) {
-            $uri = ltrim($model->url(), '/');
-            if ($uri) {
-                return (string)$this->formatUrl($uri);
+        if (!is_string($group) || empty($group)) {
+            var_dump($group);
+            throw new InvalidArgumentException('Cannot fetch attachments, group ident is invalid.');
+        }
+
+        $blocks = [];
+
+        $attachments = $model->getAttachments([
+            'group' => $group,
+        ]);
+        foreach ($attachments as $attachment) {
+            // Convert pascal case to kebab case.
+            $attClass = (new \ReflectionClass($attachment))->getShortName();
+            $transformerKey = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $attClass));
+
+            try {
+                $presenter = $this->getAttachmentTransformer($transformerKey);
+                $block     = $presenter($attachment);
+
+                try {
+                    $view = (new \ReflectionClassConstant($presenter, 'VIEW'))->getValue();
+                } catch (\ReflectionException $error) {
+                    $view = null;
+                }
+
+                $block['__VIEW__'] = $view;
+
+                $blocks[] = $block;
+            } catch (Throwable $t) {
+                $this->logger->warning(sprintf(
+                    '[App] Failed to transform "%s" (%s): %s',
+                    $transformerKey,
+                    $attachment['id'],
+                    $t->getMessage()
+                ));
             }
         }
 
-        return null;
+        return $blocks;
+    }
+
+    // Translations
+    // -------------------------------------------------------------------------
+
+    /**
+     * Retrieves a string from a Translation object. French is used as a fallback.
+     *
+     * @param  Translation|null $translation
+     * @return string
+     */
+    final protected function formatTranslation($translation = null)
+    {
+        if ($translation instanceof Translation) {
+            fill_missing_translations($translation, 'en');
+            return (string)$translation;
+        } else if (is_string($translation)) {
+            return $translation;
+        } else {
+            return '';
+        }
+    }
+
+
+    // Attachments
+    // -------------------------------------------------------------------------
+
+    /**
+     * @param Container $transformers
+     * @return void
+     */
+    protected function setAttachmentTransformers(Container $transformers)
+    {
+        $this->attachmentTransformers = $transformers;
     }
 
     /**
-     * Format a URI.
-     *
-     * @param  mixed $path The target path or URI.
-     * @return string|null
+     * @param  string $key The transformer to retrieve.
+     * @return \App\Service\Transformer\AbstractTransformer
      */
-    final protected function formatUrl($path)
+    protected function getAttachmentTransformer($key)
     {
-        if ($this->baseUrl === null) {
-            return null;
-        }
-
-        if ($path instanceof UriInterface) {
-            $path = (string)$path;
-        }
-
-        $baseUrl = $this->baseUrl;
-
-        $parts = parse_url($path);
-        if (isset($parts['scheme'])) {
-            return $path;
-        }
-
-        $path  = isset($parts['path']) ? $parts['path'] : '';
-        $query = isset($parts['query']) ? $parts['query'] : '';
-        $hash  = isset($parts['fragment']) ? $parts['fragment'] : '';
-
-        return $baseUrl->withPath($path)
-                       ->withQuery($query)
-                       ->withFragment($hash);
+        return $this->attachmentTransformers[$key];
     }
 }

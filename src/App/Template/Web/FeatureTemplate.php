@@ -13,7 +13,6 @@ use Charcoal\Model\ModelInterface;
  */
 class FeatureTemplate extends AbstractWebTemplate
 {
-
     /**
      * @param  Container $container
      * @return void
@@ -33,8 +32,9 @@ class FeatureTemplate extends AbstractWebTemplate
         $this->contextObject = $context;
 
         $feature = ($this->featureTransformer)($context);
-        // $feature['contentBlocks'] = $this->parseContentBlocks($feature['contentBlocks']);
+        $this->prepareContentBlocks($feature, $context);
         $this['feature'] = $feature;
+
         return $this;
     }
 }

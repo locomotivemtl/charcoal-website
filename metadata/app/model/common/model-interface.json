@@ -1,9 +1,4 @@
 {
-    "sources": {
-        "default": {
-            "table": null
-        }
-    },
     "default_source": "default",
 
     "properties": {

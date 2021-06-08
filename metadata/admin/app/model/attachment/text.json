@@ -11,7 +11,13 @@
     "properties": {
         "description": {
             "label": "Contenu",
-            "input_type": "charcoal/admin/property/input/textarea"
+            "type": "html",
+            "input_type": "charcoal/admin/property/input/tinymce",
+            "editor_options": {
+                "toolbar": "undo redo | bold | code",
+                "menubar": false,
+                "forced_root_block": false
+            }
         }
     },
 

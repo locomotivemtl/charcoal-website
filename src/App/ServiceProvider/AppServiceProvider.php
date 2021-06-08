@@ -100,6 +100,18 @@ class AppServiceProvider implements ServiceProviderInterface
      */
     private function registerServices(Container $container)
     {
+        /**
+         * @param Container $container
+         * @return \App\Service\AttachmentPresenter
+         */
+        $container['app/services/attachment-presenter'] = function (Container $container) {
+            return new Service\AttachmentPresenter([
+                'container'    => $container,
+                'transformers' => [
+                    'app/model/attachment/text'         => 'text',
+                ],
+            ]);
+        };
 
         /**
          * @param Container $container
@@ -132,6 +144,7 @@ class AppServiceProvider implements ServiceProviderInterface
             $transformers['feature'] = function (Container $transformers) use ($container) {
                 return new Transformer\Feature([
                     'filePresenter' => $container['app/services/file-presenter'],
+                    'attachmentTransformers' => $container['app/attachment/transformers'],
                     'baseUrl' => $container['base-url']
                 ]);
             };
@@ -139,15 +152,14 @@ class AppServiceProvider implements ServiceProviderInterface
             return $transformers;
         };
 
-        $container['app/transformers/attachments'] = function (Container $container) {
+        $container['app/attachment/transformers'] = function (Container $container) {
             $transformers = new Container();
 
-            // $transformers['text'] = function (Container $transformers) use ($container) {
-            //     return new Transformer\Attachment\Text([
-            //         'baseUrl'       => $container['base-url'],
-            //     ]);
-            // };
-
+            $transformers['text'] = function (Container $transformers) use ($container) {
+                return new Transformer\Attachment\Text([
+                    'baseUrl' => $container['base-url'],
+                ]);
+            };
             return $transformers;
         };
     }

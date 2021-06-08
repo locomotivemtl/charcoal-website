@@ -3,6 +3,7 @@
 namespace App\Template;
 
 use Charcoal\Cms\AbstractWebTemplate as CharcoalTemplate;
+use Charcoal\Model\ModelInterface;
 
 /**
  * Base Template Controller
@@ -14,7 +15,7 @@ abstract class AbstractTemplate extends CharcoalTemplate
      *
      * @var string
      */
-    const ASSETS_VERSION = '1.0.0';
+    const ASSETS_VERSION = '202106081505';
 
 
     // Templating
@@ -87,5 +88,32 @@ abstract class AbstractTemplate extends CharcoalTemplate
     public function siteName() : string
     {
         return $this->appConfig('project_name');
+    }
+
+    // Content Blocks
+    // -------------------------------------------------------------------------
+
+    /**
+     * @param  array|null     $model
+     * @param  ModelInterface $context
+     * @return void
+     */
+    protected function prepareContentBlocks(&$model, ModelInterface $context)
+    {
+        if (!empty($model) && isset($model['blocks']) && $model['hasBlocks']) {
+            /** @return \Generator */
+            $loop = function () use ($model, $context) {
+                foreach ($model['blocks'] as $block) {
+                    $this->prepareContentBlocks($block, $context);
+                    $view = ($block['__VIEW__'] ?? null);
+                    if ($view) {
+                        $context->setDynamicTemplate('block', $view);
+                        yield $block;
+                    }
+                }
+            };
+
+            $model['blocks'] = $loop();
+        }
     }
 }

@@ -1,0 +1,37 @@
+{
+    "default_data": {
+    },
+
+    "properties": {
+        "subtitle": {
+            "label": "Subtitle"
+        },
+        "categories": {
+            "type": "string",
+            "choices": []
+        },
+        "file": {
+            "type": "file",
+            "l10n": true,
+            "validatable": false,
+            "upload_path": "uploads/",
+            "public_access": true,
+            "overwrite": true
+        },
+        "file_type": {
+            "l10n": true,
+            "validatable": false
+        },
+        "thumbnail": {
+            "type": "image",
+            "l10n": true,
+            "validatable": false,
+            "upload_path": "uploads/",
+            "public_access": true,
+            "overwrite": true
+        },
+        "embed": {
+            "type": "embed"
+        }
+    }
+}

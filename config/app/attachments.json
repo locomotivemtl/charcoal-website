@@ -1,13 +1,13 @@
 {
     "attachments": {
         "attachables": {
-            "app/attachment/text": {
+            "app/model/attachment/text": {
                 "label": "Text"
             }
         },
         "groups": {
             "content-blocks": [
-                "app/attachment/text"
+                "app/model/attachment/text"
             ]
         },
         "widgets": {

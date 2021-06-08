@@ -16,8 +16,12 @@ class Feature extends AbstractTransformer
      */
     public function __invoke(FeatureModel $model)
     {
+        $blocks = $this->getContentBlocks($model);
+
         return [
             'id'        => (int)$model['id'],
+            'hasBlocks' => count($blocks) > 0,
+            'blocks'    => $blocks,
             'title'     => $model['title'],
             'subtitle'  => $model['subtitle'],
             'thumbnail' => $model['thumbnailVideo'] ? : (string) $this->filePresenter->formatImageFor($model['thumbnail'], $model->p('thumbnail'), $model, 'default'),

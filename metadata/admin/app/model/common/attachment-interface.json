@@ -1,0 +1,62 @@
+{
+    "properties": {
+        "description": {
+            "rows": 4
+        },
+        "file": {
+            "show_notes": "above"
+        },
+        "thumbnail": {
+            "label": "Image",
+            "show_notes": "above"
+        },
+        "embed": {
+            "label": "Embedded Video URL",
+            "show_notes": "above",
+            "notes": "<strong>Vimeo or YouTube only</strong>. ex.: https://www.youtube.com/watch?v=CtwCvEA-zrI"
+        }
+    },
+
+    "admin": {
+        "default_list": "app/model/list",
+        "forms": {
+            "app/model/create": {
+                "groups": {
+                    "app/model/base": {}
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            },
+            "app/model/edit": {
+                "groups": {
+                    "app/model/base": {},
+                    "app/model/meta": {}
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            }
+        },
+        "default_form": "app/model/edit",
+        "default_quick_form": "app/model/create",
+        "form_groups": {
+            "app/model/meta": {
+                "properties": [
+                    "id",
+                    "lastModified",
+                    "lastModifiedBy",
+                    "created",
+                    "createdBy"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1, 1 ] }
+                    ]
+                }
+            }
+        }
+    }
+}
