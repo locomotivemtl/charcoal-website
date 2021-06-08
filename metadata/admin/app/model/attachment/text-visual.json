@@ -1,0 +1,81 @@
+{
+    "labels": {
+        "edit_item": "Edit Text Visual Block"
+    },
+
+    "default_data": {
+        "preview": "{{> charcoal/attachment/text-visual }}",
+        "heading": "Visual Block: #{{ id }}"
+    },
+
+    "properties": {
+        "show_title": {
+            "label": "Reversed?",
+            "notes": "If checked, image will be on the right"
+        },
+        "title": {
+        },
+        "subtitle": {
+        },
+        "description": {
+            "label": "Contenu",
+            "type": "html",
+            "input_type": "charcoal/admin/property/input/tinymce",
+            "editor_options": {
+
+            }
+        },
+        "thumbnail": {
+            "label": "Thumbnail",
+            "show_notes": "above",
+            "notes": "Recommended size: <strong>TBD x TBD</strong>"
+        },
+        "thumbnailVideo": {
+            "label": "Thumbnail video",
+            "show_notes": "above",
+            "notes": "Overrides the image thumbnail if filled. A Vimeo <code>.mp4</code> URL. <a href='https://vimeo.zendesk.com/hc/en-us/articles/224823567-Direct-links-to-video-files' target='_blank'>Direct links to video files</a>"
+        }
+    },
+
+    "admin": {
+        "lists": {
+            "app/model/list": {
+                "properties": [
+                    "title",
+                    "active"
+                ],
+                "orders": [
+                    {
+                        "property": "created",
+                        "mode": "desc"
+                    }
+                ],
+                "list_actions": {
+                    "create": {
+                        "active": false
+                    }
+                }
+            }
+        },
+        "form_groups": {
+            "app/model/base": {
+                "title": "Text Visual",
+                "properties": [
+                    "title",
+                    "subtitle",
+                    "description",
+                    "thumbnail",
+                    "thumbnailVideo",
+                    "show_title"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1, 1, 1 ] }
+                    ]
+                }
+            }
+        }
+    }
+}

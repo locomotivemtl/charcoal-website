@@ -1,0 +1,36 @@
+{
+    "default_data": {
+        "type": "app/model/attachment/text-visual",
+        "show_title": false
+    },
+
+    "properties": {
+        "title": {
+            "required": true
+        },
+        "subtitle": {
+            "required": true
+        },
+        "description": {
+            "type": "html",
+            "required": true
+        },
+        "thumbnail": {
+            "required": true,
+            "label": "Image",
+            "upload_path": "uploads/features/",
+            "apply_effects": "save",
+            "effects": [
+
+            ],
+            "sizes": {
+                "default": {
+                    "pattern": "{{filename}}.{{extension}}"
+                }
+            }
+        },
+        "thumbnailVideo": {
+            "type": "url"
+        }
+    }
+}

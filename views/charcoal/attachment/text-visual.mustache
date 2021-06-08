@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class="col {{# show_title }}order-last{{/ show_title }}">
+        {{# thumbnailVideo }}
+            <video src="{{thumbnailVideo}}"></video>
+        {{/ thumbnailVideo }}
+        {{# thumbnail }}
+            <img src="{{.}}" alt="">
+        {{/ thumbnail }}
+        </div>
+        <div class="col">
+            <span>{{subtitle}}</span>
+            <h2>{{title}}</h2>
+            {{& description }}
+        </div>
+    </div>
+</div>

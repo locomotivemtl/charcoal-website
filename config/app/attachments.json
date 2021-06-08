@@ -3,11 +3,21 @@
         "attachables": {
             "app/model/attachment/text": {
                 "label": "Text"
+            },
+            "app/model/attachment/rail": {
+                "label": "Rail",
+                "fa_icon": "text-width"
+            },
+            "app/model/attachment/text-visual": {
+                "label": "Text Visual",
+                "fa_icon": "square"
             }
         },
         "groups": {
             "content-blocks": [
-                "app/model/attachment/text"
+                "app/model/attachment/text",
+                "app/model/attachment/rail",
+                "app/model/attachment/text-visual"
             ]
         },
         "widgets": {

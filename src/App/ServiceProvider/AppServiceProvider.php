@@ -160,6 +160,17 @@ class AppServiceProvider implements ServiceProviderInterface
                     'baseUrl' => $container['base-url'],
                 ]);
             };
+            $transformers['rail'] = function (Container $transformers) use ($container) {
+                return new Transformer\Attachment\Rail([
+                    'baseUrl' => $container['base-url'],
+                ]);
+            };
+            $transformers['text-visual'] = function (Container $transformers) use ($container) {
+                return new Transformer\Attachment\TextVisual([
+                    'filePresenter' => $container['app/services/file-presenter'],
+                    'baseUrl' => $container['base-url'],
+                ]);
+            };
             return $transformers;
         };
     }

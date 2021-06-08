@@ -1,0 +1,14 @@
+{
+    "default_data": {
+        "type": "app/model/attachment/rail"
+    },
+
+    "properties": {
+        "title": {
+            "required": true
+        },
+        "description": {
+            "required": true
+        }
+    }
+}
