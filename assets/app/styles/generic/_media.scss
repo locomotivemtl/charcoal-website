@@ -28,6 +28,7 @@ audio:not([controls]) {
 // 2. Fluid media for responsive purposes.
 //
 img,
+video,
 svg {
     max-width: 100%; /* [2] */
     height: auto;

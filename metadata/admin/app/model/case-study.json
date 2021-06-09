@@ -17,7 +17,7 @@
         "thumbnail": {
             "label": "Thumbnail",
             "show_notes": "above",
-            "notes": "Recommended size: <strong>TBD x TBDpx</strong>"
+            "notes": "Recommended size: <strong>895 x 679px</strong>"
         },
         "url": {
             "label": "URL"
@@ -109,6 +109,16 @@
                         { "columns": [ 1, 1 ] },
                         { "columns": [ 1, 1 ] }
                     ]
+                }
+            }
+        },
+
+        "dashboards": {
+            "admin.collection": {
+                "widgets": {
+                    "table": {
+                        "sortable": true
+                    }
                 }
             }
         }

@@ -122,11 +122,6 @@
                     "template-options": {
 
                     },
-                    "content-blocks": {
-                        "type": "charcoal/admin/widget/form-group/attachment",
-                        "preset": "content-blocks",
-                        "priority": 200
-                    },
                     "cms.advanced": {
                         "priority": 300
                     },
@@ -135,9 +130,6 @@
                     },
                     "cms.meta": {
                         "priority": 500
-                    },
-                    "cms.table": {
-                        "priority": 600
                     },
                     "cms.revisions": {
                         "priority": 700

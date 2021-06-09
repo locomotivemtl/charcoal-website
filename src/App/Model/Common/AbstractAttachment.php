@@ -53,34 +53,6 @@ abstract class AbstractAttachment extends CharcoalAttachment implements
         return $this;
     }
 
-
-
-    // Aliases/Implementations
-    // -------------------------------------------------------------------------
-
-    // /**
-    //  * Alias of {@see Attachment::thumbnail()}.
-    //  *
-    //  * @return string|null
-    //  */
-    // public function imageSrc()
-    // {
-    //     $src = $this->thumbnail();
-    //     return $this->createAbsoluteUrl($src);
-    // }
-
-    // /**
-    //  * {@inheritdoc}
-    //  *
-    //  * @return string|null
-    //  */
-    // public function choiceLabel()
-    // {
-    //     return $this->parseChoiceLabel('name');
-    // }
-
-
-
     // Validation
     // -------------------------------------------------------------------------
 

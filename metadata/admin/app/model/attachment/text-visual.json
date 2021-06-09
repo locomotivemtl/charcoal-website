@@ -28,7 +28,7 @@
         "thumbnail": {
             "label": "Thumbnail",
             "show_notes": "above",
-            "notes": "Recommended size: <strong>TBD x TBD</strong>"
+            "notes": "Recommended size: <strong>1280 x 768</strong>"
         },
         "thumbnailVideo": {
             "label": "Thumbnail video",

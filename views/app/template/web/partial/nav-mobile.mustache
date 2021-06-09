@@ -3,19 +3,13 @@
         <div class="c-nav-mobile_container">
             <ul class="c-nav-mobile_list">
                 <li class="c-nav-mobile_list_item">
-                    <span class="c-nav-mobile_list_item_label">Products</span>
+                    <span class="c-nav-mobile_list_item_label">Features</span>
                     <ul class="c-nav-mobile_sublist">
+                        {{# features }}
                         <li class="c-nav-mobile_sublist_item">
-                            <a href="/multi" class="c-nav-mobile_list_item_label">Messenger</a>
+                            <a href="{{url}}" class="c-nav-mobile_list_item_label">{{title}}</a>
                         </li>
-
-                        <li class="c-nav-mobile_sublist_item">
-                            <a href="/multi" class="c-nav-mobile_list_item_label">Data Management</a>
-                        </li>
-
-                        <li class="c-nav-mobile_sublist_item">
-                            <a href="/multi" class="c-nav-mobile_list_item_label">E-Shop Management</a>
-                        </li>
+                        {{/ features }}
                     </ul>
                 </li>
 

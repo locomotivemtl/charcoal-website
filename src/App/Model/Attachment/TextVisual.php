@@ -10,14 +10,27 @@ use App\Model\Common\AbstractAttachment;
  */
 class TextVisual extends AbstractAttachment
 {
+
+    private $thumbnailVideo;
+
     /**
-     * Alias of {@see Attachment::thumbnail()}.
-     *
+     * @param  mixed $thumbnailVideo
+     * @return void
+     */
+    public function setThumbnailVideo($thumbnailVideo)
+    {
+        $this->thumbnailVideo = $this->property('thumbnailVideo')->parseVal($thumbnailVideo);
+    }
+
+    /**
      * @return string|null
      */
-    public function imageSrc()
+    public function getThumbnailVideo()
     {
-        $src = $this->thumbnail();
-        return $this->createAbsoluteUrl($src);
+        return $this->thumbnailVideo;
+    }
+
+    public function hasVideo() {
+        return $this->thumbnailVideo ? true : false;
     }
 }

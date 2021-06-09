@@ -6,13 +6,13 @@
             </h2>
 
             <div class="o-layout -gutter-small u-text-center c-tiles">
+                {{# features.0 }}
                 <div class="o-layout_item u-1/3@from-medium u-1/2@from-small">
-                    <a href="/multi" class="c-tile u-border-radius -offset-top" data-scroll data-scroll-offset="0"
+                    <a href="{{url}}" class="c-tile u-border-radius -offset-top" data-scroll data-scroll-offset="0"
                         data-scroll-speed="2" data-scroll-target="#features">
                         <div class="c-tile_inner">
                             <div class="c-tile_inner_top">
-                                <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et
-                                    habitant.</span>
+                                <span class="c-tile_inner_top_item">{{subtitle}}</span>
                                 <span class="c-tile_inner_top_item">01</span>
                             </div>
 
@@ -35,21 +35,22 @@
                                 </span>
 
                                 <span class="c-tile_inner_bottom_item">
-                                    <span class="c-tile_inner_bottom_title">Messenger</span>
+                                    <span class="c-tile_inner_bottom_title">{{title}}</span>
                                 </span>
                             </div>
                         </div>
                     </a>
                 </div>
+                {{/ features.0 }}
 
+                {{# features.1 }}
                 <div class="o-layout_item u-1/3@from-medium u-1/2@from-small">
-                    <a href="/multi" class="c-tile u-border-radius" data-scroll data-scroll-offset="0"
+                    <a href="{{url}}" class="c-tile u-border-radius" data-scroll data-scroll-offset="0"
                         data-scroll-speed="3" data-scroll-target="#features">
                         <div class="c-tile_inner">
                             <div class="c-tile_inner_top">
-                                <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et
-                                    habitant.</span>
-                                <span class="c-tile_inner_top_item">01</span>
+                                <span class="c-tile_inner_top_item">{{subtitle}}</span>
+                                <span class="c-tile_inner_top_item">02</span>
                             </div>
 
                             <div class="c-tile_inner_middle">
@@ -71,21 +72,22 @@
                                 </span>
 
                                 <span class="c-tile_inner_bottom_item">
-                                    <span class="c-tile_inner_bottom_title">Messenger</span>
+                                    <span class="c-tile_inner_bottom_title">{{title}}</span>
                                 </span>
                             </div>
                         </div>
                     </a>
                 </div>
+                {{/ features.1 }}
 
+                {{# features.2 }}
                 <div class="o-layout_item u-1/3@from-medium u-1/2@from-small">
-                    <a href="/multi" class="c-tile u-border-radius -offset-top" data-scroll data-scroll-offset="0"
+                    <a href="{{url}}" class="c-tile u-border-radius -offset-top" data-scroll data-scroll-offset="0"
                         data-scroll-speed="2" data-scroll-target="#features">
                         <div class="c-tile_inner">
                             <div class="c-tile_inner_top">
-                                <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et
-                                    habitant.</span>
-                                <span class="c-tile_inner_top_item">01</span>
+                                <span class="c-tile_inner_top_item">{{subtitle}}</span>
+                                <span class="c-tile_inner_top_item">03</span>
                             </div>
 
                             <div class="c-tile_inner_middle">
@@ -107,23 +109,24 @@
                                 </span>
 
                                 <span class="c-tile_inner_bottom_item">
-                                    <span class="c-tile_inner_bottom_title">Messenger</span>
+                                    <span class="c-tile_inner_bottom_title">{{title}}</span>
                                 </span>
                             </div>
                         </div>
                     </a>
                 </div>
+                {{/ features.2 }}
 
                 <div class="o-layout_item u-1/3@from-medium u-none@to-medium">{{!!EMPTY}}</div>
 
+                {{# features.3 }}
                 <div class="o-layout_item u-1/3@from-medium u-1/2@from-small">
-                    <a href="/multi" class="c-tile u-border-radius" data-scroll data-scroll-offset="0"
+                    <a href="{{url}}" class="c-tile u-border-radius" data-scroll data-scroll-offset="0"
                         data-scroll-speed="3" data-scroll-target="#features">
                         <div class="c-tile_inner">
                             <div class="c-tile_inner_top">
-                                <span class="c-tile_inner_top_item">Odio adipiscing eget lorem tempus et
-                                    habitant.</span>
-                                <span class="c-tile_inner_top_item">01</span>
+                                <span class="c-tile_inner_top_item">{{subtitle}}</span>
+                                <span class="c-tile_inner_top_item">04</span>
                             </div>
 
                             <div class="c-tile_inner_middle">
@@ -145,12 +148,13 @@
                                 </span>
 
                                 <span class="c-tile_inner_bottom_item">
-                                    <span class="c-tile_inner_bottom_title">Messenger</span>
+                                    <span class="c-tile_inner_bottom_title">{{title}}</span>
                                 </span>
                             </div>
                         </div>
                     </a>
                 </div>
+                {{/ features.3 }}
 
                 <div class="o-layout_item u-1/3@from-medium u-none@to-medium">{{!!EMPTY}}</div>
             </div>

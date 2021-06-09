@@ -1,12 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col {{# show_title }}order-last{{/ show_title }}">
-        {{# thumbnailVideo }}
-            <video src="{{thumbnailVideo}}"></video>
-        {{/ thumbnailVideo }}
-        {{# thumbnail }}
-            <img src="/{{.}}" alt="">
-        {{/ thumbnail }}
+        {{# hasVideo }}
+            <video controls muted playsinline loop src="{{thumbnailVideo}}" style="width: 100%;"></video>
+        {{/ hasVideo }}
+        {{^ hasVideo }}
+            {{# thumbnail }}
+                <img src="/{{.}}" alt="">
+            {{/ thumbnail }}
+        {{/ hasVideo }}
         </div>
         <div class="col">
             <span>{{subtitle}}</span>

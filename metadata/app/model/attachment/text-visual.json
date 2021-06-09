@@ -22,11 +22,26 @@
             "l10n": false,
             "apply_effects": "save",
             "effects": [
-
+                {
+                    "type": "resize",
+                    "mode": "fill",
+                    "width": 1280,
+                    "height": 768
+                },
+                {
+                    "type": "crop",
+                    "width": 1280,
+                    "height": 768
+                },
+                {
+                    "type": "save",
+                    "copy": "{{filename}}-1280x768.{{extension}}",
+                    "reset": true
+                }
             ],
             "sizes": {
                 "default": {
-                    "pattern": "{{filename}}.{{extension}}"
+                    "pattern": "{{filename}}-1280x768.{{extension}}"
                 }
             }
         },

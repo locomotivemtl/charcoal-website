@@ -15,11 +15,26 @@
             "overwrite": true,
             "apply_effects": "save",
             "effects": [
-
+                {
+                    "type": "resize",
+                    "mode": "fill",
+                    "width": 895,
+                    "height": 679
+                },
+                {
+                    "type": "crop",
+                    "width": 895,
+                    "height": 679
+                },
+                {
+                    "type": "save",
+                    "copy": "{{filename}}-895x679.{{extension}}",
+                    "reset": true
+                }
             ],
             "sizes": {
                 "default": {
-                    "pattern": "{{filename}}.{{extension}}"
+                    "pattern": "{{filename}}-895x679.{{extension}}"
                 }
             }
         },
