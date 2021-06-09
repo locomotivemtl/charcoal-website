@@ -11,14 +11,29 @@
             "app/model/attachment/text-visual": {
                 "label": "Text Visual",
                 "fa_icon": "square"
+            },
+            "app/model/attachment/quote-slider": {
+                "label": "Quotes Slider",
+                "fa_icon": "quote-left",
+                "skip_form": true
+            },
+            "app/model/attachment/quote": {
+                "label": "Quote",
+                "fa_icon": "quote-left"
             }
         },
         "groups": {
             "content-blocks": [
                 "app/model/attachment/text",
                 "app/model/attachment/rail",
-                "app/model/attachment/text-visual"
-            ]
+                "app/model/attachment/text-visual",
+                "app/model/attachment/quote-slider"
+            ],
+            "quoteSlider": {
+                "app/model/attachment/quote": {
+                    "quick_form_ident": "app/model/edit/quote-slider"
+                }
+            }
         },
         "widgets": {
             "content-blocks": {
@@ -31,6 +46,17 @@
                 "group": "content-blocks",
                 "attachment_heading": "{{ ident }}",
                 "attachable_objects": "content-blocks",
+                "attachment_options": {
+                    "show_header": false,
+                    "show_preview": true,
+                    "show_heading": true
+                }
+            },
+            "quoteSlider": {
+                "title": "Quote Slider",
+                "group": "quoteSlider",
+                "attachment_heading": "{{ ident }}",
+                "attachable_objects": "quoteSlider",
                 "attachment_options": {
                     "show_header": false,
                     "show_preview": true,

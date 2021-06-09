@@ -1,22 +1,22 @@
+{{# hasQuotes }}
 <section data-scroll-section>
     <div class="c-section u-background-light">
         <div class="o-container">
             <div class="c-content-quotes swiper-container u-anim" data-scroll data-module-carousel-quotes>
                 <div class="c-content-quotes_wrapper swiper-wrapper">
-                    {{# forLoop.4}}
+                    {{# quotes }}
                     <div class="c-content-quotes_item swiper-slide">
                         <div class="c-content-quotes_item_inner">
                             <blockquote class="c-content-quotes_item_blockquote c-heading -h3">
-                                “Since we started using Charcoal, our sales have been <strong>multiplied by
-                                    100</strong>. And that’s amazing, who wouldn’t want that?”
+                                {{& quote }}
                             </blockquote>
                             <p class="c-content-quotes_author">
-                                Elon Musk <br>
-                                CEO at Tesla
+                                {{ author }} <br>
+                                {{ author_position }}
                             </p>
                         </div>
                     </div>
-                    {{/ forLoop.4}}
+                    {{/ quotes }}
                 </div>
                 <div class="c-content-quotes_controls">
                     <div class="c-content-quotes_controls_buttons">
@@ -47,3 +47,4 @@
         </div>
     </div>
 </section>
+{{/ hasQuotes }}

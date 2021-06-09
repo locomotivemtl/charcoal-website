@@ -19,6 +19,7 @@
             "required": true,
             "label": "Image",
             "upload_path": "uploads/features/",
+            "l10n": false,
             "apply_effects": "save",
             "effects": [
 

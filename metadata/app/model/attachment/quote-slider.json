@@ -1,0 +1,18 @@
+{
+    "default_data": {
+        "type": "app/model/attachment/quote-slider"
+    },
+
+    "attachments": {
+        "default_widget": "quoteSlider",
+        "attachable_objects": "quoteSlider",
+        "group": "quoteSlider"
+    },
+
+    "properties": {
+        "images": {
+            "type": "string",
+            "storable": false
+        }
+    }
+}

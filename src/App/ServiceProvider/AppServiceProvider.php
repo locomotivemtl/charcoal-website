@@ -171,6 +171,17 @@ class AppServiceProvider implements ServiceProviderInterface
                     'baseUrl' => $container['base-url'],
                 ]);
             };
+            $transformers['quote-slider'] = function (Container $transformers) use ($container) {
+                return new Transformer\Attachment\QuoteSlider([
+                    'logger'                 => $container['logger'],
+                    'baseUrl'                => $container['base-url'],
+                    'attachmentTransformers' => $container['app/attachment/transformers'],
+                ]);
+            };
+            $transformers['quote'] = function (Container $transformers) {
+                return new Transformer\Attachment\Quote();
+            };
+
             return $transformers;
         };
     }

@@ -1,0 +1,93 @@
+{
+    "labels": {
+        "edit_item": "Edit Quote Block"
+    },
+
+    "default_data": {
+        "preview": "{{> charcoal/attachment/quote }}",
+        "heading": "Quote Block: {{id}}"
+    },
+
+    "properties": {
+        "title": {
+            "label": "Author"
+        },
+        "subtitle": {
+            "label": "Author position"
+        },
+        "description": {
+            "label": "Quote content",
+            "type": "html",
+            "input_type": "charcoal/admin/property/input/tinymce",
+            "editor_options": {
+                "toolbar": "undo redo | bold | code",
+                "menubar": false,
+                "forced_root_block": false
+            }
+        }
+    },
+
+    "admin": {
+        "default_quick_form": "app/model/edit",
+        "forms": {
+            "app/model/edit": {
+                "groups": {
+                    "app/model/base": {
+                        "properties": [
+                           "description",
+                           "title",
+                           "subtitle"
+                        ],
+                        "layout": {
+                           "structure": [
+                               { "columns": [ 1 ] },
+                               { "columns": [ 1, 1 ] }
+                           ]
+                        }
+                    }
+                }
+            },
+            "app/model/edit/quote-slider": {
+                "groups": {
+                    "app/model/base": {
+                        "properties": [
+                           "description",
+                           "title",
+                           "subtitle"
+                        ],
+                        "layout": {
+                           "structure": [
+                               { "columns": [ 1 ] },
+                               { "columns": [ 1, 1 ] }
+                           ]
+                        }
+                    }
+                }
+            }
+        },
+        "dashboards": {
+            "edit": {
+                "show_header": false,
+                "widgets": {
+                    "form": {
+                        "obj_type": "app/model/attachment/quote",
+                        "type": "charcoal/admin/widget/app/forms/object-form",
+                        "template": "charcoal/admin/widget/app/forms/object-form",
+                        "group_display_mode": "tab",
+                        "form_ident": "app/model/edit",
+                        "permissions": [
+                            "object/update"
+                        ]
+                    }
+                }
+            },
+            "table": {
+                "widgets": {
+                    "form": {
+                        "obj_type": "app/model/attachment/quote"
+                    }
+                }
+            }
+        }
+    }
+}

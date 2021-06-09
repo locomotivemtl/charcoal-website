@@ -4,8 +4,8 @@
     },
 
     "default_data": {
-        "preview": "{{> charcoal/attachment/object/text }}",
-        "heading": "Text Block:{{# description }} {{# excerpt }}{{ . }}{{/ excerpt }}{{/ description }}{{^ description }} #{{ id }}{{/ description }}"
+        "preview": "<div class=\"lead\">{{&description}}</div>",
+        "heading": "Text Block: {{ id }}"
     },
 
     "properties": {

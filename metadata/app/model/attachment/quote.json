@@ -1,0 +1,17 @@
+{
+    "default_data": {
+        "type": "app/model/attachment/quote"
+    },
+
+    "properties": {
+        "title": {
+            "required": true
+        },
+        "subtitle": {
+            "required": true
+        },
+        "description": {
+            "required": true
+        }
+    }
+}

@@ -2,6 +2,10 @@
 
 namespace App\Transformer;
 
+// From 'psr/log'
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+
 // From 'pimple/pimple'
 use Pimple\Container;
 
@@ -29,9 +33,11 @@ use function App\Support\fill_missing_translations;
 /**
  * Transformer: Base Class
  */
-abstract class AbstractTransformer extends CharcoalAbstractTransformer
+abstract class AbstractTransformer extends CharcoalAbstractTransformer implements
+    LoggerAwareInterface
 {
-    use TranslatorAwareTrait;
+    use TranslatorAwareTrait,
+        LoggerAwareTrait;
 
     /**
      * @var Container

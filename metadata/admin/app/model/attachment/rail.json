@@ -4,7 +4,7 @@
     },
 
     "default_data": {
-        "heading": "{{ title }}",
+        "heading": "Rail block : {{ id }}",
         "preview": "<h2 class=\"display-3\">{{title}}</h2> {{ description }}"
     },
 

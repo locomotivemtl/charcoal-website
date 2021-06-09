@@ -1,0 +1,71 @@
+{
+    "labels": {
+        "edit_item": "Edit Quote Slider"
+    },
+    "default_data": {
+        "heading": "Quote Slider: #{{ id }}",
+        "preview": "{{> charcoal/attachment/quote-slider }}"
+    },
+    "properties": {
+        "images": {
+            "label": "Quotes",
+            "show_label": false,
+            "input_type": "charcoal/admin/property/input/nested-widget",
+            "widget_data": {
+                "type": "charcoal/admin/widget/attachment",
+                "preset": "quoteSlider"
+            }
+        }
+    },
+    "admin": {
+        "lists": {
+            "app/model/list": {
+                "properties": [
+                    "title",
+                    "active"
+                ],
+                "orders": [
+                    {
+                        "property": "created",
+                        "mode": "desc"
+                    }
+                ],
+                "list_actions": {
+                    "create": {
+                        "active": false
+                    }
+                }
+            }
+        },
+        "forms": {
+            "app/model/create": {
+                "groups": {
+                    "app/model/base": {
+                        "description": "Click <strong>Reorder Content</strong> to change the order of your quotes."
+                    }
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            },
+            "app/model/edit": {
+                "groups": {
+                    "app/model/base": {
+                        "properties": [
+                            "images"
+                        ]
+                    },
+                    "app/model/meta": {}
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            }
+        },
+        "form_groups": {
+            "app/model/base": {
+                "title": "Quotes Slider"
+            }
+        }
+    }
+}
