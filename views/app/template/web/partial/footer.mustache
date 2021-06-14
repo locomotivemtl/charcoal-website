@@ -30,7 +30,7 @@
         <div class="o-container">
             <nav class="o-layout -bottom c-footer_nav">
                 <div class="o-layout_item u-1/3@from-small">
-                    <a class="c-footer_logo u-anim" data-scroll data-scroll-offset="0" href="{{homeUrl}}">
+                    <a class="c-footer_logo u-anim" data-scroll data-scroll-offset="0" href="{{routes.home}}">
                         <svg role="img" aria-label="Charcoal">
                             <use href="assets/app/images/sprite.svg#logo"></use>
                         </svg>
@@ -39,17 +39,17 @@
                 <div class="o-layout_item u-1/3@from-small">
                     <ul class="c-footer_nav_list" data-scroll data-scroll-offset="0">
                         <li class="c-footer_nav_list_item u-anim -parent">
-                            <a href="/#features" class="c-link" data-module-split data-split-type="chars">
+                            <a href="{{routes.home}}#features" class="c-link" data-module-split data-split-type="chars">
                                 {{# _t }}features.title{{/ _t }}
                             </a>
                         </li>
                         <li class="c-footer_nav_list_item u-anim -delay-1 -parent">
-                            <a href="/technology" class="c-link" data-module-split data-split-type="chars">
+                            <a href="{{routes.technology}}" class="c-link" data-module-split data-split-type="chars">
                                 {{# _t }}technology.title{{/ _t }}
                             </a>
                         </li>
                         <li class="c-footer_nav_list_item u-anim -delay-2 -parent">
-                            <a href="/contact" class="c-link" data-module-split data-split-type="chars">
+                            <a href="{{routes.contact}}" class="c-link" data-module-split data-split-type="chars">
                                 {{# _t }}support.title{{/ _t }}
                             </a>
                         </li>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="o-layout_item u-1/3@from-small u-text-right@from-small u-anim -delay-4" data-scroll
                     data-scroll-offset="0">
-                    <a href="/contact" class="c-button -white -hover-gray">
+                    <a href="{{routes.contact}}" class="c-button -white -hover-gray">
                         <span class="c-button_label">
                             {{# _t }}site.get-in-touch{{/ _t }}
                         </span>

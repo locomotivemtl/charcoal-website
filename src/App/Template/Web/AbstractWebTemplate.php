@@ -54,7 +54,11 @@ abstract class AbstractWebTemplate extends AbstractTemplate
     {
         parent::setDependencies($container);
 
-        $this->homeUrl = (string) $container['model/factory']->create(Page::class)->loadFrom('template_ident', 'home')->url();
+        $this->routes = [
+            "home" => (string) $container['model/factory']->create(Page::class)->loadFrom('template_ident', 'home')->url(),
+            "technology" => (string) $container['model/factory']->create(Page::class)->loadFrom('template_ident', 'technology')->url(),
+            "contact" => (string) $container['model/factory']->create(Page::class)->loadFrom('template_ident', 'contact')->url()
+        ];
 
         $this->featuresRepository  = $container['app/collection-loaders']['feature'];
         $this->featuresTransformer = $container['app/transformers']['feature'];
@@ -148,8 +152,8 @@ abstract class AbstractWebTemplate extends AbstractTemplate
         return $this->isCaptchaInvisible;
     }
 
-    public function homeUrl() {
-        return $this->homeUrl;
+    public function routes() {
+        return $this->routes;
     }
 
     /**
