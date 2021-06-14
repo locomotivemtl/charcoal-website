@@ -1,14 +1,28 @@
 route.features.endpointSlug;"fonctionnalite"
+
+features.title;"Fonctionnalités"
+technology.title;"Technologie"
+support.title;"Support"
+
+site.get-in-touch;"Contactez-nous"
+site.error.title;"Page non trouvée"
+site.error.text;"La page que vous cherchez n'a pu être trouvée."
+site.back-home;"Retour à l'accueil"
+site.website-by;"Site web par"
+
 "admin.app.contact.available-tags";"Balises de soumission disponibles :"
 "admin.app.contact.view-item";"Voir le message dans Charcoal"
 "admin.app.view-item";"Voir dans Charcoal"
+
 "errorTryAgain";"Une erreur est survenue. Veuillez essayer à nouveau."
 "errorTryLater";"Une erreur est survenue. Veuillez essayer à nouveau plus tard."
+
 "form.success.message";"Merci! Notre équipe vous contactera dans les plus brefs délais."
 "form.warning.message";"Il y a un problème avec votre formulaire. S’ll vous plaît, réessayez."
 "form.submit.label";"Envoyer"
 "form.field.required";"Veuillez remplir ce champ."
 "form.field.mismatch.email";"Veuillez entrer une adresse courriel."
+
 "contact.form.label";"Votre Message"
 "contact.form.field.name.label";"Nom complet"
 "contact.form.field.email.label";"Adresse courriel"

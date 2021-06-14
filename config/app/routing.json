@@ -11,11 +11,6 @@
                 "route": "/contact",
                 "template": "app/template/web/contact",
                 "controller": "app/template/web/contact"
-            },
-            "technology": {
-                "route": "/technology",
-                "template": "app/template/web/technology",
-                "controller": "app/template/web/technology"
             }
         },
         "actions": {
@@ -30,7 +25,9 @@
     },
     "middlewares": {
         "charcoal/translator/middleware/language": {
-            "active": true
+            "active": true,
+            "use_session": true,
+            "use_browser": false
         },
         "charcoal/cache/middleware/cache": {
             "active": true

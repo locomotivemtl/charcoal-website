@@ -1,7 +1,66 @@
 {
     "properties": {
+        "id": {
+            "type": "id",
+            "mode": "auto-increment",
+            "label": "ID"
+        },
+        "locked": {
+            "type": "boolean",
+            "label": {
+                "fr": "Verrouillé",
+                "en": "Locked"
+            },
+            "description": {
+                "en": "A locked object cannot be deleted nor the slug be modified.",
+                "fr": "Un objet verrouillé ne peut être supprimé et son slug ne peut être modifié."
+            }
+        },
+        "title": {
+            "type": "string",
+            "l10n": true,
+            "label": {
+                "fr": "Titre",
+                "en": "Title"
+            }
+        },
+        "position": {
+            "type": "number",
+            "label": "Position"
+        },
         "master": {
-            "obj_type": "app/model/page"
+            "type": "object",
+            "obj_type": "app/model/page",
+            "label": {
+                "fr": "Page Parente",
+                "en": "Parent Page"
+            }
+        },
+        "external_url": {
+            "type": "string",
+            "l10n": true,
+            "label": {
+                "fr": "Lien externe",
+                "en": "External URL"
+            },
+            "notes": {
+                "en": "If the page is an \"External Destination\", visitors will be redirected to the URL defined below when accessing this page's route.",
+                "fr": "Si la page est une \"Destination externe\", les visiteurs seront redirigés vers l'URL défini ci-dessous lors de l'accès de l'URL de cette page."
+            }
+        },
+        "slug": {
+            "description": {
+                "en": "The part of the url that point to the article on the site",
+                "fr": "La partie du url qui pointe vers cet article"
+            },
+            "notes": {
+                "en": "Will be automatically generated if blank",
+                "fr": "Sera généré automatiquement si laissé vide"
+            }
+        },
+        "template_ident": {
+            "type": "template",
+            "allow_null": false
         },
         "templateOptions": {
             "type": "template-options"

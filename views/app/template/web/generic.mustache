@@ -10,34 +10,15 @@
                 <div class="c-header-multi">
                     <h1 class="c-header-multi_title c-heading -h2 u-anim-text-line" data-module-split data-scroll
                         data-scroll-speed="2" data-scroll-position="top">
-                        {{# _t }}site.error.title{{/ _t }}
+                        {{title}}
                     </h1>
                     <p class="c-header-multi_content c-heading -h4 u-anim -delay-3">
-                        {{# _t }}site.error.text{{/ _t }}
+                        {{summary}}
                     </p>
-                    <a href="/" class="c-button -hover-gray u-anim -delay-4" data-scroll-to>
-                        <span class="c-button_label">
-                            {{# _t }}site.back-home{{/ _t }}
-                        </span>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
-
-    {{# debug }}
-        {{# htmlErrorDetails}}
-        <section data-scroll-section class="u-background-light">
-            <div class="c-section">
-                <div class="o-container">
-                    <pre style="background: white; color: black; padding: 5px; overflow: auto;">
-                    {{& . }}
-                    </pre>
-                </div>
-            </div>
-        </section>
-        {{/ htmlErrorDetails}}
-    {{/ debug }}
 
     {{> app/template/web/partial/footer }}
 

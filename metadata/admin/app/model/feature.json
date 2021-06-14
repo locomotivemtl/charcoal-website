@@ -21,7 +21,7 @@
         "thumbnail": {
             "label": "Thumbnail",
             "show_notes": "above",
-            "notes": "Recommended size: <strong>TBD x TBD</strong>"
+            "notes": "Must be a 1:1 (square) SVG file"
         },
         "thumbnailVideo": {
             "label": "Thumbnail video",
@@ -64,6 +64,7 @@
         "lists": {
             "app/model/list": {
                 "properties": [
+                    "thumbnail",
                     "title",
                     "active"
                 ],
@@ -117,13 +118,12 @@
                 "title": "Feature",
                 "properties": [
                     "title",
-                    "subtitle",
                     "thumbnail",
-                    "thumbnailVideo"
+                    "subtitle"
                 ],
                 "layout": {
                     "structure": [
-                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1 ] },
                         { "columns": [ 1, 1 ] }
                     ]
                 }

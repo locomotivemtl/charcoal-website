@@ -74,7 +74,9 @@ abstract class AbstractWebContent extends AbstractContent implements
      */
     protected function preSave()
     {
-        $this->setSlug($this->generateSlug());
+        if(!$this['locked']) {
+            $this->setSlug($this->generateSlug());
+        }
 
         if (empty($this['templateIdent']) && defined('static::ROUTE_TEMPLATE')) {
             $this->setTemplateIdent(static::ROUTE_TEMPLATE);
@@ -114,7 +116,9 @@ abstract class AbstractWebContent extends AbstractContent implements
      */
     protected function preUpdate(array $properties = null)
     {
-        $this->setSlug($this->generateSlug());
+        if(!$this['locked']) {
+            $this->setSlug($this->generateSlug());
+        }
 
         return parent::preUpdate($properties);
     }

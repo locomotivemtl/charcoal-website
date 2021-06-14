@@ -6,7 +6,7 @@ See modifiers in _header.scss
 <div class="o-container">
     <div class="c-header_container">
         <div class="c-header_container_item">
-            <a class="c-header_logo" href="/">
+            <a class="c-header_logo" href="{{homeUrl}}">
                 <svg role="img" aria-label="Charcoal">
                     <use href="assets/app/images/sprite.svg#logo"></use>
                 </svg>
@@ -15,7 +15,7 @@ See modifiers in _header.scss
                 <li class="c-header_menu_item -products">
                     <button class="c-header_menu_item_inner c-link" data-module-split data-split-type="chars"
                         data-module-products-button type="button">
-                        Features
+                        {{# _t }}features.title{{/ _t }}
                         <span class="c-header_menu_item_inner_arrow">
                             <svg role="img">
                                 <use href="assets/app/images/sprite.svg#arrow-down-tip"></use>
@@ -26,7 +26,7 @@ See modifiers in _header.scss
                 <li class="c-header_menu_item">
                     <a class="c-header_menu_item_inner c-link" data-module-split data-split-type="chars"
                         href="/technology">
-                        Technology
+                        {{# _t }}technology.title{{/ _t }}
                     </a>
                 </li>
             </ul>
@@ -34,13 +34,22 @@ See modifiers in _header.scss
         <div class="c-header_container_item -right">
             <ul class="c-header_menu">
                 <li class="c-header_menu_item u-none@to-medium">
-                    <a class="c-header_menu_item_inner c-link" data-module-split data-split-type="chars" href="/multi">
+                    {{# langSwitcherItems }}
+                        {{^ isCurrent }}
+                            <a class="c-header_menu_item_inner c-link u-capitalize" href="{{url}}" data-module-split data-split-type="chars" data-load="false">
+                                {{ hreflang }}
+                            </a>
+                        {{/ isCurrent }}
+                    {{/ langSwitcherItems }}
+                </li>
+                {{!<li class="c-header_menu_item u-none@to-medium">
+                    <a class="c-header_menu_item_inner c-link" data-module-split data-split-type="chars" href="/contact">
                         Get demo
                     </a>
-                </li>
+                </li>}}
                 <li class="c-header_menu_item u-none@to-medium">
                     <a href="/contact" class="c-button">
-                        <span class="c-button_label">Get in touch</span>
+                        <span class="c-button_label">{{# _t }}site.get-in-touch{{/ _t }}</span>
                     </a>
                 </li>
             </ul>

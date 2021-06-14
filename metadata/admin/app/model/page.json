@@ -68,9 +68,42 @@
                         "permissions": [ "object/create" ]
                     }
                 ],
+                "object_actions": {
+                    "edit": {
+                        "label": {
+                            "en": "Modify",
+                            "fr": "Modifier"
+                        },
+                        "url": "object/edit?obj_type={{obj_type}}&obj_id={{id}}",
+                        "priority": 1,
+                        "icon": "edit",
+                        "actions": {
+                            "goto": {
+                                "active": false
+                            },
+                            "clone": {
+                                "active": false
+                            },
+                            "delete": {
+                                "active": false
+                            }
+                        }
+                    },
+                    "goto": {
+                        "actionType": "seamless",
+                        "condition": "isActiveRoute",
+                        "label": {
+                            "en": "Go to page",
+                            "fr": "Voir la page"
+                        },
+                        "icon": "external-link",
+                        "url": "{{baseUrl}}{{url}}",
+                        "target": "_blank",
+                        "priority": 2
+                    }
+                },
                 "properties_options": {
                     "title": {
-                        "display_type": "charcoal/admin/property/display/hierarchical",
                         "view_options": {
                             "attr": {
                                 "width": "55%"
@@ -106,8 +139,11 @@
         "forms": {
             "app.create": {
                 "groups": {
-                    "cms.info": {
+                    "app/model/info": {
                         "priority": 100
+                    },
+                    "app/model/dev": {
+                        "priority": 200
                     }
                 },
                 "sidebars": {
@@ -116,23 +152,23 @@
             },
             "app.edit": {
                 "groups": {
-                    "cms.info": {
+                    "app/model/info": {
                         "priority": 100
                     },
-                    "template-options": {
-
+                    "app/model/template-options": {
+                        "priority": 150
                     },
-                    "cms.advanced": {
+                    "app/model/advanced": {
                         "priority": 300
                     },
-                    "cms.dev": {
+                    "app/model/dev": {
                         "priority": 400
                     },
-                    "cms.meta": {
+                    "app/model/web": {
                         "priority": 500
                     },
-                    "cms.revisions": {
-                        "priority": 700
+                    "app/model/meta": {
+                        "priority": 600
                     }
                 },
                 "sidebars": {
@@ -151,8 +187,16 @@
             }
         },
         "form_groups": {
-            "template-options": {
-                "priority": 150,
+            "app/model/info": {
+                "title": "Info",
+                "show_title": false,
+                "show_header": false,
+                "icon": "info",
+                "properties": [
+                    "title"
+                ]
+            },
+            "app/model/template-options": {
                 "icon": "cog",
                 "title": "Content",
                 "show_header": false,
@@ -160,6 +204,45 @@
                 "properties": [
                     "templateOptions"
                 ]
+            },
+            "app/model/advanced": {
+                "title": "Options",
+                "show_title": false,
+                "show_header": false,
+                "icon": "cog",
+                "properties": [
+                    "master",
+                    "slug",
+                    "active"
+                ]
+            },
+            "app/model/dev": {
+                "title": "Dev",
+                "show_title": false,
+                "show_header": false,
+                "icon": "code",
+                "tabCssClasses": "pull-right",
+                "permissions": ["dev_tab"],
+                "properties": [
+                    "template_ident",
+                    "locked"
+                ]
+            },
+            "app/model/meta": {
+                "properties": [
+                    "id",
+                    "lastModified",
+                    "lastModifiedBy",
+                    "created",
+                    "createdBy"
+                ],
+                "layout": {
+                    "structure": [
+                        { "columns": [ 1 ] },
+                        { "columns": [ 1, 1 ] },
+                        { "columns": [ 1, 1 ] }
+                    ]
+                }
             }
         },
         "dashboards": {
@@ -185,7 +268,7 @@
                 },
                 "widgets": {
                     "table": {
-                        "type": "charcoal/admin/widget/hierarchical-table",
+                        "type": "charcoal/admin/widget/table",
                         "obj_type": "app/model/page",
                         "collection_ident": "app.default",
                         "sortable": true

@@ -5,36 +5,26 @@ namespace App\Model;
 // From 'pimple/pimple'
 use Pimple\Container;
 
-// From 'charcoal-core'
-use Charcoal\Loader\CollectionLoaderAwareTrait;
-
-// From 'charcoal-attachment'
-use Charcoal\Attachment\Traits\AttachmentAwareTrait;
-
-// From 'charcoal-cms'
-use Charcoal\Cms\AbstractSection;
+use Charcoal\Cms\TemplateableInterface;
+use Charcoal\Cms\TemplateableTrait;
 
 // From App
 use App\Support\AdminAwareTrait;
+use App\Model\Common\AbstractWebContent;
 
 /**
  * Class Page
  */
-class Page extends AbstractSection
+class Page extends AbstractWebContent implements
+    TemplateableInterface
 {
-    use AdminAwareTrait;
-    use AttachmentAwareTrait;
-    use CollectionLoaderAwareTrait;
+    use AdminAwareTrait,
+        TemplateableTrait;
 
     /**
-     * @param Container $container Pimple DI Container.
-     * @return void
+     * @var string
      */
-    public function setDependencies(Container $container)
-    {
-        parent::setDependencies($container);
-        $this->setCollectionLoader($container['model/collection/loader']);
-    }
+    private $title;
 
     // Hooks
     // -------------------------------------------------------------------------
@@ -67,5 +57,51 @@ class Page extends AbstractSection
         }
 
         return parent::preUpdate($properties);
+    }
+
+    // Routing
+    // -------------------------------------------------------------------------
+
+    /**
+     * Retrieve the model's URI endpoint.
+     *
+     * @return string|null
+     */
+    public function endpointSlug()
+    {
+        return $this->translator()->getLocale();
+    }
+
+    /**
+     * Create the model's URI slug.
+     *
+     * @return string|null
+     */
+    public function createSlug()
+    {
+        // Clone it, manipulate it, don't reference it.
+        $title = (string) $this['title'];
+
+        return $this->slugify((string)$title);
+    }
+
+    // GET / SET
+    // -------------------------------------------------------------------------
+
+    /**
+     * @param  mixed $title
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $this->property('title')->parseVal($title);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

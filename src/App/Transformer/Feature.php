@@ -24,7 +24,8 @@ class Feature extends AbstractTransformer
             'blocks'    => $blocks,
             'title'     => $model['title'],
             'subtitle'  => $model['subtitle'],
-            'thumbnail' => $model['thumbnailVideo'] ? : (string) $this->filePresenter->formatImageFor($model['thumbnail'], $model->p('thumbnail'), $model, 'default'),
+            'thumbnail' => (string) $this->filePresenter->formatImageFor($model['thumbnail'], $model->p('thumbnail'), $model, 'default'),
+            'thumbnailVideo' => $model['thumbnailVideo'],
             'url'       => $model['url']
         ];
     }

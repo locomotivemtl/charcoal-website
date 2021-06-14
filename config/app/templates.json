@@ -2,8 +2,8 @@
     "templates": [
         {
             "value": "page",
-            "template": "app/template/web/page",
-            "controller": "app/template/web/page",
+            "template": "app/template/web/generic",
+            "controller": "app/template/web/generic",
             "label":  {
                 "en": "Default Page",
                 "fr": "Page générique"
@@ -16,6 +16,24 @@
             "label":  {
                 "en": "Front Page",
                 "fr": "Page d'Accueil"
+            }
+        },
+        {
+            "value": "technology",
+            "template": "app/template/web/technology",
+            "controller": "app/template/web/technology",
+            "label":  {
+                "en": "Technology",
+                "fr": "Technologie"
+            }
+        },
+        {
+            "value": "contact",
+            "template": "app/template/web/contact",
+            "controller": "app/template/web/contact",
+            "label":  {
+                "en": "Contact",
+                "fr": "Contact"
             }
         },
         {

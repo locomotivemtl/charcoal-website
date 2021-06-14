@@ -180,9 +180,7 @@ class Feature extends AbstractWebContent implements
         $slug = [
             $this->translator()->translate('route.features.endpointSlug'),
         ];
-        if ($this->defaultLocale !== $locale) {
-            array_unshift($slug, $locale);
-        }
+        array_unshift($slug, $locale);
         return implode('/', $slug);
     }
 

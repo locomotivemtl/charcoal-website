@@ -2,20 +2,27 @@
 
 namespace App\Routing;
 
-use Charcoal\App\Route\TemplateRoute;
-use Charcoal\Model\ModelFactoryTrait;
+// From Pimple
 use Pimple\Container;
+
+// From PSR-7
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+
+// From 'charcoal-translator'
+use Charcoal\Translator\TranslatorAwareTrait;
+
+// From 'charcoal-app'
+use Charcoal\App\Route\TemplateRoute;
 
 use App\Model\Page;
 
 /**
- * Class HomeRoute
+ *
  */
 class HomeRoute extends TemplateRoute
 {
-    use ModelFactoryTrait;
+    use TranslatorAwareTrait;
 
     /**
      * @param  Container         $container A service locator.
@@ -27,29 +34,40 @@ class HomeRoute extends TemplateRoute
         Container $container,
         RequestInterface $request,
         ResponseInterface $response
-    )
-    {
-        $this->setModelFactory($container['model/factory']);
+    ) {
+        $path = $request->getRequestTarget();
+
+        if ($path === '/') {
+            $this->setTranslator($container['translator']);
+            $page = $container['model/factory']->create(Page::class)->loadFrom('template_ident', 'home');
+            $redirection = $this->parseRedirect((string)$page->url(), $request);
+            return $response->withRedirect($redirection, 303);
+        }
+
         return parent::__invoke($container, $request, $response);
     }
 
     /**
-     * Override from templateRoute to give a context object
+     * Determine if the URI path resolves to an object.
      *
-     * @param  Container        $container A DI (Pimple) container.
-     * @param  RequestInterface $request   The request to intialize the template with.
-     * @return string
+     * @param  Container $container Service locator.
+     * @return boolean
      */
-    protected function createTemplate(Container $container, RequestInterface $request)
+    public function pathResolvable(Container $container)
     {
-        $template = parent::createTemplate($container, $request);
+        $this->setDependencies($container);
 
-        $contextObject             = $this->modelFactory()->create(Page::class)->loadFrom('template_ident', 'home');
-        $template['contextObject'] = $contextObject;
+        $object = $this->getObjectRouteFromPath();
+        if (!$object->id()) {
+            return false;
+        }
 
-        // Set data from context object.
-        $template->setData($contextObject['templateOptions']);
+        $contextObject = $this->getContextObject();
 
-        return $template;
+        if (!$contextObject || !$contextObject->id()) {
+            return false;
+        }
+
+        return (!!$contextObject->active() && !!$contextObject->isActiveRoute());
     }
 }

@@ -7,6 +7,8 @@ use App\Template\AbstractTemplate;
 // From 'pimple/pimple'
 use Pimple\Container;
 
+use App\Model\Page;
+
 /**
  * Web Template Controller
  */
@@ -51,6 +53,8 @@ abstract class AbstractWebTemplate extends AbstractTemplate
     protected function setDependencies(Container $container)
     {
         parent::setDependencies($container);
+
+        $this->homeUrl = (string) $container['model/factory']->create(Page::class)->loadFrom('template_ident', 'home')->url();
 
         $this->featuresRepository  = $container['app/collection-loaders']['feature'];
         $this->featuresTransformer = $container['app/transformers']['feature'];
@@ -142,6 +146,26 @@ abstract class AbstractWebTemplate extends AbstractTemplate
         }
 
         return $this->isCaptchaInvisible;
+    }
+
+    public function homeUrl() {
+        return $this->homeUrl;
+    }
+
+    /**
+     * @return Generator
+     */
+    public function langSwitcherItems()
+    {
+        $available = array_flip($this->availableLanguages());
+        $available[$this->currentLanguage()] = [
+            'isCurrent' => true,
+        ];
+        $alternate = iterator_to_array($this->alternateTranslations());
+        $items = array_merge($available, $alternate);
+        foreach ($items as $langCode => $transStruct) {
+            yield $langCode => $transStruct;
+        }
     }
 
     // =========================================================================

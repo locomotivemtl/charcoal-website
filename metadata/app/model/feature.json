@@ -1,6 +1,6 @@
 {
     "routable": {
-        "editable": false
+        "editable": true
     },
     "properties": {
         "id": {
@@ -11,13 +11,13 @@
             "l10n": true
         },
         "subtitle": {
-            "type": "string",
+            "type": "text",
             "l10n": true
         },
         "thumbnail": {
             "type": "image",
             "upload_path": "uploads/features/",
-            "l10n": true,
+            "l10n": false,
             "public_access": true,
             "overwrite": true,
             "apply_effects": "save",

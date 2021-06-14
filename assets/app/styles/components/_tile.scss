@@ -82,24 +82,34 @@
         margin-bottom: rem($unit);
 
     }
+
+    @media (min-width: $from-medium) {
+        .c-tile.-quarter & {
+            width: 25%;
+
+            &:first-child {
+                width: 75%;
+            }
+        }
+    }
 }
 
 .c-tile_inner_middle {
     display: block;
     text-align: center;
-    padding: rem(80px) 0;
+    padding: rem(20px) 0;
 
     .c-tile.-quarter & {
-        padding: rem(40px) 0;
+        padding: rem(10px) 0;
     }
 
     @media (max-width: $to-large) {
-        padding: rem(40px) 0;
+        padding: rem(10px) 0;
     }
 }
 
 .c-tile_inner_middle_image {
-    width: 60%;
+    width: 90%;
     margin: 0 auto;
 }
 
