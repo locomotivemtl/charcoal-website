@@ -8,7 +8,7 @@ use App\Transformer\AbstractTransformer;
 /**
  * Transformer: Case Study
  */
-class CaseStudy extends AbstractTransformer
+class CaseStudyTransformer extends AbstractTransformer
 {
     /**
      * @param  CaseStudyModel $model

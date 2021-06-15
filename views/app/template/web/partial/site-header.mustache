@@ -1,61 +1,62 @@
 <!doctype html>
 <html {{& htmlAttr }}>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <base href="{{ baseUrl }}">
+        <base href="{{ baseUrl }}">
 
-    {{> charcoal/cms/metatag/document }}
-    {{> charcoal/cms/metatag/opengraph }}
+        {{> charcoal/cms/metatag/document }}
+        {{> charcoal/cms/metatag/opengraph }}
 
-    <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="HandheldFriendly" content="true">
+        <!-- Viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="HandheldFriendly" content="true">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/app/images/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/app/images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/app/images/favicons/favicon-16x16.png">
-    <link rel="manifest" href="assets/app/images/favicons/site.webmanifest">
-    <link rel="mask-icon" href="assets/app/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
-    <!-- For a dark mode managment and svg favicon add this in your favicon.svg -->
-    <!--
-        <style>
-            path {
-                fill: #000;
-            }
-            @media (prefers-color-scheme: dark) {
+        <!-- Appearance -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/app/images/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/app/images/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/app/images/favicons/favicon-16x16.png">
+        <link rel="manifest" href="assets/app/images/favicons/site.webmanifest">
+        <link rel="mask-icon" href="assets/app/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#ffffff">
+        <!-- For a dark mode managment and svg favicon add this in your favicon.svg -->
+        <!--
+            <style>
                 path {
-                    fill: #fff;
+                    fill: #000;
                 }
-            }
+                @media (prefers-color-scheme: dark) {
+                    path {
+                        fill: #fff;
+                    }
+                }
+            </style>
+        -->
+        <link rel="icon" href="assets/app/images/favicons/favicon.svg">
+
+        <link id="css-app-main" rel="stylesheet" href="assets/app/styles/main.css" media="print" onload="this.media='all'; this.onload=null; this.isLoaded=true">
+
+        {{# criticalCss }}
+        <style media="all">
+            {{& . }}
         </style>
-    -->
-    <link rel="icon" href="assets/app/images/favicons/favicon.svg">
+        {{/ criticalCss }}
 
-    <link id="css-app-main" rel="stylesheet" href="assets/app/styles/main.css" media="print" onload="this.media='all'; this.onload=null; this.isLoaded=true">
+        <!-- Add your own styles
+        <link rel="stylesheet" href="{{# withBaseUrl }}assets/app/styles/main.css?v={{ assetsVersion }}{{/ withBaseUrl }}">
+        -->
 
-    {{# criticalCss }}
-    <style media="all">
-        {{& . }}
-    </style>
-    {{/ criticalCss }}
-
-    <!-- Add your own styles
-    <link rel="stylesheet" href="{{# withBaseUrl }}assets/app/styles/main.css?v={{ assetsVersion }}{{/ withBaseUrl }}">
-    -->
-
-    {{# api.google.analytics.tracking_id }}
-    <script>
-        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('create', '{{ . }}', 'auto');
-        ga('send', 'pageview');
-    </script>
-    <script async src="https://www.google-analytics.com/analytics.js"></script>
-    {{/ api.google.analytics.tracking_id }}
-</head>
+        {{# api.google.analytics.tracking_id }}
+        <script>
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', '{{ . }}', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js"></script>
+        {{/ api.google.analytics.tracking_id }}
+    </head>
     <body data-module-load style="opacity: 0;">
         {{> app/template/web/partial/preloader }}
 

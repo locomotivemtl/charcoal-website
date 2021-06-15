@@ -29,4 +29,9 @@ $container = new AppContainer([
 /* Instantiate a Charcoal~Slim application and run */
 $app = App::instance($container);
 
+/** Start new or resume existing session */
+if ( ! session_id() ) {
+    session_start();
+}
+
 $app->run();

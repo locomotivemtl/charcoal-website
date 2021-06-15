@@ -26,8 +26,7 @@
     "middlewares": {
         "charcoal/translator/middleware/language": {
             "active": true,
-            "use_session": true,
-            "use_browser": false
+            "use_session": true
         },
         "charcoal/cache/middleware/cache": {
             "active": true

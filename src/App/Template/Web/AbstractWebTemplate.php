@@ -27,7 +27,7 @@ abstract class AbstractWebTemplate extends AbstractTemplate
     /**
      * @var array
      */
-    private $features;
+    private $featuresSummary;
 
 
     // Templating
@@ -36,14 +36,14 @@ abstract class AbstractWebTemplate extends AbstractTemplate
     /**
      * @var array
      */
-    public function features() {
-        if ($this->features === null) {
-            $this->features = array_map(function($feature) {
-                return ($this->featuresTransformer)($feature);
+    public function featuresSummary() {
+        if ($this->featuresSummary === null) {
+            $this->featuresSummary = array_map(function($value) {
+                return ($this->featuresSummaryTransformer)($value);
             }, $this->featuresRepository->reset()->load());
 
         }
-        return $this->features;
+        return $this->featuresSummary;
     }
 
     /**
@@ -54,14 +54,8 @@ abstract class AbstractWebTemplate extends AbstractTemplate
     {
         parent::setDependencies($container);
 
-        $this->routes = [
-            "home" => (string) $container['model/factory']->create(Page::class)->loadFrom('template_ident', 'home')->url(),
-            "technology" => (string) $container['model/factory']->create(Page::class)->loadFrom('template_ident', 'technology')->url(),
-            "contact" => (string) $container['model/factory']->create(Page::class)->loadFrom('template_ident', 'contact')->url()
-        ];
-
         $this->featuresRepository  = $container['app/collection-loaders']['feature'];
-        $this->featuresTransformer = $container['app/transformers']['feature'];
+        $this->featuresSummaryTransformer = $container['app/transformers']['feature/summary'];
     }
 
     /**
@@ -152,7 +146,20 @@ abstract class AbstractWebTemplate extends AbstractTemplate
         return $this->isCaptchaInvisible;
     }
 
+    /**
+     * Used for menu & footer routes
+     *
+     * @return array
+     */
     public function routes() {
+        if(!$this->routes) {
+            $this->routes = [
+                'home' => (string) $this->modelFactory()->create(Page::class)->loadFrom('template_ident', 'home')->url(),
+                'technology' => (string) $this->modelFactory()->create(Page::class)->loadFrom('template_ident', 'technology')->url(),
+                'contact' => (string) $this->modelFactory()->create(Page::class)->loadFrom('template_ident', 'contact')->url()
+            ];
+        }
+
         return $this->routes;
     }
 

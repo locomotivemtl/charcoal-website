@@ -135,16 +135,23 @@ class AppServiceProvider implements ServiceProviderInterface
             $transformers = new Container();
 
             $transformers['case-study'] = function (Container $transformers) use ($container) {
-                return new Transformer\CaseStudy([
+                return new Transformer\CaseStudyTransformer([
                     'filePresenter' => $container['app/services/file-presenter'],
                     'translator' => $container['translator']
                 ]);
             };
 
             $transformers['feature'] = function (Container $transformers) use ($container) {
-                return new Transformer\Feature([
+                return new Transformer\FeatureTransformer([
                     'filePresenter' => $container['app/services/file-presenter'],
                     'attachmentTransformers' => $container['app/attachment/transformers'],
+                    'baseUrl' => $container['base-url']
+                ]);
+            };
+
+            $transformers['feature/summary'] = function (Container $transformers) use ($container) {
+                return new Transformer\FeatureSummaryTransformer([
+                    'filePresenter' => $container['app/services/file-presenter'],
                     'baseUrl' => $container['base-url']
                 ]);
             };

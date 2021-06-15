@@ -5,6 +5,8 @@ namespace App\Template;
 use Charcoal\Cms\AbstractWebTemplate as CharcoalTemplate;
 use Charcoal\Model\ModelInterface;
 
+use App\Model\Common\Metatag;
+
 /**
  * Base Template Controller
  */
@@ -115,5 +117,201 @@ abstract class AbstractTemplate extends CharcoalTemplate
 
             $model['blocks'] = $loop();
         }
+    }
+
+    // Metadata
+    // -------------------------------------------------------------------------
+
+    /**
+     * Retrieve the title of the page (the context).
+     *
+     * @override AbstractWebTemplate::title()
+     *
+     * @return string|null
+     */
+    public function title()
+    {
+        $context = $this->contextObject();
+
+        if ($context) {
+            if (isset($context['title'])) {
+                return $context['title'];
+            }
+
+            if (isset($context['name'])) {
+                return $context['name'];
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @override AbstractWebTemplate::metaTitle()
+     *     Replaces {@see \Charcoal\Cms\MetatagInterface} with {@see \App\Model\Common\Metatag}.
+     *
+     * @return string|null
+     */
+    public function metaTitle()
+    {
+        $context = $this->contextObject();
+
+        if ($context instanceof Metatag\HasMetatagInterface) {
+            $title = (string)$context['metaTitle'];
+        } else {
+            $title = null;
+        }
+
+        if (empty($title)) {
+            $title = (string)$this->fallbackMetaTitle();
+        }
+
+        return $title;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @override AbstractWebTemplate::metaDescription()
+     *     Replaces {@see \Charcoal\Cms\MetatagInterface} with {@see \App\Model\Common\Metatag}.
+     *
+     * @return string|null
+     */
+    public function metaDescription()
+    {
+        $context = $this->contextObject();
+
+        if ($context instanceof Metatag\HasMetatagInterface) {
+            $desc = (string)$context['metaDescription'];
+        } else {
+            $desc = null;
+        }
+
+        if (empty($desc)) {
+            $desc = (string)$this->fallbackMetaDescription();
+        }
+
+        return $desc;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @override AbstractWebTemplate::metaImage()
+     *     Replaces {@see \Charcoal\Cms\MetatagInterface} with {@see \App\Model\Common\Metatag}.
+     *
+     * @return string|null
+     */
+    public function metaImage()
+    {
+        $context = $this->contextObject();
+
+        $img = null;
+        if ($context instanceof Metatag\HasMetatagInterface) {
+            $img = (string)$context['metaImage'];
+        }
+
+        if (empty($img)) {
+            $img = (string)$this->fallbackMetaImage();
+        }
+
+        return $this->resolveMetaImage($img);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @override AbstractWebTemplate::opengraphType()
+     *     Replaces {@see \Charcoal\Cms\MetatagInterface} with {@see \App\Model\Common\Metatag}.
+     *
+     * @return string|null
+     */
+    public function opengraphType()
+    {
+        $context = $this->contextObject();
+
+        if ($context instanceof Metatag\HasOpenGraphInterface) {
+            $type = $context['opengraphType'];
+        } else {
+            $type = null;
+        }
+
+        if (empty($type)) {
+            $type = Metatag\HasOpenGraphInterface::DEFAULT_OPENGRAPH_TYPE;
+        }
+
+        return $type;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @override AbstractWebTemplate::opengraphImage()
+     *     Replaces {@see \Charcoal\Cms\MetatagInterface} with {@see \App\Model\Common\Metatag}.
+     *
+     * @return string|null
+     */
+    public function opengraphImage()
+    {
+        $context = $this->contextObject();
+
+        if ($context instanceof Metatag\HasOpenGraphInterface) {
+            $img = (string)$context['opengraphImage'];
+        } else {
+            $img = null;
+        }
+
+        if (empty($img)) {
+            return $this->metaImage();
+        }
+
+        return $this->resolveMetaImage($img);
+    }
+
+    /**
+     * Retrieve the object's {@link https://dev.twitter.com/cards/types card type},
+     * for the "twitter:card" meta-property.
+     *
+     * @return string|null
+     */
+    public function twitterCardType()
+    {
+        $context = $this->contextObject();
+
+        if ($context instanceof Metatag\HasTwitterCardInterface) {
+            $type = $context['twitterCardType'];
+        } else {
+            $type = null;
+        }
+
+        if (empty($type)) {
+            $type = Metatag\HasTwitterCardInterface::DEFAULT_TWITTER_CARD_TYPE;
+        }
+
+        return $type;
+    }
+
+    /**
+     * Retrieve the URL to the object's social image for the "twitter:image" meta-property.
+     *
+     * @return string|null
+     */
+    public function twitterCardImage()
+    {
+        $context = $this->contextObject();
+
+        if ($context instanceof Metatag\HasTwitterCardInterface) {
+            $img = (string)$context['twitterCardImage'];
+        } else {
+            $img = null;
+        }
+
+        if (empty($img)) {
+            return $this->metaImage();
+        }
+
+        return $this->resolveMetaImage($img);
     }
 }

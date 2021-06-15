@@ -8,7 +8,7 @@ use App\Transformer\AbstractTransformer;
 /**
  * Transformer: Feature
  */
-class Feature extends AbstractTransformer
+class FeatureTransformer extends AbstractTransformer
 {
     /**
      * @param  FeatureModel $model

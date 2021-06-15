@@ -16,11 +16,11 @@ use Charcoal\Api\AbstractTransformer as CharcoalAbstractTransformer;
 // use App\Model\Shared\Contract\ModelInterface;
 // use App\Transformer\Shared\TimestampableTrait;
 
-// From 'charcoal-core'
-use Charcoal\Model\ModelInterface;
-
 // From 'charcoal-attachment'
 use Charcoal\Attachment\Interfaces\AttachmentAwareInterface;
+
+// From 'charcoal-core'
+use Charcoal\Model\ModelInterface;
 
 // From 'charcoal-translator'
 use Charcoal\Translator\Translation;
@@ -40,14 +40,14 @@ abstract class AbstractTransformer extends CharcoalAbstractTransformer implement
         LoggerAwareTrait;
 
     /**
-     * @var Container
-     */
-    private $attachmentTransformers;
-
-    /**
      * @var \App\Services\FilePresenter
      */
     protected $filePresenter;
+
+    /**
+     * @var Container
+     */
+    private $attachmentTransformers;
 
     /**
      * @param array $data
@@ -76,6 +76,26 @@ abstract class AbstractTransformer extends CharcoalAbstractTransformer implement
         }
     }
 
+    // Attachments
+    // -------------------------------------------------------------------------
+
+    /**
+     * @param Container $transformers
+     * @return void
+     */
+    protected function setAttachmentTransformers(Container $transformers)
+    {
+        $this->attachmentTransformers = $transformers;
+    }
+
+    /**
+     * @param  string $key The transformer to retrieve.
+     * @return \App\Service\Transformer\AbstractTransformer
+     */
+    protected function getAttachmentTransformer($key)
+    {
+        return $this->attachmentTransformers[$key];
+    }
 
     // Content Blocks
     // -------------------------------------------------------------------------
@@ -147,27 +167,5 @@ abstract class AbstractTransformer extends CharcoalAbstractTransformer implement
         } else {
             return '';
         }
-    }
-
-
-    // Attachments
-    // -------------------------------------------------------------------------
-
-    /**
-     * @param Container $transformers
-     * @return void
-     */
-    protected function setAttachmentTransformers(Container $transformers)
-    {
-        $this->attachmentTransformers = $transformers;
-    }
-
-    /**
-     * @param  string $key The transformer to retrieve.
-     * @return \App\Service\Transformer\AbstractTransformer
-     */
-    protected function getAttachmentTransformer($key)
-    {
-        return $this->attachmentTransformers[$key];
     }
 }
