@@ -30,6 +30,19 @@ class Page extends AbstractWebContent implements
     // -------------------------------------------------------------------------
 
     /**
+     * @return string
+     */
+    public function formIdent()
+    {
+        $specificTemplateIdent = sprintf("%s.%s", 'app.edit', $this->templateIdent());
+        if(isset($this->metadata()->get('admin')['forms'][$specificTemplateIdent])) {
+            return $specificTemplateIdent;
+        }
+
+        return 'app.edit';
+    }
+
+    /**
      * {@inheritdoc}
      *
      * @return boolean

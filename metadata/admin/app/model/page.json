@@ -155,6 +155,53 @@
                     "app/model/info": {
                         "priority": 100
                     },
+                    "app/model/advanced": {
+                        "priority": 300
+                    },
+                    "app/model/dev": {
+                        "priority": 400
+                    },
+                    "app/model/web": {
+                        "priority": 500
+                    },
+                    "app/model/meta": {
+                        "priority": 600
+                    }
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            },
+            "app.edit.home": {
+                "groups": {
+                    "app/model/info": {
+                        "priority": 100
+                    },
+                    "app/model/template-options": {
+                        "priority": 150
+                    },
+                    "app/model/advanced": {
+                        "priority": 300
+                    },
+                    "app/model/dev": {
+                        "priority": 400
+                    },
+                    "app/model/web": {
+                        "priority": 500
+                    },
+                    "app/model/meta": {
+                        "priority": 600
+                    }
+                },
+                "sidebars": {
+                    "default": {}
+                }
+            },
+            "app.edit.technology": {
+                "groups": {
+                    "app/model/info": {
+                        "priority": 100
+                    },
                     "app/model/template-options": {
                         "priority": 150
                     },
