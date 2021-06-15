@@ -1,0 +1,32 @@
+{
+    "properties": {
+        "introExcerpt": {
+            "label": "Intro Excerpt",
+            "rows": 5
+        },
+        "introText1": {
+            "label": "Intro first column",
+            "rows": 5
+        },
+        "introText2": {
+            "label": "Intro second column",
+            "rows": 5
+        }
+    },
+
+    "admin": {
+        "form_group": {
+            "properties": [
+                "introExcerpt",
+                "introText1",
+                "introText2"
+            ],
+            "layout": {
+                "structure": [
+                    { "columns": [ 1 ] },
+                    { "columns": [ 1, 1 ] }
+                ]
+            }
+        }
+    }
+}
