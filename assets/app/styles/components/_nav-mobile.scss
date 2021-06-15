@@ -65,7 +65,7 @@
         opacity: 1;
         transform: translate3d(0, 0,0);
 
-        @for $i from 1 through 3 {
+        @for $i from 1 through 4 {
             &:nth-child(#{$i}){
                 transition-delay: 0.3 + $i * 0.06s;
             }

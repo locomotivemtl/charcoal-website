@@ -197,4 +197,13 @@ abstract class AbstractWebTemplate extends AbstractTemplate
 
         return $attrs;
     }
+
+    /**
+     * @return string
+     */
+    public function isFrench()
+    {
+        return $this->currentLanguage() === 'fr';
+    }
+
 }

@@ -109,4 +109,49 @@ class HomeTemplate extends AbstractWebTemplate
     {
         return $this->introText2;
     }
+
+    public function gallery() {
+        $images = [
+            'assets/app/images/placeholders/carousel-1.jpg',
+            'assets/app/images/placeholders/carousel-2.jpg',
+            'assets/app/images/placeholders/carousel-3.jpg'
+        ];
+
+        if($this->isFrench()) {
+            $slides = [
+                [
+                    'title' => 'Fermentum turpis aliquet francais',
+                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                ],
+                [
+                    'title' => 'Fermentum turpis aliquet interdum',
+                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                ],
+                [
+                    'title' => 'Fermentum turpis aliquet interdum',
+                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                ]
+            ];
+        } else {
+            $slides = [
+                [
+                    'title' => 'Fermentum turpis aliquet english',
+                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                ],
+                [
+                    'title' => 'Fermentum turpis aliquet interdum',
+                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                ],
+                [
+                    'title' => 'Fermentum turpis aliquet interdum',
+                    'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                ]
+            ];
+        }
+
+        return [
+            'images' => $images,
+            'slides' => $slides
+        ];
+    }
 }

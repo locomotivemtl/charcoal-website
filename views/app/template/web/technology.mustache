@@ -10,14 +10,14 @@
                 <div class="c-header-multi">
                     <h1 class="c-header-multi_title c-heading -h2 u-anim-text-line" data-module-split data-scroll
                         data-scroll-speed="2" data-scroll-position="top">
-                        Technology
+                        {{#_t}}technology.title{{/_t}}
                     </h1>
                     <p class="c-header-multi_content c-heading -h4 u-anim -delay-3">
-                        A comprehensive open-source PHP framework by Locomotive.
+                        {{#_t}}technology.subtitle{{/_t}}
                     </p>
                     <a href="#learn-more" class="c-button -white -hover-gray u-anim -delay-4" data-scroll-to>
                         <span class="c-button_label">
-                            Learn more
+                            {{#_t}}site.learn-more{{/_t}}
                         </span>
                     </a>
                 </div>
@@ -89,6 +89,34 @@
             <div class="o-container c-team u-relative">
                 <div class="u-relative">
                     <p class="c-splash-words -absolute">
+                        {{# isFrench }}
+                        <span class="c-splash-words_row">
+                            <span class="c-splash-words_row_item -offset" data-scroll
+                                data-scroll-offset="10%">Rencontrez</span>
+                        </span>
+
+                        <span class="c-splash-words_row">
+                            <span class="c-splash-words_row_item " data-scroll data-scroll-offset="10%">l'Équipe
+                            </span>
+                        </span>
+
+                        <span class="c-splash-words_row">
+                            <span class="c-splash-words_row_item -offset-small" data-scroll
+                                data-scroll-offset="10%">Derrière
+                            </span>
+                        </span>
+
+                        <span class="c-splash-words_row">
+                            <span class="c-splash-words_row_item -offset" data-scroll
+                                data-scroll-offset="10%">Le</span>
+                        </span>
+
+                        <span class="c-splash-words_row">
+                            <span class="c-splash-words_row_item -offset-small" data-scroll
+                                data-scroll-offset="10%">Projet</span>
+                        </span>
+                        {{/ isFrench }}
+                        {{^ isFrench }}
                         <span class="c-splash-words_row">
                             <span class="c-splash-words_row_item -offset" data-scroll
                                 data-scroll-offset="10%">Meet</span>
@@ -114,14 +142,22 @@
                             <span class="c-splash-words_row_item -offset-small" data-scroll
                                 data-scroll-offset="10%">Project</span>
                         </span>
+                        {{/ isFrench }}
                     </p>
                 </div>
                 <div class="o-layout">
                     <div class="o-layout_item u-1/3@from-medium">
                         <p class="c-heading -h4">
+                            {{# isFrench }}
+                            Rencontrez <br>
+                            l'équipe derrière <br>
+                            le projet
+                            {{/ isFrench }}
+                            {{^ isFrench }}
                             Meet the <br>
                             team behind <br>
                             the project
+                            {{/ isFrench }}
                         </p>
                     </div>
                 </div>
@@ -240,7 +276,7 @@
                 </div>
                 <div class="o-layout u-text-right">
                     <div class="o-layout_item u-text-left u-1/2@from-medium">
-                        <a href="/contact" class="c-tile -wide u-border-radius c-team_cta" data-scroll
+                        <a href="{{ routes.contact }}" class="c-tile -wide u-border-radius c-team_cta" data-scroll
                             data-scroll-speed="3" data-scroll-delay="0.1">
                             <div class="c-tile_inner">
                                 <div class="c-tile_inner_top">
@@ -258,7 +294,7 @@
                                     </span>
 
                                     <span class="c-tile_inner_bottom_item">
-                                        <span class="c-tile_inner_bottom_title">Get <br>Support</span>
+                                        <span class="c-tile_inner_bottom_title">{{#_t}}support.cta{{/_t}}</span>
                                     </span>
                                 </div>
                             </div>

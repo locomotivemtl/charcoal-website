@@ -1,14 +1,32 @@
 route.features.endpointSlug;"fonctionnalite"
 
 features.title;"Fonctionnalités"
+features.subtitle;"Odio adipiscing eget lorem tempus et habitant."
+features.block-title;"Outils Essentiels"
+
 technology.title;"Technologie"
+technology.subtitle;"A comprehensive open-source PHP framework by Locomotive."
+
 support.title;"Support"
+support.subtitle;"Odio adipiscing eget lorem tempus et habitant."
+support.cta;"J'ai besoin<br>d'aide"
+
+contact.title;"Contactez<br>nous"
+contact.subtitle;"Lorem ipsum dolor <br> consectetur adipisicing elit."
 
 site.get-in-touch;"Contactez-nous"
 site.error.title;"Page non trouvée"
 site.error.text;"La page que vous cherchez n'a pu être trouvée."
 site.back-home;"Retour à l'accueil"
 site.website-by;"Site web par"
+site.learn-more;"En savoir plus"
+site.scroll;"Défiler"
+
+partners.title;"Ils nous font confiance"
+
+case-studies.title;"Études <br>de Cas"
+case-studies.featuring;"Fonctionnalités"
+case-studies.cta;"Voir le site"
 
 "admin.app.contact.available-tags";"Balises de soumission disponibles :"
 "admin.app.contact.view-item";"Voir le message dans Charcoal"

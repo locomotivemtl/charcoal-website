@@ -1,14 +1,32 @@
 route.features.endpointSlug;"feature"
 
 features.title;"Features"
+features.subtitle;"Odio adipiscing eget lorem tempus et habitant."
+features.block-title;"Main Features"
+
 technology.title;"Technology"
+technology.subtitle;"A comprehensive open-source PHP framework by Locomotive."
+
 support.title;"Support"
+support.subtitle;"Odio adipiscing eget lorem tempus et habitant."
+support.cta;"Get <br>Support"
+
+contact.title;"Get <br> in touch"
+contact.subtitle;"Lorem ipsum dolor <br> consectetur adipisicing elit."
 
 site.get-in-touch;"Get in touch"
 site.error.title;"Page Not Found"
 site.error.text;"The page you are looking for could not be found."
 site.back-home;"Back to homepage"
 site.website-by;"Website by"
+site.learn-more;"Learn more"
+site.scroll;"Scroll"
+
+partners.title;"Trusted by"
+
+case-studies.title;"Case <br>Studies"
+case-studies.featuring;"Featuring"
+case-studies.cta;"View website"
 
 "admin.app.contact.available-tags";"Available entry tags:"
 "admin.app.contact.view-item";"View the message in Charcoal"
